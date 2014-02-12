@@ -1,0 +1,144 @@
+.message-list .alert {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 10px;
+  border-color: #d65d68 #bc3635 #ad3335 #c63a3b; }
+.message-list .topic-actions {
+  float: right; }
+  .message-list .topic-actions .btn {
+    margin-left: 10px; }
+    .message-list .topic-actions .btn:first-child {
+      margin-left: 0; }
+
+.message-row,
+.topic-header,
+.content > form > .control-group {
+  padding: 10px; }
+
+.message-row {
+  overflow: auto;
+  position: relative;
+  font-size: 14px; }
+  .message-row blockquote {
+    overflow: auto;
+    padding: 5px 8px;
+    margin: 6px 0;
+    border-left: 4px solid black;
+    font-size: 14px; }
+    .message-row blockquote header {
+      font-size: 18px;
+      color: #888888;
+      padding: 0 6px 2px; }
+  .message-row:hover .message-footer a {
+    color: #2768a1; }
+  .message-row .avatar {
+    width: 80px;
+    height: 80px; }
+    .message-row .avatar img {
+      border-radius: 3px; }
+  .message-row .module-stars {
+    display: inline-block;
+    padding: 0; }
+    .message-row .module-stars li {
+      display: inline-block;
+      vertical-align: bottom; }
+    .message-row .module-stars .avatar {
+      margin-right: 0; }
+      .message-row .module-stars .avatar img {
+        width: 20px; }
+  .message-row .btn-like {
+    display: inline-block;
+    color: #a4272c;
+    font-size: 24px;
+    line-height: 24px; }
+    .message-row .btn-like:hover {
+      text-decoration: none; }
+  .message-row .message-date {
+    font-size: 10px; }
+    .message-row .message-date .message-date-created,
+    .message-row .message-date .message-date-created-time-since {
+      color: #aeaeae; }
+    .message-row .message-date .message-date-created-time-since {
+      display: block; }
+    .message-row .message-date .message-date-created {
+      display: none; }
+    .message-row .message-date:hover .message-date-created-time-since {
+      display: none; }
+    .message-row .message-date:hover .message-date-created {
+      display: block; }
+  .message-row .message-author,
+  .message-row .message-body {
+    margin-left: 90px; }
+  .message-row .message-body {
+    padding-bottom: 25px; }
+  .message-row .message-heart {
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    text-align: center; }
+  .message-row .message-author {
+    overflow: auto;
+    color: #aeaeae; }
+    .message-row .message-author > * {
+      float: left;
+      font-size: 10px;
+      margin: 0 16px 0 0; }
+    .message-row .message-author .info {
+      font-size: 16px; }
+      .message-row .message-author .info > * + * {
+        margin-left: 6px; }
+    .message-row .message-author .action > * + * {
+      margin-left: 6px; }
+  .message-row textarea {
+    height: 100px;
+    width: 98%;
+    padding: 1%; }
+  .message-row .redactor_box {
+    margin: 6px 0; }
+  .message-row .redactor_wysiwyg {
+    min-height: 150px; }
+  .message-row .redactor_wysiwyg-initial li, .message-row .redactor_wysiwyg-initial h4 {
+    color: #aeaeae; }
+  .message-row .message-footer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right; }
+    .message-row .message-footer > * {
+      display: inline-block;
+      margin: 0 8px;
+      color: #aeaeae; }
+      .message-row .message-footer > *:hover {
+        text-decoration: none; }
+  .message-row .sidebar-message {
+    float: left;
+    text-align: center; }
+  .message-row .message-row {
+    padding-bottom: 0;
+    margin: 10px 0;
+    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.35); }
+    .message-row .message-row .avatar {
+      width: 25px;
+      height: 25px; }
+    .message-row .message-row .message-author .info {
+      margin-left: 8px;
+      font-size: 14px; }
+    .message-row .message-row .message-author > * {
+      line-height: 25px; }
+    .message-row .message-row .message-body {
+      margin: 0;
+      padding: 5px 0; }
+    .message-row .message-row .message-author,
+    .message-row .message-row .message-body,
+    .message-row .message-row .message-row-form {
+      margin-left: 0; }
+
+@media (max-width: 595px) {
+  .message-row .avatar {
+    width: 50px;
+    height: 50px; }
+  .message-row .message-author,
+  .message-row .message-body {
+    margin-left: 60px; } }

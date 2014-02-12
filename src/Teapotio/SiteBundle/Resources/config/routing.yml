@@ -1,0 +1,3 @@
+# Default:
+#     pattern:  /
+    # defaults: { _controller: TeapotioSiteBundle:Home:index }

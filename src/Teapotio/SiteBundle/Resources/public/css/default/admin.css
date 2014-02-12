@@ -1,0 +1,9 @@
+.board_permissions {
+  font-size: 11px; }
+  .board_permissions th {
+    font-size: 12px;
+    text-align: center;
+    padding: 6px 0 0; }
+  .board_permissions td + td {
+    padding: 0 4px;
+    text-align: center; }

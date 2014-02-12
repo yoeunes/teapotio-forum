@@ -1,0 +1,20 @@
+.avatar {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  z-index: 10;
+  display: block; }
+  .avatar > * {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; }
+  .avatar > div {
+    -moz-box-shadow: inset 0 0 5px rgba(68, 68, 68, 0.25);
+    -webkit-box-shadow: inset 0 0 5px rgba(68, 68, 68, 0.25);
+    box-shadow: inset 0 0 5px rgba(68, 68, 68, 0.25); }
+  .avatar > img {
+    border-radius: 3px;
+    z-index: 9; }

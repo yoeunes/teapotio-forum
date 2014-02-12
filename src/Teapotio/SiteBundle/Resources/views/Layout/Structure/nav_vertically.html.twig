@@ -1,0 +1,45 @@
+<div class="nav">
+
+  {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
+    <form action="{{ path('TeapotioBaseUserBundle_login_check') }}" method="post" class="module modal dark module-header nav-auth">
+
+      <input type="text" class="input-small" id="form-input-login" name="_username" placeholder="{% trans %}username{% endtrans %}">
+      <input type="password" class="input-small" id="form-input-password" name="_password" placeholder="{% trans %}password{% endtrans %}">
+      <button type="submit" class="btn btn-success">Login</button>
+      <p><a href="{{ path('TeapotioBaseUserBundle_forgotPassword') }}">{% trans %}Forgot.password?{% endtrans %}</a> &#8226; <a href="{{ path('TeapotioBaseUserBundle_signup') }}">{% trans %}Need.an.account?{% endtrans %}</a></p>
+
+    </form>
+  {% else %}
+      {#<div class="btn-group">
+        <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: app.user.slug, userId: app.user.id}) }}" class="btn"><i class="icon-user"></i> {{ app.user.username }}</a>
+        <a href="#" class="btn"><i class="icon-envelope-alt"></i> 0</a>
+        <a href="#" class="btn">
+          <i class="icon-cogs"></i>
+          {% trans %}Admin{% endtrans %}
+        </a>
+        <a href="{{ path('TeapotioBaseUserBundle_logout') }}" class="btn btn-danger"><i class="icon-signout"></i> {% trans %}Logout{% endtrans %}</a>
+      </div>#}
+  {% endif %}
+  {% block left_column %}
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+      {% include "TeapotioUserBundle:Profile:modules/widget.html.twig" with {user: app.user} %}
+    {% endif %}
+
+    {% set boards = get_boards() %}
+    {% if boards.count != 0 %}
+
+      {# List Of Boards #}
+      {{ render(controller("TeapotioBaseForumBundle:Module:conciseList")) }}
+
+    {% endif %}
+
+    {{ render(controller("TeapotioBaseForumBundle:Module:topUsers")) }}
+
+    {% if app.user|is_moderator == true %}
+      {{ render(controller("TeapotioBaseForumBundle:Module:moderationList")) }}
+      {{ render(controller("TeapotioBaseForumBundle:Flag:flagList")) }}
+    {% endif %}
+
+  {% endblock %}
+</div>

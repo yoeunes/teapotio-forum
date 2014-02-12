@@ -1,0 +1,7 @@
+<option value="{{ board.id }}">{% for i in 0..level %}-{% endfor %} {{ board.title }}{# - {{ board.shortTotalTopics }} - {{ board.shortTotalPosts }#}</option>
+{% if board.children.count != 0 %}
+  {% set level = level + 1 %}
+  {% for b in board.children %}
+    {% include "TeapotioForumBundle:Board:modules/selectOption.html.twig" with {board: b, level: level} %}
+  {% endfor %}
+{% endif %}

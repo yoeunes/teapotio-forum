@@ -1,0 +1,7 @@
+{% if size is not defined %}
+  {% set size = 50 %}
+{% endif %}
+<a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}" class="avatar to-main{% if class is defined %} {{ class }}{% endif %}">
+  <div></div>
+  <img src="{{ image(user.defaultAvatar.webPath).forceResize(size, null).crop(0,0,size,size) }}" class="block{% if imageClass is defined %} {{ imageClass}}{% endif %}" />
+</a>

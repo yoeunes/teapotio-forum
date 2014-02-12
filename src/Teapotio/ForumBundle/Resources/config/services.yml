@@ -1,0 +1,20 @@
+parameters:
+    teapotio.form.type.wysiwyg_textarea.class: Teapotio\ForumBundle\Form\WysiwygTextareaType
+    teapotio.form.transformer.html_purifier.class: Exercise\HTMLPurifierBundle\Form\HTMLPurifierTransformer
+    teapotio.forum.url.use_id: false
+    teapotio.forum.listener.request.class: Teapotio\ForumBundle\Listener\RequestListener
+
+services:
+    teapotio.form.transformer.html_purifier:
+        class: %teapotio.form.transformer.html_purifier.class%
+        arguments: [@exercise_html_purifier.default]
+    teapotio.form.type.wysiwyg_textarea:
+        class: %teapotio.form.type.wysiwyg_textarea.class%
+        arguments: [@teapotio.form.transformer.html_purifier]
+        tags:
+            - { name: form.type, alias: wysiwyg_textarea }
+    teapotio.forum.listener.request:
+        class: %teapotio.forum.listener.request.class%
+        arguments: [@service_container]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelRequest }

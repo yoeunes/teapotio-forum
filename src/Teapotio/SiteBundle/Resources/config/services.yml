@@ -1,0 +1,7 @@
+parameters:
+    teapotio_site.main_service.class:   Teapotio\SiteBundle\Service\MainService
+
+services:
+    teapotio.site:
+        class: %teapotio_site.main_service.class%
+        arguments: [@service_container]

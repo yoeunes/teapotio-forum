@@ -1,0 +1,5 @@
+{% extends "TeapotioBaseForumBundle:Layout:layout.html.twig" %}
+
+{% block content %}
+    {% include "TeapotioBaseUserBundle:Profile:raw/index.html.twig" with {user: user} %}
+{% endblock %}

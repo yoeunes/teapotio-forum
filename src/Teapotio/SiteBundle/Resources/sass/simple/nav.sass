@@ -1,0 +1,261 @@
+@import 'mcolor'
+@import 'melements'
+
+.nav-action,
+nav#nav-horizontal
+    overflow: auto
+    @include element-border
+    @include element-spaced
+    background-color: rgba(0,0,0,0.35)
+    a
+        color: #fff
+        line-height: 17px
+        &:hover
+            text-decoration: none
+        i
+            font-size: 14px
+    ul
+        list-style: none
+        margin: 0
+        padding: 0
+    li
+        margin: 6px 10px
+        display: inline-block
+
+.nav-action
+    .search
+        input,
+        input:hover,
+        input:focus,
+        input:active
+            border: 0
+            outline: 0
+            outline-offset: 0
+            background: transparent
+            -webkit-appearance: none
+            width: 190px
+            padding: 0 3px
+            -moz-box-shadow: none
+            -webkit-box-shadow: none
+            box-shadow: none
+            font-size: 15px
+            &:focus
+                border: none
+        input::-webkit-input-placeholder
+            color: #EFEFEF
+        input:-moz-placeholder
+            color: #EFEFEF
+        input::-moz-placeholder
+            color: #EFEFEF
+        input:-ms-input-placeholder
+            color: #EFEFEF
+        label
+            padding: 4px
+.nav-profile
+    .avatar
+        float: left
+        margin-right: 10px
+    .username
+        display: block
+        &:hover
+            text-decoration: none
+    .btn-logout, .btn-settings
+        font-size: 12px
+        line-height: 14px
+        color: #cdcdcd
+
+.one-column
+    .nav-action
+        .search label
+            border-top-color: #333
+    .nav-profile.module
+        float: right
+        .avatar
+            display: none
+        .username, .btn-settings, .btn-logout
+            display: block
+            float: left
+            margin: 4px 4px
+            line-height: 16px
+        .btn-settings, .btn-logout
+            font-size: 11px
+
+.nav-auth
+    overflow: auto
+    input
+        float: left
+        width: 29%
+        margin: 0 1% 5px 0
+    button
+        padding: 10px 2%
+    p
+        margin: 8px 0 0
+        font-size: 12px
+
+.nav-user
+    float: right
+    li:nth-child(n+2)
+        font-size: 11px
+        margin-left: 0
+        a
+            color: $font-color-secondary
+
+#nav-components
+    display: none
+    margin: 0 0 10px
+    a.toggle-visibility,
+    a.collapse
+        text-align: center
+        display: block
+        color: rgba(255,255,255,0.75)
+        &:hover
+            text-decoration: none
+            color: #fff
+        & > *
+            display: inline-block
+            margin: 0 8px
+    .footer
+        margin-top: 4px
+
+#nav-list-boards
+    display: none
+    color: #000
+    a
+        display: block
+    ul
+        display: none
+        overflow: auto
+        margin: 0 0 0 20px
+        padding: 0
+    li
+        display: block
+        overflow: auto
+        & > div
+            @include element
+            position: relative
+            overflow: hidden
+            white-space: nowrap
+            padding: 0 10px
+            margin: 0 0 1px
+            .info
+                position: absolute
+                top: 0
+                right: 0
+                padding-right: 10px
+                @include element
+            &:hover
+                .new-topic
+                    display: block
+                .new-board,
+                .new-topic,
+                .total-topics,
+                .total-messages
+                    color: #000
+        &.childless-board-wrapper
+            float: left
+    a.toggle-visibility,
+    a.collapse
+        text-align: right
+        margin: 0 6px 3px 0
+    .parent-board-wrapper
+        width: 100%
+    a.expand
+        float: left
+        margin-right: 10px
+        color: #5f5f5f
+        text-decoration: none
+        &:hover
+            color: #000
+    .new-topic,
+    .new-board
+        display: none
+        margin: 6px 0
+        font-size: 14px
+    .total-topics,
+    .total-messages
+        font-size: 10px
+    a,
+    .total-topics,
+    .total-messages
+        margin: 6px 0
+    .new-topic,
+    .new-board,
+    .total-topics,
+    .total-messages
+        float: right
+        margin-left: 8px
+        color: $font-color-secondary
+    .new-board
+        margin-left: 16px
+    & > ul
+        display: block
+        margin: 0
+        & > li
+            margin: 0
+            padding: 0
+            & > div
+                font-size: 14px
+
+#nav-top-users
+    display: none
+    color: $font-color-primary
+    overflow: auto
+    margin: 0
+    .top-user
+        @include element
+        float: left
+        width: 49.90%
+        margin: 0 0 1px
+        &:nth-child(even)
+            margin-left: 0.20%
+
+#nav-latest-moderation,
+#nav-latest-flags
+    display: none
+    color: $font-color-primary
+    margin: 0 0 1px
+    ul
+        list-style: none
+        margin: 0
+        padding: 0
+    li
+        @include element
+        padding: 5px 10px
+        margin: 0 0 1px
+        overflow: auto
+        line-height: 24px
+        &:first-child
+            margin-top: 0
+        span.date
+            float: right
+            display: block
+            margin-left: 18px
+            font-size: 10px
+            color: #a9a9a9
+
+@media (min-width: 696px)
+    div#nav-list-boards
+        ul
+            li.childless-board-wrapper
+                width: 33%
+                margin-left: 0.5%
+                &:nth-child(3n+1)
+                    margin-left: 0
+        & > ul > li.childless-board-wrapper
+            margin-left: 0 !important
+            float: none
+            width: 100%
+
+
+@media (max-width: 695px)
+    div#nav-list-boards
+        ul
+            li.childless-board-wrapper
+                width: 49.90%
+                &:nth-child(even)
+                    margin-left: 0.20%
+        & > ul > li.childless-board-wrapper
+            margin-left: 0 !important
+            float: none
+            width: 100%
+

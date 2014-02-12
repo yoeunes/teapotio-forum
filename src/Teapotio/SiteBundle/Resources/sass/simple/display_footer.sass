@@ -1,0 +1,25 @@
+@import 'mcolor'
+
+footer
+    text-align: center
+    padding: 16px 0
+    font-size: 14px
+    & > *,
+    .icon-bolt
+        display: inline-block
+    a
+        color: #fff
+        &:hover
+            text-decoration: none
+            span, i
+                color: $link-color-hover-on-black
+    .icon-bolt
+        font-size: 18px
+    &.small
+        font-size: 11px
+        .icon-bolt
+            font-size: 15px
+    &.large
+        font-size: 16px
+        .icon-bolt
+            font-size: 20px

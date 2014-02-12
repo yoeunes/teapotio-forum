@@ -1,0 +1,3 @@
+TeapotioImageBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TeapotioImageBundle:Default:index }

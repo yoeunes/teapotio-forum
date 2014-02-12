@@ -1,0 +1,96 @@
+.container {
+  display: block;
+  position: relative;
+  z-index: 0;
+  overflow: auto;
+  width: 94%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 0 4px;
+  text-align: left; }
+
+.nav {
+  margin: 0; }
+  .nav .wide {
+    width: auto; }
+  .nav .module.round li {
+    margin: 8px 0 0; }
+
+.content-wrapper {
+  margin: 0;
+  color: #4d4c54; }
+  .content-wrapper .module {
+    background-color: transparent; }
+  .content-wrapper .content > * {
+    background-color: #fdfdfb; }
+  .content-wrapper .alert {
+    margin: 0;
+    margin-top: 2px;
+    margin-bottom: 2px; }
+  .content-wrapper > .alert {
+    border-radius: 3px; }
+  .content-wrapper .content > * {
+    border-radius: 3px;
+    background-color: #fdfdfb; }
+  .content-wrapper h1, .content-wrapper h2, .content-wrapper h3, .content-wrapper h4, .content-wrapper h5, .content-wrapper h6 {
+    margin: 0 0 10px; }
+
+.content-info.content-info-top, .content-info.content-info-bottom {
+  margin-top: 2px;
+  margin-bottom: 2px; }
+.content-info .breadcrumb,
+.content-info .paginator {
+  padding: 5px 10px; }
+
+.alert {
+  margin: 10px 0;
+  list-style: none;
+  padding: 10px; }
+  .alert.error {
+    background-color: #c03533;
+    color: #fff4f9; }
+  .alert.info {
+    background-color: #388ede;
+    color: #edfaff; }
+  .alert.special {
+    overflow: auto;
+    position: relative;
+    padding-left: 45px; }
+    .alert.special > i {
+      display: block;
+      position: absolute;
+      width: 30px;
+      top: 8px;
+      left: 8px;
+      font-size: 25px;
+      text-align: center; }
+    .alert.special .actions {
+      float: right; }
+      .alert.special .actions a + a {
+        display: inline-block;
+        margin-left: 10px; }
+  .alert a {
+    color: white; }
+
+@media (max-width: 826px) {
+  .container {
+    float: none;
+    margin: 0 0.5%;
+    width: 99% !important;
+    padding: 0 !important; }
+
+  .nav,
+  .content-wrapper {
+    float: none;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important; }
+
+  .hide-on-minimized {
+    display: none; } }
+@media (max-width: 595px) {
+  .container {
+    margin: 2px 0.5%; }
+
+  .nav > * {
+    width: 100%; } }

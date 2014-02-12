@@ -1,0 +1,16 @@
+{% extends "TeapotioSiteBundle:Layout:default.html.twig" %}
+
+{% block container %}
+
+  {% include "TeapotioSiteBundle:Layout:header.html.twig" %}
+
+  <div class="content-wrapper {% block content_wrapper_class %}{% endblock %}">
+
+    {% block content_wrapper %}
+
+    {% endblock %}
+
+  </div>
+
+  {% include "TeapotioSiteBundle:Layout:Structure/nav_horizontally.html.twig" %}
+{% endblock %}

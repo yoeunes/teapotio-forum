@@ -1,0 +1,66 @@
+{% set boards = get_boards() %}
+
+<nav id="nav-horizontal">
+  <ul>
+  {% if is_granted('IS_AUTHENTICATED_FULLY') == true %}
+
+    {% if boards.count != 0 %}
+      <li><a href="#nav-list-boards"><i class="icon-bookmark"></i> {% trans %}Boards{% endtrans %}</a></li>
+    {% endif %}
+
+    <li><a href="#nav-top-users"><i class="icon-trophy"></i> {% trans %}Top.users{% endtrans %}</a></li>
+
+    {% if app.user|is_moderator == true %}
+      <li><a href="#nav-latest-flags"><i class="icon-flag"></i> {% trans %}Flags{% endtrans %}</a></li>
+
+      <li><a href="#nav-latest-moderation"><i class="icon-legal"></i> {% trans %}Moderations{% endtrans %}</a></li>
+    {% endif %}
+
+  {% endif %}
+  </ul>
+</nav>
+
+<div id="nav-components">
+
+  {% if boards.count != 0 %}
+    <div id="nav-list-boards" class="nav-component">
+
+      <a href="#" class="toggle-visibility" data-target="#nav-list-boards > ul ul" data-toggle-label="{% trans %}Collapse.all{% endtrans %}">{% trans %}Expand.all{% endtrans %}</a>
+
+      {{ render(controller("TeapotioBaseForumBundle:Module:listBoards")) }}
+
+    </div>
+  {% endif %}
+
+
+  <div id="nav-top-users" class="nav-component module-top-users">
+
+    {{ render(controller("TeapotioBaseForumBundle:Module:topUsers")) }}
+
+  </div>
+
+  {% if app.user|is_moderator == true %}
+
+    <div id="nav-latest-flags" class="nav-component">
+
+      {{ render(controller("TeapotioBaseForumBundle:Flag:flagList")) }}
+
+    </div>
+
+    <div id="nav-latest-moderation" class="nav-component">
+
+      {{ render(controller("TeapotioBaseForumBundle:Module:moderationList")) }}
+
+    </div>
+
+  {% endif %}
+
+  <div class="footer">
+    <a href="#" class="collapse">
+      <i class="icon-chevron-up"></i>
+      {% trans %}Collapse{% endtrans %}
+      <i class="icon-chevron-up"></i>
+    </a>
+  </div>
+
+</div>

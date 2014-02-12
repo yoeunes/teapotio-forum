@@ -1,0 +1,23 @@
+{
+    "name": "teapotio/teapot-forum",
+    "type": "library",
+    "description": "A forum system on Symfony2",
+    "keywords": ["Forum solution", "Discussion boards"],
+    "homepage": "http://teapot.io",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Potaire",
+            "email": "thomas@teapot.io"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": ">=2.3",
+        "doctrine/doctrine-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": { "Teapotio\\": "src/" }
+    },
+    "minimum-stability": "dev"
+}

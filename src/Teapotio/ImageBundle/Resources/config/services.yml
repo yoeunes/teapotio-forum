@@ -1,0 +1,8 @@
+parameters:
+   teapotio_image.image_service.class: Teapotio\ImageBundle\Service\ImageService
+   teapotio_image.image_repository.class: Teapotio\ImageBundle\Repository\ImageRepository
+
+services:
+   teapotio.image:
+       class: %teapotio_image.image_service.class%
+       arguments: [@service_container]

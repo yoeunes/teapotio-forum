@@ -1,0 +1,175 @@
+# Flag Controller
+ForumFlagDelete:
+    pattern: /flag/delete/{flagId}/
+    defaults: { _controller: TeapotioForumBundle:Flag:delete }
+
+ForumFlagIgnore:
+    pattern: /flag/ignore/{flagId}/
+    defaults: { _controller: TeapotioForumBundle:Flag:ignore }
+
+# Board Controller
+ForumNewBoard:
+    pattern:  /new-board/
+    defaults: { _controller: TeapotioForumBundle:Board:new }
+
+ForumNewTopicWithoutBoard:
+    pattern:  /new-topic/
+    defaults: { _controller: TeapotioForumBundle:Topic:new }
+
+ForumListBoards:
+    pattern: /boards/
+    defaults: { _controller: TeapotioForumBundle:Board:list }
+
+ForumAdminPermissionsWithGroup:
+    pattern: /admin/permissions/{groupId}/
+    defaults: { _controller: TeapotioForumBundle:Admin:Permissions }
+
+ForumAdminPermissions:
+    pattern: /admin/permissions/
+    defaults: { _controller: TeapotioForumBundle:Admin:Permissions }
+
+ForumNewBoardInBoard:
+    pattern:  /{boardSlug}/new-board/
+    defaults: { _controller: TeapotioForumBundle:Board:new }
+    requirements:
+        boardSlug: .+?
+
+ForumEditBoardPermissions:
+    pattern:  /{boardSlug}/edit/permissions/
+    defaults: { _controller: TeapotioForumBundle:Board:editPermissions }
+    requirements:
+        boardSlug: .+?
+
+ForumTopicPin:
+    pattern: /{boardSlug}/{topicSlug}/pin/
+    defaults: { _controller: TeapotioForumBundle:Topic:pin }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+
+ForumTopicLock:
+    pattern: /{boardSlug}/{topicSlug}/lock/
+    defaults: { _controller: TeapotioForumBundle:Topic:lock }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+
+ForumTopicDelete:
+    pattern: /{boardSlug}/{topicSlug}/delete/
+    defaults: { _controller: TeapotioForumBundle:Topic:delete }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+
+ForumTopicEdit:
+    pattern: /{boardSlug}/{topicSlug}/t/edit/
+    defaults: { _controller: TeapotioForumBundle:Topic:edit }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+
+# Message Controller
+ForumListMessagesByTopic:
+    pattern: /{boardSlug}/{topicSlug}/t/
+    defaults: { _controller: TeapotioForumBundle:Message:list }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+
+ForumNewMessage:
+    pattern: /{boardSlug}/{topicSlug}/new-message/
+    defaults: { _controller: TeapotioForumBundle:Message:new }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+
+ForumMessageEdit:
+    pattern: /{boardSlug}/{topicSlug}/edit/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:edit }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+ForumMessageFlag:
+    pattern: /{boardSlug}/{topicSlug}/flag/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:flag }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+ForumMessageDelete:
+    pattern: /{boardSlug}/{topicSlug}/delete/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:delete }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+ForumMessageStar:
+    pattern: /{boardSlug}/{topicSlug}/star/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:star }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+ForumMessageUnstar:
+    pattern: /{boardSlug}/{topicSlug}/unstar/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:unstar }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+ForumMessageReply:
+    pattern: /{boardSlug}/{topicSlug}/reply/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:reply }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+ForumMessageQuote:
+    pattern: /{boardSlug}/{topicSlug}/quote/{messageId}/
+    defaults: { _controller: TeapotioForumBundle:Message:quote }
+    requirements:
+        boardSlug: .+?
+        topicSlug: "[^\/]+"
+        messageId: \d+
+
+# Topic Controller
+ForumListLatestTopics:
+    pattern: /
+    defaults: { _controller: TeapotioForumBundle:Topic:latest }
+
+ForumEditBoard:
+    pattern:  /{boardSlug}/edit/
+    defaults: { _controller: TeapotioForumBundle:Board:edit }
+    requirements:
+        boardSlug: .+?
+
+ForumDeleteBoard:
+    pattern:  /{boardSlug}/delete/
+    defaults: { _controller: TeapotioForumBundle:Board:delete }
+    requirements:
+        boardSlug: .+?
+
+ForumMoveBoard:
+    pattern:  /{boardSlug}/move/
+    defaults: { _controller: TeapotioForumBundle:Board:move }
+    requirements:
+        boardSlug: .+?
+
+ForumNewTopic:
+    pattern: /{boardSlug}/new-topic/
+    defaults: { _controller: TeapotioForumBundle:Topic:new }
+    requirements:
+        boardSlug: .+?
+
+ForumListTopicsByBoard:
+    pattern: /{boardSlug}/
+    defaults: { _controller: TeapotioForumBundle:Topic:list }
+    requirements:
+        boardSlug: .+?

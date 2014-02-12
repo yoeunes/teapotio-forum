@@ -1,0 +1,82 @@
+.nav-action {
+  overflow: auto;
+  font-size: 15px;
+  color: #efefef; }
+  .nav-action input {
+    font-size: 15px; }
+  .nav-action a, .nav-action input {
+    color: #efefef; }
+  .nav-action a:hover {
+    text-decoration: none; }
+  .nav-action .nav-action-btn-grp {
+    float: left;
+    overflow: auto;
+    margin-right: 10px; }
+  .nav-action .nav-action-btn,
+  .nav-action .search label {
+    display: block;
+    border: 1px solid;
+    background-color: #2b2b2b;
+    border-color: #545454 #121212 black #313131; }
+  .nav-action .search input {
+    border: none;
+    background: transparent;
+    width: 190px;
+    padding: 3px; }
+    .nav-action .search input:focus {
+      border: none; }
+  .nav-action .search label {
+    padding: 4px; }
+  .nav-action .nav-action-btn {
+    float: left;
+    padding: 5px 10px; }
+    .nav-action .nav-action-btn i {
+      margin-right: 5px; }
+    .nav-action .nav-action-btn.btn-new-topic {
+      background-color: #037600;
+      border-color: #308434 #266829 #1c4d20 #2a752e; }
+    .nav-action .nav-action-btn.btn-new-board {
+      background-color: #246097;
+      border-color: #286cac #195286 #14416c #2467a4; }
+    .nav-action .nav-action-btn.btn-edit-board {
+      background-color: #a32e1e;
+      border-color: #b43e2e #a81f0c #751a0d #a81f0c; }
+
+.nav-profile .avatar {
+  float: left;
+  margin-right: 10px; }
+.nav-profile .username {
+  display: block; }
+  .nav-profile .username:hover {
+    text-decoration: none; }
+.nav-profile .btn-logout, .nav-profile .btn-settings {
+  font-size: 12px;
+  line-height: 14px;
+  color: #cdcdcd; }
+
+.one-column .nav-action .search label {
+  border-top-color: #333333; }
+.one-column .nav-profile.module {
+  float: right; }
+  .one-column .nav-profile.module .avatar {
+    display: none; }
+  .one-column .nav-profile.module .username, .one-column .nav-profile.module .btn-settings, .one-column .nav-profile.module .btn-logout {
+    display: block;
+    float: left;
+    margin: 4px 4px;
+    line-height: 16px; }
+  .one-column .nav-profile.module .btn-settings, .one-column .nav-profile.module .btn-logout {
+    font-size: 11px; }
+
+.nav-auth {
+  overflow: auto;
+  /*padding: 5px */ }
+  .nav-auth input {
+    float: left;
+    width: 29%;
+    margin: 0 1% 5px 0; }
+  .nav-auth button {
+    padding: 10px 2%; }
+  .nav-auth p {
+    margin: 8px 0 0;
+    font-size: 12px; }

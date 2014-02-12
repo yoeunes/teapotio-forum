@@ -1,0 +1,10 @@
+{% set moderations = get_latest_moderations(15) %}
+{% if moderations.count != 0 %}
+  <ul class="{% if containerClass is defined %} {{ containerClass }}{% endif %}">
+    {% for moderation in moderations %}
+      <li>
+        {% include "TeapotioForumBundle:Moderation:modules/individualModerationRow.html.twig" with {moderation: moderation} %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

@@ -1,0 +1,97 @@
+{# the name that appears next to the number of results; if set to null, will not show up #}
+{% if typeName is not defined %}
+  {% set typeName = "results" %}
+{% endif %}
+
+
+{# the page parameter #}
+{% if urlParameter is not defined %}
+  {% set urlParameter = "page" %}
+{% endif %}
+
+
+{# how many pages on each side of the current page #}
+{% if interval is not defined %}
+  {% set interval = 2 %}
+{% endif %}
+
+
+{% if app.request.query.get(urlParameter) is not null %}
+  {% set page = app.request.query.get(urlParameter) %}
+{% else %}
+  {% set page = 1 %}
+{% endif %}
+
+
+{% set totalPerPage = collection.query.maxResults %}
+{% set total = collection.count %}
+{% set totalPages = total // totalPerPage + 1 %}
+{% set route = app.request.get('_route') %}
+{% set routeParams = app.request.get('_route_params') %}
+
+<div class="paginator{% if containerClass is defined %} {{ containerClass }}{% endif %}"{% if containerAttributes is defined %} {{ containerAttributes }}{% endif %}>
+
+  {% if page != 1 %}
+    {% if (page - 1) == 1 %}
+      <a href="{{ path(route, routeParams) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}"><i class="icon-caret-left"></i></a>
+    {% else %}
+      <a href="{{ path(route, routeParams|merge({(urlParameter): (page - 1)})) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}"><i class="icon-caret-left"></i></a>
+    {% endif %}
+  {% endif %}
+
+  {% if (page - interval) > 1 %}
+    <a href="{{ path(route, routeParams|merge({(urlParameter): 1})) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}">1</a>
+  {% endif %}
+
+
+
+  {% if (page - interval) > 2 %}
+    <span>..</span>
+  {% endif %}
+
+
+
+  {% if totalPages != 1 %}
+  
+    {% for i in (page - interval)..(page + interval) %}
+
+      {% if i > 0 and i <= totalPages %}
+
+        {% if i == page %}
+          <span>{{ page }}</span>
+        {% else %}
+          {% if i == 1 %}
+            <a href="{{ path(route, routeParams) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}">{{ i }}</a>
+          {% else %}
+            <a href="{{ path(route, routeParams|merge({(urlParameter): i})) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}">{{ i }}</a>
+          {% endif %}
+        {% endif %}
+
+      {% endif %}
+
+    {% endfor %}
+
+  {% endif %}
+
+
+
+  {% if (page + interval) < (totalPages - 1) %}
+    <span>..</span>
+  {% endif %}
+
+
+
+  {% if (page + interval) < totalPages %}
+    <a href="{{ path(route, routeParams|merge({(urlParameter): totalPages})) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}">{{ totalPages }}</a>
+  {% endif %}
+
+  {% if page != totalPages %}
+    <a href="{{ path(route, routeParams|merge({(urlParameter): totalPages})) }}" class="{% if linkClass is defined %} {{ linkClass }}{% endif %}"><i class="icon-caret-right"></i></a>
+  {% endif %}
+
+
+
+  {% if typeName is not null %}
+    <div>{{ total }} {{ typeName }}</div>
+  {% endif %}
+</div>

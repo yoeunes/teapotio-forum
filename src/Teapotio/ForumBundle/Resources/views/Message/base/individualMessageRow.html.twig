@@ -1,0 +1,75 @@
+{#
+  Required variables:
+    - user
+#}
+
+{% if show_action_buttons is not defined %}
+  {% set show_action_buttons = true %}
+{% endif %}
+
+<div class="message-row{% block row_class %}{% endblock %}" id="{% block row_id %}{% endblock %}">
+
+  {% block row_prefix %}{% endblock %}
+
+  <div class="sidebar-message">
+    {% block row_sidebar %}
+
+      {% block row_sidebar_prefix %}{% endblock %}
+
+      {% block row_sidebar_content %}
+
+        {% include "TeapotioUserBundle:Modules:avatar.html.twig" with {class: "", user: user, size: 80} %}
+
+      {% endblock %}
+
+      {% block row_sidebar_suffix %}{% endblock %}
+
+    {% endblock %}
+  </div>
+
+  <div class="message-author">
+
+    {% block row_author %}
+
+      {% block row_author_prefix %}{% endblock %}
+
+      {% block row_author_content %}
+        <div class="info">
+          <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}" class="to-main">{{ user.username }}</a>
+        </div>
+        {#<div class="user-message-count">
+          <i class="icon icon-comment"></i>
+          {{ user.forumStat.totalMessage }}
+        </div>#}
+      {% endblock %}
+
+      {% block row_author_suffix %}{% endblock %}
+
+    {% endblock %}
+
+  </div>
+
+  <div class="message-body">
+    {% block row_body %}
+      {# The body of the message #}
+    {% endblock %}
+  </div>
+
+  {% block row_suffix %}
+
+    <div class="message-footer">
+
+      {% block row_footer %}
+
+        {% block row_footer_prefix %}{% endblock %}
+
+        {% block row_footer_content %}{% endblock %}
+
+        {% block row_footer_suffix %}{% endblock %}
+
+      {% endblock %}
+
+    </div>
+
+  {% endblock %}
+</div>

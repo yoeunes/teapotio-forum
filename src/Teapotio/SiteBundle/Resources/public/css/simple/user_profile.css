@@ -1,0 +1,21 @@
+.user-profile {
+  padding: 10px; }
+  .user-profile .avatar {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px 0 0; }
+  .user-profile .user-description {
+    font-size: 16px; }
+  .user-profile .user-stats {
+    text-transform: lowercase; }
+    .user-profile .user-stats span {
+      display: inline-block;
+      margin-right: 10px; }
+  .user-profile > * {
+    margin-bottom: 10px; }
+
+.user-topics {
+  padding: 10px 0; }
+  .user-topics h1, .user-topics h2, .user-topics h3, .user-topics h4, .user-topics h5, .user-topics h6 {
+    padding: 0 10px; }

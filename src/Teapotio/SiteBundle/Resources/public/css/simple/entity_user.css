@@ -1,0 +1,30 @@
+.module-top-users .top-user {
+  overflow: auto; }
+  .module-top-users .top-user > * {
+    margin: 5px 10px 5px 0; }
+  .module-top-users .top-user a, .module-top-users .top-user div {
+    float: left;
+    display: block; }
+  .module-top-users .top-user > div {
+    margin-left: 10px;
+    margin-right: 5px;
+    width: 20px; }
+  .module-top-users .top-user .avatar {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px; }
+  .module-top-users .top-user .total-messages,
+  .module-top-users .top-user .total-topics {
+    color: #aeaeae;
+    float: right; }
+  .module-top-users .top-user div,
+  .module-top-users .top-user .total-messages,
+  .module-top-users .top-user .total-topics {
+    font-size: 10px; }
+
+.user-profile {
+  overflow: auto; }
+  .user-profile .user-module {
+    text-align: center;
+    float: right;
+    margin-left: 10px; }

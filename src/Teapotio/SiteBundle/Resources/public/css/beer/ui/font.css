@@ -1,0 +1,58 @@
+body {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  font-size: 13px;
+  line-height: 20px; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.text-justify {
+  text-align: justify; }
+
+.text-xlarge {
+  font-size: 25px;
+  line-height: 32px; }
+
+.text-large {
+  font-size: 21px;
+  line-height: 28px; }
+
+.text-medium {
+  font-size: 19px;
+  line-height: 26px; }
+
+.text-default {
+  font-size: 17px;
+  line-height: 24px; }
+
+.text-small {
+  font-size: 15px;
+  line-height: 22px; }
+
+.text-xsmall {
+  font-size: 13px;
+  line-height: 20px; }
+
+.text-dark {
+  color: #212121 !important; }
+
+.text-danger {
+  color: #bb0227 !important; }
+
+.text-warning {
+  color: #fa7a2d !important; }
+
+.text-info {
+  color: #2768a1 !important; }
+
+.text-primary {
+  color: #3251be !important; }
+
+.text-success {
+  color: #049c00 !important; }

@@ -1,0 +1,10 @@
+{# If you modify this markup, don't forget to change the method in MessageService.php accordingly  #}
+{% spaceless %}
+  <div class="wysiwyg-block wysiwyg-reply" data-id="{{ user.id }}">
+    <!-- start reply -->
+      <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}">
+        @{{ user.username }}
+      </a>
+    <!-- end reply -->
+  </div>
+{% endspaceless %}

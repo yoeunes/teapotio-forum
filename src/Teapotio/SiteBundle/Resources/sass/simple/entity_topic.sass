@@ -1,0 +1,140 @@
+@import 'mcolor'
+@import 'melements'
+
+// List of topics
+.topic-row
+    position: relative
+    color: $font-color-primary
+    position: relative
+    padding: 6px
+    .topic-author
+        position: absolute
+        top: 7px
+        left: 7px
+    .response-author
+        position: absolute
+        top: 7px
+        right: 7px
+    .avatar
+        width: 40px
+        height: 40px
+    .topic-last-page
+        display: block
+        float: right
+        font-size: 18px
+        margin: 13px 0 13px 12px
+        line-height: 18px
+    .topic-row-content
+        margin: 0 50px
+        a:visited
+            color: $font-color-primary
+        .topic
+            display: block
+            overflow: auto
+            font-size: 14px
+            line-height: 22px
+            &:visited
+                color: #333
+            .topic-stats
+                float: right
+                font-size: 12px
+                i
+                    font-size: 14px
+                    margin-left: 8px
+                    &:first-child
+                        margin-left: 0
+        .topic-info
+            font-size: 10px
+            line-height: 12px
+            margin: 4px 0
+            color: $font-color-secondary
+            a
+                color: $font-color-secondary
+            .date
+                float: right
+            .topic-breadcrumb
+                & > *
+                    margin-right: 5px
+        .topic-icons
+            margin: 0 6px 0 0
+            padding: 3px 5px 1px
+            float: left
+            background-color: #BD362F
+            color: white
+            text-align: center
+            font-size: 18px
+            line-height: 18px
+            i+i
+                display: block
+                margin: 2px 0 0
+    &.board-childless
+        padding: 4px 6px
+        .topic-last-page
+            font-size: 18px
+            margin: 0 0 0 10px
+            line-height: 30px
+        .topic-row-content
+            margin: 0 30px
+            .topic-icons
+                padding: 3px 5px
+                font-size: 16px
+                line-height: 20px
+                i
+                    display: inline-block
+            .topic
+                padding: 3px 0 2px
+        .topic-info
+            display: none
+        .avatar
+            width: 25px
+            height: 25px
+        .topic-author
+            top: 5px
+            left: 5px
+        .response-author
+            top: 5px
+            right: 5px
+    &:hover
+        .topic-row-content
+            .topic-info
+                color: $font-color-primary
+                a
+                    color: $font-color-primary
+
+.topic-header
+    .topic-title input,
+    .topic-title
+        margin: 0
+        font-size: 18px !important
+        line-height: 30px
+
+.content
+    &.new-topic,
+    &.edit-topic
+        form
+            @include element-reset
+            & > *
+                @include element
+            .topic-title
+                input
+                    padding: 4px 1%
+                    width: 98%
+
+@media (max-width: 595px)
+    .topic-row
+        .topic-row-content
+            .topic-stats
+                display: none
+        .topic-info
+            .date
+                display: none
+
+@media (max-width: 595px)
+    .topic-row,
+    .topic-row.board-childless
+        padding: 6px 10px
+        .topic-info,
+        .avatar
+            display: none
+        .topic-row-content
+            margin: 0

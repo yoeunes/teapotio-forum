@@ -1,0 +1,81 @@
+.message-list .alert {
+  margin: 0 0 10px;
+  border-color: #d65d68 #bc3635 #ad3335 #c63a3b; }
+.message-list .title-topic {
+  margin: 0;
+  line-height: 30px; }
+
+.message-row {
+  position: relative; }
+  .message-row blockquote {
+    overflow: auto;
+    padding: 5px 8px;
+    margin: 6px 0;
+    border-left: 4px solid black;
+    font-size: 14px; }
+    .message-row blockquote header {
+      font-size: 18px;
+      color: #888888;
+      padding: 0 6px 2px; }
+  .message-row:hover .message-footer {
+    display: block; }
+  .message-row > .avatar {
+    width: 50px;
+    height: 50px; }
+  .message-row .module-stars {
+    display: inline-block;
+    padding: 0; }
+    .message-row .module-stars li {
+      display: inline-block;
+      vertical-align: bottom; }
+    .message-row .module-stars .avatar {
+      margin-right: 0; }
+      .message-row .module-stars .avatar img {
+        width: 20px; }
+  .message-row .message-author {
+    overflow: auto;
+    color: #777777; }
+    .message-row .message-author > * {
+      font-size: 10px;
+      padding: 0 12px 0 0;
+      margin: 0; }
+    .message-row .message-author .info {
+      font-size: 16px; }
+      .message-row .message-author .info > * + * {
+        margin-left: 6px; }
+    .message-row .message-author .action > * + * {
+      margin-left: 6px; }
+  .message-row .message-body {
+    padding: 10px;
+    margin-left: 50px;
+    margin-bottom: 30px; }
+  .message-row .message-row-form {
+    margin-left: 50px;
+    padding: 0 0 0 10px; }
+    .message-row .message-row-form textarea {
+      height: 100px;
+      width: 98%;
+      padding: 1%; }
+  .message-row .message-footer {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right; }
+    .message-row .message-footer > * {
+      display: inline-block;
+      margin: 0 10px; }
+  .message-row .sidebar-message {
+    float: left;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold; }
+    .message-row .sidebar-message .btn-like {
+      display: block;
+      color: #a4272c;
+      margin-top: 10px;
+      font-size: 24px;
+      line-height: 24px; }
+      .message-row .sidebar-message .btn-like:hover {
+        text-decoration: none; }

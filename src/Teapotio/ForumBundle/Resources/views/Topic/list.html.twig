@@ -1,0 +1,5 @@
+{% extends "TeapotioBaseForumBundle:Layout:layout.html.twig" %}
+
+{% block content %}
+  {% include "TeapotioBaseForumBundle:Topic:raw/listWithPagination.html.twig" with {topics: topics, messages_per_page: messages_per_page, current_board: current_board} %}
+{% endblock %}

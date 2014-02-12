@@ -1,0 +1,28 @@
+{% extends "TeapotioBaseForumBundle:Layout:content_wrapper.html.twig" %}
+
+{% block content_wrapper_class %} admin-permission{% endblock %}
+
+{% block content %}
+
+  <div class="module round">
+    <h1>{% trans %}Pick.a.group{% endtrans %}</h1>
+    {% for g in groups %}
+      <div class="inline-block text-large"><a href="{{ path('ForumAdminPermissionsWithGroup', {groupId: g.id}) }}">{{ g.name }}</a></div>
+    {% endfor %}
+  </div>
+
+  {% if group is not null %}
+    <div class="module round">
+      {% set boards = get_boards() %}
+      {% include "TeapotioForumBundle:Board:modules/permissions/form.html.twig" with {group: group, boards: boards, name: form_name, class: ''} %}
+    </div>
+  {% endif %}
+
+{% endblock %}
+
+
+{% block custom_js %}
+    {% javascripts '@TeapotioSiteBundle/Resources/public/js/moderation.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

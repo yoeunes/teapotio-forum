@@ -1,0 +1,26 @@
+input:not([type=radio]):not([type=checkbox]), textarea {
+  border: none;
+  width: 96%;
+  padding: 10px 2%;
+  margin: 0;
+  font-size: 12px;
+  -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75); }
+
+.two-col .control-group {
+  margin-bottom: 10px; }
+  .two-col .control-group .control-label {
+    display: inline-block;
+    vertical-align: top;
+    width: 24%;
+    padding: 0 3%;
+    text-align: right;
+    font-size: 18px;
+    line-height: 37px; }
+  .two-col .control-group .controls {
+    display: inline-block;
+    width: 70%; }
+    .two-col .control-group .controls .alert {
+      width: 96%;
+      padding: 10px 2%; }

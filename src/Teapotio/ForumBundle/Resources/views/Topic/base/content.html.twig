@@ -1,0 +1,25 @@
+{# Represents the content of a topic - title, body, avatar, etc #}
+{#
+    Required variables:
+        - topic
+        - message
+#}
+
+{% block topic_prefix %}{% endblock %}
+
+
+{% block topic_content %}
+  <div class="topic-header">
+    {% block topic_header_prefix %}{% endblock %}
+
+    {% block topic_header_content %}{% endblock %}
+
+    {% block topic_header_suffix %}{% endblock %}
+  </div>
+
+  {% block topic_body %}
+  {% endblock %}
+{% endblock %}
+
+
+{% block topic_suffix %}{% endblock %}

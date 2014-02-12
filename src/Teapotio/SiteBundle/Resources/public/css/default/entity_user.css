@@ -1,0 +1,28 @@
+.module-top-users .top-user {
+  float: left;
+  margin: 0 1%;
+  text-align: center;
+  width: 8%;
+  height: 155px;
+  position: relative; }
+  .module-top-users .top-user .wrap {
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+  .module-top-users .top-user .bar-graph {
+    margin: 0 25% 3px;
+    width: 50%;
+    background-color: #307abc; }
+  .module-top-users .top-user .module {
+    padding: 2px; }
+  .module-top-users .top-user .avatar {
+    margin: 0 auto;
+    width: 25px;
+    height: 25px; }
+
+.user-profile {
+  overflow: auto; }
+  .user-profile .user-module {
+    text-align: center;
+    float: right;
+    margin-left: 10px; }

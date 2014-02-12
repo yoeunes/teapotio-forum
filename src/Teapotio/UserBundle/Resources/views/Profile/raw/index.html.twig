@@ -1,0 +1,33 @@
+{% extends "TeapotioBaseForumBundle:Layout:content_wrapper.html.twig" %}
+
+{% block content_wrapper_class %}{% endblock %}
+
+{% block content %}
+
+<div class="user-profile">
+
+  {% include "TeapotioUserBundle:Modules:avatar.html.twig" with {class: "", user: user, size: 100} %}
+
+  <h2>{{ user.username }}</h2>
+
+  <div class="user-stats">
+    <span>{{ user.forumStat.totalTopic }} {% trans %}Topics{% endtrans %}</span>
+    <span>{{ user.forumStat.totalMessage }} {% trans %}Messages{% endtrans %}</span>
+  </div>
+
+  {% if user.description != "" or user.description != null %}
+    <div class="user-description">
+      <i class="icon-quote-left"></i> {{ user.description | raw }} <i class="icon-quote-right"></i>
+    </div>
+  {% endif %}
+
+</div>
+
+{% if latest_topics.count != 0 %}
+  <div class="user-topics">
+    <h3>{% trans %}Latest.created.topics{% endtrans %}</h3>
+    {% include "TeapotioBaseForumBundle:Topic:modules/list.html.twig" with {topics: latest_topics, showBoard: true} %}
+  </div>
+{% endif %}
+
+{% endblock %}

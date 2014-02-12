@@ -1,0 +1,13 @@
+{% extends "TeapotioBaseForumBundle:Layout:content_wrapper.html.twig" %}
+
+{% block pagination_up %}
+  {% include "TeapotioBaseForumBundle:Modules:pagination.html.twig" with {collection: topics, typeName: 'topics'|trans, containerClass: 'ajax', linkClass: 'to-main' } %}
+{% endblock %}
+
+{% block pagination_bottom %}
+  {% include "TeapotioBaseForumBundle:Modules:pagination.html.twig" with {collection: topics, typeName: 'topics'|trans, containerClass: 'ajax', linkClass: 'to-main' } %}
+{% endblock %}
+
+{% block content %}
+  {% include "TeapotioBaseForumBundle:Topic:modules/list.html.twig" with {topics: topics, messages_per_page: messages_per_page, current_board: current_board} %}
+{% endblock %}

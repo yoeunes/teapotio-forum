@@ -1,0 +1,46 @@
+input {
+  margin: 0 0 10px; }
+
+input[type=radio],
+input[type=checkbox] {
+  margin-left: 16px; }
+
+form label:first-child input[type=radio],
+form label:first-child input[type=checkbox] {
+  margin-left: 0; }
+
+input:not([type=radio]):not([type=checkbox]), textarea {
+  border: none;
+  width: 96%;
+  padding: 10px 2%;
+  font-size: 12px;
+  -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75); }
+
+.two-col .control-group {
+  margin-bottom: 10px; }
+  .two-col .control-group .control-label {
+    display: inline-block;
+    vertical-align: top;
+    width: 24%;
+    padding: 0 3%;
+    text-align: right;
+    font-size: 18px;
+    line-height: 37px; }
+  .two-col .control-group .controls {
+    display: inline-block;
+    width: 70%; }
+    .two-col .control-group .controls .alert {
+      width: 96%;
+      padding: 10px 2%; }
+  .two-col .control-group input, .two-col .control-group textarea {
+    margin: 0; }
+
+.non-editable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }

@@ -1,0 +1,50 @@
+TeapotioBaseUserBundle_login:
+    pattern:   /login/
+    defaults:  { _controller: TeapotioBaseUserBundle:Security:login }
+TeapotioBaseUserBundle_signup:
+    pattern:   /signup/
+    defaults:  { _controller: TeapotioUserBundle:Registration:signup }
+TeapotioBaseUserBundle_forgotPassword:
+    pattern:   /forgot-password/
+    defaults:  { _controller: TeapotioBaseUserBundle:Account:forgotPassword }
+TeapotioBaseUserBundle_resetPassword:
+    pattern:   /reset-password/
+    defaults:  { _controller: TeapotioBaseUserBundle:Account:resetPassword }
+TeapotioBaseUserBundle_login_check:
+    pattern:   /login-check/
+TeapotioBaseUserBundle_logout:
+    pattern:   /logout/
+TeapotioBaseUserBundle_settings:
+    pattern:   /u/{userSlug}-{userId}/settings/
+    defaults: { _controller: TeapotioUserBundle:Profile:settings }
+    requirements:
+        userSlug: "[^\/]+"
+        userId: \d+
+TeapotioBaseUserBundle_profile:
+    pattern:   /u/{userSlug}-{userId}/
+    defaults: { _controller: TeapotioUserBundle:Profile:index }
+    requirements:
+        userSlug: "[^\/]+"
+        userId: \d+
+
+TeapotioBaseUserBundle_setDefaultImage:
+    pattern: /u/set-image/{imageId}/
+    defaults: { _controller: TeapotioUserBundle:User:setDefaultImage }
+
+TeapotioBaseUserBundle_addImage:
+    pattern: /u/add-image/
+    defaults: { _controller: TeapotioUserBundle:User:addImage }
+    requirements:
+        _method: POST
+
+TeapotioBaseUserBundle_setDescription:
+    pattern: /u/set-description/
+    defaults: { _controller: TeapotioUserBundle:User:setDescription }
+    requirements:
+        _method: POST
+
+TeapotioBaseUserBundle_setSettings:
+    pattern: /u/set-settings/
+    defaults: { _controller: TeapotioUserBundle:User:setSettings }
+    requirements:
+        _method: POST

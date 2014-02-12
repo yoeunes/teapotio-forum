@@ -1,0 +1,10 @@
+{% extends "TeapotioBaseForumBundle:Layout:content_wrapper.html.twig" %}
+
+{% block content_wrapper_class %} message-list{% endblock %}
+
+{% block content %}
+  {% set message = messages|first %}
+  {% include "TeapotioBaseForumBundle:Topic:modules/content.html.twig" with {user: message.user, topic: topic, message: message, flag: flag_topic} %}
+
+  {% include "TeapotioBaseForumBundle:Message:modules/list.html.twig" with {messages: messages|slice(1), flags: flags} %}
+{% endblock %}

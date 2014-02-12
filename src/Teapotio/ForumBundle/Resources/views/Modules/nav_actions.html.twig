@@ -1,0 +1,56 @@
+{#
+  Variable required:
+    - board
+    - user
+#}
+
+{% spaceless %}
+  <ul>
+    {% if board is not null %}
+      {% if user|can_create_topic(board) == true %}
+        <li>
+          <a href="{{ forum_path("ForumNewTopic", board) }}" class="nav-action-btn btn-new-topic to-main">
+            <i class="icon-pencil"></i>
+            {% trans %}New.topic{% endtrans %}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if user|can_create_board(board) == true %}
+        <li>
+          <a href="{{ forum_path("ForumNewBoardInBoard", board) }}" class="nav-action-btn btn-new-board to-main">
+            <i class="icon-plus-sign"></i>
+            {% trans %}New.board{% endtrans %}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if user|can_edit(board) == true %}
+        <li>
+          <a href="{{ forum_path("ForumEditBoard", board) }}" class="nav-action-btn btn-edit-board to-main">
+            <i class="icon-cog"></i>
+            {% trans %}Edit.board{% endtrans %}
+          </a>
+        </li>
+      {% endif %}
+    {% else %}
+      {% if user|can_create_topic(null) == true %}
+        <li>
+          <a href="{{ forum_path("ForumNewTopicWithoutBoard") }}" class="nav-action-btn btn-new-topic to-main">
+            <i class="icon-pencil"></i>
+            {% trans %}New.topic{% endtrans %}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if user|can_create_board(null) == true %}
+        <li>
+          <a href="{{ forum_path("ForumNewBoard") }}" class="nav-action-btn btn-new-board to-main">
+            <i class="icon-plus-sign"></i>
+            {% trans %}New.board{% endtrans %}
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+  </ul>
+{% endspaceless %}

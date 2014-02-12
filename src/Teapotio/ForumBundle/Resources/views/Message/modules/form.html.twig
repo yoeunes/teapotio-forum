@@ -1,0 +1,20 @@
+{#
+  Variables required:
+    - user (from parent template)
+    - form
+#}
+
+{% extends "TeapotioBaseForumBundle:Message:base/individualMessageRow.html.twig" %}
+
+{% block row_body %}
+
+  <form action="{% block form_path %}{% endblock %}" method="post" class="{% block form_class %}message-row-form wysiwyg-editor{% endblock %}" id="{% block form_id %}{% endblock %}">
+
+    {{ form_errors(form) }}
+
+    {{ form_widget(form) }}
+
+    <button class="btn btn-success">{% block form_submit_label %}{% endblock %}</button>
+  </form>
+
+{% endblock %}

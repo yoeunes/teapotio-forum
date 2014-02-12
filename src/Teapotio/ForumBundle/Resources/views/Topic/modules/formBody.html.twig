@@ -1,0 +1,23 @@
+{# The body of a form should have the same template as a regular message #}
+{% extends "TeapotioBaseForumBundle:Message:base/individualMessageRow.html.twig" %}
+
+{#
+  Required variables:
+    - user
+    - board
+    - form
+    - message (can be null)
+#}
+
+{% block row_body %}
+  {{ form_widget(form.body) }}
+
+  <button class="btn btn-success">{% trans %}Create.topic{% endtrans %}</button>
+{% endblock %}
+
+
+{% block row_author_suffix %}
+  {% if message is not null %}
+    {% include "TeapotioBaseForumBundle:Message:modules/date.html.twig" with {message: message} %}
+  {% endif %}
+{% endblock %}

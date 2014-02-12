@@ -1,0 +1,72 @@
+.module {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  overflow: auto;
+  display: block;
+  position: relative; }
+  .module.sample {
+    padding: 12px;
+    border: 1px solid #999999; }
+    .module.sample .sample-label {
+      font-size: 12px;
+      padding: 4px 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #f8f8f8;
+      color: #999999;
+      border-right: 1px solid #999999;
+      border-bottom: 1px solid #999999; }
+  .module.list {
+    list-style-type: none; }
+    .module.list > * {
+      overflow: auto;
+      padding: 4px 8px;
+      border-width: 0px;
+      border: 1px solid;
+      color: #777777;
+      background-color: #fafafa;
+      border-color: #f1f1f1 #e1e1e1 #d1d1d1 #f1f1f1; }
+    .module.list.dark > * {
+      color: #dfdfdf;
+      background-color: #212121;
+      border-color: #313131 #121212 black #313131; }
+  .module.modal {
+    padding: 4px;
+    border: 1px solid;
+    color: #777777;
+    background-color: #fafafa;
+    border-color: #f1f1f1 #e1e1e1 #d1d1d1 #f1f1f1; }
+    .module.modal.dark {
+      color: #dfdfdf;
+      background-color: #212121;
+      border-color: #313131 #121212 black #313131; }
+  .module.round {
+    border-radius: 2px;
+    padding: 6px;
+    background-color: white;
+    color: #333333; }
+    .module.round.dark {
+      color: white;
+      background: url(../img/bg90.png); }
+    .module.round.warning {
+      color: white;
+      background-color: #fa7a2d;
+      border-color: #faa14a #d76225 #be5622 #faa14a; }
+    .module.round.danger {
+      color: white;
+      background-color: #bb0227;
+      border-color: #e10534 #8b011e #750119 #e10534; }
+    .module.round.info {
+      color: white;
+      background-color: #2768a1;
+      border-color: #3486d3 #2867a1 #225788 #3486d3; }
+    .module.round.primary {
+      color: white;
+      background-color: #3251be;
+      border-color: #365ad7 #28429f #203889 #365ad7; }
+    .module.round.success {
+      color: white;
+      background-color: #049c00;
+      border-color: #04aa01 #048a00 #037600 #04aa01; }

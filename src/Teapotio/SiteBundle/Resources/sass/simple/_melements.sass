@@ -1,0 +1,18 @@
+@mixin element-border
+    border-radius: 3px
+
+@mixin element-spacing
+    margin-top: 2px
+    margin-bottom: 2px
+
+@mixin element
+    @include element-border
+    background-color: #fdfdfb
+
+@mixin element-spaced
+    @include element
+    @include element-spacing
+
+@mixin element-reset
+    border-radius: 0
+    background-color: transparent

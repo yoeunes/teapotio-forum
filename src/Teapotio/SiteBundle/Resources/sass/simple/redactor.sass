@@ -1,0 +1,23 @@
+.redactor_editor,
+.redactor_editor:focus
+    padding-top: 0
+    padding-bottom: 0
+
+.redactor_editor
+    .wysiwyg-block
+        position: relative
+        z-index: 999999
+        &:before
+            content: ' '
+            position: absolute
+            z-index: 10000000
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+
+.redactor_box
+    .redactor_toolbar
+        overflow: auto
+        &:after
+            content: ''

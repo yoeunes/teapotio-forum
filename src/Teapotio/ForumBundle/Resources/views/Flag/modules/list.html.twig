@@ -1,0 +1,10 @@
+{% set flags = get_latest_flags(15) %}
+{% if flags.count != 0 %}
+  <ul class="{% if containerClass is defined %} {{ containerClass }}{% endif %}">
+    {% for flag in flags %}
+      <li>
+        {% include "TeapotioForumBundle:Flag:modules/individualFlagRow.html.twig" with {flag: flag} %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
