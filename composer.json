@@ -14,7 +14,10 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": ">=2.3",
-        "doctrine/doctrine-bundle": "*"
+        "doctrine/doctrine-bundle": "*",
+        "teapotio/base-cache-bundle": "dev-master",
+        "teapotio/base-forum-bundle": "dev-master",
+        "teapotio/base-user-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": { "Teapotio\\": "src/" }
