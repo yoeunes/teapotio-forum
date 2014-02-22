@@ -22,7 +22,7 @@
         "exercise/htmlpurifier-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": { "Teapotio\\": "src/Teapotio/" }
+        "psr-0": { "Teapotio": "src/" }
     },
     "minimum-stability": "dev"
 }
