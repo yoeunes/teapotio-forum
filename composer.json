@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-0": { "Teapotio\\": "src/" },
-        "classmap": ["vendor/ezyang/htmlpurifier/library"]
+        "classmap": ["/vendor/ezyang/htmlpurifier/library"]
     },
     "minimum-stability": "dev"
 }
