@@ -1,5 +1,5 @@
 {
-    "name": "teapotio/teapot-forum",
+    "name": "teapotio/teapotio-forum",
     "type": "library",
     "description": "A forum system on Symfony2",
     "keywords": ["Forum solution", "Discussion boards"],

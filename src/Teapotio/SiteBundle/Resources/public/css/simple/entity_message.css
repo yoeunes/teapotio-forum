@@ -2,7 +2,13 @@
   position: relative;
   z-index: 2;
   margin: 0 0 10px;
-  border-color: #d65d68 #bc3635 #ad3335 #c63a3b; }
+  padding: 7px 10px 7px 40px;
+  border-color: #d65d68 #bc3635 #ad3335 #c63a3b;
+  font-size: 10px; }
+  .message-list .alert i {
+    font-size: 20px; }
+  .message-list .alert a {
+    margin-left: 8px; }
 .message-list .topic-actions {
   float: right; }
   .message-list .topic-actions .btn {
