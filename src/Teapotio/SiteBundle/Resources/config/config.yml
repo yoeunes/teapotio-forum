@@ -1,0 +1,29 @@
+exercise_html_purifier:
+    default:
+        HTML.AllowedCommentsRegexp: "/^start reply$|^start quote$|^end reply$|^end quote$/s"
+
+parameters:
+    teapotio_user.user_service.class: Teapotio\UserBundle\Service\UserService
+    teapotio_user.user_group_service.class: Teapotio\UserBundle\Service\UserGroupService
+
+    teapotio_forum.board_service.class:        Teapotio\ForumBundle\Service\BoardService
+    teapotio_forum.flag_service.class:         Teapotio\ForumBundle\Service\FlagService
+    teapotio_forum.topic_service.class:        Teapotio\ForumBundle\Service\TopicService
+    teapotio_forum.message_service.class:      Teapotio\ForumBundle\Service\MessageService
+    teapotio_forum.message_star_service.class: Teapotio\ForumBundle\Service\MessageStarService
+    teapotio_forum.moderation_service.class:   Teapotio\ForumBundle\Service\ModerationService
+    teapotio_forum.main_service.class:         Teapotio\ForumBundle\Service\MainService
+    teapotio_forum.path_service.class:         Teapotio\ForumBundle\Service\PathService
+    teapotio_forum.user_stat_service.class:    Teapotio\ForumBundle\Service\UserStatService
+
+    teapotio_forum.board_repository.class:         'TeapotioForumBundle:Board'
+    teapotio_forum.flag_repository.class:          'TeapotioForumBundle:Flag'
+    teapotio_forum.topic_repository.class:         'TeapotioForumBundle:Topic'
+    teapotio_forum.message_repository.class:       'TeapotioForumBundle:Message'
+    teapotio_forum.message_star_repository.class:  'TeapotioForumBundle:MessageStar'
+    teapotio_forum.moderation_repository.class:    'TeapotioForumBundle:Moderation'
+    teapotio_forum.user_stat_repository.class:     'TeapotioForumBundle:UserStat'
+
+    teapotio_user.user_repository.class: 'TeapotioUserBundle:User'
+    teapotio_user.user_group_repository.class: 'TeapotioUserBundle:UserGroup'
+    teapotio_user.user_token_repository.class: 'TeapotioUserBundle:UserToken'

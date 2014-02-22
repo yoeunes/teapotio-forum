@@ -17,10 +17,13 @@
         "doctrine/doctrine-bundle": "*",
         "teapotio/base-cache-bundle": "dev-master",
         "teapotio/base-forum-bundle": "dev-master",
-        "teapotio/base-user-bundle": "dev-master"
+        "teapotio/base-user-bundle": "dev-master",
+        "gregwar/image-bundle": "dev-master",
+        "exercise/htmlpurifier-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": { "Teapotio\\": "src/" }
+        "psr-0": { "Teapotio\\": "src/" },
+        "classmap": ["vendor/ezyang/htmlpurifier/library"]
     },
     "minimum-stability": "dev"
 }
