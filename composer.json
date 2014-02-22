@@ -22,8 +22,7 @@
         "exercise/htmlpurifier-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": { "Teapotio\\": "src/" },
-        "classmap": ["/vendor/ezyang/htmlpurifier/library"]
+        "psr-0": { "Teapotio\\": "src/Teapotio/" }
     },
     "minimum-stability": "dev"
 }
