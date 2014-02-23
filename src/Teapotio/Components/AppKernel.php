@@ -14,12 +14,16 @@
 namespace Teapotio\Components;
 
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
     public function registerBundles()
     {
         $bundles = array(
+            new \Gregwar\ImageBundle\GregwarImageBundle(),
+            new \Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
+
             new \Teapotio\Base\UserBundle\TeapotioBaseUserBundle(),
             new \Teapotio\Base\ForumBundle\TeapotioBaseForumBundle(),
             new \Teapotio\Base\CacheBundle\TeapotioBaseCacheBundle(),
@@ -31,5 +35,10 @@ class AppKernel extends Kernel
         );
 
         return $bundles;
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 }
