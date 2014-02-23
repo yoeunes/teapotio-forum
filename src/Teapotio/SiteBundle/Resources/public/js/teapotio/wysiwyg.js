@@ -13,10 +13,11 @@
         },
 
         initialize: function () {
-            this.load(null);
+            this.loadWithToolbar(null);
+            this.loadWithOverlay(null);
         },
 
-        load: function ($element) {
+        loadWithToolbar: function ($element) {
             var self = this,
                 editors,
                 options;
@@ -43,6 +44,30 @@
                 $editors = $('.wysiwyg');
             } else {
                 $editors = $element.find('.wysiwyg');
+            }
+
+            $editors.each(function (index, element) {
+                $(element).redactor(options);
+            });
+        },
+
+        loadWithOverlay: function ($element) {
+            var self = this,
+                editors,
+                options;
+
+            options = {
+                air: true,
+                airButtons: ['formatting', '|', 'bold', 'italic', 'deleted', '|',
+                          'unorderedlist', 'orderedlist', '|',
+                          'image', 'video', 'table', 'link', '|', 'alignment', '|', 'horizontalrule'],
+                convertVideoLinks: true,
+            };
+
+            if ($element === null) {
+                $editors = $('.wysiwyg-overlay');
+            } else {
+                $editors = $element.find('.wysiwyg-overlay');
             }
 
             $editors.each(function (index, element) {
