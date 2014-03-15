@@ -1,9 +1,9 @@
 .redactor_editor,
 .redactor_editor:focus {
-  padding-top: 0;
-  padding-bottom: 0; }
+  padding: 10px 20px; }
 
 .redactor_editor .wysiwyg-block {
+  cursor: default;
   position: relative;
   z-index: 999999; }
   .redactor_editor .wysiwyg-block:before {
@@ -15,7 +15,8 @@
     right: 0;
     bottom: 0; }
 
-.redactor_box .redactor_toolbar {
-  overflow: auto; }
+.redactor_box {
+  display: inline-block;
+  width: 100%; }
   .redactor_box .redactor_toolbar:after {
     content: ""; }

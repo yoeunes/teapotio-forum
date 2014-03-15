@@ -167,7 +167,11 @@ class Image
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        if (is_dir(__DIR__.'/../../../../../../../web')) {
+          return __DIR__.'/../../../../../../../web/'.$this->getUploadDir();
+        } else if (is_dir(__DIR__.'/../../../../web')) {
+          return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        }
     }
 
     protected function getUploadDir()

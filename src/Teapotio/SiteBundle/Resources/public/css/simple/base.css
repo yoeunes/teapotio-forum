@@ -4,7 +4,14 @@ html, body {
 body {
   text-align: center;
   color: white;
-  background-color: #013f35; }
+  background: #303030;
+  background: -moz-radial-gradient(center, ellipse cover, #303030 0%, #0e0e0e 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #303030), color-stop(100%, #0e0e0e));
+  background: -webkit-radial-gradient(center, ellipse cover, #303030 0%, #0e0e0e 100%);
+  background: -o-radial-gradient(center, ellipse cover, #303030 0%, #0e0e0e 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #303030 0%, #0e0e0e 100%);
+  background: radial-gradient(ellipse at center, #303030 0%, #0e0e0e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#303030', endColorstr='#0e0e0e',GradientType=1 ); }
 
 table {
   width: 100%; }

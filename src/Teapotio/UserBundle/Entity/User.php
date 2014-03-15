@@ -100,7 +100,7 @@ class User extends BaseUser
      * @param Image $defaultAvatar
      * @return User
      */
-    public function setDefaultAvatar(\Teapotio\ImageBundle\Entity\Image $defaultAvatar)
+    public function setDefaultAvatar(\Teapotio\ImageBundle\Entity\Image $defaultAvatar = null)
     {
         $this->defaultAvatar = $defaultAvatar;
         return $this;

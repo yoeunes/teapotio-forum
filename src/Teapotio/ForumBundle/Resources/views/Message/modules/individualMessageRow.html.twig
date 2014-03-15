@@ -21,7 +21,7 @@
 
 {# Used for prompting user when the message has been flagged or moderated #}
 {% block row_prefix %}
-  {% if flag is defined and flag is not null %}
+  {% if app.user|is_moderator and flag is defined and flag is not null %}
     <div class="alert special error message-flagged">
 
       <div class="moderation-actions pull-right">

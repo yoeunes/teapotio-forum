@@ -97,7 +97,7 @@
 .topic-header .topic-title input,
 .topic-header .topic-title {
   margin: 0;
-  font-size: 18px !important;
+  font-size: 18px;
   line-height: 30px; }
 
 .content.new-topic form, .content.edit-topic form {
@@ -116,6 +116,12 @@
   .topic-row .topic-info .date {
     display: none; } }
 @media (max-width: 595px) {
+  .topic-header .topic-title input,
+  .topic-header .topic-title {
+    margin: 0;
+    font-size: 15px;
+    line-height: 24px; }
+
   .topic-row,
   .topic-row.board-childless {
     padding: 6px 10px; }

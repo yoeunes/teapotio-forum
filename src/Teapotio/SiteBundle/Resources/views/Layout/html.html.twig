@@ -32,16 +32,17 @@
       {% endblock %}
     </div>
 
-    {# Consider keeping this here to show your support for Teapotio Forum #}
-    <footer class="footer" id="bottom">
-      <a href="http://teapotio.io"><i class="icon-bolt"></i> / teapotio<span>.io</span></a>
+    {#
+      Consider keeping this here to show your support for Teapotio Forum
+      You can change the size of the text by adding one of the class below:
+        - tiny
+        - small
+        - medium
+        - large
+    #}
+    <footer class="footer small" id="bottom">
+      <a href="http://teapotio.io"><i class="icon-bolt"></i> / teapot<span>io</span></a>
     </footer>
-
-    <div id="overlay" class="hide">
-      {% block overlays %}
-
-      {% endblock %}
-    </div>
 
     {% javascripts '@TeapotioSiteBundle/Resources/public/js/jquery.js'
                    '@TeapotioSiteBundle/Resources/public/js/redactor/redactor.js'

@@ -4,9 +4,6 @@
 .nav-action,
 nav#nav-horizontal
     overflow: auto
-    @include element-border
-    @include element-spaced
-    background-color: rgba(0,0,0,0.35)
     a
         color: #fff
         line-height: 17px
@@ -23,6 +20,7 @@ nav#nav-horizontal
         display: inline-block
 
 .nav-action
+    margin: 12px 0 2px
     .search
         input,
         input:hover,
@@ -194,7 +192,7 @@ nav#nav-horizontal
             margin: 0
             padding: 0
             & > div
-                font-size: 14px
+                font-size: 13px
 
 #nav-top-users
     display: none
@@ -258,4 +256,3 @@ nav#nav-horizontal
             margin-left: 0 !important
             float: none
             width: 100%
-

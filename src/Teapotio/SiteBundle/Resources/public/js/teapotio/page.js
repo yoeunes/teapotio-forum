@@ -29,7 +29,7 @@
             Teapotio.events.load($wrapper);
 
             // Load any potential wysiwyg
-            Teapotio.wysiwyg.load($wrapper);
+            Teapotio.wysiwyg.loadWithToolbar($wrapper);
 
             // Go back up
             window.scrollTo(0,0);

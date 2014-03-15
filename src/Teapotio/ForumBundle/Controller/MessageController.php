@@ -193,12 +193,16 @@ class MessageController extends BaseController
     {
         $html = $this->get('teapotio.forum.message')->renderBodyQuote($this->getMessage());
 
+        $html = $this->get('teapotio.forum.message')->parseRenderedHtml($html);
+
         return $this->renderJson(array('html' => $html));
     }
 
     public function replyAction()
     {
         $html = $this->get('teapotio.forum.message')->renderBodyReply($this->getMessage()->getUser());
+
+        $html = $this->get('teapotio.forum.message')->parseRenderedHtml($html);
 
         return $this->renderJson(array('html' => $html));
     }

@@ -1,12 +1,6 @@
 .nav-action,
 nav#nav-horizontal {
-  overflow: auto;
-  border-radius: 3px;
-  border-radius: 3px;
-  background-color: #fdfdfb;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  background-color: rgba(0, 0, 0, 0.35); }
+  overflow: auto; }
   .nav-action a,
   nav#nav-horizontal a {
     color: white;
@@ -27,36 +21,38 @@ nav#nav-horizontal {
     margin: 6px 10px;
     display: inline-block; }
 
-.nav-action .search input,
-.nav-action .search input:hover,
-.nav-action .search input:focus,
-.nav-action .search input:active {
-  border: 0;
-  outline: 0;
-  outline-offset: 0;
-  background: transparent;
-  -webkit-appearance: none;
-  width: 190px;
-  padding: 0 3px;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  font-size: 15px; }
+.nav-action {
+  margin: 12px 0 2px; }
+  .nav-action .search input,
+  .nav-action .search input:hover,
   .nav-action .search input:focus,
-  .nav-action .search input:hover:focus,
-  .nav-action .search input:focus:focus,
-  .nav-action .search input:active:focus {
-    border: none; }
-.nav-action .search input::-webkit-input-placeholder {
-  color: #efefef; }
-.nav-action .search input:-moz-placeholder {
-  color: #efefef; }
-.nav-action .search input::-moz-placeholder {
-  color: #efefef; }
-.nav-action .search input:-ms-input-placeholder {
-  color: #efefef; }
-.nav-action .search label {
-  padding: 4px; }
+  .nav-action .search input:active {
+    border: 0;
+    outline: 0;
+    outline-offset: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    width: 190px;
+    padding: 0 3px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 15px; }
+    .nav-action .search input:focus,
+    .nav-action .search input:hover:focus,
+    .nav-action .search input:focus:focus,
+    .nav-action .search input:active:focus {
+      border: none; }
+  .nav-action .search input::-webkit-input-placeholder {
+    color: #efefef; }
+  .nav-action .search input:-moz-placeholder {
+    color: #efefef; }
+  .nav-action .search input::-moz-placeholder {
+    color: #efefef; }
+  .nav-action .search input:-ms-input-placeholder {
+    color: #efefef; }
+  .nav-action .search label {
+    padding: 4px; }
 
 .nav-profile .avatar {
   float: left;
@@ -201,7 +197,7 @@ nav#nav-horizontal {
       margin: 0;
       padding: 0; }
       #nav-list-boards > ul > li > div {
-        font-size: 14px; }
+        font-size: 13px; }
 
 #nav-top-users {
   display: none;

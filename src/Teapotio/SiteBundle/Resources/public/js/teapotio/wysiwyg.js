@@ -3,7 +3,7 @@
 
     Teapotio.wysiwyg = {
 
-        emptyMarkup: '<p>​</p>',
+        emptyMarkup: '<p>&#8203;​</p>',
 
         selectors: {
             btn: {
@@ -20,12 +20,17 @@
         loadWithToolbar: function ($element) {
             var self = this,
                 editors,
-                options;
+                options,
+                buttons;
+
+            buttons = [
+              'formatting', '|', 'bold', 'italic', 'deleted', 'underline', '|',
+              'unorderedlist', 'orderedlist', '|',
+              'image', 'video', 'link', '|',
+              'alignleft', 'aligncenter', 'alignright', '|', 'horizontalrule'];
 
             options = {
-                buttons: ['formatting', '|', 'bold', 'italic', 'deleted', '|',
-                          'unorderedlist', 'orderedlist', '|',
-                          'image', 'video', 'table', 'link', '|', 'alignment', '|', 'horizontalrule'],
+                buttons: buttons,
                 convertVideoLinks: true,
                 toolbarFixed: true,
                 toolbarFixedBox: true,
@@ -37,6 +42,12 @@
                             .removeClass('redactor_wysiwyg-initial')
                             .html(self.emptyMarkup);
                     }
+                },
+                keyupCallback: function (e) {
+                    self.focusAway(this.$element);
+                },
+                changeCallback: function (html) {
+                  // console.log(html);
                 }
             };
 
@@ -87,16 +98,39 @@
             var self = this;
 
             $.get($(btn).attr('href'), function (response) {
-                self.insert(response.html + self.emptyMarkup, $('#message-reply-to-topic .wysiwyg').first());
+                self.insertBlock(response.html, $('#message-reply-to-topic .wysiwyg').first());
             });
         },
 
         fnEventWrapperClick: function (wrapper) {
-            console.log($(wrapper).next().redactor('getBlock'));
+            this.focusAway($(wrapper).next());
         },
 
         insert: function (html, $element) {
             $element.redactor('insertHtmlAdvanced', html);
+            this.focusAway($element);
+        },
+
+        insertBlock: function (html, $element) {
+            $(html).appendTo($element.prev());
+            this.focusAway($element);
+        },
+
+        focusAway: function ($element) {
+          var $activeBlock = $($element.redactor('getParent')),
+              $wysiwygElement = $activeBlock.parents('.wysiwyg-block').first(),
+              $wysiwygElementNeighbor = $wysiwygElement.next();
+
+          if ($wysiwygElement.length === 0) {
+            return;
+          }
+
+          if ($wysiwygElementNeighbor.length === 0) {
+            $wysiwygElementNeighbor = $(this.emptyMarkup);
+            $wysiwygElementNeighbor.insertAfter($wysiwygElement);
+          }
+
+          $element.redactor('setCaret', $wysiwygElementNeighbor, 0);
         }
     };
 

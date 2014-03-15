@@ -23,9 +23,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class MessageService extends BaseMessageService
 {
     protected $regexBodyReplyInput =
-        '/(<div class="wysiwyg-block wysiwyg-reply wysiwyg-reply-([0-9]+)"><!-- start reply -->)(.*)(<!-- end reply --><\/div>)/s';
+        '/(<a class="wysiwyg-reply wysiwyg-reply-([0-9]+)"( href=".*")>)([\@\-\_\w]*)(<\/a>)/s';
     protected $regexBodyQuoteInput =
-        '/(<div class="wysiwyg-block wysiwyg-quote wysiwyg-quote-([0-9]+)"><!-- start quote -->)(.*)(<!-- end quote --><\/div>)/s';
+        '/(<div class="wysiwyg-block wysiwyg-quote wysiwyg-quote-([0-9]+)">)(.*)(<\/div>)/s';
 
     protected $regexBodyReplyId = '/wysiwyg-reply wysiwyg-reply-([0-9]+)/s';
     protected $regexBodyQuoteId = '/wysiwyg-quote wysiwyg-quote-([0-9]+)/s';
@@ -96,7 +96,7 @@ class MessageService extends BaseMessageService
             },
             function ($id, $entity, $body) {
                 return str_replace(
-                    '<div class="wysiwyg-block wysiwyg-reply wysiwyg-reply-'. $id .'"><!-- start reply --><!-- end reply --></div>',
+                    '<a class="wysiwyg-reply wysiwyg-reply-'. $id .'"></a>',
                     $this->renderBodyReply($entity),
                     $body
                 );
@@ -124,7 +124,7 @@ class MessageService extends BaseMessageService
             },
             function ($id, $entity, $body) {
                 return str_replace(
-                    '<div class="wysiwyg-block wysiwyg-quote wysiwyg-quote-'. $id .'"><!-- start quote --><!-- end quote --></div>',
+                    '<div class="wysiwyg-block wysiwyg-quote wysiwyg-quote-'. $id .'"></div>',
                     $this->renderBodyQuote($entity),
                     $body
                 );
@@ -204,7 +204,17 @@ class MessageService extends BaseMessageService
      */
     protected function parseInputBodyReply(MessageInterface $message)
     {
-        $message->setBody(preg_replace($this->regexBodyReplyInput, '$1$4', $message->getBody()));
+        $matches = array();
+        preg_match_all($this->regexBodyReplyInput, $message->getBody(), $matches, PREG_SET_ORDER);
+
+        $body = $message->getBody();
+
+        foreach ($matches as $match) {
+          $markup = str_replace(array($match[3], $match[4]), '', $match[0]);
+          $body = str_replace($match[0], $markup, $body);
+        }
+
+        $message->setBody($body);
 
         return $message;
     }
@@ -275,6 +285,25 @@ class MessageService extends BaseMessageService
                         array('message' => $message, 'flag' => null)
                     );
     }
+
+    /**
+     * Run the output parsers on rendered HTML and
+     * return the parsed HTML
+     *
+     * @param string $html
+     *
+     * @return string
+     */
+    public function parseRenderedHtml($html)
+    {
+        $message = $this->createMessage();
+        $message->setBody($html);
+
+        $this->parseOutputBodies(array($message));
+
+        return $message->getBody();
+    }
+
 
     public function parseBody(MessageInterface $message)
     {
