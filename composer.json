@@ -19,7 +19,16 @@
         "teapotio/base-forum-bundle": "dev-master",
         "teapotio/base-user-bundle": "dev-master",
         "gregwar/image-bundle": "dev-master",
-        "exercise/htmlpurifier-bundle": "dev-master"
+        "exercise/htmlpurifier-bundle": "dev-master",
+
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1.2",
+        "twig/extensions": "~1.0",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~2.3",
+        "sensio/framework-extra-bundle": "~3.0"
     },
     "autoload": {
         "psr-0": { "Teapotio": "src/" }
