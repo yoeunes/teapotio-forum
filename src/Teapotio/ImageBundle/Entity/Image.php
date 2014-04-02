@@ -166,6 +166,9 @@ class Image
 
     protected function getUploadRootDir()
     {
+        /**
+         * @note it does not work properly with symlinks
+         */
         // the absolute directory path where uploaded documents should be saved
         if (is_dir(__DIR__.'/../../../../../../../web')) {
           return __DIR__.'/../../../../../../../web/'.$this->getUploadDir();

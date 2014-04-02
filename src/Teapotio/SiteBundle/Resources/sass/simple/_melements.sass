@@ -1,9 +1,15 @@
+@mixin element-module
+    overflow: auto
+
 @mixin element-border
     border-radius: 3px
 
 @mixin element-spacing
     margin-top: 2px
     margin-bottom: 2px
+
+@mixin element-inner-spacing
+    padding: 12px
 
 @mixin element
     @include element-border

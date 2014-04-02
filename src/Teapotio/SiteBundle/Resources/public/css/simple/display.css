@@ -1,14 +1,15 @@
 .container {
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
   display: block;
-  margin: 0 auto;
+  margin: 16px auto;
   max-width: 800px;
   overflow: auto;
   padding: 4px 0;
   position: relative;
   text-align: left;
   width: 94%;
-  z-index: 0;
-  background-color: rgba(0, 0, 0, 0.5); }
+  z-index: 0; }
 
 .nav {
   margin: 0; }
@@ -42,7 +43,8 @@
 
 .content-info.content-info-top, .content-info.content-info-bottom {
   margin-top: 2px;
-  margin-bottom: 2px; }
+  margin-bottom: 2px;
+  padding: 0; }
 .content-info .breadcrumb,
 .content-info .paginator {
   padding: 5px 10px; }
@@ -80,7 +82,7 @@
 @media (max-width: 826px) {
   .container {
     float: none;
-    margin: 0 0.5%;
+    margin: 8px 0.5%;
     width: 99% !important;
     padding: 0 !important; }
 
@@ -95,7 +97,7 @@
     display: none; } }
 @media (max-width: 595px) {
   .container {
-    margin: 2px 0.5%; }
+    margin: 6px 0.5%; }
 
   .nav > * {
     width: 100%; } }

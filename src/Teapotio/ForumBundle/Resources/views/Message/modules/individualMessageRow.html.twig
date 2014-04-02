@@ -54,21 +54,23 @@
       {% include "TeapotioForumBundle:Message:modules/buttonStar.html.twig" with {message: message, count: stars[message.id]|length} %}
     {% endif %#}
 
-    {% if app.user|can_create_message(message.topic.board) == true %}
+    {#% if app.user|can_create_message(message.topic.board) == true %}
       <a href="{{ forum_path("ForumMessageReply", message) }}" class="message-reply">
         <i class="icon-reply"></i>
-        {#% trans %}Reply{% endtrans %#}
+        {% trans %}Reply{% endtrans %}
       </a>
       <a href="{{ forum_path("ForumMessageQuote", message) }}" class="message-quote">
         <i class="icon-quote-left"></i>
-        {#% trans %}Quote{% endtrans %#}
+        {% trans %}Quote{% endtrans %}
+      </a>
+    {% endif %#}
+
+    {% if app.user|can_flag(message) == true %}
+      <a href="{{ forum_path("ForumMessageFlag", message) }}" class="btn-toggle" data-toggle-label=" {% trans %}Flagged{% endtrans %}">
+        <i class="icon-flag"></i>
+        {#% trans %}Flag{% endtrans %#}
       </a>
     {% endif %}
-
-    <a href="{{ forum_path("ForumMessageFlag", message) }}" class="btn-toggle" data-toggle-label=" {% trans %}Flagged{% endtrans %}">
-      <i class="icon-flag"></i>
-      {#% trans %}Flag{% endtrans %#}
-    </a>
 
     {% if app.user|can_edit(message) == true %}
       {% if message.isTopicBody == true %}

@@ -3,7 +3,7 @@
 {% block content_wrapper_class %} board-settings{% endblock %}
 
 {% block content %}
-  <div class="module round">
+  <div class="board-settings-board-data">
     <h3>{% trans %}Edit.board.data{% endtrans %}</h3>
 
     <form action="" method="post" {{ form_enctype(form) }} class="two-col">
@@ -22,7 +22,7 @@
     </form>
   </div>
 
-  <div class="module round">
+  <div class="board-settings-move-and-delete">
     <h3>{% trans %}Move.topics.and.delete.board{% endtrans %}</h3>
 
     <form action="{{ forum_path('ForumDeleteBoard', current_board) }}" method="post">
@@ -57,7 +57,7 @@
     </form>
   </div>
 
-  <div class="module round">
+  <div class="board-settings-move-board">
     <h3>{% trans %}Move.board{% endtrans %}</h3>
 
     <form action="" method="post" class="form-inline">
@@ -84,7 +84,7 @@
     </form>
   </div>
 
-  <div class="module round">
+  <div class="board-settings-access-permissions">
 
     <h3>{% trans %}Access.permissions{% endtrans %}</h3>
 

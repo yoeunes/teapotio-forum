@@ -22,7 +22,7 @@ nav#nav-horizontal {
     display: inline-block; }
 
 .nav-action {
-  margin: 12px 0 2px; }
+  margin: 8px 0 2px; }
   .nav-action .search input,
   .nav-action .search input:hover,
   .nav-action .search input:focus,
@@ -102,7 +102,7 @@ nav#nav-horizontal {
 
 #nav-components {
   display: none;
-  margin: 0 0 10px; }
+  margin: 0; }
   #nav-components a.toggle-visibility,
   #nav-components a.collapse {
     text-align: center;
@@ -117,7 +117,8 @@ nav#nav-horizontal {
       display: inline-block;
       margin: 0 8px; }
   #nav-components .footer {
-    margin-top: 4px; }
+    margin-top: 4px;
+    margin-bottom: 4px; }
 
 #nav-list-boards {
   display: none;

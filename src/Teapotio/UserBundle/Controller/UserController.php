@@ -41,7 +41,7 @@ class UserController extends Controller
             if ($form->isValid() === true) {
 
                 $em = $this->get('doctrine')
-                           ->getEntityManager();
+                           ->getManager();
 
                 $image->setUser(
                     $this->get('security.context')->getToken()->getUser()
@@ -153,7 +153,7 @@ class UserController extends Controller
             if ($form->isValid() === true) {
 
                 $em = $this->get('doctrine')
-                           ->getEntityManager();
+                           ->getManager();
 
                 $user->getSettings()->setUser($user);
 

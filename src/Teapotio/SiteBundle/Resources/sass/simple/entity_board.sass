@@ -1,3 +1,5 @@
+@import 'melements'
+
 // Module that lists boards
 .boards-concise-list
     li
@@ -28,3 +30,9 @@
             text-align: center
         td:first-child
             font-weight: bold
+    .alert
+        margin-bottom: 8px
+    & > *
+        @include element-module
+        @include element-spacing
+        @include element-inner-spacing
