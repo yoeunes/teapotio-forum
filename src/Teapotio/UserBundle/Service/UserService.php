@@ -19,7 +19,7 @@ use Teapotio\UserBundle\Entity\UserSettings;
 
 use Teapotio\ForumBundle\Entity\UserStat;
 
-use Teapotio\Base\UserBundle\Form\UserSignupType;
+use Teapotio\UserBundle\Form\UserSignupType;
 
 use Teapotio\Base\UserBundle\Service\UserService as BaseService;
 

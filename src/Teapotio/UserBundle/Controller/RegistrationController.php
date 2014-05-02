@@ -52,7 +52,7 @@ class RegistrationController extends BaseController
             }
         }
 
-        return $this->render('TeapotioBaseUserBundle:Registration:signup.html.twig', array(
+        return $this->render('TeapotioBaseUserBundle:Registration:page/signup.html.twig', array(
             'form' => $form->createView()
         ));
     }

@@ -1,0 +1,13 @@
+{% extends "TeapotioForumBundle:Layout:content_wrapper.html.twig" %}
+
+{% block content_wrapper_class %} registration signup{% endblock %}
+
+{% block content %}
+
+  <form action="{{ path("TeapotioUserBundle_signup") }}" method="post" {{ form_enctype(form) }} class="two-col">
+    <h2>{% trans %}Sign.up.message{% endtrans %}</h2>
+
+    {% include "TeapotioUserBundle:Component:form/signup.html.twig" with {form: form} %}
+  </form>
+
+{% endblock %}

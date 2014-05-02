@@ -1,0 +1,20 @@
+{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+
+{% block Wrapper_class %}{{ parent() }} Wrapper--securityLogin{% endblock %}
+
+{% block content %}
+
+  <form action="{{ path('TeapotioBaseUserBundle_login_check') }}" method="post" class="SecurityPartialLogin">
+
+    <h2>{% trans %}Login.message{% endtrans %}</h2>
+
+    {% if login_error %}
+      {% include "TeapotioSiteBundle:Prompt:error.html.twig" with {
+        message: login_error.message
+      } %}
+    {% endif %}
+
+    {% include "TeapotioUserBundle:Component:form/login.html.twig" with {last_username: last_username} %}
+  </form>
+
+{% endblock %}

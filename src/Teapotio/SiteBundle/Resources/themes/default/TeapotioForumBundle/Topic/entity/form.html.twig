@@ -1,0 +1,32 @@
+{#
+  Required variables:
+    - form_path
+    - user (from related templates)
+    - board (from parent template)
+    - form
+    - message (can be null)
+#}
+
+{% extends "TeapotioForumBundle:Topic:entity/base.html.twig" %}
+
+{% block Topic_prefix %}
+  {{ form_errors(form) }}
+
+  <form action="{% block Topic_form_path %}{% endblock %}" method="post" class="{% block Topic_form_class %}Topic-form{% endblock %}" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block Topic_suffix %}
+  </form>
+{% endblock %}
+
+
+{% block Topic_header_content %}
+  {{ form_widget(form.title, {attr: {placeholder: "Title"|trans }}) }}
+{% endblock %}
+
+
+{% block Topic_body_content %}
+  {% include "TeapotioForumBundle:Topic:component/formBody.html.twig" with {form: form, message: message} %}
+
+  {{ form_rest(form) }} {# outputs the rest of the form #}
+{% endblock %}

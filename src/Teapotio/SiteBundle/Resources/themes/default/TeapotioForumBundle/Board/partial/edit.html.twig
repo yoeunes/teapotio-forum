@@ -1,0 +1,89 @@
+{% extends "TeapotioSiteBundle:Layout:wrapper/settings.html.twig" %}
+
+{% block Wrapper_class %}{{ parent() }} Wrapper--boardEdit{% endblock %}
+
+{% block content %}
+  <div class="BoardPartialSettings">
+    <div class="BoardPartialSettings-name">
+      <h3>{% trans %}Edit.board.data{% endtrans %}</h3>
+      <form action="" method="post" {{ form_enctype(form) }}>
+        {% include "TeapotioSiteBundle:Prompt:info.html.twig" with {
+          message: 'The.board.url.is.created.based.on.the.short.title'|trans
+        } %}
+
+        {{ form_errors(form) }}
+
+        {{ form_widget(form) }}
+
+        <button>{% trans %}Edit.board{% endtrans %}</button>
+      </form>
+    </div>
+
+    <div class="BoardPartialSettings-moveAndDelete">
+      <h3>{% trans %}Move.topics.and.delete.board{% endtrans %}</h3>
+
+      <form action="{{ forum_path('ForumDeleteBoard', current_board) }}" method="post">
+        {% include "TeapotioSiteBundle:Prompt:info.html.twig" with {
+          message: 'Move.topics.and.delete.board.notice'|trans
+        } %}
+
+        {% if app.session.flashbag.has('delete_error') == true %}
+          <div>
+            {% for message in app.session.flashbag.get('delete_error') %}
+              {{ message }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% trans %}Move.content.to{% endtrans %}
+        {% set boards = get_boards() %}
+        {% include "TeapotioForumBundle:Board:component/select.html.twig" with {boards: boards, name: "board_id", class: "input-large"} %}
+        {% trans %}and{% endtrans %}
+
+        <button>{% trans %}Delete{% endtrans %}</button>
+      </form>
+    </div>
+
+    <div class="BoardPartialSettings-moveBoard">
+      <h3>{% trans %}Move.board{% endtrans %}</h3>
+
+      <form action="" method="post">
+        {% if app.session.flashbag.has('move_error') == true %}
+          {% include "TeapotioSiteBundle:Prompt:error.html.twig" with {
+            message: app.session.flashbag.get('delete_error')
+          } %}
+        {% endif %}
+
+        {% set boards = get_boards() %}
+        {% include "TeapotioForumBundle:Board:component/select.html.twig" with {boards: boards, name: "board_id", class: "input-large"} %}
+
+        <button>{% trans %}Move{% endtrans %}</button>
+      </form>
+    </div>
+
+    <div class="BoardPartialSettings-accessPermissions">
+      <h3>{% trans %}Access.permissions{% endtrans %}</h3>
+
+      <form action="{{ forum_path('ForumEditBoardPermissions', current_board) }}" method="post">
+        <table>
+          <tr>
+            <th>{% trans %}Groups{% endtrans %}</th>
+            <th>{% trans %}Misc{% endtrans %}</th>
+            <th colspan="3">{% trans %}Topic{% endtrans %}</th>
+            <th colspan="3">{% trans %}Message{% endtrans %}</th>
+            <th colspan="3">{% trans %}Board{% endtrans %}</th>
+          </tr>
+
+          {% include "TeapotioForumBundle:Board:component/permissions/columnHeader.html.twig" %}
+
+          {% for group in groups %}
+            {% set name = 'permissions[' ~ group.id ~ ']' %}
+            {% include "TeapotioForumBundle:Board:component/permissions/rowGroup.html.twig" with {name: name, group: group, board: current_board} %}
+          {% endfor %}
+        </table>
+
+        <button>{% trans %}Save{% endtrans %}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

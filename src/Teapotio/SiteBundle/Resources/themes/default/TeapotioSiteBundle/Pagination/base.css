@@ -1,0 +1,16 @@
+.Pagination ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.Pagination ul li:first-child {
+  margin-left: 0;
+}
+
+.Pagination .Pagination-total {
+  font-size: 80%;
+}
+
+.Pagination .Pagination-space {
+  opacity: 0.5;
+}

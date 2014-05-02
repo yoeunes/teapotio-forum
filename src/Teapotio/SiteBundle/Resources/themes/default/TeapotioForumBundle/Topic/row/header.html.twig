@@ -1,0 +1,23 @@
+{% extends "TeapotioForumBundle:Topic:row/base.html.twig" %}
+
+{% block TopicRow_class %}{{ parent() }} TopicRow--header{% endblock %}
+
+{% block TopicRow_author_content %}
+  {% trans %}Author{% endtrans %}
+{% endblock %}
+
+{% block TopicRow_content %}
+  {% trans %}Title{% endtrans %}
+{% endblock %}
+
+{% block TopicRow_responder_content %}
+  {% trans %}Last reply{% endtrans %}
+{% endblock %}
+
+{% block TopicRow_statsTotalViews_content %}
+  {% trans %}Views{% endtrans %}
+{% endblock %}
+
+{% block TopicRow_statsTotalPosts_content %}
+  {% trans %}Posts{% endtrans %}
+{% endblock %}

@@ -266,7 +266,7 @@ class MessageService extends BaseMessageService
     {
         return $this->container
                     ->get('templating')
-                    ->render('TeapotioForumBundle:Modules:wysiwyg/reply.html.twig', array('user' => $user));
+                    ->render('TeapotioForumBundle:Component:wysiwyg/reply.html.twig', array('user' => $user));
     }
 
     /**
@@ -281,7 +281,7 @@ class MessageService extends BaseMessageService
         return $this->container
                     ->get('templating')
                     ->render(
-                        'TeapotioForumBundle:Modules:wysiwyg/quote.html.twig',
+                        'TeapotioForumBundle:Component:wysiwyg/quote.html.twig',
                         array('message' => $message, 'flag' => null)
                     );
     }
@@ -335,8 +335,6 @@ class MessageService extends BaseMessageService
 
         $regex = '#<img src="style_emoticons/<\#EMO_DIR\#>/\w+.\w+" style="vertical-align:middle" emoid="([^>]+)" border="0" alt="\w+\.\w+" />#';
         $message->setBody(preg_replace($regex, '<span class="emo">$1</span>', $message->getBody()));
-
-        $message->setBody(nl2br($message->getBody()));
 
         $regex = '#\[img:(?:.+)\](.+)\[/img:(?:.+)\]#s';
         $message->setBody(preg_replace($regex, '<br /><img src="$1" />', $message->getBody()));

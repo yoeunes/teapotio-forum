@@ -1,0 +1,12 @@
+{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+
+{% block Wrapper_class %}{{ parent() }} Wrapper--listMessage{% endblock %}
+
+{% block content %}
+  <div class="MessagePartialList">
+    {% set message = messages|first %}
+    {% include "TeapotioForumBundle:Topic:entity/individual.html.twig" with {user: message.user, topic: topic, message: message, flag: flag_topic} %}
+
+    {% include "TeapotioForumBundle:Message:component/list.html.twig" with {messages: messages|slice(1), flags: flags} %}
+  </div>
+{% endblock %}

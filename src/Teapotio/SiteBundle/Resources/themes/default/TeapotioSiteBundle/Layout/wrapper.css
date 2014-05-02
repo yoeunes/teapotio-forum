@@ -1,0 +1,81 @@
+.Wrapper > * {
+  padding: 0 20px;
+  margin: 15px;
+}
+
+.Wrapper > .TopicPartialList {
+  margin: 0 15px;
+}
+
+.Wrapper .Wrapper-navigation {
+  background-color: #333;
+  overflow: auto;
+}
+
+.Wrapper .Wrapper-navigation,
+.Wrapper .Wrapper-navigation a {
+  color: #efefef;
+  -webkit-transition: color 500ms ease;
+     -moz-transition: color 500ms ease;
+       -o-transition: color 500ms ease;
+          transition: color 500ms ease;
+}
+
+.Wrapper .Wrapper-navigation a:hover {
+  color: #fe6c5f;
+}
+
+.Wrapper .Wrapper-navigation nav li {
+  font-size: 16px;
+  line-height: 44px;
+}
+
+.Wrapper .Wrapper-navigation .Pagination {
+  float: right;
+}
+
+.Wrapper .Wrapper-navigation .Breadcrumb li {
+  margin-right: 10px;
+  padding-right: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.Wrapper .Wrapper-navigation nav.Breadcrumb li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.Wrapper .Wrapper-navigation .Breadcrumb li:after,
+.Wrapper .Wrapper-navigation .Breadcrumb li:before {
+  border: 10px solid transparent;
+  content: ' ';
+  bottom: 12px;
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+.Wrapper .Wrapper-navigation .Breadcrumb li:before {
+  border-left-color: #777;
+  right: -8px;
+  z-index: -2;
+}
+
+.Wrapper .Wrapper-navigation .Breadcrumb li:after {
+  border-left-color: #333;
+  right: -6px;
+  z-index: -1;
+}
+
+.Wrapper .Wrapper-navigation .Breadcrumb li:last-child:after,
+.Wrapper .Wrapper-navigation .Breadcrumb li:last-child:before {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .Wrapper > * {
+    padding: 0 15px;
+    margin: 10px;
+  }
+}

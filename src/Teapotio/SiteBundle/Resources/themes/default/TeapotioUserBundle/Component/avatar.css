@@ -1,0 +1,8 @@
+.Avatar {
+  display: block;
+  overflow: hidden;
+}
+
+.Avatar img {
+  display: block;
+}

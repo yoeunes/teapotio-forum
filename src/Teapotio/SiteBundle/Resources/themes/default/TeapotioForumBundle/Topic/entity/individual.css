@@ -1,0 +1,9 @@
+.Topic.Topic--individual .Topic-actions {
+  float: right;
+  line-height: 30px;
+}
+
+.Topic.Topic--individual .Topic-actions a {
+  display: inline-block;
+  margin-left: 25px;
+}

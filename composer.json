@@ -18,7 +18,9 @@
         "teapotio/base-cache-bundle": "dev-master",
         "teapotio/base-forum-bundle": "dev-master",
         "teapotio/base-user-bundle": "dev-master",
+        "teapotio/base-theme-bundle": "dev-master",
         "gregwar/image-bundle": "dev-master",
+        "gregwar/captcha-bundle": "dev-master",
         "exercise/htmlpurifier-bundle": "dev-master",
 
         "doctrine/orm": "~2.2,>=2.2.3",

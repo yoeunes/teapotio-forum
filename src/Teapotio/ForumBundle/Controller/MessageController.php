@@ -60,7 +60,7 @@ class MessageController extends BaseController
             }
         }
 
-        return $this->render('TeapotioBaseForumBundle:Message:new.html.twig', array(
+        return $this->render('TeapotioForumBundle:Message:page/new.html.twig', array(
             'form'          => $form->createView(),
             'current_board' => $board,
             'topic'         => $topic,
@@ -106,11 +106,11 @@ class MessageController extends BaseController
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
                 'title' => $title,
-                'html'  => $this->renderView('TeapotioBaseForumBundle:Message:raw/edit.html.twig', $params),
+                'html'  => $this->renderView('TeapotioForumBundle:Message:partial/edit.html.twig', $params),
             ));
         }
 
-        return $this->render('TeapotioBaseForumBundle:Message:edit.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Message:page/edit.html.twig', $params);
     }
 
     public function flagAction($boardSlug, $topicSlug, $messageId)
@@ -227,7 +227,7 @@ class MessageController extends BaseController
         $message = new Message();
         $message->setUser($user);
         $message->setBody($this->renderView(
-            'TeapotioBaseForumBundle:Modules:rules.html.twig',
+            'TeapotioForumBundle:Component:rules.html.twig',
             array('prefix' => $this->get('translator')->trans('Add.a.new.message'))
         ));
         $form = $this->createForm(new CreateMessageType(), $message, array('new_entry' => true))->createView();
@@ -267,11 +267,11 @@ class MessageController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioBaseForumBundle:Message:raw/listWithPagination.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:Message:partial/listWithPagination.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioBaseForumBundle:Message:list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Message:page/list.html.twig', $params);
     }
 }

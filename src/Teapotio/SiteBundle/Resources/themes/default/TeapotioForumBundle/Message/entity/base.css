@@ -1,0 +1,55 @@
+.Message {
+  overflow: auto;
+  position: relative;
+}
+
+.Message .Message-sidebar {
+  float: left;
+  font-size: 13px;
+}
+
+.Message .Message-sidebar .Avatar {
+  border: 1px solid #ddd;
+  padding: 2px;
+  margin-bottom: 5px;
+  -webkit-transition: border 500ms ease;
+     -moz-transition: border 500ms ease;
+       -o-transition: border 500ms ease;
+          transition: border 500ms ease;
+}
+
+.Message .Message-sidebar .Avatar:hover {
+  border-color: #fe6c5f;
+}
+
+.Message .Message-sidebar .Message-sidebar-author {
+  text-align: center;
+}
+
+.Message .Message-body {
+  margin-left: 120px;
+  overflow: auto;
+}
+
+.Message .Message-body button {
+  margin-top: 10px;
+}
+
+.Message .Message-footer {
+  bottom: 0;
+  font-size: 13px;
+  position: absolute;
+  right: 0;
+}
+
+.Message .Message-footer a {
+  margin-left: 15px;
+}
+
+.Message .Message-footer a:hover {
+  text-decoration: none;
+}
+
+.Message .Prompt {
+  margin-bottom: 6px;
+}

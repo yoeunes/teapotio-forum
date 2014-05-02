@@ -1,0 +1,7 @@
+{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+
+{% block Wrapper_class %}{{ parent() }} Wrapper--messageEdit{% endblock %}
+
+{% block content %}
+  {% include "TeapotioForumBundle:Message:entity/edit.html.twig" with {user: message.user, form: form, message: message} %}
+{% endblock %}

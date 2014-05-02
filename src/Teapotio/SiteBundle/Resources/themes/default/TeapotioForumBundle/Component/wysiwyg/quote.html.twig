@@ -1,0 +1,9 @@
+{# If you modify this markup, don't forget to change the method in MessageService.php accordingly  #}
+{% spaceless %}
+  <div class="wysiwyg-block wysiwyg-quote wysiwyg-quote-{{ message.id }}">
+    <!-- start quote -->
+      {% include "TeapotioForumBundle:Message:entity/individual.html.twig"
+         with {user: message.user, message: message, show_action_buttons: false} %}
+    <!-- end quote -->
+  </div>
+{% endspaceless %}

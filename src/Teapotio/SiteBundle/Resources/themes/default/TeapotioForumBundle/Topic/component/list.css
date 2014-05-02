@@ -1,0 +1,24 @@
+table.TopicComponentList {
+  border-spacing: 0 12px;
+  width: 100%;
+}
+
+table.TopicComponentList .TopicRow .TopicRow-author {
+  width: 6%;
+}
+
+table.TopicComponentList .TopicRow .TopicRow-responder {
+  width: 18%;
+}
+
+table.TopicComponentList .TopicRow .TopicRow-lastResponseDate {
+  width: 15%;
+}
+
+@media (max-width: 900px) {
+  table.TopicComponentList .TopicRow .TopicRow-author,
+  table.TopicComponentList .TopicRow .TopicRow-lastResponseDate,
+  table.TopicComponentList .TopicRow .TopicRow-responder {
+    width: auto;
+  }
+}

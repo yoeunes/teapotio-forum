@@ -1,0 +1,38 @@
+.TopicRow .TopicRow-statsTotalPosts,
+.TopicRow .TopicRow-statsTotalViews {
+  text-align: center;
+}
+
+.TopicRow .Breadcrumb li {
+  margin-right: 5px;
+  padding-right: 10px;
+  position: relative;
+}
+
+.TopicRow .Breadcrumb li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.TopicRow .Breadcrumb li a:after {
+  content: '/';
+  position: absolute;
+  right: 0;
+}
+
+.TopicRow .Breadcrumb li:last-child a:after {
+  content: '';
+}
+
+@media (max-width: 600px) {
+  .TopicRow .TopicRow-statsTotalViews,
+  .TopicRow .TopicRow-responder {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .TopicRow .TopicRow-author {
+    display: none;
+  }
+}

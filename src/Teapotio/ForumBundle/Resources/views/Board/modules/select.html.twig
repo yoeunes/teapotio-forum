@@ -1,7 +1,0 @@
-<select name="{{ name }}"{% if class is defined %} class="{{ class }}"{% endif %}>
-  <option value=""></option>
-  {% for board in boards %}
-    {% set level = 0 %}
-    {% include "TeapotioForumBundle:Board:modules/selectOption.html.twig" with {board: board, level: level} %}
-  {% endfor %}
-</select>

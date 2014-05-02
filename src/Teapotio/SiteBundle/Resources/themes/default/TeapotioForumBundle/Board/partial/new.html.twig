@@ -1,0 +1,21 @@
+{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+
+{% block Wrapper_class %}{{ parent() }} Wrapper--boardNew{% endblock %}
+
+{% block content %}
+  <form action="" method="post" {{ form_enctype(form) }} class="BoardPartialEdit">
+    {{ form_errors(form) }}
+
+    {% if current_board is null %}
+      {% spaceless %}
+        <label>{% trans %}Board{% endtrans %}</label>
+        {% set boards = get_boards() %}
+        {% include "TeapotioForumBundle:Board:component/select.html.twig" with {boards: boards, name: "board_id", class: "text-xlarge"} %}
+      {% endspaceless %}
+    {% endif %}
+
+    {{ form_widget(form) }}
+
+    <button>{% trans %}Create.board{% endtrans %}</button>
+  </form>
+{% endblock %}

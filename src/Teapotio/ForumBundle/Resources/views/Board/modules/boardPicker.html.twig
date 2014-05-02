@@ -1,9 +1,0 @@
-{% spaceless %}
-  <div class="control-group">
-    <label class="control-label required">{% trans %}Pick.a.board{% endtrans %}</label>
-    <div class="controls">
-      {% set boards = get_boards() %}
-      {% include "TeapotioForumBundle:Board:modules/select.html.twig" with {boards: boards, name: "board_id"} %}
-    </div>
-  </div>
-{% endspaceless %}

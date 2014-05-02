@@ -26,7 +26,7 @@ class ModuleController extends BaseController
             'containerClass' => 'module list dark',
         );
 
-        return $this->render('TeapotioBaseForumBundle:Board:modules/conciseList.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Board:component/conciseList.html.twig', $params);
     }
 
     public function listBoardsAction()
@@ -36,7 +36,7 @@ class ModuleController extends BaseController
             'containerClass' => '',
         );
 
-        return $this->render('TeapotioBaseForumBundle:Board:modules/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Board:component/list.html.twig', $params);
     }
 
     public function topUsersAction()
@@ -45,7 +45,7 @@ class ModuleController extends BaseController
             'containerClass' => '',
         );
 
-        return $this->render('TeapotioForumBundle:Modules:topUsers.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Component:topUsers.html.twig', $params);
     }
 
     public function moderationListAction()
@@ -58,7 +58,7 @@ class ModuleController extends BaseController
             'containerClass' => '',
         );
 
-        return $this->render('TeapotioForumBundle:Moderation:modules/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Moderation:component/list.html.twig', $params);
     }
 
 }

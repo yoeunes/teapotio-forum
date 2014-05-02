@@ -29,7 +29,7 @@ class FlagController extends BaseController
             'containerClass' => '',
         );
 
-        return $this->render('TeapotioForumBundle:Flag:modules/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:Flag:component/list.html.twig', $params);
     }
 
     public function ignoreAction($flagId)

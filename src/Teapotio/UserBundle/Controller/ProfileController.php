@@ -82,12 +82,12 @@ class ProfileController extends Controller
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioUserBundle:Profile:raw/index.html.twig', $params),
+                'html'   => $this->renderView('TeapotioUserBundle:Profile:partial/index.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioUserBundle:Profile:index.html.twig', $params);
+        return $this->render('TeapotioUserBundle:Profile:page/index.html.twig', $params);
     }
 
     public function settingsAction($userSlug, $userId)
@@ -157,11 +157,11 @@ class ProfileController extends Controller
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioUserBundle:Profile:raw/settings.html.twig', $params),
+                'html'   => $this->renderView('TeapotioUserBundle:Profile:partial/settings.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioUserBundle:Profile:settings.html.twig', $params);
+        return $this->render('TeapotioUserBundle:Profile:page/settings.html.twig', $params);
     }
 }

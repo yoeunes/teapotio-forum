@@ -1,0 +1,32 @@
+{#
+  Variable required:
+    - user
+#}
+
+{% extends "TeapotioSiteBundle:Navigation:global.html.twig" %}
+
+{% block Navigation_class %}{{ parent() }} Navigation--user{% endblock %}
+
+{% block Navigation_content %}
+  <li>
+    <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}"
+       class="Navigation--user-button Navigation--user-button--profile">
+      {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "Navigation-icon", is_link: false, user: user, size: 40} %}
+      {{ user.username }}
+    </a>
+  </li>
+
+  <li>
+    <a href="{{ path('TeapotioBaseUserBundle_settings', {userSlug: user.slug, userId: user.id}) }}"
+       class="Navigation--user-button Navigation--user-button--settings">
+      {% trans %}Settings{% endtrans %}
+    </a>
+  </li>
+
+  <li>
+    <a href="{{ path('TeapotioBaseUserBundle_logout') }}"
+       class="Navigation--user-button Navigation--user-button--logout">
+      {% trans %}Logout{% endtrans %}
+    </a>
+  </li>
+{% endblock %}

@@ -51,11 +51,11 @@ class SecurityController extends Controller
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioUserBundle:Security:raw/login.html.twig', $params),
+                'html'   => $this->renderView('TeapotioUserBundle:Security:partial/login.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioUserBundle:Security:login.html.twig', $params);
+        return $this->render('TeapotioUserBundle:Security:page/login.html.twig', $params);
     }
 }

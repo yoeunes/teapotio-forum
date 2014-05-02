@@ -1,0 +1,10 @@
+{% set level = 0 %}
+<ul class="boards-concise-list{% if containerClass is defined %} {{ containerClass }}{% endif %}">
+  <li class="module-header toggle-visibility" data-target=".cslvl0">
+    <div class="icon icon-cloud"></div>
+    <div class="module-header-title">{% trans %}List.of.boards{% endtrans %}</div>
+  </li>
+  {% for board in boards %}
+    {% include "TeapotioForumBundle:Board:component/individualConciseRow.html.twig" with {board: board, level: level} %}
+  {% endfor %}
+</ul>

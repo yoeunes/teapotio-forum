@@ -1,0 +1,21 @@
+{% extends "TeapotioForumBundle:Topic:entity/form.html.twig" %}
+
+{#
+  Required variables:
+    - form_path
+    - user
+    - board
+    - form
+    - message
+#}
+
+{% block Topic_form_path %}
+  {% if board is null %}
+    {{ forum_path("ForumNewTopicWithoutBoard") }}
+  {% else %}
+    {{ forum_path("ForumNewTopic", board) }}
+  {% endif %}
+{% endblock %}
+
+
+{% block Topic_form_class %}{{ parent() }} Topic-form--edit{% endblock %}

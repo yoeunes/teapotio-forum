@@ -1,0 +1,34 @@
+{% extends "TeapotioForumBundle:Topic:entity/base.html.twig" %}
+
+{% block Topic_class %}{{ parent() }} Topic--individual{% endblock %}
+
+{% block Topic_prefix %}
+  {% if app.user|is_moderator %}
+    <div class="Topic-actions">
+      {% spaceless %}
+        <a href="{{ forum_path("ForumTopicPin", topic) }}"
+           data-toggle-label=" {% if topic.isPinned == true %}{% trans %}Pin{% endtrans %}{% else %}{% trans %}Pinned{% endtrans %}{% endif %}">
+          {% if topic.isPinned == true %}{% trans %}Pinned{% endtrans %}{% else %}{% trans %}Pin{% endtrans %}{% endif %}
+        </a>
+        <a href="{{ forum_path("ForumTopicLock", topic) }}"
+           data-toggle-label=" {% if topic.isLocked == true %}{% trans %}Lock{% endtrans %}{% else %}{% trans %}Locked{% endtrans %}{% endif %}">
+          {% if topic.isLocked == true %}{% trans %}Locked{% endtrans %}{% else %}{% trans %}Lock{% endtrans %}{% endif %}
+        </a>
+        {% if app.user|can_delete(topic) == true %}
+          <a href="{{ forum_path("ForumTopicDelete", topic) }}"
+             data-toggle-label=" {% if topic.isDeleted == true %}{% trans %}Delete{% endtrans %}{% else %}{% trans %}Deleted{% endtrans %}{% endif %}">
+            {% if topic.isDeleted == true %}{% trans %}Deleted{% endtrans %}{% else %}{% trans %}Delete{% endtrans %}{% endif %}
+          </a>
+        {% endif %}
+      {% endspaceless %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block Topic_header_content %}
+  <h1>{{ topic.title }}</h1>
+{% endblock %}
+
+{% block Topic_body_content %}
+  {% include "TeapotioForumBundle:Message:entity/individual.html.twig" with {topic: topic, message: message, flag: flag} %}
+{% endblock %}

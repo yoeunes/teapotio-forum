@@ -2,6 +2,8 @@ exercise_html_purifier:
     default:
         HTML.AllowedCommentsRegexp: "/^start reply$|^start quote$|^end reply$|^end quote$/s"
 
+gregwar_captcha: ~
+
 parameters:
     teapotio_user.user_service.class: Teapotio\UserBundle\Service\UserService
     teapotio_user.user_group_service.class: Teapotio\UserBundle\Service\UserGroupService

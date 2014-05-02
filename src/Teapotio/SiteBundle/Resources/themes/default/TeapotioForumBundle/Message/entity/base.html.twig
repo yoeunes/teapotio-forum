@@ -1,0 +1,37 @@
+{#
+  Required variables:
+    - user
+#}
+
+{% if show_action_buttons is not defined %}
+  {% set show_action_buttons = true %}
+{% endif %}
+
+<div class="{% block Message_class %}Message{% endblock %}" id="{% block Message_id %}{% endblock %}">
+
+  {% block Message_prefix %}{% endblock %}
+
+  <div class="Message-sidebar">
+    {% block Message_sidebar_content %}
+      {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "", user: user, size: 100} %}
+    {% endblock %}
+
+    <div class="Message-sidebar-author">
+      {% block Message_author_content %}
+          <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}" class="to-main">{{ user.username }}</a>
+      {% endblock %}
+    </div>
+  </div>
+
+  <div class="Message-body">
+    {% block Message_body %}
+      {# The body of the message #}
+    {% endblock %}
+  </div>
+
+  <div class="Message-footer">
+    {% block Message_footer_content %}{% endblock %}
+  </div>
+
+  {% block Message_suffix %}{% endblock %}
+</div>

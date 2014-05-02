@@ -1,0 +1,37 @@
+.TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
+  font-size: 22px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-info {
+  font-size: 12px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-responder {
+  line-height: 40px;
+  overflow: auto;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-responder .Avatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-statsTotalPosts,
+.TopicRow.TopicRow--individual .TopicRow-statsTotalViews {
+  font-size: 20px;
+}
+
+@media (max-width: 800px) {
+
+  .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
+    font-size: 16px;
+  }
+
+  .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-info {
+    font-size: 11px;
+  }
+  
+  .TopicRow.TopicRow--individual .TopicRow-responder span {
+    display: none;
+  }
+}

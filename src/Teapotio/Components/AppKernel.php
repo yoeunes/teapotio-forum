@@ -22,11 +22,13 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             new \Gregwar\ImageBundle\GregwarImageBundle(),
+            new \Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new \Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
 
             new \Teapotio\Base\UserBundle\TeapotioBaseUserBundle(),
             new \Teapotio\Base\ForumBundle\TeapotioBaseForumBundle(),
             new \Teapotio\Base\CacheBundle\TeapotioBaseCacheBundle(),
+            new \Teapotio\Base\ThemeBundle\TeapotioBaseThemeBundle(),
 
             new \Teapotio\ForumBundle\TeapotioForumBundle(),
             new \Teapotio\SiteBundle\TeapotioSiteBundle(),
