@@ -1,9 +1,8 @@
-{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
 
-{% block Wrapper_class %}{{ parent() }} Wrapper--editTopic{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--forumTopicEdit{% endblock %}
 
-{% block content %}
-
+{% block Partial_content %}
   {% include "TeapotioForumBundle:Topic:entity/edit.html.twig"
     with {
       user:    message.user,
@@ -12,5 +11,4 @@
       message: message
     }
   %}
-
 {% endblock %}

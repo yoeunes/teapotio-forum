@@ -1,7 +1,7 @@
 body {
   color: #000;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  margin: 0 0 0 65px;
+  margin: 0 0 0 64px;
   padding: 0;
 }
 
@@ -92,9 +92,9 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   margin: 0;
-  padding: 6px 8px;
+  padding: 8px 16px;
 }
 
 button:hover {

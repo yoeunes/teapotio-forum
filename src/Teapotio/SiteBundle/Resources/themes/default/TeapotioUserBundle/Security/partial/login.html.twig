@@ -1,10 +1,9 @@
-{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
 
-{% block Wrapper_class %}{{ parent() }} Wrapper--securityLogin{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--forumUserLogin{% endblock %}
 
-{% block content %}
-
-  <form action="{{ path('TeapotioBaseUserBundle_login_check') }}" method="post" class="SecurityPartialLogin">
+{% block Partial_content %}
+  <form action="{{ path('TeapotioBaseUserBundle_login_check') }}" method="post">
 
     <h2>{% trans %}Login.message{% endtrans %}</h2>
 
@@ -16,5 +15,4 @@
 
     {% include "TeapotioUserBundle:Component:form/login.html.twig" with {last_username: last_username} %}
   </form>
-
 {% endblock %}

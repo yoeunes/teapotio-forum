@@ -34,6 +34,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User extends BaseUser
 {
+    /**
+     * @var \Teapotio\UserBundle\Entity\UserGroup $displayGroup
+     *
+     * @ORM\ManyToOne(targetEntity="\Teapotio\UserBundle\Entity\UserGroup", inversedBy="userDisplay")
+     */
+    protected $displayGroup;
 
     /**
      * @var ArrayCollection $groups

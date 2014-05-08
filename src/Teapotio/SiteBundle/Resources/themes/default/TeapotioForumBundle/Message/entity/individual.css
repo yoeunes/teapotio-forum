@@ -23,5 +23,6 @@
 }
 
 .Message.Message--individual .Message-body {
+  line-height: 20px;
   margin-bottom: 15px;
 }

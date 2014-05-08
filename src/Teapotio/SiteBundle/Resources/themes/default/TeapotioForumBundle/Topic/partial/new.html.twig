@@ -1,9 +1,8 @@
-{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
 
-{% block Wrapper_class %}{{ parent() }} Wrapper--newTopic{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--forumTopicNew{% endblock %}
 
-{% block content %}
-
+{% block Partial_content %}
   {% include "TeapotioForumBundle:Topic:entity/new.html.twig"
     with {
       user:    app.user,
@@ -12,5 +11,4 @@
       message: null
     }
   %}
-
 {% endblock %}

@@ -1,29 +1,29 @@
-{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
 
-{% block Wrapper_class %}{{ parent() }} Wrapper--profileIndex{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--forumUserProfile{% endblock %}
 
-{% block content %}
-  <div class="ProfilePartialIndex">
-    {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "", user: user, size: 100} %}
+{% block Partial_content %}
+  <div class="Partial-header">
+    {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "", user: user, size: 150} %}
 
-    <h2 class="ProfilePartialIndex-username">{{ user.username }}</h2>
+    <h2 class="Partial-header-username">{{ user.username }}</h2>
+  </div>
 
-    <div class="ProfilePartialIndex-stats">
-      <span>{{ user.forumStat.totalTopic }} {% trans %}Topics{% endtrans %}</span>
-      <span>{{ user.forumStat.totalMessage }} {% trans %}Messages{% endtrans %}</span>
+  <div class="Partial-stats">
+    <span>{{ user.forumStat.totalTopic }} {% trans %}Topics{% endtrans %}</span>
+    <span>{{ user.forumStat.totalMessage }} {% trans %}Messages{% endtrans %}</span>
+  </div>
+
+  {% if user.description != "" or user.description != null %}
+    <div class="Partial-description">
+      {{ user.description|raw }}
     </div>
-
-    {% if user.description != "" or user.description != null %}
-      <div class="ProfilePartialIndex-description">
-        {{ user.description|raw }}
-      </div>
-    {% endif %}
+  {% endif %}
 
   {% if latest_topics.count != 0 %}
-    <div class="ProfilePartialIndex-topics">
+    <div class="Partial-topics">
       <h3>{% trans %}Latest.created.topics{% endtrans %}</h3>
       {% include "TeapotioForumBundle:Topic:component/list.html.twig" with {topics: latest_topics, showBoard: true} %}
     </div>
   {% endif %}
-  </div>
 {% endblock %}

@@ -3,6 +3,34 @@
   text-align: center;
 }
 
+.TopicRow .TopicRow-content,
+.TopicRow .TopicRow-actions,
+.TopicRow .TopicRow-statsTotalViews,
+.TopicRow .TopicRow-responder {
+  padding-left: 10px;
+}
+
+.TopicRow .TopicRow-states {
+  font-size: 22px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.TopicRow .TopicRow-states > * {
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.TopicRow .TopicRow-states .TopicRow-states-pinned:before {
+  content: '\f08d';
+}
+
+.TopicRow .TopicRow-states .TopicRow-states-locked:before {
+  content: '\f023';
+}
+
 .TopicRow .Breadcrumb li {
   margin-right: 5px;
   padding-right: 10px;
@@ -34,5 +62,9 @@
 @media (max-width: 450px) {
   .TopicRow .TopicRow-author {
     display: none;
+  }
+
+  .TopicRow .TopicRow-content {
+    padding-left: 0;
   }
 }

@@ -1,5 +1,4 @@
 <tr class="{% block TopicRow_class %}TopicRow{% endblock %}">
-
   <td class="TopicRow-author">
     {% block TopicRow_author_content %}
       {% include "TeapotioUserBundle:Component:avatar.html.twig"
@@ -9,18 +8,6 @@
 
   <td class="TopicRow-content">
     {% block TopicRow_content %}
-
-      <div class="TopicRow-content-icons">
-        {% block TopicRow_content_icons_content %}
-          {% if topic.isPinned == true %}
-            <i class="icon-pushpin"></i>
-          {% endif %}
-          {% if topic.isLocked == true %}
-            <i class="icon-lock"></i>
-          {% endif %}
-        {% endblock %}
-      </div>
-
       <div class="TopicRow-content-lastPage">
         {% block TopicRow_content_lastPage_content %}
           {% if messages_per_age is defined %}
@@ -38,14 +25,24 @@
         {% endblock %}
       </div>
 
-        <div class="TopicRow-content-info">
-          {% block TopicRow_content_info %}
-            {% if showBoard is defined and showBoard == true %}
-              {% include "TeapotioForumBundle:Breadcrumb:board.html.twig" with {board: topic.board, topic: null} %}
-            {% endif %}
-          {% endblock %}
-        </div>
+      <div class="TopicRow-content-info">
+        {% block TopicRow_content_info %}
+          {% if showBoard is defined and showBoard == true %}
+            {% include "TeapotioForumBundle:Breadcrumb:board.html.twig" with {board: topic.board, topic: null} %}
+          {% endif %}
+        {% endblock %}
+      </div>
+    {% endblock %}
+  </td>
 
+  <td class="TopicRow-states">
+    {% block TopicRow_states_content %}
+      {% if topic.isPinned == true %}
+        <span class="TopicRow-states-pinned"></span>
+      {% endif %}
+      {% if topic.isLocked == true %}
+        <span class="TopicRow-states-locked"></span>
+      {% endif %}
     {% endblock %}
   </td>
 
@@ -69,6 +66,11 @@
   <td class="TopicRow-statsTotalPosts">
     {% block TopicRow_statsTotalPosts_content %}
       {{ topic.shortTotalPosts }}
+    {% endblock %}
+  </td>
+
+  <td class="TopicRow-actions">
+    {% block TopicRow_actions_content %}
     {% endblock %}
   </td>
 </tr>

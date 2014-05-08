@@ -1,7 +1,7 @@
-{% extends "TeapotioSiteBundle:Layout:wrapper.html.twig" %}
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
 
-{% block Wrapper_class %}{{ parent() }} Wrapper--messageEdit{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--forumMessageEdit{% endblock %}
 
-{% block content %}
+{% block Partial_content %}
   {% include "TeapotioForumBundle:Message:entity/edit.html.twig" with {user: message.user, form: form, message: message} %}
 {% endblock %}

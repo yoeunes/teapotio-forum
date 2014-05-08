@@ -27,15 +27,12 @@ class MessageController extends BaseController
         }
 
         $board = $this->getBoard();
-
         $topic = $this->getTopic();
+        $user = $this->getUser();
 
         $request = $this->get('request');
 
         $message = new Message();
-
-        $user = $this->getUser();
-
         $message->setUser($user);
 
         if ($this->get('teapotio.forum.access_permission')->canCreateMessage($user, $board) === false) {
@@ -71,11 +68,10 @@ class MessageController extends BaseController
     public function editAction($boardSlug, $topicSlug, $messageId)
     {
         $message = $this->getMessage();
-
-        $form = $this->createForm(new CreateMessageType(), $message);
-
         $topic = $this->getTopic();
         $board = $this->getBoard();
+
+        $form = $this->createForm(new CreateMessageType(), $message);
 
         $title = $this->generateTitle('Edit.message');
 
@@ -221,6 +217,12 @@ class MessageController extends BaseController
             throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
         }
 
+        if ($topic->isDeleted() === true) {
+            throw $this->createNotFoundException();
+        }
+
+        $this->get('teapotio.forum.topic')->view($topic);
+
         /**
          * Building the Message Form
          */
@@ -267,7 +269,7 @@ class MessageController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Message:partial/listWithPagination.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:Message:partial/list.html.twig', $params),
                 'title'  => $title
             ));
         }

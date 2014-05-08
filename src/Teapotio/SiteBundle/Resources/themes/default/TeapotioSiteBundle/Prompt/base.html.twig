@@ -14,12 +14,12 @@
     {% if message is iterable %}
       <ul class="Prompt-message">
         {% for m in message %}
-          <li>{{ m }}</li>
+          <li>{{ m|raw }}</li>
         {% endfor %}
       </ul>
     {% else %}
       <p class="Prompt-message">
-        {{ message }}
+        {{ message|raw }}
       </p>
     {% endif %}
   {% endblock %}

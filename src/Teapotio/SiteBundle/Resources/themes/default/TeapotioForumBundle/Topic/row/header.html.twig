@@ -2,6 +2,8 @@
 
 {% block TopicRow_class %}{{ parent() }} TopicRow--header{% endblock %}
 
+{% block TopicRow_states_content %}{% endblock %}
+
 {% block TopicRow_author_content %}
   {% trans %}Author{% endtrans %}
 {% endblock %}
@@ -21,3 +23,5 @@
 {% block TopicRow_statsTotalPosts_content %}
   {% trans %}Posts{% endtrans %}
 {% endblock %}
+
+{% block TopicRow_actions_content %}{% endblock %}

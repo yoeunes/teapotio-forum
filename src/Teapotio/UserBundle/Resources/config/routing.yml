@@ -48,3 +48,9 @@ TeapotioBaseUserBundle_setSettings:
     defaults: { _controller: TeapotioUserBundle:User:setSettings }
     requirements:
         _method: POST
+
+TeapotioBaseUserBundle_setGroups:
+    pattern: /u/set-groups/
+    defaults: { _controller: TeapotioUserBundle:User:setGroups }
+    requirements:
+        _method: POST

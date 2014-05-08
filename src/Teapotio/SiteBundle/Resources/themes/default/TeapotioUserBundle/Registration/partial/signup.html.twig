@@ -1,13 +1,11 @@
-{% extends "TeapotioForumBundle:Layout:content_wrapper.html.twig" %}
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
 
-{% block content_wrapper_class %} registration signup{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--forumUserSignup{% endblock %}
 
-{% block content %}
-
-  <form action="{{ path("TeapotioUserBundle_signup") }}" method="post" {{ form_enctype(form) }} class="two-col">
+{% block Partial_content %}
+  <form action="{{ path("TeapotioUserBundle_signup") }}" method="post" {{ form_enctype(form) }}>
     <h2>{% trans %}Sign.up.message{% endtrans %}</h2>
 
     {% include "TeapotioUserBundle:Component:form/signup.html.twig" with {form: form} %}
   </form>
-
 {% endblock %}

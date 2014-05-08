@@ -1,10 +1,14 @@
 .Wrapper > * {
-  padding: 0 20px;
-  margin: 15px;
+  padding: 0 15px;
+  margin: 0;
 }
 
-.Wrapper > .TopicPartialList {
-  margin: 0 15px;
+.Wrapper .Partial {
+  margin: 10px 0;
+}
+
+.Wrapper .Wrapper-notice {
+  padding: 0;
 }
 
 .Wrapper .Wrapper-navigation {
@@ -34,6 +38,10 @@
   float: right;
 }
 
+.Wrapper .Wrapper-navigation .Breadcrumb {
+  float: left;
+}
+
 .Wrapper .Wrapper-navigation .Breadcrumb li {
   margin-right: 10px;
   padding-right: 25px;
@@ -49,6 +57,7 @@
 .Wrapper .Wrapper-navigation .Breadcrumb li:after,
 .Wrapper .Wrapper-navigation .Breadcrumb li:before {
   border: 10px solid transparent;
+  border-right: 0;
   content: ' ';
   bottom: 12px;
   height: 0;
@@ -58,13 +67,13 @@
 
 .Wrapper .Wrapper-navigation .Breadcrumb li:before {
   border-left-color: #777;
-  right: -8px;
+  right: 2px;
   z-index: -2;
 }
 
 .Wrapper .Wrapper-navigation .Breadcrumb li:after {
   border-left-color: #333;
-  right: -6px;
+  right: 4px;
   z-index: -1;
 }
 
@@ -73,9 +82,19 @@
   display: none;
 }
 
-@media (max-width: 800px) {
-  .Wrapper > * {
-    padding: 0 15px;
-    margin: 10px;
+@media (max-width: 700px) {
+  .Wrapper .Wrapper-navigation nav li {
+    font-size: 14px;
+  }
+
+  .Wrapper .Wrapper-navigation .Breadcrumb li {
+    margin-right: 6px;
+    padding-right: 17px;
+  }
+
+  .Wrapper .Wrapper-navigation .Breadcrumb li:after,
+  .Wrapper .Wrapper-navigation .Breadcrumb li:before {
+    border-width: 8px;
+    bottom: 14px;
   }
 }

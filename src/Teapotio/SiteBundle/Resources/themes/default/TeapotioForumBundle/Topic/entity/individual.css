@@ -7,3 +7,14 @@
   display: inline-block;
   margin-left: 25px;
 }
+
+.Topic.Topic--individual .TopicRow-actions-delete:before {
+  content: '\f014';
+}
+
+@media (max-width: 700px) {
+  .Topic.Topic--individual .Topic-actions {
+    float: none;
+    text-align: right;
+  }
+}

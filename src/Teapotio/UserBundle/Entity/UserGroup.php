@@ -33,6 +33,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class UserGroup extends BaseUserGroup
 {
+    /**
+     * @var ArrayCollection $displayUsers
+     *
+     * @ORM\OneToMany(targetEntity="\Teapotio\UserBundle\Entity\User", mappedBy="displayGroup")
+     */
+    protected $displayUsers;
 
     /**
      * @var ArrayCollection $users

@@ -300,8 +300,11 @@ class TopicController extends BaseController
             return $response;
         }
 
+        $toggle = null;
+
         switch ($action) {
             case 'pin':
+                $toggle = !$topic->isPinned();
                 if ($topic->isPinned() === true) {
                     $this->get('teapotio.forum.topic')->unpin($topic);
                 }
@@ -310,6 +313,7 @@ class TopicController extends BaseController
                 }
                 break;
             case 'delete':
+                $toggle = !$topic->isDeleted();
                 if ($topic->isDeleted() === true) {
                     $this->get('teapotio.forum.topic')->undelete($topic, true); // true: bubble down
                 }
@@ -318,6 +322,7 @@ class TopicController extends BaseController
                 }
                 break;
             case 'lock':
+                $toggle = !$topic->isLocked();
                 if ($topic->isLocked() === true) {
                     $this->get('teapotio.forum.topic')->unlock($topic);
                 }
@@ -326,12 +331,13 @@ class TopicController extends BaseController
                 }
                 break;
             case 'flag':
+                $toggle = true;
                 $this->get('teapotio.forum.flag')->flag($topic, $this->get('security.context')->getToken()->getUser());
                 break;
         }
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
-            return $this->renderJson(array('success' => 1));
+            return $this->renderJson(array('success' => 1, 'toggle' => (int)$toggle));
         }
 
         return $this->redirect(

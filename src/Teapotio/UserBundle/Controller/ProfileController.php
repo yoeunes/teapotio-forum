@@ -18,6 +18,7 @@ use Teapotio\ImageBundle\Form\ImageType;
 
 use Teapotio\UserBundle\Entity\UserSettings;
 use Teapotio\UserBundle\Form\UserDescriptionType;
+use Teapotio\UserBundle\Form\UserGroupType;
 use Teapotio\UserBundle\Form\UserSettingsType;
 
 use Teapotio\Components\Controller;
@@ -52,7 +53,8 @@ class ProfileController extends Controller
         // A moderator or an admin should be able to modify a user info
         $infoNotices = array();
         $infoNoticeLinks = array();
-        if ($this->get('teapotio.forum.access_permission')->isModerator($this->getUser()) === true) {
+        if ($this->get('teapotio.forum.access_permission')->isModerator($this->getUser()) === true
+            && $this->getUser() && $this->getUser()->getId() !== $user->getId()) {
             $infoNotices[] = $this->get('translator')->trans('You.have.enough.rights.to.modify.this.user');
 
             $infoNoticeLinkActionPath = $this->generateUrl(
@@ -144,6 +146,11 @@ class ProfileController extends Controller
         $formDescription = $this->createForm(new UserDescriptionType(), $user);
         $formSettings = $this->createForm(new UserSettingsType(), $settings);
 
+        $formGroups = false;
+        if ($isCurrentUserAdmin === true) {
+          $formGroups = $this->createForm(new UserGroupType(), $user);
+        }
+
         $title = $this->generateTitle("%username%'s settings", array('%username%' => $user->getUsername()));
 
         $params = array(
@@ -151,6 +158,7 @@ class ProfileController extends Controller
             'formImage'         =>  $formImage->createView(),
             'formDescription'   =>  $formDescription->createView(),
             'formSettings'      =>  $formSettings->createView(),
+            'formGroups'        =>  $formGroups->createView(),
             'page_title'        =>  $title,
             'info_notices'      =>  $infoNotices,
         );

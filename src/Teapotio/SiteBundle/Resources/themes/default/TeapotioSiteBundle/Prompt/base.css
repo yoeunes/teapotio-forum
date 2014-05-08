@@ -19,6 +19,10 @@
   display: inline-block;
 }
 
+.Prompt ul.Prompt-message li {
+  line-height: 22px;
+}
+
 .Prompt ul.Prompt-actions {
   float: right;
   list-style: none;

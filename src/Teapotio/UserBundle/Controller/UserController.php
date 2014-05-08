@@ -19,6 +19,7 @@ use Teapotio\ImageBundle\Entity\Image;
 use Teapotio\UserBundle\Entity\UserSettings;
 use Teapotio\UserBundle\Form\UserSettingsType;
 use Teapotio\UserBundle\Form\UserDescriptionType;
+use Teapotio\UserBundle\Form\UserGroupType;
 
 use Teapotio\Components\Controller;
 
@@ -164,6 +165,37 @@ class UserController extends Controller
 
                 $em->persist($user->getSettings());
                 $em->flush();
+
+                if ($request->isXmlHttpRequest() === true) {
+                    return $this->renderJson(array('success' => 1, 'message' => $this->get('translator')->trans('Saved')));
+                }
+            }
+        }
+
+        if ($request->isXmlHttpRequest() === true) {
+            return $this->renderJson(array('success' => 0, 'message' => $this->get('translator')->trans('Unsaved')));
+        }
+
+        return $this->redirect(
+            $request->headers->get('referer')
+        );
+    }
+    public function setGroupsAction()
+    {
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+
+        $request = $this->get('request');
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $form = $this->createForm(new UserGroupType(), $user->getGroups());
+
+        if ($request->getMethod() === 'POST') {
+            $form->bind($request);
+            if ($form->isValid() === true) {
+
+                $this->get('teapotio.user')->save($user);
 
                 if ($request->isXmlHttpRequest() === true) {
                     return $this->renderJson(array('success' => 1, 'message' => $this->get('translator')->trans('Saved')));

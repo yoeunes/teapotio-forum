@@ -1,9 +1,18 @@
 .Pagination ul li {
   display: inline-block;
-  margin-left: 10px;
 }
 
-.Pagination ul li:first-child {
+.Pagination ul li a {
+  display: block;
+}
+
+.Pagination ul li a,
+.Pagination .Pagination-currentPage,
+.Pagination .Pagination-total {
+  padding: 0 4px;
+}
+
+.Pagination ul li a:first-child {
   margin-left: 0;
 }
 
