@@ -209,6 +209,8 @@ class MessageController extends BaseController
         $topic = $this->getTopic();
         $user = $this->getUser();
 
+        $isUserModerator = $this->get('teapotio.forum.access_permission')->isModerator($user, $board);
+
         if (true !== $response = $this->isUrlValid($board, $topic, $boardSlug, $topicSlug)) {
             return $response;
         }
@@ -217,7 +219,7 @@ class MessageController extends BaseController
             throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
         }
 
-        if ($topic->isDeleted() === true) {
+        if ($isUserModerator === false && $topic->isDeleted() === true) {
             throw $this->createNotFoundException();
         }
 
@@ -238,13 +240,24 @@ class MessageController extends BaseController
         $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
         $offset = ($page - 1) * $messagesPerPage;
 
-        $messages = $this->get('teapotio.forum.message')->getMessagesByTopic($topic, $offset, $messagesPerPage);
+        if ($isUserModerator === true) {
+          $isDeleted = null;
+        } else {
+          $isDeleted = false;
+        }
+
+        $messages = $this->get('teapotio.forum.message')->getMessagesByTopic($topic, $offset, $messagesPerPage, $isDeleted);
 
         $stars = $this->get('teapotio.forum.message_star')->getStarsByMessages($messages);
         $userStars = $this->get('teapotio.forum.message_star')->getUserStarsByMessages($messages);
 
-        $flagTopic =  $this->get('teapotio.forum.flag')->getByTopic($topic);
-        $flags = $this->get('teapotio.forum.flag')->getByMessages($messages, $board);
+        if ($isUserModerator === true) {
+            // The potential flag of the topic
+            $flagTopic =  $this->get('teapotio.forum.flag')->getByTopic($topic);
+
+            // The potential flags in the list
+            $flags = $this->get('teapotio.forum.flag')->getByMessages($messages, $board);
+        }
 
         foreach ($messages as $message) {
             $this->get('teapotio.forum.message')->parseBody($message);

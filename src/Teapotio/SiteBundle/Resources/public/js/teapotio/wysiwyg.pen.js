@@ -20,6 +20,26 @@
 
       return new Pen(options);
     },
+
+    loadAllWithOverlay: function ($elements) {
+      $elements.each(function (index, element) {
+        var $editableContent = $('<div></div>');
+        $editableContent.prependTo($(element).parent());
+
+        $(element).css({display: 'none'});
+        $editableContent.html($(element).text());
+
+        if ($(element).attr('required')) {
+          $editableContent.attr('required', $(element).attr('required'));
+        }
+
+        window.Teapotio.wysiwyg.pen.loadWithOverlay($editableContent[0]);
+
+        $editableContent.keypress(function (event) {
+          $(element).text($(this).html());
+        });
+      });
+    }
   };
 
   window.Teapotio = Teapotio;

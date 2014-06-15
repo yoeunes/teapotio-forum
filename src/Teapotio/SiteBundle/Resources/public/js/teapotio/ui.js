@@ -3,7 +3,7 @@
 
     Teapotio.ui = {
         selectors: {
-            content: '.content-wrapper'
+            content: 'body .Container'
         },
 
         initialize: function () {
@@ -51,8 +51,6 @@
             return this.toggleElementClass($el);
         }
     };
-
-    Teapotio.ui.initialize();
 
     window.Teapotio = Teapotio;
 

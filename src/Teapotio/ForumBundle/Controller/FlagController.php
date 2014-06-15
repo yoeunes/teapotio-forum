@@ -26,10 +26,40 @@ class FlagController extends BaseController
         }
 
         $params = array(
-            'containerClass' => '',
+            'flags' => $this->get('teapotio.forum.flag')->getLatestFlags(0, 15, false),
         );
 
         return $this->render('TeapotioForumBundle:Flag:component/list.html.twig', $params);
+    }
+
+    public function listAction()
+    {
+        if ($this->get('teapotio.forum.access_permission')->isModerator($this->getUser()) === false) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+
+        $title = $this->generateTitle('List.of.flags');
+
+        $flagsPerPage = 100;
+        $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
+        $offset = ($page - 1) * $flagsPerPage;
+
+        $flags = $this->get('teapotio.forum.flag')->getLatestFlags($offset, $flagsPerPage, false);
+
+        $params = array(
+            'flags'          => $flags,
+            'flags_per_page' => $flagsPerPage,
+            'page_title'     => $title,
+        );
+
+        if ($this->get('request')->isXmlHttpRequest() === true) {
+            return $this->renderJson(array(
+                'html'   => $this->renderView('TeapotioForumBundle:Flag:partial/list.html.twig', $params),
+                'title'  => $title
+            ));
+        }
+
+        return $this->render('TeapotioForumBundle:Flag:page/list.html.twig', $params);
     }
 
     public function ignoreAction($flagId)
@@ -70,7 +100,7 @@ class FlagController extends BaseController
         if ($flag !== null) {
             $this->container
                  ->get('teapotio.forum.flag')
-                 ->delete($flag);
+                 ->delete($flag, $this->getUser());
         }
 
         if ($this->get('request')->isXmlHttpRequest() === true) {

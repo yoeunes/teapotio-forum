@@ -1,4 +1,8 @@
 # Flag Controller
+ForumFlagList:
+    pattern: /flag/list/
+    defaults: { _controller: TeapotioForumBundle:Flag:list }
+
 ForumFlagDelete:
     pattern: /flag/delete/{flagId}/
     defaults: { _controller: TeapotioForumBundle:Flag:delete }
@@ -6,6 +10,11 @@ ForumFlagDelete:
 ForumFlagIgnore:
     pattern: /flag/ignore/{flagId}/
     defaults: { _controller: TeapotioForumBundle:Flag:ignore }
+
+# Moderation Controller
+ForumModerationList:
+    pattern: /moderation/list/
+    defaults: { _controller: TeapotioForumBundle:Moderation:list }
 
 # Board Controller
 ForumNewBoard:

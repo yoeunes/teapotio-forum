@@ -172,16 +172,15 @@ class TopicController extends BaseController
             return $this->renderHtml($html);
         }
 
-        $topicPerPage = 40;
-        $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
-        $offset = ($page - 1) * $topicPerPage;
-
-        $topics = $this->get('teapotio.forum.topic')->getLatestTopics($offset, $topicPerPage);
-
-        $boards = $this->get('teapotio.forum.board')->getBoards();
-
         $topicsPerPage = $this->get('teapotio.forum')->getTotalTopicsPerPage();
         $messagesPerPage = $this->get('teapotio.forum')->getTotalMessagesPerPage();
+
+        $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
+        $offset = ($page - 1) * $topicsPerPage;
+
+        $topics = $this->get('teapotio.forum.topic')->getLatestTopics($offset, $topicsPerPage);
+
+        $boards = $this->get('teapotio.forum.board')->getBoards();
 
         $title = $this->generateTitle('All.topics');
 
@@ -197,7 +196,7 @@ class TopicController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/listWithPagination.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/list.html.twig', $params),
                 'title'  => $title
             ));
         }
@@ -256,7 +255,7 @@ class TopicController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/listWithPagination.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/list.html.twig', $params),
                 'title'  => $title
             ));
         }

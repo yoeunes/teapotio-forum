@@ -1,98 +1,88 @@
 (function (window, $) {
-    var Teapotio = Teapotio || {};
+  var Teapotio = Teapotio || {};
 
-    Teapotio.page = {
-        selectors: {
-            content: '.content-wrapper'
-        },
+  Teapotio.page = {
 
-        pushStateNumber: 0,
+    pushStateNumber: 0,
 
-        initialize: function () {
+    /**
+     * Inject HTML content into the page
+     *
+     * @param  {object}  data  requires key 'title' and 'html'
+     */
+    inject: function (data, $target, callback) {
+      // Change title from the ajax response
+      document.title = data.title;
 
-        },
+      // Insert HTML into the content wrapper
+      $target.html(data.html);
 
-        /**
-         * Inject HTML content into the page
-         *
-         * @param  {object}  data  requires key 'title' and 'html'
-         */
-        inject: function (data) {
-            var $wrapper = $(this.selectors.content);
+      // Go back up
+      window.scrollTo(0,0);
 
-            // Change title from the ajax response
-            document.title = data.title;
+      callback();
+    },
 
-            // Insert HTML into the content wrapper
-            $(this.selectors.content).html(data.html);
+    updateToolbar: function (xdebugToken) {
+      var currentElement;
 
-            Teapotio.events.load($wrapper);
+      if (typeof Sfjs !== "undefined") {
+          currentElement = $('.sf-toolbar')[0];
+          Sfjs.load(currentElement.id, '/_wdt/'+ xdebugToken);
+      }
+    },
 
-            // Load any potential wysiwyg
-            Teapotio.wysiwyg.loadWithToolbar($wrapper);
+    fnEventToggle: function (btn) {
+      var self = this;
 
-            // Go back up
-            window.scrollTo(0,0);
-        },
+      $.get($(btn).attr('href'), function(data) {
+        var i;
 
-        updateToolbar: function (xdebugToken) {
-            var currentElement;
+        if (data.success !== 0) {
+          i = $(btn).find('i');
 
-            if (typeof Sfjs !== "undefined") {
-                currentElement = $('.sf-toolbar')[0];
-                Sfjs.load(currentElement.id, '/_wdt/'+ xdebugToken);
-            }
-        },
-
-        fnEventToggle: function (btn) {
-            var self = this;
-
-            $.get($(btn).attr('href'), function(data) {
-                var i;
-
-                if (data.success !== 0) {
-                    i = $(btn).find('i');
-
-                    Teapotio.ui.toggleIcon($(i));
-
-                    Teapotio.ui.toggleElementLabel($(btn));
-
-                    Teapotio.ui.toggleElementClass($(btn));
-                }
-            });
-        },
-
-        fnEventLoadPage: function (btn) {
-            var self = this,
-                data;
-
-            $.get($(btn).attr('href'), function (data, status, xhr) {
-                self.inject(data);
-
-                self.updateToolbar(xhr.getResponseHeader('X-Debug-Token'));
-            });
-
-            this.pushStateNumber++;
-
-            data = {n: this.pushStateNumber, t: 'main-view', p: $(btn).attr('href')};
-
-            window.history.pushState(data, null, $(btn).attr('href'));
-        },
-
-        fnEventPopstate: function (event) {
-            var self = this,
-                state = event.state;
-
-            if ($(this.selectors.content).length !== 0 && state !== null && state.t === 'main-view') {
-                $.get(state.p, function (data) {
-                    self.inject(data);
-                });
-            }
+          Teapotio.ui.toggleIcon($(i));
+          Teapotio.ui.toggleElementLabel($(btn));
+          Teapotio.ui.toggleElementClass($(btn));
         }
-    };
+      });
+    },
 
-    Teapotio.page.initialize();
+    fnEventLoadPage: function ($btn, $target, callback) {
+        var self = this,
+          data;
 
-    window.Teapotio = Teapotio;
+        $.get($btn.attr('href'), function (data, status, xhr) {
+          if (!data.html) {
+            return;
+          }
+
+          self.inject(data, $target, callback);
+
+          self.updateToolbar(xhr.getResponseHeader('X-Debug-Token'));
+
+          return;
+        });
+
+        this.pushStateNumber++;
+
+        data = {n: this.pushStateNumber, t: 'main-view', p: $btn.attr('href')};
+
+        window.history.pushState(data, null, $btn.attr('href'));
+    },
+
+    fnEventPopstate: function (event) {
+        var self = this,
+          state = event.state;
+
+        if ($(this.selectors.content).length !== 0 && state !== null && state.t === 'main-view') {
+          $.get(state.p, function (data) {
+            self.inject(data);
+          });
+        }
+    }
+  };
+
+  window.Teapotio = Teapotio;
 
 })(window, jQuery);

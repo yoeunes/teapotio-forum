@@ -13,7 +13,7 @@
 
 namespace Teapotio\UserBundle\Controller;
 
-use Teapotio\Base\UserBundle\Form\UserSignupType;
+use Teapotio\UserBundle\Form\UserSignupType;
 use Teapotio\UserBundle\Entity\User;
 use Teapotio\UserBundle\Entity\UserGroup;
 
@@ -52,7 +52,7 @@ class RegistrationController extends BaseController
             }
         }
 
-        return $this->render('TeapotioBaseUserBundle:Registration:page/signup.html.twig', array(
+        return $this->render('TeapotioUserBundle:Registration:page/signup.html.twig', array(
             'form' => $form->createView()
         ));
     }
