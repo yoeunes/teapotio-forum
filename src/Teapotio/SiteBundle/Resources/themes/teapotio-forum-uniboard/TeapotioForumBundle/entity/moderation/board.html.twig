@@ -1,0 +1,15 @@
+{#
+  Represents a flagged topic
+  Required variables:
+    - moderation
+    - board
+#}
+{% extends "TeapotioForumBundle:Moderation:entity/base.html.twig" %}
+
+{% block Moderation_class %}{{ parent() }} Moderation--board{% endblock %}
+
+{% block Moderation_content %}
+  <div class="Moderation-board">
+    <a href="{{ forum_path('ForumListTopicsByBoard', moderation.board) }}" class="to-main">{{ moderation.board.title }}</a>
+  </div>
+{% endblock %}

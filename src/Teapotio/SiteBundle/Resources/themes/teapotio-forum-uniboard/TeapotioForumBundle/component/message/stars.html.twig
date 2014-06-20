@@ -1,0 +1,7 @@
+{% if stars.count != 0 %}
+  <ul class="module module-stars">
+    {% for star in stars %}
+      <li>{% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "", user: star.user, size: 20} %}</li>
+    {% endfor %}
+  </ul>
+{% endif %}

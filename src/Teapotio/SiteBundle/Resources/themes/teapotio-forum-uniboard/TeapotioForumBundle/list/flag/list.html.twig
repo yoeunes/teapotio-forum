@@ -1,0 +1,13 @@
+{% if flags.count != 0 %}
+  <ul class="FlagComponentList">
+    {% for flag in flags %}
+      <li>
+        {% if flag.message is not null %}
+          {% include "TeapotioForumBundle:Flag:entity/message.html.twig" with {flag: flag, message: flag.message} %}
+        {% elseif flag.topic is not null %}
+          {% include "TeapotioForumBundle:Flag:entity/topic.html.twig" with {flag: flag, topic: flag.topic} %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

@@ -1,0 +1,63 @@
+.TopicRow.TopicRow--individual.is-deleted {
+  opacity: 0.2;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
+  font-size: 19px;
+  line-height: 24px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-info {
+  font-size: 12px;
+}
+
+.TopicRow.TopicRow--individual.TopicRow--boardChildless .TopicRow-content-info {
+  display: none;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-responder {
+  line-height: 40px;
+  overflow: auto;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-responder .Avatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-responder span {
+  font-size: 13px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-statsTotalPosts,
+.TopicRow.TopicRow--individual .TopicRow-statsTotalViews {
+  font-size: 20px;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-actions .TopicRow-actions-delete:before {
+  content: '\f05c';
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 800px) {
+  .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
+    font-size: 16px;
+  }
+
+  .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-info {
+    font-size: 11px;
+  }
+
+  .TopicRow.TopicRow--individual .TopicRow-responder span {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-info {
+    font-size: 10px;
+  }
+}

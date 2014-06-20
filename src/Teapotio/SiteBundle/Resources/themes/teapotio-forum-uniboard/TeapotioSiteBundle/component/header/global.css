@@ -1,0 +1,127 @@
+.Header.Header--global {
+  background-color: #262322;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 64px;
+  z-index: 10000;
+  -webkit-transition: width 500ms ease;
+     -moz-transition: width 500ms ease;
+       -o-transition: width 500ms ease;
+          transition: width 500ms ease;
+}
+
+.Header.Header--global,
+.Header.Header--global a,
+.Header.Header--global a:visited {
+  color: #fff;
+}
+
+.Header.Header--global > *,
+.Header.Header--global .Navigation,
+.Header.Header--global:hover {
+  width: 300px;
+}
+
+.Header.Header--global > h1:before {
+  background: url(/bundles/teapotiosite/images/teapotio_tiny_logo_black.png) no-repeat;
+  background-color: #fe6c5f;
+  background-size: contain;
+  border-radius: 25px;
+  content: ' ';
+  display: block;
+  float: left;
+  height: 44px;
+  margin: 0 10px;
+  width: 44px;
+}
+
+.Header.Header--global > h1 {
+  line-height: 44px;
+  margin: 10px 0;
+  overflow: auto;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.Header.Header--global > h1 > span {
+  color: #fe6c5f;
+}
+
+.Header.Header--global .Header-hamburger {
+  background-color: #312E2E;
+  border-radius: 2px;
+  display: none;
+  float: right;
+  height: 35px;
+  position: relative;
+  width: 35px;
+}
+
+.Header.Header--global .Header-hamburger:before {
+  content: '\f0c9';
+  font-family: 'FontAwesome';
+  font-size: 17px;
+  left: 0;
+  line-height: 35px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.Header.Header--global .Header-navigation .Navigation--user {
+  position: absolute;
+  bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .Header.Header--global,
+  .Header.Header--global:hover {
+    padding: 10px;
+    position: static;
+    width: auto;
+  }
+
+  .Header.Header--global > h1 {
+    font-size: 24px;
+    line-height: 35px;
+    margin: 0;
+  }
+
+  .Header.Header--global > h1:before {
+    height: 35px;
+    margin: 0 10px 0 0;
+    width: 35px;
+  }
+
+  .Header.Header--global .Header-hamburger {
+    cursor: pointer;
+    display: block;
+  }
+
+  .Header.Header--global .Header-navigation {
+    height: 0;
+    overflow: hidden;
+  }
+
+  .Header.Header--global .Header-navigation.Header-navigation--extended {
+    display: block;
+    height: auto;
+  }
+
+  .Header.Header--global .Header-navigation .Navigation.Navigation--global li a {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .Header.Header--global .Header-navigation .Navigation.Navigation--global li:last-child a {
+    margin-bottom: 0;
+  }
+
+  .Header.Header--global .Header-navigation .Navigation--user {
+    position: static;
+  }
+}

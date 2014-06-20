@@ -1,0 +1,49 @@
+.Navigation.Navigation--global li a {
+  display: block;
+  font-size: 22px;
+  line-height: 40px;
+  margin: 12px;
+  overflow: auto;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.Navigation.Navigation--global li a:hover .Navigation-icon,
+.Navigation.Navigation--global li a:hover:before {
+  color: #fe6c5f;
+  margin-right: 17px;
+}
+
+.Navigation.Navigation--global li a .Navigation-icon,
+.Navigation.Navigation--global li a:before {
+  background-color: #312e2e;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 12px 0 0;
+  text-align: center;
+  width: 40px;
+  -webkit-transition: color 500ms ease,
+                      margin 500ms ease;
+     -moz-transition: color 500ms ease,
+                      margin 500ms ease;
+       -o-transition: color 500ms ease,
+                      margin 500ms ease;
+          transition: color 500ms ease,
+                      margin 500ms ease;
+}
+
+.Navigation.Navigation--global li a:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Navigation.Navigation--global li a span {
+  display: block;
+  font-size: 11px;
+}

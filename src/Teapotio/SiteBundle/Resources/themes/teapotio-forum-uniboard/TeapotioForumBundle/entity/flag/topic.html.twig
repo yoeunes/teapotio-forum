@@ -1,0 +1,17 @@
+{#
+  Represents a flagged topic
+  Required variables:
+    - flag
+    - topic
+ #}
+{% extends "TeapotioForumBundle:Flag:entity/base.html.twig" %}
+
+{% block Flag_class %}{{ parent() }} Flag--topic{% endblock %}
+
+{% block Flag_content %}
+  {% include "TeapotioForumBundle:Topic:entity/individual.html.twig" with {
+    topic: topic,
+    message: topic.body,
+    user: topic.user
+  } %}
+{% endblock %}

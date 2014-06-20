@@ -1,0 +1,19 @@
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--forumAdminPermissions{% endblock %}
+
+{% block Partial_content %}
+  <div class="Partial-groupPicker">
+    <h1>{% trans %}Pick.a.group{% endtrans %}</h1>
+    {% for g in groups %}
+      <div class="inline-block text-large"><a href="{{ path('ForumAdminPermissionsWithGroup', {groupId: g.id}) }}">{{ g.name }}</a></div>
+    {% endfor %}
+  </div>
+
+  {% if group is not null %}
+    <div class="Partial-table">
+      {% set boards = get_boards() %}
+      {% include "TeapotioForumBundle:component:board/permissions/form.html.twig" with {group: group, boards: boards, name: form_name, class: ''} %}
+    </div>
+  {% endif %}
+{% endblock %}

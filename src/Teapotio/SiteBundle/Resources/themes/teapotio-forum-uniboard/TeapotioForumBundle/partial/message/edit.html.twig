@@ -1,0 +1,7 @@
+{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--forumMessageEdit{% endblock %}
+
+{% block Partial_content %}
+  {% include "TeapotioForumBundle:Message:entity/edit.html.twig" with {user: message.user, form: form, message: message} %}
+{% endblock %}

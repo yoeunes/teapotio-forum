@@ -1,0 +1,18 @@
+{% extends "TeapotioForumBundle:Topic:row/base.html.twig" %}
+
+{% block TopicRow_class %}{{ parent() }}
+  TopicRow--individual
+  {% if current_board is defined and current_board is not null and current_board.children.count == 0 %}
+    TopicRow--boardChildless
+  {% endif %}
+
+  {% if topic.isPinned == true or topic.isLocked == true %}
+    TopicRow--moderated
+  {% endif %}
+{% endblock %}
+
+{% block TopicRow_actions_content %}
+  {% if app.user|can_delete(topic) == true %}
+    <a href="{{ forum_path("ForumTopicDelete", topic) }}" class="TopicRow-actions-delete"></a>
+  {% endif %}
+{% endblock %}
