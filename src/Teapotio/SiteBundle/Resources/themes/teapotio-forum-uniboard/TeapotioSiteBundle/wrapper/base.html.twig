@@ -11,7 +11,7 @@
   {% set current_topic = null %}
 {% endif %}
 
-{% include "TeapotioSiteBundle:Header:global.html.twig" with {board: current_board, user: app.user} %}
+{% include "TeapotioSiteBundle:component:header/global.html.twig" with {board: current_board, user: app.user} %}
 
 <section class="{% block Wrapper_class %}Wrapper{% endblock %}">
 
@@ -20,7 +20,7 @@
     {% endblock %}
 
     {% block breadcrumb_top %}
-      {% include "TeapotioForumBundle:Breadcrumb:board.html.twig" with {
+      {% include "TeapotioForumBundle:component:breadcrumb/board.html.twig" with {
         board: current_board,
         showRoot: true,
         topic: current_topic
@@ -34,7 +34,7 @@
       {% set prompt_params = prompt_params|merge({actions: info_notice_links}) %}
     {% endif %}
     <div class="Wrapper-notice">
-      {% include "TeapotioSiteBundle:Prompt:info.html.twig" with prompt_params %}
+      {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with prompt_params %}
     </div>
   {% endif %}
 
@@ -46,7 +46,7 @@
     {% endblock %}
 
     {% block breadcrumb_bottom %}
-      {% include "TeapotioForumBundle:Breadcrumb:board.html.twig" with {
+      {% include "TeapotioForumBundle:component:breadcrumb/board.html.twig" with {
         board: current_board,
         showRoot: true,
         topic: current_topic
@@ -55,4 +55,4 @@
   </div>
 </section>
 
-{% include "TeapotioSiteBundle:Footer:global.html.twig" %}
+{% include "TeapotioSiteBundle:component:footer/global.html.twig" %}

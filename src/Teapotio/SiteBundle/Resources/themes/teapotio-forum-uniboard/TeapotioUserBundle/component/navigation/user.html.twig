@@ -3,7 +3,7 @@
     - user
 #}
 
-{% extends "TeapotioSiteBundle:Navigation:global.html.twig" %}
+{% extends "TeapotioSiteBundle:component:navigation/global.html.twig" %}
 
 {% block Navigation_class %}{{ parent() }} Navigation--user{% endblock %}
 
@@ -11,7 +11,7 @@
   <li>
     <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}"
        class="Navigation--user-button Navigation--user-button--profile">
-      {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "Navigation-icon", is_link: false, user: user, size: 40} %}
+      {% include "TeapotioUserBundle:component:avatar.html.twig" with {class: "Navigation-icon", is_link: false, user: user, size: 40} %}
       {{ user.username }}
     </a>
   </li>

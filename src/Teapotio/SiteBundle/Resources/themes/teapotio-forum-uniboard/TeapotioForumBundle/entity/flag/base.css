@@ -1,17 +1,17 @@
-.Flag .Flag-header {
+.EntityFlag .EntityFlag-header {
   margin-bottom: 10px;
   overflow: auto;
 }
 
-.Flag .Flag-header .Flag-header-date {
+.EntityFlag .EntityFlag-header .EntityFlag-header-date {
   float: right;
 }
 
-.Flag .Flag-header .Flag-header-intro {
+.EntityFlag .EntityFlag-header .EntityFlag-header-intro {
   font-size: 18px;
 }
 
-.Flag .Flag-content {
+.EntityFlag .EntityFlag-content {
   padding: 0 0 0 20px;
   opacity: 0.75;
   overflow: hidden;
@@ -21,14 +21,14 @@
           transition: opacity 500ms ease;
 }
 
-.Flag:hover .Flag-content {
+.EntityFlag:hover .EntityFlag-content {
   opacity: 1;
 }
 
-.Flag .Flag-content .Message {
+.EntityFlag .EntityFlag-content .Message {
   margin-bottom: 25px;
 }
 
-.Flag .Flag-content .Topic .Topic-header h1 {
+.EntityFlag .EntityFlag-content .Topic .Topic-header h1 {
   margin: 0 0 10px;
 }

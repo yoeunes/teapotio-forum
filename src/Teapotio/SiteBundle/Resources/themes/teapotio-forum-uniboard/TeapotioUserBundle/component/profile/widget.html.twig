@@ -1,6 +1,6 @@
 <div class="nav-profile module modal dark module-header wide">
 
-    {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "dark", user: user, size: 50} %}
+    {% include "TeapotioUserBundle:component:avatar.html.twig" with {class: "dark", user: user, size: 50} %}
 
     <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}" class="username to-main">{{ user.username }}</a>
 

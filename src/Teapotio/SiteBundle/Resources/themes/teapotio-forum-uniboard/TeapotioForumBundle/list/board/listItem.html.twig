@@ -17,16 +17,17 @@
         <a href="{{ forum_path('ForumNewBoardInBoard', board) }}" class="new-board to-main"><i class="icon-plus-sign"></i></a>
       {% endif %#}
 
-      {% include "TeapotioForumBundle:Component:statLabels.html.twig" with {total_topics: board.shortTotalTopics, total_messages: board.shortTotalPosts, nowrap: true} %}
+      {% include "TeapotioForumBundle:component:statLabels.html.twig" with {total_topics: board.shortTotalTopics, total_messages: board.shortTotalPosts, nowrap: true} %}
     </div>
 
-    <a href="{{ forum_path("ForumListTopicsByBoard", board) }}" class="to-main{% if board.children.count != 0 %} parent-board-link {% if parentLinkClass is defined %} {{ parentLinkClass }}{% endif %}{% else %} childless-board-link {% if childlessLinkClass is defined %} {{ childlessLinkClass }}{% endif %}{% endif %}">{{ board.title }}</a>
+    <a href="{{ forum_path
+      ("ForumListTopicsByBoard", board) }}" class="to-main{% if board.children.count != 0 %} parent-board-link {% if parentLinkClass is defined %} {{ parentLinkClass }}{% endif %}{% else %} childless-board-link {% if childlessLinkClass is defined %} {{ childlessLinkClass }}{% endif %}{% endif %}">{{ board.title }}</a>
 
   </div>
   {% if board.children.count != 0 %}
     <ul>
       {% for b in board.children %}
-        {% include "TeapotioForumBundle:Board:component/listItem.html.twig" with {board: b} %}
+        {% include "TeapotioForumBundle:list:board/listItem.html.twig" with {board: b} %}
       {% endfor %}
     </ul>
   {% endif %}

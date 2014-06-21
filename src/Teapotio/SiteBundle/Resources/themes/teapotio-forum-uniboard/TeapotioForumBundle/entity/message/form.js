@@ -11,7 +11,7 @@
   }
 
   $(document).ready(function () {
-    window.Teapotio.wysiwyg.pen.loadAllWithOverlay($('.Message-body textarea'));
+    window.Teapotio.wysiwyg.pen.loadAllWithOverlay($('.EntityMessage-body textarea'));
   });
 
 })(window, jQuery);

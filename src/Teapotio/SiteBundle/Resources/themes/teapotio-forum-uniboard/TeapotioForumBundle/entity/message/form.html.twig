@@ -1,0 +1,21 @@
+{#
+  Variables required:
+    - user (from parent template)
+    - form
+#}
+
+{% extends "TeapotioForumBundle:entity:message/base.html.twig" %}
+
+{% block Message_body %}
+
+  <form action="{% block Message_form_path %}{% endblock %}" method="post"
+        class="{% block Message_form_class %}EntityMessage-form{% endblock %}" id="{% block Message_form_id %}{% endblock %}">
+
+    {{ form_errors(form) }}
+
+    {{ form_widget(form) }}
+
+    <button class="EntityMessage-form-submit">{% block Message_form_submit_content %}{% endblock %}</button>
+  </form>
+
+{% endblock %}

@@ -9,8 +9,8 @@
         <th colspan="3">{% trans %}Message{% endtrans %}</th>
         <th colspan="3">{% trans %}Board{% endtrans %}</th>
       </tr>
-      {% include "TeapotioForumBundle:Board:component/permissions/columnHeader.html.twig" %}
-      {% include "TeapotioForumBundle:Board:component/permissions/rowBoard.html.twig" with {board: board, level: level, identity: ""} %}
+      {% include "TeapotioForumBundle:component:board/permissions/columnHeader.html.twig" %}
+      {% include "TeapotioForumBundle:component:board/permissions/rowBoard.html.twig" with {board: board, level: level, identity: ""} %}
     {% endfor %}
   </table>
 

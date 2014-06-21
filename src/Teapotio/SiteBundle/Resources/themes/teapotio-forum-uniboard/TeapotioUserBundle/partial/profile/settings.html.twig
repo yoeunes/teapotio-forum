@@ -1,6 +1,6 @@
-{% extends "TeapotioSiteBundle:Layout:partial/settings.html.twig" %}
+{% extends "TeapotioSiteBundle:partial:settings.html.twig" %}
 
-{% block Partial_class %}{{ parent() }} Partial--forumUserSettings{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--userSettings{% endblock %}
 
 {% block Partial_content %}
   <div class="Partial-image">
@@ -33,7 +33,7 @@
     <h3>{% trans %}Customize.style{% endtrans %}</h3>
 
     {% if user.settings.backgroundImage is null %}
-      {% include "TeapotioSiteBundle:Prompt:info.html.twig" with {
+      {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
         'message': 'No.background.uploaded'|trans
       } %}
     {% endif %}
@@ -51,7 +51,7 @@
     <h3><span>{% trans %}Admin{% endtrans %}</span> {% trans %}Link.group.to.user{% endtrans %}</h3>
 
     {% if user.settings.backgroundImage is null %}
-      {% include "TeapotioSiteBundle:Prompt:info.html.twig" with {
+      {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
         'message': [
           "<b>Display group</b>: Defines the user's displayed group."|trans,
           "<b>Groups</b>: Defines the user's permissions."|trans

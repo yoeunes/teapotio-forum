@@ -4,12 +4,12 @@
     - moderation
     - board
 #}
-{% extends "TeapotioForumBundle:Moderation:entity/base.html.twig" %}
+{% extends "TeapotioForumBundle:entity:moderation/base.html.twig" %}
 
-{% block Moderation_class %}{{ parent() }} Moderation--board{% endblock %}
+{% block Moderation_class %}{{ parent() }} EntityModeration--board{% endblock %}
 
 {% block Moderation_content %}
-  <div class="Moderation-board">
+  <div class="EntityModeration-board">
     <a href="{{ forum_path('ForumListTopicsByBoard', moderation.board) }}" class="to-main">{{ moderation.board.title }}</a>
   </div>
 {% endblock %}

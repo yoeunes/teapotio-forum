@@ -2,6 +2,6 @@
   <option value=""></option>
   {% for board in boards %}
     {% set level = 0 %}
-    {% include "TeapotioForumBundle:Board:component/selectOption.html.twig" with {board: board, level: level} %}
+    {% include "TeapotioForumBundle:component:board/selectOption.html.twig" with {board: board, level: level} %}
   {% endfor %}
 </select>

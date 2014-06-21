@@ -1,9 +1,9 @@
-{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
 
-{% block Partial_class %}{{ parent() }} Partial--forumTopicNew{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--topicNew{% endblock %}
 
 {% block Partial_content %}
-  {% include "TeapotioForumBundle:Topic:entity/new.html.twig"
+  {% include "TeapotioForumBundle:entity:topic/new.html.twig"
     with {
       user:    app.user,
       form:    form,

@@ -7,14 +7,14 @@
     {% block form_login %}
       <form action="{{ path('TeapotioBaseUserBundle_login_check') }}" method="post" class="security-login-form">
         <h2>{% trans %}Login{% endtrans %}</h2>
-        {% include "TeapotioUserBundle:Component:form/login.html.twig" with {last_username: ''} %}
+        {% include "TeapotioUserBundle:component:form/login.html.twig" with {last_username: ''} %}
       </form>
     {% endblock %}
 
     {% block form_signup %}
       <form action="{{ path("TeapotioBaseUserBundle_signup") }}" method="post" {{ form_enctype(form) }} class="registration-signup-form">
         <h2>{% trans %}Signup{% endtrans %}</h2>
-        {% include "TeapotioUserBundle:Component:form/signup.html.twig" with {form: form} %}
+        {% include "TeapotioUserBundle:component:form/signup.html.twig" with {form: form} %}
       </form>
     {% endblock %}
   </div>

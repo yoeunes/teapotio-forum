@@ -104,12 +104,12 @@ class BoardController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Board:partial/new.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:board/new.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Board:page/new.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:board/new.html.twig', $params);
     }
 
     public function editAction($boardSlug)
@@ -162,12 +162,12 @@ class BoardController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Board:partial/edit.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:board/edit.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Board:page/edit.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:board/edit.html.twig', $params);
     }
 
     public function moveAction($boardSlug)
@@ -268,7 +268,7 @@ class BoardController extends BaseController
     {
         $boards = $this->get('teapotio.forum.board')->getBoards(0, 10);
 
-        return $this->render('TeapotioForumBundle:Board:page/list.html.twig', array(
+        return $this->render('TeapotioForumBundle:page:board/list.html.twig', array(
             'boards' => $boards
         ));
     }

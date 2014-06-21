@@ -4,7 +4,7 @@
     - user
 #}
 
-{% extends "TeapotioSiteBundle:Navigation:global.html.twig" %}
+{% extends "TeapotioSiteBundle:component:navigation/global.html.twig" %}
 
 {% block Navigation_class %}{{ parent() }} Navigation--actions{% if board is not null %} Navigation--actionsInBoard{% endif %}{% endblock %}
 

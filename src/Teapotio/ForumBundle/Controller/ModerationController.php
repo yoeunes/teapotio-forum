@@ -35,11 +35,11 @@ class ModerationController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Moderation:partial/list.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:moderation/list.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Moderation:page/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:moderation/list.html.twig', $params);
     }
 }

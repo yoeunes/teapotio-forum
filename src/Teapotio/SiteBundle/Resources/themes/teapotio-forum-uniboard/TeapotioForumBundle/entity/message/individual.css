@@ -1,13 +1,13 @@
-.Message.Message--individual {
+.EntityMessage.EntityMessage--individual {
   margin-bottom: 20px;
 }
 
-.Message.Message--individual .Prompt {
+.EntityMessage.EntityMessage--individual .Prompt {
   margin-bottom: 15px;
   position: relative;
 }
 
-.Message.Message--individual .Prompt:before {
+.EntityMessage.EntityMessage--individual .Prompt:before {
   border: 10px solid transparent;
   border-top-color: #000;
   bottom: -20px;
@@ -18,11 +18,11 @@
   width: 0;
 }
 
-.Message.Message--individual .Prompt.Prompt--error:before {
+.EntityMessage.EntityMessage--individual .Prompt.Prompt--error:before {
   border-top-color: #cd313c;
 }
 
-.Message.Message--individual .Message-body {
+.EntityMessage.EntityMessage--individual .EntityMessage-body {
   line-height: 20px;
   margin-bottom: 15px;
 }

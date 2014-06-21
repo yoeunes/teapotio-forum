@@ -5,10 +5,10 @@
 #}
 
 <div class="{% block Flag_class %}Flag{% endblock %}">
-  <div class="Flag-header">
+  <div class="EntityFlag-header">
     {% block Flag_header_content %}
-      <div class="Flag-header-date">{{ flag.dateCreated|date }}</div>
-      <div class="Flag-header-intro">
+      <div class="EntityFlag-header-date">{{ flag.dateCreated|date }}</div>
+      <div class="EntityFlag-header-intro">
         {# For example: "Elliot and 2 users flagged a topic" #}
         {% set flaggedItemName = 'a.' ~ flag.flaggedItemName %}
         <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: flag.users[0].slug, userId: flag.users[0].id }) }}">
@@ -21,7 +21,7 @@
       </div>
     {% endblock %}
   </div>
-  <div class="Flag-content">
+  <div class="EntityFlag-content">
     {% block Flag_content %}{% endblock %}
   </div>
 </div>

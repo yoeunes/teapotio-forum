@@ -1,5 +1,5 @@
-{% extends "TeapotioSiteBundle:Layout:html.html.twig" %}
+{% extends "TeapotioSiteBundle:layout:html.html.twig" %}
 
 {% block container %}
-  {% include "TeapotioForumBundle:Topic:partial/list.html.twig" with {topics: topics, messages_per_page: messages_per_page, current_board: current_board} %}
+  {% include "TeapotioForumBundle:partial:topic/list.html.twig" with {topics: topics, messages_per_page: messages_per_page, current_board: current_board} %}
 {% endblock %}

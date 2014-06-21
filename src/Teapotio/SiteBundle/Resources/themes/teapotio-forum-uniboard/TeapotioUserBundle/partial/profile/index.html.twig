@@ -1,10 +1,10 @@
-{% extends "TeapotioSiteBundle:Layout:partial/base.html.twig" %}
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
 
-{% block Partial_class %}{{ parent() }} Partial--forumUserProfile{% endblock %}
+{% block Partial_class %}{{ parent() }} Partial--userProfile{% endblock %}
 
 {% block Partial_content %}
   <div class="Partial-header">
-    {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "", user: user, size: 150} %}
+    {% include "TeapotioUserBundle:component:avatar.html.twig" with {class: "", user: user, size: 150} %}
 
     <h2 class="Partial-header-username">{{ user.username }}</h2>
   </div>
@@ -23,7 +23,7 @@
   {% if latest_topics.count != 0 %}
     <div class="Partial-topics">
       <h3>{% trans %}Latest.created.topics{% endtrans %}</h3>
-      {% include "TeapotioForumBundle:Topic:component/list.html.twig" with {topics: latest_topics, showBoard: true} %}
+      {% include "TeapotioForumBundle:list:topic/list.html.twig" with {topics: latest_topics, showBoard: true} %}
     </div>
   {% endif %}
 {% endblock %}

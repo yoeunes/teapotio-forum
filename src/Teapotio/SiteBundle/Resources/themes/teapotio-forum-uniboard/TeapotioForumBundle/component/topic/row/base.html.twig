@@ -1,7 +1,7 @@
 <tr class="{% block TopicRow_class %}TopicRow{% endblock %}">
   <td class="TopicRow-author">
     {% block TopicRow_author_content %}
-      {% include "TeapotioUserBundle:Component:avatar.html.twig"
+      {% include "TeapotioUserBundle:component:avatar.html.twig"
          with {user: topic.user, size: 40} %}
     {% endblock %}
   </td>
@@ -28,7 +28,7 @@
       <div class="TopicRow-content-info">
         {% block TopicRow_content_info %}
           {% if showBoard is defined and showBoard == true %}
-            {% include "TeapotioForumBundle:Breadcrumb:board.html.twig" with {board: topic.board, topic: null} %}
+            {% include "TeapotioForumBundle:component:breadcrumb/board.html.twig" with {board: topic.board, topic: null} %}
           {% endif %}
         {% endblock %}
       </div>
@@ -49,7 +49,7 @@
   <td class="TopicRow-responder">
     {% block TopicRow_responder_content %}
       {% if topic.lastUser is not null %}
-        {% include "TeapotioUserBundle:Component:avatar.html.twig"
+        {% include "TeapotioUserBundle:component:avatar.html.twig"
            with {user: topic.lastUser, size: 40} %}
       {% endif %}
 

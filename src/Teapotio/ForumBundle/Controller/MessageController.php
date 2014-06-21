@@ -57,7 +57,7 @@ class MessageController extends BaseController
             }
         }
 
-        return $this->render('TeapotioForumBundle:Message:page/new.html.twig', array(
+        return $this->render('TeapotioForumBundle:page:message/new.html.twig', array(
             'form'          => $form->createView(),
             'current_board' => $board,
             'topic'         => $topic,
@@ -102,11 +102,11 @@ class MessageController extends BaseController
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
                 'title' => $title,
-                'html'  => $this->renderView('TeapotioForumBundle:Message:partial/edit.html.twig', $params),
+                'html'  => $this->renderView('TeapotioForumBundle:partial:message/edit.html.twig', $params),
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Message:page/edit.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:message/edit.html.twig', $params);
     }
 
     public function flagAction($boardSlug, $topicSlug, $messageId)
@@ -282,11 +282,11 @@ class MessageController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Message:partial/list.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:message/list.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Message:page/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:message/list.html.twig', $params);
     }
 }

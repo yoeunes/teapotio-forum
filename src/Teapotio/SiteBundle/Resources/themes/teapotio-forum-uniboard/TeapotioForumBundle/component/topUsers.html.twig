@@ -5,11 +5,11 @@
 {% if user_stats.count != 0 %}
   {% for stat in user_stats %}
     <div class="top-user">
-      {% include "TeapotioForumBundle:Component:statLabels.html.twig" with {total_topics: stat.shortTotalTopic, total_messages: stat.shortTotalMessage, nowrap: true} %}
+      {% include "TeapotioForumBundle:component:statLabels.html.twig" with {total_topics: stat.shortTotalTopic, total_messages: stat.shortTotalMessage, nowrap: true} %}
 
       <div>{{ loop.index }}.</div>
 
-      {% include "TeapotioUserBundle:Component:avatar.html.twig" with {class: "", imageClass: "", user: stat.user, size: 20} %}
+      {% include "TeapotioUserBundle:component:avatar.html.twig" with {class: "", imageClass: "", user: stat.user, size: 20} %}
 
       <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: stat.user.slug, userId: stat.user.id}) }}" class="to-main">
         {{ stat.user.username }}

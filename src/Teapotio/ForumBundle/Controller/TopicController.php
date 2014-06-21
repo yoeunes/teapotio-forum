@@ -87,12 +87,12 @@ class TopicController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/new.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:topic/new.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Topic:page/new.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:topic/new.html.twig', $params);
     }
 
     public function editAction()
@@ -146,12 +146,12 @@ class TopicController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/edit.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:topic/edit.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Topic:page/edit.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:topic/edit.html.twig', $params);
     }
 
     public function latestAction()
@@ -159,7 +159,7 @@ class TopicController extends BaseController
         if ($this->get('teapotio.forum.board')->getViewableBoards()->count() === 0) {
             if ($this->get('request')->isXmlHttpRequest() === true) {
                 $html = $this->get('teapotio.user')
-                             ->renderAccessRestricted('TeapotioForumBundle:Topic:partial/nonAuthorized.html.twig');
+                             ->renderAccessRestricted('TeapotioForumBundle:partial:topic/nonAuthorized.html.twig');
                 return $this->renderJson(array(
                     'html'   => $html,
                     'title'  => $title
@@ -167,7 +167,7 @@ class TopicController extends BaseController
             }
 
             $html = $this->get('teapotio.user')
-                         ->renderAccessRestricted('TeapotioForumBundle:Topic:page/nonAuthorized.html.twig');
+                         ->renderAccessRestricted('TeapotioForumBundle:page:topic/nonAuthorized.html.twig');
 
             return $this->renderHtml($html);
         }
@@ -196,12 +196,12 @@ class TopicController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/list.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:topic/list.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Topic:page/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:topic/list.html.twig', $params);
     }
 
     public function listAction($boardSlug)
@@ -255,12 +255,12 @@ class TopicController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Topic:partial/list.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:topic/list.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Topic:page/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:topic/list.html.twig', $params);
     }
 
     public function pinAction($boardSlug, $topicSlug)

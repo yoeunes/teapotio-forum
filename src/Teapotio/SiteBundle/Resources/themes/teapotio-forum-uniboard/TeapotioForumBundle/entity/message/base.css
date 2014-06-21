@@ -1,14 +1,14 @@
-.Message {
+.EntityMessage {
   overflow: auto;
   position: relative;
 }
 
-.Message .Message-sidebar {
+.EntityMessage .EntityMessage-sidebar {
   float: left;
   font-size: 13px;
 }
 
-.Message .Message-sidebar .Avatar {
+.EntityMessage .EntityMessage-sidebar .Avatar {
   border: 1px solid #ddd;
   padding: 2px;
   margin-bottom: 5px;
@@ -18,67 +18,67 @@
           transition: border 500ms ease;
 }
 
-.Message .Message-sidebar .Avatar:hover {
+.EntityMessage .EntityMessage-sidebar .Avatar:hover {
   border-color: #fe6c5f;
 }
 
-.Message .Message-sidebar .Message-sidebar-author {
+.EntityMessage .EntityMessage-sidebar .EntityMessage-sidebar-author {
   text-align: center;
 }
 
-.Message .Message-body {
+.EntityMessage .EntityMessage-body {
   margin-left: 120px;
   overflow: auto;
 }
 
-.Message .Message-body button {
+.EntityMessage .EntityMessage-body button {
   margin-top: 10px;
 }
 
-.Message .Message-footer {
+.EntityMessage .EntityMessage-footer {
   bottom: 0;
   font-size: 13px;
   position: absolute;
   right: 0;
 }
 
-.Message .Message-footer a {
+.EntityMessage .EntityMessage-footer a {
   margin-left: 15px;
 }
 
-.Message .Message-footer a:hover {
+.EntityMessage .EntityMessage-footer a:hover {
   text-decoration: none;
 }
 
-.Message .Prompt {
+.EntityMessage .Prompt {
   margin-bottom: 6px;
 }
 
 @media (max-width: 700px) {
-  .Message .Message-sidebar .Avatar {
+  .EntityMessage .EntityMessage-sidebar .Avatar {
     height: 60px;
     width: 60px;
   }
 }
 
 @media (min-width: 500px) and (max-width: 700px) {
-  .Message .Message-sidebar {
+  .EntityMessage .EntityMessage-sidebar {
     font-size: 11px;
   }
 
-  .Message .Message-body {
+  .EntityMessage .EntityMessage-body {
     margin-left: 85px;
   }
 }
 
 @media (max-width: 500px) {
-  .Message .Message-sidebar {
+  .EntityMessage .EntityMessage-sidebar {
     float: none;
     overflow: auto;
     text-align: left;
   }
 
-  .Message .Message-sidebar .Avatar {
+  .EntityMessage .EntityMessage-sidebar .Avatar {
     float: left;
     height: 30px;
     margin-right: 10px;
@@ -86,13 +86,13 @@
     width: 30px;
   }
 
-  .Message .Message-sidebar .Message-sidebar-author {
+  .EntityMessage .EntityMessage-sidebar .EntityMessage-sidebar-author {
     font-size: 14px;
     line-height: 36px;
     text-align: left;
   }
 
-  .Message .Message-body {
+  .EntityMessage .EntityMessage-body {
     margin-left: inherit;
   }
 }

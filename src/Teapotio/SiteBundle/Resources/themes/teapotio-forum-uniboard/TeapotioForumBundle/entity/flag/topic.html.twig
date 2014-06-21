@@ -4,12 +4,12 @@
     - flag
     - topic
  #}
-{% extends "TeapotioForumBundle:Flag:entity/base.html.twig" %}
+{% extends "TeapotioForumBundle:entity:flag/base.html.twig" %}
 
-{% block Flag_class %}{{ parent() }} Flag--topic{% endblock %}
+{% block Flag_class %}{{ parent() }} EntityFlag--topic{% endblock %}
 
 {% block Flag_content %}
-  {% include "TeapotioForumBundle:Topic:entity/individual.html.twig" with {
+  {% include "TeapotioForumBundle:entity:topic/individual.html.twig" with {
     topic: topic,
     message: topic.body,
     user: topic.user

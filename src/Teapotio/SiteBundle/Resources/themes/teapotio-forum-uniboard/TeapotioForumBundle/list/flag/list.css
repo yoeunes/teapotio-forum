@@ -1,14 +1,14 @@
-.FlagComponentList {
+.ListFlag {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.FlagComponentList > li {
+.ListFlag > li {
   border-bottom: 1px solid #dadada;
   margin-bottom: 26px;
 }
 
-.FlagComponentList > li:last-child {
+.ListFlag > li:last-child {
   border-bottom: 0;
 }

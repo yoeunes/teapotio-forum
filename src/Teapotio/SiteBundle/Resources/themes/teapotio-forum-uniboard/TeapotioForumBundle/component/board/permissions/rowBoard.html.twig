@@ -7,7 +7,7 @@
       {% endif %}
     </div>
   </td>
-  {% include "TeapotioForumBundle:Board:component/permissions/columnPermission.html.twig" with {name: name, board: board, group: group} %}
+  {% include "TeapotioForumBundle:component:board/permissions/columnPermission.html.twig" with {name: name, board: board, group: group} %}
 </tr>
 
 {# {% for i in 0..level %}-{% endfor %} #}
@@ -15,6 +15,6 @@
   {% set identity = identity ~ ' permission-row-' ~ board.id %}
   {% set level = level + 1 %}
   {% for b in board.children %}
-    {% include "TeapotioForumBundle:Board:component/permissions/rowBoard.html.twig" with {board: b, level: level, identity: identity} %}
+    {% include "TeapotioForumBundle:component:board/permissions/rowBoard.html.twig" with {board: b, level: level, identity: identity} %}
   {% endfor %}
 {% endif %}

@@ -29,7 +29,7 @@ class FlagController extends BaseController
             'flags' => $this->get('teapotio.forum.flag')->getLatestFlags(0, 15, false),
         );
 
-        return $this->render('TeapotioForumBundle:Flag:component/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:component:flag/list.html.twig', $params);
     }
 
     public function listAction()
@@ -54,12 +54,12 @@ class FlagController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:Flag:partial/list.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:flag/list.html.twig', $params),
                 'title'  => $title
             ));
         }
 
-        return $this->render('TeapotioForumBundle:Flag:page/list.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:flag/list.html.twig', $params);
     }
 
     public function ignoreAction($flagId)

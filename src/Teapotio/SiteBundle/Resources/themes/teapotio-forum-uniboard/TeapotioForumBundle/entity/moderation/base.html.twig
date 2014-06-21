@@ -1,9 +1,9 @@
-<div class="{% block Moderation_class %}Moderation{% endblock %}">
+<div class="{% block Moderation_class %}EntityModeration{% endblock %}">
   {% set moderatedItemName = 'a.' ~ moderation.moderatedItemName %}
 
-  <div class="Moderation-date">{{ moderation.dateCreated|date }}</span>
+  <div class="EntityModeration-date">{{ moderation.dateCreated|date }}</span>
 
-  <div class="Moderation-info">
+  <div class="EntityModeration-info">
     <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: moderation.user.slug, userId: moderation.user.id }) }}">
       {{ moderation.user.username }}
     </a>

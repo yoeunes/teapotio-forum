@@ -4,21 +4,21 @@
       <li>
 
         {% if moderation.message is not null %}
-          {% include "TeapotioForumBundle:Moderation:entity/message.html.twig" with {
+          {% include "TeapotioForumBundle:entity:moderation/message.html.twig" with {
             moderation: moderation,
             message: moderation.message,
             topic: moderation.message.topic,
             flag: null
           } %}
         {% elseif moderation.topic is not null %}
-          {% include "TeapotioForumBundle:Moderation:entity/topic.html.twig" with {
+          {% include "TeapotioForumBundle:entity:moderation/topic.html.twig" with {
             moderation: moderation,
             topic: moderation.topic,
             message: null,
             flag: null
           } %}
         {% elseif moderation.board is not null %}
-          {% include "TeapotioForumBundle:Moderation:entity/board.html.twig" with {
+          {% include "TeapotioForumBundle:entity:moderation/board.html.twig" with {
             moderation: moderation,
             board: moderation.board
           } %}

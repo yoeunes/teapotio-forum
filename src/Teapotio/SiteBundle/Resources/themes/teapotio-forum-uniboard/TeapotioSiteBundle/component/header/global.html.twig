@@ -1,4 +1,4 @@
-{% extends "TeapotioSiteBundle:Header:base.html.twig" %}
+{% extends "TeapotioSiteBundle:component:header/base.html.twig" %}
 
 {% block Header_class %}{{ parent() }} Header--global{% endblock %}
 
@@ -7,11 +7,11 @@
   <h1>teapot<span>io</span></h1>
 
   <div class="Header-navigation">
-    {% include "TeapotioForumBundle:Navigation:actions.html.twig" with {board: board, user: user} %}
-    {% include "TeapotioForumBundle:Navigation:moderator.html.twig" with {user: user} %}
+    {% include "TeapotioForumBundle:component:navigation/actions.html.twig" with {board: board, user: user} %}
+    {% include "TeapotioForumBundle:component:navigation/moderator.html.twig" with {user: user} %}
 
     {% if user != null %}
-      {% include "TeapotioUserBundle:Navigation:user.html.twig" with {user: user} %}
+      {% include "TeapotioUserBundle:component:navigation/user.html.twig" with {user: user} %}
     {% endif %}
   </div>
 {% endblock %}
