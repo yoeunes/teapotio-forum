@@ -1,14 +1,14 @@
-.ListFlag {
+.List.List--Flag {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.ListFlag > li {
+.List.List--Flag > li {
   border-bottom: 1px solid #dadada;
   margin-bottom: 26px;
 }
 
-.ListFlag > li:last-child {
+.List.List--Flag > li:last-child {
   border-bottom: 0;
 }

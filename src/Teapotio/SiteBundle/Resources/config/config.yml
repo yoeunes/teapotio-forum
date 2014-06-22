@@ -7,7 +7,7 @@ gregwar_captcha: ~
 teapotio_base_theme:
   directories:
     - @TeapotioSiteBundle/Resources/themes
-  themes: ["teapotio-forum-uniboard"]
+  themes: ["teapotio-forum-charcoal"]
 
 parameters:
     teapotio_user.user_service.class: Teapotio\UserBundle\Service\UserService
