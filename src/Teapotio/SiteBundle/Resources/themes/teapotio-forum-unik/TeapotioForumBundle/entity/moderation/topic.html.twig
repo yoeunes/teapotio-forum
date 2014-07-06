@@ -1,0 +1,15 @@
+{#
+  Represents a flagged topic
+  Required variables:
+    - moderation
+    - topic
+#}
+{% extends "TeapotioForumBundle:entity:moderation/base.html.twig" %}
+
+{% block Moderation_class %}{{ parent() }} EntityModeration--topic{% endblock %}
+
+{% block Moderation_content %}
+  <div class="EntityModeration-topic">
+    <a href="{{ forum_path('ForumListMessagesByTopic', moderation.topic) }}" class="to-main">{{ moderation.topic.title }}</a>
+  </div>
+{% endblock %}

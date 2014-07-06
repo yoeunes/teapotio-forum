@@ -226,7 +226,7 @@ class TopicController extends BaseController
             throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
         }
 
-        $boardIds = $this->get('teapotio.forum.board')->getChildrenIdsFromBoard($board);
+        $boardIds = $this->get('teapotio.forum.board')->getChildrenIdsFromBoard($board, $user);
         $boardIds[] = $board->getId();
 
         $topicsPerPage = $this->get('teapotio.forum')->getTotalTopicsPerPage();

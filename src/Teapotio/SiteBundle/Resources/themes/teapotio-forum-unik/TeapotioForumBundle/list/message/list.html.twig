@@ -1,0 +1,10 @@
+<div class="List List--message">
+  {% for message in messages %}
+    {% include "TeapotioForumBundle:entity:message/individual.html.twig" with {message: message, user: message.user, flag: flags.get(message.id)} %}
+  {% endfor %}
+  {% if form is not null %}
+    <div class="list-message-form">
+      {% include "TeapotioForumBundle:entity:message/new.html.twig" with {user: app.user, form: form, form_id: 'message-reply-to-topic'} %}
+    </div>
+  {% endif %}
+</div>

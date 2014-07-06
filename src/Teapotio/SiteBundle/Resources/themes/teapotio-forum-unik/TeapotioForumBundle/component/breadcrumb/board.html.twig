@@ -1,0 +1,32 @@
+{% extends "TeapotioSiteBundle:component:breadcrumb/base.html.twig" %}
+
+{% block Breadcrumb_class %}{{ parent() }} Breadcrumb--board{% endblock %}
+
+{% block Breadcrumb_content %}
+  {% spaceless %}
+    {% if showRoot is defined and showRoot == true %}
+      <li>
+        <a href="{{ forum_path("ForumListLatestTopics") }}">{% trans %}Forum{% endtrans %}</a>
+      </li>
+    {% endif %}
+    {% if board is not null %}
+      {% set parents = board.parents %}
+
+      {% for parent in parents %}
+        <li>
+          <a href="{{ forum_path("ForumListTopicsByBoard", parent) }}" class="to-main">{{ parent.title }}</a>
+        </li>
+      {% endfor %}
+
+      <li>
+        <a href="{{ forum_path("ForumListTopicsByBoard", board) }}" class="to-main">{{ board.title }}</a>
+      </li>
+
+      {% if topic is defined and topic is not null %}
+        <li>
+          <a href="{{ forum_path("ForumListMessagesByTopic", topic) }}" class="to-main">{{ topic.title }}</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endspaceless %}
+{% endblock %}

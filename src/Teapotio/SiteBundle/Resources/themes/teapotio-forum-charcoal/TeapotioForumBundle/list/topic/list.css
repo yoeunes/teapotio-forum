@@ -1,0 +1,41 @@
+.List.List--Topic {
+  width: 100%;
+}
+
+.List.List--Topic td {
+  padding: 4px 0;
+}
+
+.List.List--Topic .Avatar {
+  width: 40px;
+}
+
+.List.List--Topic .TopicRow .TopicRow-author {
+  width: 6%;
+}
+
+.List.List--Topic .TopicRow .TopicRow-responder {
+  width: 18%;
+}
+
+.List.List--Topic .TopicRow .TopicRow-lastResponseDate {
+  width: 15%;
+}
+
+.List.List--Topic .TopicRow.TopicRow--individual .TopicRow-content {
+  padding-top: 0;
+}
+
+@media (max-width: 900px) {
+  .List.List--Topic .TopicRow .TopicRow-author,
+  .List.List--Topic .TopicRow .TopicRow-lastResponseDate,
+  .List.List--Topic .TopicRow .TopicRow-responder {
+    width: auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .List.List--Topic td {
+    padding: 8px 0;
+  }
+}

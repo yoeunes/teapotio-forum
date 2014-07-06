@@ -49,7 +49,7 @@ class AdminController extends BaseController
             'page_title' => $title,
         );
 
-        return $this->render('TeapotioForumBundle/page/admin/permissions.html.twig', $params);
+        return $this->render('TeapotioForumBundle:page:admin/permissions.html.twig', $params);
     }
 
 }

@@ -1,0 +1,18 @@
+{% extends "TeapotioSiteBundle:component:header/base.html.twig" %}
+
+{% block Header_class %}{{ parent() }} Header--global{% endblock %}
+
+{% block Header_content %}
+  <div class="Header-hamburger"></div>
+  <h1></h1>
+
+  <div class="Header-navigation">
+    {% spaceless %}
+      {% include "TeapotioForumBundle:component:navigation/actions.html.twig" with {board: board, user: user} %}
+      {% if user != null %}
+        {% include "TeapotioUserBundle:component:navigation/user.html.twig" with {user: user} %}
+      {% endif %}
+      {% include "TeapotioForumBundle:component:navigation/moderator.html.twig" with {user: user} %}
+    {% endspaceless %}
+  </div>
+{% endblock %}

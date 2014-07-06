@@ -1,0 +1,16 @@
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--moderationList{% endblock %}
+
+{% block Partial_content %}
+  <h2>{% trans %}List.of.moderations{% endtrans %}</h2>
+  {% include "TeapotioForumBundle:list:moderation/list.html.twig" with {moderations: moderations} %}
+{% endblock %}
+
+{% block pagination_top %}
+  {% include "TeapotioSiteBundle:component:pagination/base.html.twig" with {collection: moderations, typeName: 'moderations'|trans } %}
+{% endblock %}
+
+{% block pagination_bottom %}
+  {% include "TeapotioSiteBundle:component:pagination/base.html.twig" with {collection: moderations, typeName: 'moderations'|trans } %}
+{% endblock %}

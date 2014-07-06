@@ -36,7 +36,7 @@
 
       {% trans %}Move.content.to{% endtrans %}
       {% set boards = get_boards() %}
-      {% include "TeapotioForumBundle:Board:component/select.html.twig" with {boards: boards, name: "board_id", class: "input-large"} %}
+      {% include "TeapotioForumBundle:component:board/select.html.twig" with {boards: boards, name: "board_id", class: "input-large"} %}
       {% trans %}and{% endtrans %}
 
       <button>{% trans %}Delete{% endtrans %}</button>

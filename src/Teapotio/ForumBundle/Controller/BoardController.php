@@ -150,6 +150,7 @@ class BoardController extends BaseController
         }
 
         $groups = $this->get('teapotio.user.group')->getAllGroups();
+        $groups->add(new \Teapotio\Base\ForumBundle\Entity\AnonymousUserGroup());
 
         $title = $this->generateTitle('Edit.%title%', array('%title%' => $board->getTitle()));
 
@@ -215,7 +216,7 @@ class BoardController extends BaseController
             foreach ($postData as $groupId => $permissions) {
                 $this->container
                      ->get('teapotio.forum.access_permission')
-                     ->setPermissionsOnBoardsFromPostData($groupId, $permissions);
+                     ->setPermissionsOnBoardsFromPostData($groupId, $permissions, array($board->getId()));
             }
         }
 

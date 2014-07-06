@@ -1,0 +1,28 @@
+{#
+  Variable required:
+    - user
+#}
+
+{% extends "TeapotioSiteBundle:component:navigation/global.html.twig" %}
+
+{% block Navigation_class %}{{ parent() }} Navigation--moderator{% endblock %}
+
+{% block Navigation_content %}
+  {% spaceless %}
+    {# Moderator zone #}
+    {% if user|is_moderator %}
+      <li>
+        <a href="{{ forum_path("ForumFlagList") }}" class="Navigation--moderator-button Navigation--moderator-button--flagList">
+          <div class="Navigation--actions-button-icon"></div>
+          <div class="Navigation--actions-button-name">{% trans %}List.of.flags{% endtrans %}</div>
+        </a>
+      </li>
+      <li>
+        <a href="{{ forum_path("ForumModerationList") }}" class="Navigation--moderator-button Navigation--moderator-button--moderationList">
+          <div class="Navigation--actions-button-icon"></div>
+          <div class="Navigation--actions-button-name">{% trans %}List.of.moderations{% endtrans %}</div>
+        </a>
+      </li>
+    {% endif %}
+  {% endspaceless %}
+{% endblock %}

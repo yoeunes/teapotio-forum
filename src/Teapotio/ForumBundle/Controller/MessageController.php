@@ -18,6 +18,8 @@ use Teapotio\ForumBundle\Entity\Topic;
 use Teapotio\ForumBundle\Entity\Message;
 use Teapotio\ForumBundle\Form\CreateMessageType;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class MessageController extends BaseController
 {
     public function newAction($boardSlug, $topicSlug)
@@ -225,25 +227,29 @@ class MessageController extends BaseController
 
         $this->get('teapotio.forum.topic')->view($topic);
 
-        /**
-         * Building the Message Form
-         */
-        $message = new Message();
-        $message->setUser($user);
-        $message->setBody($this->renderView(
-            'TeapotioForumBundle:Component:rules.html.twig',
-            array('prefix' => $this->get('translator')->trans('Add.a.new.message'))
-        ));
-        $form = $this->createForm(new CreateMessageType(), $message, array('new_entry' => true))->createView();
+        // Build the form if the user is allowed
+        $form = null;
+        $message = null;
+        if ($this->get('teapotio.forum.access_permission')->canCreateMessage($user, $board) === true) {
+            $message = new Message();
+            $message->setUser($user);
+            $message->setBody($this->renderView(
+                'TeapotioForumBundle:Component:rules.html.twig',
+                array('prefix' => $this->get('translator')->trans('Add.a.new.message'))
+            ));
+
+            $form = $this->createForm(new CreateMessageType(), $message, array('new_entry' => true))->createView();
+            $message = $form->vars['value'];
+        }
 
         $messagesPerPage = $this->get('teapotio.forum')->getTotalMessagesPerPage();
         $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
         $offset = ($page - 1) * $messagesPerPage;
 
         if ($isUserModerator === true) {
-          $isDeleted = null;
+            $isDeleted = null;
         } else {
-          $isDeleted = false;
+            $isDeleted = false;
         }
 
         $messages = $this->get('teapotio.forum.message')->getMessagesByTopic($topic, $offset, $messagesPerPage, $isDeleted);
@@ -251,9 +257,11 @@ class MessageController extends BaseController
         $stars = $this->get('teapotio.forum.message_star')->getStarsByMessages($messages);
         $userStars = $this->get('teapotio.forum.message_star')->getUserStarsByMessages($messages);
 
+        $flags = new ArrayCollection();
+        $flagTopic = null;
         if ($isUserModerator === true) {
             // The potential flag of the topic
-            $flagTopic =  $this->get('teapotio.forum.flag')->getByTopic($topic);
+            $flagTopic = $this->get('teapotio.forum.flag')->getByTopic($topic);
 
             // The potential flags in the list
             $flags = $this->get('teapotio.forum.flag')->getByMessages($messages, $board);
@@ -275,7 +283,7 @@ class MessageController extends BaseController
             'stars'             => $stars,
             'current_board'     => $board,
             'topic'             => $topic,
-            'message'           => $form->vars['value'],
+            'message'           => $message,
             'form'              => $form,
             'page_title'        => $title
         );

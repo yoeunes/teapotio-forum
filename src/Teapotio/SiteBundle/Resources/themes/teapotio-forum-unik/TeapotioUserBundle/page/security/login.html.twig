@@ -1,0 +1,5 @@
+{% extends "TeapotioSiteBundle:layout:html.html.twig" %}
+
+{% block container %}
+  {% include "TeapotioUserBundle:partial:security/login.html.twig" with {login_error: login_error} %}
+{% endblock %}
