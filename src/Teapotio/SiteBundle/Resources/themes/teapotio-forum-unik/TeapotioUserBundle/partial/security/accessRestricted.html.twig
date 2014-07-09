@@ -5,10 +5,7 @@
 
   <div class="non-authorized-content">
     {% block form_login %}
-      <form action="{{ path('TeapotioBaseUserBundle_login_check') }}" method="post" class="security-login-form">
-        <h2>{% trans %}Login{% endtrans %}</h2>
-        {% include "TeapotioUserBundle:component:form/login.html.twig" with {last_username: ''} %}
-      </form>
+      {% include "TeapotioUserBundle:component:form/login.html.twig" with {last_username: ''} %}
     {% endblock %}
 
     {% block form_signup %}

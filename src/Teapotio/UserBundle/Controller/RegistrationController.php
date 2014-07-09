@@ -17,9 +17,9 @@ use Teapotio\UserBundle\Form\UserSignupType;
 use Teapotio\UserBundle\Entity\User;
 use Teapotio\UserBundle\Entity\UserGroup;
 
-use Teapotio\Base\UserBundle\Controller\RegistrationController as BaseController;
+use Teapotio\Components\Controller;
 
-class RegistrationController extends BaseController
+class RegistrationController extends Controller
 {
 
     public function signupAction()
@@ -52,8 +52,38 @@ class RegistrationController extends BaseController
             }
         }
 
-        return $this->render('TeapotioUserBundle:page:registration/signup.html.twig', array(
-            'form' => $form->createView()
-        ));
+        $title = '';
+
+        $params = array(
+            'page_title' => $title,
+            'form'       => $form->createView()
+        );
+
+        if ($this->get('request')->isXmlHttpRequest() === true) {
+            return $this->renderJson(array(
+                'html'   => $this->renderView('TeapotioUserBundle:partial:registration/signup.html.twig', $params),
+                'title'  => $title
+            ));
+        }
+
+        return $this->render('TeapotioUserBundle:page:registration/signup.html.twig', $params);
+    }
+
+    public function forgotAction($token)
+    {
+        $title = '';
+
+        $params = array(
+            'page_title' => $title
+        );
+
+        if ($this->get('request')->isXmlHttpRequest() === true) {
+            return $this->renderJson(array(
+                'html'   => $this->renderView('TeapotioUserBundle:partial:registration/forgot.html.twig', $params),
+                'title'  => $title
+            ));
+        }
+
+        return $this->render('TeapotioUserBundle:page:registration/forgot.html.twig', $params);
     }
 }

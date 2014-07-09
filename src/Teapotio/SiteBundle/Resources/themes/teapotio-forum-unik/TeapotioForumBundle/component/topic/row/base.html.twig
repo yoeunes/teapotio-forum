@@ -60,8 +60,10 @@
     {% endblock %}
   </td>
 
-  <td class="TopicRow-actions">
-    {% block TopicRow_actions_content %}
-    {% endblock %}
-  </td>
+  {% if app.user|is_admin or app.user|is_moderator %}
+    <td class="TopicRow-actions">
+      {% block TopicRow_actions_content %}
+      {% endblock %}
+    </td>
+  {% endif %}
 </tr>

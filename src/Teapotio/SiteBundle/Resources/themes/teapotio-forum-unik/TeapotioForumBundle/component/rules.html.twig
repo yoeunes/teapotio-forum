@@ -1,12 +1,13 @@
 {% if prefix is defined %}
-  <p>{{ prefix }}</p>
+{{ prefix }}
 {% endif %}
-<h4>{% trans %}Short.reminder{% endtrans %}</h4>
-<ul>
-  <li>{% trans %}Be.respectful.towards.others{% endtrans %}</li>
-  <li>{% trans %}Personal.attack.racism.discrimination.profanity.and.impersonation.are.strictly.prohibited{% endtrans %}</li>
-  <li>{% trans %}Spamming.and.trolling.are.prohibited{% endtrans %}</li>
-</ul>
+
+#### {% trans %}Short.reminder{% endtrans %}
+
+- {% trans %}Be.respectful.towards.others{% endtrans %}
+- {% trans %}Personal.attack.racism.discrimination.profanity.and.impersonation.are.strictly.prohibited{% endtrans %} 
+- {% trans %}Spamming.and.trolling.are.prohibited{% endtrans %}
+
 {% if suffix is defined %}
-  <p>{{ suffix }}</p>
+  {{ suffix }}
 {% endif %}

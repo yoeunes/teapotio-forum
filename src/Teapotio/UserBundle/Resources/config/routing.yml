@@ -1,15 +1,15 @@
 TeapotioBaseUserBundle_login:
     pattern:   /login/
-    defaults:  { _controller: TeapotioBaseUserBundle:Security:login }
+    defaults:  { _controller: TeapotioUserBundle:Security:login }
 TeapotioBaseUserBundle_signup:
     pattern:   /signup/
     defaults:  { _controller: TeapotioUserBundle:Registration:signup }
 TeapotioBaseUserBundle_forgotPassword:
     pattern:   /forgot-password/
-    defaults:  { _controller: TeapotioBaseUserBundle:Account:forgotPassword }
+    defaults:  { _controller: TeapotioUserBundle:Account:forgotPassword }
 TeapotioBaseUserBundle_resetPassword:
     pattern:   /reset-password/
-    defaults:  { _controller: TeapotioBaseUserBundle:Account:resetPassword }
+    defaults:  { _controller: TeapotioUserBundle:Account:resetPassword }
 TeapotioBaseUserBundle_login_check:
     pattern:   /login-check/
 TeapotioBaseUserBundle_logout:

@@ -64,6 +64,15 @@
 }
 
 .Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--moderator,
-.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--user {
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--user,
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--logout {
   float: right;
+}
+
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--logout .Navigation--actions-button-name {
+  display: block;
+}
+
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--logout .Navigation--user-button {
+  margin-right: 15px;
 }

@@ -1,11 +1,25 @@
-<div>
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="_username" value="{{ last_username }}" />
-</div>
+<form action="{{ path('TeapotioBaseUserBundle_login_check') }}" class="FormLogin" method="post">
 
-<div>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="_password" />
-</div>
+  <h2>{% trans %}Login.message{% endtrans %}</h2>
 
-<button type="submit" class="btn btn-success">{% trans %}Login{% endtrans %}</button>
+  {% if login_error %}
+    {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
+      message: login_error.message
+    } %}
+  {% endif %}
+
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password" />
+  </div>
+
+  <button type="submit">{% trans %}Login{% endtrans %}</button>
+  <a href="{{ path('TeapotioBaseUserBundle_forgotPassword') }}" class="FormLogin-forgotPassword">
+    {% trans %}Forgot.password?{% endtrans %}
+  </a>
+</form>

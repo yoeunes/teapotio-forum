@@ -11,6 +11,8 @@
       {% include "TeapotioForumBundle:component:navigation/actions.html.twig" with {board: board, user: user} %}
       {% if user != null %}
         {% include "TeapotioUserBundle:component:navigation/user.html.twig" with {user: user} %}
+      {% else %}
+        {% include "TeapotioUserBundle:component:navigation/logout.html.twig" %}
       {% endif %}
       {% include "TeapotioForumBundle:component:navigation/moderator.html.twig" with {user: user} %}
     {% endspaceless %}

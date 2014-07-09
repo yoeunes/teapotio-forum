@@ -7,8 +7,10 @@
   {% endif %}
 {% endblock %}
 
-{% block TopicRow_actions_content %}
-  {% if app.user|can_delete(topic) == true %}
-    <a href="{{ forum_path("ForumTopicDelete", topic) }}" class="TopicRow-actions-delete"></a>
-  {% endif %}
-{% endblock %}
+{% if app.user|is_admin or app.user|is_moderator %}
+  {% block TopicRow_actions_content %}
+    {% if app.user|can_delete(topic) == true %}
+      <a href="{{ forum_path("ForumTopicDelete", topic) }}" class="TopicRow-actions-delete"></a>
+    {% endif %}
+  {% endblock %}
+{% endif %}

@@ -1,7 +1,0 @@
-.Navigation.Navigation--moderator .Navigation--moderator-button--flagList:before {
-  content: '\f024';
-}
-
-.Navigation.Navigation--moderator .Navigation--moderator-button--moderationList:before {
-  content: '\f0e3';
-}
