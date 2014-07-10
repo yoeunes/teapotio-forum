@@ -92,6 +92,14 @@
 
           window.history.pushState(data, null, $(this).attr('href'));
         });
+
+        window.onpopstate = function (event) {
+          if ($container.length !== 0 && event.state !== null && event.state.t === 'main-view') {
+            $.get(event.state.p, function (data) {
+              self.inject(data, $container);
+            });
+          }
+        };
       });
     };
 

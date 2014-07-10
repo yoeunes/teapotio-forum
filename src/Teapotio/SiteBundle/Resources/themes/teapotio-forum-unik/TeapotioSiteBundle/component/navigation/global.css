@@ -1,5 +1,6 @@
 .Navigation.Navigation--global li {
-    display: inline-block;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .Navigation.Navigation--global li a {
