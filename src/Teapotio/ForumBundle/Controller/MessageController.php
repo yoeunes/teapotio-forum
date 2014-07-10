@@ -273,7 +273,7 @@ class MessageController extends BaseController
 
         $this->get('teapotio.forum.message')->parseOutputBodies($messages);
 
-        $title = $this->generateTitle('Messages.in.%title%', array('%title%' => $topic->getTitle()));
+        $title = $this->generateTitle('%title%', array('%title%' => $topic->getTitle()));
 
         $params = array(
             'messages_per_page' => $messagesPerPage,

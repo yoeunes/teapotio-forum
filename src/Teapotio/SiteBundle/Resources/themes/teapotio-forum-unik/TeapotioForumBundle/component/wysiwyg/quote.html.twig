@@ -2,7 +2,7 @@
 {% spaceless %}
   <div class="wysiwyg-block wysiwyg-quote wysiwyg-quote-{{ message.id }}">
     <!-- start quote -->
-      {% include "TeapotioForumBundle:Message:entity/individual.html.twig"
+      {% include "TeapotioForumBundle:entity:message/individual.html.twig"
          with {user: message.user, message: message, show_action_buttons: false} %}
     <!-- end quote -->
   </div>

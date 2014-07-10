@@ -2,7 +2,7 @@
 
   <h2>{% trans %}Login.message{% endtrans %}</h2>
 
-  {% if login_error is defined %}
+  {% if login_error is defined and login_error is not null %}
     {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
       message: login_error.message
     } %}
