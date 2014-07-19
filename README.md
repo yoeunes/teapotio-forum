@@ -27,7 +27,37 @@ Add the following to your config.yml file:
 ```yml
 imports:
     - { resource: @TeapotioSiteBundle/Resources/config/config.yml }
+    - { resource: @TeapotioSiteBundle/Resources/config/security.yml }
 ```
+
+You can omit the security.yml if you'd like to make your own.
+
+Add the different bundles to your Doctrine config:
+
+```yml
+doctrine:
+    orm:
+        entity_managers:
+            default: # the name of the entity manager might be different here
+                mappings:
+                    TeapotioForumBundle: ~
+                    TeapotioSiteBundle: ~
+                    TeapotioUserBundle: ~
+                    TeapotioImageBundle: ~
+                    TeapotioUserBundle: ~
+```
+
+### routing.yml
+
+You can include the routes by including the main Teapotio routing file:
+
+```yml
+TeapotioForum:
+    resource: "@TeapotioSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+```
+
+Otherwise, you can manually each route prefix from the file above in your own.
 
 ### AppKernel.php
 

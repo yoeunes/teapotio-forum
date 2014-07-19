@@ -1,0 +1,33 @@
+security:
+    encoders:
+        Teapotio\UserBundle\Entity\User:
+            algorithm:        sha1
+            encode_as_base64: true
+            iterations:       12
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        users:
+            entity: { class: TeapotioUserBundle:User, property: username }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern:    ^/
+            form_login:
+                check_path: /login-check/
+                login_path: /login/
+            logout:
+                path:   /logout/
+                target: /
+            anonymous: ~
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
