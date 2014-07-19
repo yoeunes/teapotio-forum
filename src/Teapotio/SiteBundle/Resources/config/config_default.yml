@@ -1,0 +1,4 @@
+teapotio_base_theme:
+  directories:
+    - @TeapotioSiteBundle/Resources/themes
+  themes: ["teapotio-forum-unik"]

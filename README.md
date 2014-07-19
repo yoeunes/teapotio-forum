@@ -32,6 +32,12 @@ imports:
 
 You can omit the security.yml if you'd like to make your own.
 
+If you'd like to start with some default settings:
+```yml
+imports:
+    - { resource: @TeapotioSiteBundle/Resources/config/config_default.yml }
+```
+
 Add the different bundles to your Doctrine config:
 
 ```yml
