@@ -148,7 +148,7 @@ class ProfileController extends Controller
 
         $formGroups = false;
         if ($isCurrentUserAdmin === true) {
-          $formGroups = $this->createForm(new UserGroupType(), $user);
+          $formGroups = $this->createForm(new UserGroupType(), $user)->createView();
         }
 
         $title = $this->generateTitle("%username%'s settings", array('%username%' => $user->getUsername()));
@@ -158,7 +158,7 @@ class ProfileController extends Controller
             'formImage'         =>  $formImage->createView(),
             'formDescription'   =>  $formDescription->createView(),
             'formSettings'      =>  $formSettings->createView(),
-            'formGroups'        =>  $formGroups->createView(),
+            'formGroups'        =>  $formGroups,
             'page_title'        =>  $title,
             'info_notices'      =>  $infoNotices,
         );

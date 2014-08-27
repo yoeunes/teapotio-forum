@@ -82,7 +82,7 @@ class BoardController extends BaseController
 
                 $this->get('teapotio.forum.board')->save($board);
 
-                return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListTopicsByBoard', $parentBoard));
+                return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListTopicsByBoard', $board));
             }
         }
 

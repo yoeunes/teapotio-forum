@@ -2,10 +2,6 @@ TeapotioImageBundle:
     resource: "@TeapotioImageBundle/Resources/config/routing.yml"
     prefix:   /
 
-TeapotioSiteBundle:
-    resource: "@TeapotioSiteBundle/Resources/config/routing.yml"
-    prefix:   /
-
 TeapotioBaseUserBundle:
     resource: "@TeapotioBaseUserBundle/Resources/config/routing.yml"
     prefix:   /

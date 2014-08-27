@@ -29,6 +29,7 @@
   color: #fe6c5f;
 }
 
+.Wrapper .Wrapper-navigation nav li a,
 .Wrapper .Wrapper-navigation nav li {
   font-size: 16px;
   line-height: 44px;
