@@ -1,0 +1,65 @@
+.Header.Header--global {
+  background-color: #fefefe;
+  box-shadow: 0 0 3px rgba(0,0,0,0.15);
+  height: 56px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000;
+}
+
+.Header.Header--global > h1:before {
+  background: url(/bundles/teapotiosite/images/teapotio_logo.png) no-repeat;
+  background-size: contain;
+  content: ' ';
+  display: block;
+  float: left;
+  height: 44px;
+  margin: 0 10px;
+  width: 44px;
+}
+
+.Header.Header--global > h1 {
+  float: left;
+  line-height: 44px;
+  margin: 0;
+  overflow: auto;
+  padding: 6px 0;
+  white-space: nowrap;
+}
+
+.Header.Header--global > h1 > span {
+  color: #fe6c5f;
+}
+
+.Header.Header--global .Header-hamburger {
+  background-color: #312E2E;
+  border-radius: 2px;
+  display: none;
+  float: right;
+  height: 35px;
+  position: relative;
+  width: 35px;
+}
+
+.Header.Header--global .Header-hamburger:before {
+  content: '\f0c9';
+  font-family: 'FontAwesome';
+  font-size: 17px;
+  left: 0;
+  line-height: 35px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--moderator,
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--user,
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--logout {
+  float: right;
+}
+
+.Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--moderator {
+  margin-right: 56px;
+}

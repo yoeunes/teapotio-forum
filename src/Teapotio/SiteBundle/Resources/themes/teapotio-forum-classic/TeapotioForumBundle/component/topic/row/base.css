@@ -1,0 +1,54 @@
+.TopicRow:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.TopicRow .TopicRow-statsTotalPosts,
+.TopicRow .TopicRow-statsTotalViews {
+  text-align: center;
+}
+
+.TopicRow td {
+  padding: 6px 10px;
+}
+
+.TopicRow .Avatar {
+  margin: 0 auto;
+}
+
+.TopicRow .TopicRow-author,
+.TopicRow .TopicRow-actions,
+.TopicRow .TopicRow-statsTotalViews,
+.TopicRow .TopicRow-responder {
+  text-align: center;
+}
+
+.TopicRow .TopicRow-content .TopicRow-content-board {
+  float: right;
+}
+
+.TopicRow.TopicRow--boardChildless .TopicRow-content .TopicRow-content-board {
+  display: none;
+}
+
+.TopicRow .TopicRow-states {
+  font-size: 22px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+
+.TopicRow .TopicRow-states-pinned:before,
+.TopicRow .TopicRow-states-locked:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.TopicRow .TopicRow-states-pinned:before {
+  content: '\f08d';
+}
+
+.TopicRow .TopicRow-states-locked:before {
+  content: '\f023';
+}

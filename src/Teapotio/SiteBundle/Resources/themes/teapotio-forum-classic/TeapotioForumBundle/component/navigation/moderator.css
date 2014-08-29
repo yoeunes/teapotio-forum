@@ -1,0 +1,12 @@
+.Navigation.Navigation--global.Navigation--moderator a:hover {
+  color: #FF6161;
+}
+
+.Navigation.Navigation--global.Navigation--moderator .Navigation-button:before {
+  background-color: #FF6161;
+  content: '\f0e3';
+}
+
+.Navigation.Navigation--global.Navigation--moderator .Navigation-list {
+  border-top-color: #FF6161;
+}

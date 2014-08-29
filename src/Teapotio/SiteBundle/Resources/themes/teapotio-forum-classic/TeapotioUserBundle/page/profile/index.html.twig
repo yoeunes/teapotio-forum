@@ -1,0 +1,5 @@
+{% extends "TeapotioSiteBundle:layout:html.html.twig" %}
+
+{% block container %}
+    {% include "TeapotioUserBundle:partial:profile/index.html.twig" with {user: user} %}
+{% endblock %}

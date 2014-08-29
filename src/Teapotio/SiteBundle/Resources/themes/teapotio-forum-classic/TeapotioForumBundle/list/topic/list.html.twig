@@ -1,0 +1,14 @@
+<table class="List List--Topic">
+  <thead>
+    {% include "TeapotioForumBundle:component:topic/row/header.html.twig" %}
+  </thead>
+
+  {% for topic in topics %}
+    {% include "TeapotioForumBundle:component:topic/row/individual.html.twig" with {topic: topic, messages_per_page: messages_per_page} %}
+  {% endfor %}
+
+  <tfoot>
+    {% include "TeapotioForumBundle:component:topic/row/header.html.twig" %}
+  </tfoot>
+
+</table>

@@ -1,0 +1,32 @@
+<div class="List List--message">
+  {% for message in messages %}
+    {% include "TeapotioForumBundle:entity:message/individual.html.twig" with {
+      message: message,
+      user: message.user,
+      flag: flags.get(message.id)
+    } %}
+  {% endfor %}
+
+  {% if app.user is null %}
+    {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
+      'message': 'Login.or.signup.if.you.would.like.to.post'|trans,
+      'actions': [{
+        'path': path('TeapotioBaseUserBundle_login'),
+        'label': 'Log in'|trans
+      }, {
+        'path': path('TeapotioBaseUserBundle_signup'),
+        'label': 'Sign up'|trans
+      }]
+    } %}
+  {% endif %}
+
+  {% if form is not null %}
+    <div class="List-form">
+      {% include "TeapotioForumBundle:entity:message/new.html.twig" with {
+        user: app.user,
+        form: form,
+        form_id: 'message-reply-to-topic'
+      } %}
+    </div>
+  {% endif %}
+</div>

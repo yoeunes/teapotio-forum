@@ -1,0 +1,5 @@
+{% spaceless %}
+  <label>{% trans %}Pick.a.board{% endtrans %}</label>
+  {% set boards = get_boards() %}
+  {% include "TeapotioForumBundle:component:board/select.html.twig" with {boards: boards, name: "board_id"} %}
+{% endspaceless %}

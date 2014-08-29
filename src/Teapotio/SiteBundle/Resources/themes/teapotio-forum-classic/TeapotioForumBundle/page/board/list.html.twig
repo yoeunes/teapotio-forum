@@ -1,0 +1,13 @@
+{% extends "TeapotioSiteBundle:layout:html.html.twig" %}
+
+{% block container %}
+  <ul>
+    {% for board in boards %}
+      <li>
+        <a href="{{ forum_path("ForumListTopicsByBoard", board) }}">
+          {{ board.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

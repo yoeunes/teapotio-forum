@@ -1,0 +1,27 @@
+{# Represents the content of a flag - message, topic, user, etc #}
+{#
+    Required variables:
+        - flag
+#}
+
+<div class="{% block Flag_class %}EntityFlag{% endblock %}">
+  <div class="EntityFlag-header">
+    {% block Flag_header_content %}
+      <div class="EntityFlag-header-date">{{ flag.dateCreated|date }}</div>
+      <div class="EntityFlag-header-intro">
+        {# For example: "Elliot and 2 users flagged a topic" #}
+        {% set flaggedItemName = 'a.' ~ flag.flaggedItemName %}
+        <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: flag.users[0].slug, userId: flag.users[0].id }) }}">
+          {{ flag.users[0].username }}
+        </a>
+        {% if flag.users.count > 1 %}
+          {% trans %}and{% endtrans %} {{ flag.users.count - 1 }} {% trans%}users{% endtrans %}
+        {% endif %}
+        {% trans %}flagged{% endtrans %} {{ flaggedItemName|trans }}
+      </div>
+    {% endblock %}
+  </div>
+  <div class="EntityFlag-content">
+    {% block Flag_content %}{% endblock %}
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{% if moderations.count != 0 %}
+  <ul class="List List--moderation">
+    {% for moderation in moderations %}
+      <li>
+
+        {% if moderation.message is not null %}
+          {% include "TeapotioForumBundle:entity:moderation/message.html.twig" with {
+            moderation: moderation,
+            message: moderation.message,
+            topic: moderation.message.topic,
+            flag: null
+          } %}
+        {% elseif moderation.topic is not null %}
+          {% include "TeapotioForumBundle:entity:moderation/topic.html.twig" with {
+            moderation: moderation,
+            topic: moderation.topic,
+            message: null,
+            flag: null
+          } %}
+        {% elseif moderation.board is not null %}
+          {% include "TeapotioForumBundle:entity:moderation/board.html.twig" with {
+            moderation: moderation,
+            board: moderation.board
+          } %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

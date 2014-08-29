@@ -1,0 +1,12 @@
+.Navigation.Navigation--global.Navigation--actions a:hover {
+  color: #619CFF;
+}
+
+.Navigation.Navigation--global.Navigation--actions .Navigation-button:before {
+  background-color: #619CFF;
+  content: '\f040';
+}
+
+.Navigation.Navigation--global.Navigation--actions .Navigation-list {
+  border-top-color: #619CFF;
+}

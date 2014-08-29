@@ -1,0 +1,52 @@
+.Prompt {
+  border-top: 4px solid #000;
+  display: block;
+  font-size: 14px;
+  padding: 0 17px 2px;
+}
+
+.Prompt,
+.Prompt a {
+  color: #fff;
+}
+
+.Prompt ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Prompt > * {
+  display: inline-block;
+}
+
+.Prompt ul.Prompt-message li {
+  line-height: 22px;
+}
+
+.Prompt ul.Prompt-actions {
+  float: right;
+  list-style: none;
+  margin: 0;
+}
+
+.Prompt ul.Prompt-actions li {
+  display: inline-block;
+  margin: 0 0 0 6px;
+}
+
+.Prompt ul.Prompt-actions li a {
+  border-radius: 3px;
+  display: block;
+  margin: 6px 0;
+  padding: 8px 14px;
+}
+
+.Prompt ul.Prompt-actions li a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 500px) {
+  .Prompt ul.Prompt-actions {
+    display: none;
+  }
+}

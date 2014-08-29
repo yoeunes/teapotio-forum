@@ -1,0 +1,7 @@
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--topicNonAuthorized{% endblock %}
+
+{% block Partial_content %}
+  {% include "TeapotioForumBundle:component:topic/accessRestricted.html.twig" %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{#
+  You can use this template to define the structure of your dynamic page.
+  Dynamic page is basically the content is that is likely to change on a request.
+#}
+
+{% if current_board is not defined %}
+  {% set current_board = null %}
+{% endif %}
+
+{% if current_topic is not defined %}
+  {% set current_topic = null %}
+{% endif %}
+
+<section class="{% block Wrapper_class %}Wrapper{% endblock %}">
+
+  {% if app.user|can_create_topic(current_board) or app.user|can_create_board(current_board) or app.user|can_edit(current_board) %}
+    {% include "TeapotioForumBundle:component:navigation/actions.html.twig" with {board: current_board, user: app.user} %}
+  {% endif %}
+
+  {% block breadcrumb_top %}
+    {% include "TeapotioForumBundle:component:breadcrumb/board.html.twig" with {
+      board: current_board,
+      showRoot: true,
+      topic: current_topic
+    } %}
+  {% endblock %}
+
+  <div class="Wrapper-navigation Wrapper-navigation--top">
+    {# {% block pagination_top %}{% endblock %} #}
+  </div>
+
+  {% if info_notices is defined and info_notices is not empty %}
+    {% set prompt_params = {message: info_notices} %}
+    {% if info_notice_links is defined %}
+      {% set prompt_params = prompt_params|merge({actions: info_notice_links}) %}
+    {% endif %}
+    <div class="Wrapper-notice">
+      {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with prompt_params %}
+    </div>
+  {% endif %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block pagination_bottom %}{% endblock %}
+
+  {#<div class="Wrapper-navigation Wrapper-navigation--bottom">
+    {% block breadcrumb_bottom %}{% endblock %}
+  </div>#}
+</section>
+
+{% include "TeapotioSiteBundle:component:footer/global.html.twig" %}

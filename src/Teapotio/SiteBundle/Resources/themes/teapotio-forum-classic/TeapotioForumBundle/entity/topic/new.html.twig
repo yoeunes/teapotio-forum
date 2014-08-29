@@ -1,0 +1,33 @@
+{% extends "TeapotioForumBundle:entity:topic/form.html.twig" %}
+
+{#
+  Required variables:
+    - form_path
+    - user
+    - board
+    - form
+#}
+
+{% block Topic_form_path %}
+{% spaceless %}
+  {% if board is null %}
+    {{ forum_path("ForumNewTopicWithoutBoard") }}
+  {% else %}
+    {{ forum_path("ForumNewTopic", board) }}
+  {% endif %}
+{% endspaceless %}
+{% endblock %}
+
+
+{% block Topic_form_class %}{{ parent() }}
+  EntityTopic-form--new
+{% endblock %}
+
+
+{% block Topic_body_content %}
+  {% if board is null %}
+    {% include "TeapotioForumBundle:component:board/boardPicker.html.twig" %}
+  {% endif %}
+
+  {{ parent() }}
+{% endblock %}

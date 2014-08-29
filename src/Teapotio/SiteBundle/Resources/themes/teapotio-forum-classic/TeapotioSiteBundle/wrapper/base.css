@@ -1,0 +1,78 @@
+.Wrapper .Partial {
+  margin: 10px 0;
+}
+
+.Wrapper .Navigation.Navigation--global.Navigation--actions {
+  right: 56px;
+  position: fixed;
+  top: 0;
+  z-index: 100001;
+}
+
+.Wrapper .Wrapper-notice {
+  padding: 0;
+}
+
+.Wrapper .Breadcrumb {
+  font-size: 24px;
+  left: 64px;
+  position: fixed;
+  top: 0;
+  z-index: 100001;
+}
+
+.Wrapper .Breadcrumb li a {
+  line-height: 40px;
+  padding: 8px 20px 8px 2px;
+  position: relative;
+}
+
+.Wrapper .Breadcrumb li:first-child a {
+  padding-left: 8px;
+}
+
+.Wrapper .Breadcrumb li a:after {
+  color: #ccc;
+  content: '/';
+  font-size: 36px;
+  position: absolute;
+  right: 0;
+  top: 9px;
+}
+
+.Wrapper .Breadcrumb li:last-child a:after {
+  content: '';
+}
+
+.Wrapper .Pagination {
+  font-size: 1.5em;
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+@media (max-width: 700px) {
+  .Wrapper .Wrapper-navigation {
+    padding-top: 10px;
+  }
+
+  .Wrapper .Breadcrumb li {
+    margin-right: 6px;
+    padding-right: 17px;
+  }
+
+  .Wrapper .Breadcrumb li:after,
+  .Wrapper .Breadcrumb li:before {
+    border-width: 6px;
+    bottom: 4px;
+  }
+
+  .Wrapper .Wrapper-navigation nav:last-child {
+    padding-bottom: 10px;
+  }
+
+  .Wrapper .Wrapper-navigation nav li {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}

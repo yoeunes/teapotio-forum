@@ -37,7 +37,7 @@ class User extends BaseUser
     /**
      * @var \Teapotio\UserBundle\Entity\UserGroup $displayGroup
      *
-     * @ORM\ManyToOne(targetEntity="\Teapotio\UserBundle\Entity\UserGroup", inversedBy="userDisplay")
+     * @ORM\ManyToOne(targetEntity="\Teapotio\UserBundle\Entity\UserGroup", inversedBy="displayUsers")
      */
     protected $displayGroup;
 

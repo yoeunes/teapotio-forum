@@ -1,0 +1,34 @@
+.Footer.Footer--global {
+  padding: 25px;
+}
+
+.Footer.Footer--global .Footer-poweredBy {
+  display: block;
+  text-align: center;
+}
+
+.Footer.Footer--global .Footer-poweredBy:after,
+.Footer.Footer--global .Footer-poweredBy:before {
+  content: ' ';
+  display: inline-block;
+  line-height: 44px;
+  vertical-align: top;
+}
+
+.Footer.Footer--global .Footer-poweredBy:before {
+  content: '\f0e7';
+  font-family: FontAwesome;
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 64px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Footer.Footer--global .Footer-poweredBy:after {
+  background: url(/bundles/teapotiosite/images/teapotio_logo.png) no-repeat;
+  background-size: contain;
+  height: 64px;
+  margin: 0 10px;
+  width: 64px;
+}

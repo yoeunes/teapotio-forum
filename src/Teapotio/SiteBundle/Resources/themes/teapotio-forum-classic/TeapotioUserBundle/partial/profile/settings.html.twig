@@ -1,0 +1,67 @@
+{% extends "TeapotioSiteBundle:partial:settings.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--userSettings{% endblock %}
+
+{% block Partial_content %}
+  <div class="Partial-image">
+    <h3>{% trans %}Add.image.to.avatar{% endtrans %}</h3>
+
+    <form action="{{ path('TeapotioBaseUserBundle_addImage') }}" method="post" {{ form_enctype(formImage) }}>
+      {{ form_widget(formImage) }}
+      <button>{% trans %}Submit{% endtrans %}</button>
+    </form>
+
+    {% if user.avatars.count > 0 %}
+      <h4>{% trans %}Current.avatars{% endtrans %}</h4>
+
+      {% for image in user.avatars %}
+        <a href="{{ path('TeapotioBaseUserBundle_setDefaultImage', {imageId: image.id}) }}"><img src="{{ image(image.webPath).forceResize(50, null).crop(0,0,50,50) }}" class="{% if image.id == user.defaultAvatar.id %}default-avatar{% endif %}" /></a>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="Partial-description">
+    <h3>{% trans %}Add.a.description{% endtrans %}</h3>
+
+    <form action="{{ path('TeapotioBaseUserBundle_setDescription') }}" method="post" {{ form_enctype(formDescription) }}>
+      {{ form_widget(formDescription) }}
+      <button>{% trans %}Submit{% endtrans %}</button> <div class="feedback"></div>
+    </form>
+  </div>
+
+  <div class="Partial-background">
+    <h3>{% trans %}Customize.style{% endtrans %}</h3>
+
+    {% if user.settings.backgroundImage is null %}
+      {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
+        'message': 'No.background.uploaded'|trans
+      } %}
+    {% endif %}
+
+    <form action="{{ path('TeapotioBaseUserBundle_setSettings') }}" method="post" class="" {{ form_enctype(formSettings) }}>
+      {{ form_row(formSettings.backgroundColor) }}
+      {{ form_row(formSettings.backgroundImage) }}
+      {{ form_row(formSettings.backgroundTiled) }}
+      <button>{% trans %}Submit{% endtrans %}</button>
+      {{ form_rest(formSettings) }}
+    </form>
+  </div>
+
+  {% if app.user|is_admin and formGroups is not null %}
+    <h3><span>{% trans %}Admin{% endtrans %}</span> {% trans %}Link.group.to.user{% endtrans %}</h3>
+
+    {% if user.settings.backgroundImage is null %}
+      {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
+        'message': [
+          "<b>Display group</b>: Defines the user's displayed group."|trans,
+          "<b>Groups</b>: Defines the user's permissions."|trans
+        ]
+      } %}
+    {% endif %}
+
+    <form action="{{ path('TeapotioBaseUserBundle_setGroups') }}" method="post" class="" {{ form_enctype(formGroups) }}>
+      {{ form_widget(formGroups) }}
+      <button>{% trans %}Submit{% endtrans %}</button>
+    </form>
+  {% endif %}
+{% endblock %}
