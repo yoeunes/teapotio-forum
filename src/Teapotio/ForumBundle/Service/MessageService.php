@@ -54,6 +54,12 @@ class MessageService extends BaseMessageService
      */
     public function parseInputBody(MessageInterface $message)
     {
+        $body = $message->getBody();
+        $body = preg_replace('/<[^\/<>]+>/', "\n", $body);
+        $body = preg_replace('/<?:\/.*>/', "", $body);
+        $body = strip_tags($body);
+        $message->setBody($body);
+
         $this->parseInputBodyReply($message);
         $this->parseInputBodyQuote($message);
 
@@ -70,6 +76,14 @@ class MessageService extends BaseMessageService
      */
     public function parseOutputBodies($messages)
     {
+        foreach ($messages as $message) {
+          $body = $this
+              ->container
+              ->get('markdown.parser')
+              ->transformMarkdown($message->getBody());
+          $message->setBody($body);
+        }
+
         $this->parseOutputBodiesReply($messages);
         $this->parseOutputBodiesQuote($messages);
 

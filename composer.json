@@ -15,6 +15,7 @@
         "php": ">=5.3.3",
         "symfony/symfony": ">=2.3",
         "doctrine/doctrine-bundle": "*",
+        "knplabs/knp-markdown-bundle": "~1.3",
         "teapotio/base-cache-bundle": "dev-master",
         "teapotio/base-forum-bundle": "dev-master",
         "teapotio/base-user-bundle": "dev-master",

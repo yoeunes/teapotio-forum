@@ -21,6 +21,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+            new \Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new \Gregwar\ImageBundle\GregwarImageBundle(),
             new \Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new \Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),

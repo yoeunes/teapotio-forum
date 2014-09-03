@@ -234,7 +234,7 @@ class MessageController extends BaseController
             $message = new Message();
             $message->setUser($user);
             $message->setBody($this->renderView(
-                'TeapotioForumBundle:Component:rules.html.twig',
+                'TeapotioForumBundle:component:rules.html.twig',
                 array('prefix' => $this->get('translator')->trans('Add.a.new.message'))
             ));
 

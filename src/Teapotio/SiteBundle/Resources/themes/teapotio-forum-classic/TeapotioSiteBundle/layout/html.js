@@ -1,4 +1,4 @@
-(function ($) {
+(function (window, $) {
   var Container = function () {
     var self = this,
       initialize,
@@ -67,6 +67,10 @@
      * It will dynamically inject content into the page
      */
     registerPageLoadEvent = function () {
+      self.registerEvent(function () {
+        EntityMessageForm.attachTo('.EntityMessage-form');
+      });
+
       // Register dynamic page load event
       self.registerEvent(function ($container) {
         $container.find('a').click(function (event) {
@@ -107,5 +111,7 @@
     initialize();
   };
 
-  window.Container = new Container();
-})(jQuery);
+  $(document).ready(function () {
+    window.Container = new Container();
+  });
+})(window, jQuery);
