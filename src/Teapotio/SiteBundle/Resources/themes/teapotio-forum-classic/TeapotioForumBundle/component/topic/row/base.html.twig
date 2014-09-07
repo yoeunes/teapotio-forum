@@ -48,6 +48,14 @@
     {% endblock %}
   </td>
 
+  <td class="TopicRow-statsTotalStars">
+    {% block TopicRow_statsTotalStars_content %}
+      {% include "TeapotioForumBundle:component:topic/stars.html.twig" with {
+        count: topic.shortTotalStars
+      } %}
+    {% endblock %}
+  </td>
+
   <td class="TopicRow-statsTotalViews">
     {% block TopicRow_statsTotalViews_content %}
       {{ topic.shortTotalViews }}

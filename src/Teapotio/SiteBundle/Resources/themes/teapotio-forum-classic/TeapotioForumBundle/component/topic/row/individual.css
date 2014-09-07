@@ -20,9 +20,17 @@
   color: #fff;
 }
 
+.TopicRow.TopicRow--individual .TopicRow-statsTotalStars .TopicStars.TopicStars--none {
+  display: none;
+}
+
+.TopicRow.TopicRow--individual .TopicRow-statsTotalStars .TopicStars .TopicStars-icon {
+  color: #cb002c;
+}
+
 .TopicRow.TopicRow--individual .TopicRow-statsTotalPosts,
 .TopicRow.TopicRow--individual .TopicRow-statsTotalViews {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .TopicRow.TopicRow--individual .TopicRow-actions .TopicRow-actions-delete:before {

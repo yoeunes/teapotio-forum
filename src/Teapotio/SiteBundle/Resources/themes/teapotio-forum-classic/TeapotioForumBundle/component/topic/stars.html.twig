@@ -1,3 +1,4 @@
-<div class="TopicStars{% if count is not defined or count == 0 %} TopicStars--empty{% endif %}">
-
+<div class="TopicStars{% if count is not defined or count == 0 %} TopicStars--none{% endif %}">
+  <i class="TopicStars-icon fa fa-heart"></i>
+  <span class="TopicStars-count">{{ count }}</span>
 </div>

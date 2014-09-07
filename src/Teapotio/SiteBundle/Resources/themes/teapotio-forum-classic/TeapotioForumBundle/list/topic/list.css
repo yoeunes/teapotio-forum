@@ -9,9 +9,10 @@
   width: 26px;
 }
 
+.List.List--Topic .TopicRow .TopicRow-statsTotalStars,
 .List.List--Topic .TopicRow .TopicRow-statsTotalPosts,
 .List.List--Topic .TopicRow .TopicRow-statsTotalViews {
-  width: 6%;
+  width: 5%;
 }
 
 @media (max-width: 800px) {
