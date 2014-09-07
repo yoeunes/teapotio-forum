@@ -25,16 +25,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 class TopicRepository extends EntityRepository
 {
 
-    public function getLatestTopicsByBoard(BoardInterface $board, $offset, $limit)
+    public function getLatestTopicsByBoard(BoardInterface $board, $offset, $limit, $isDeleted)
     {
-        $query = $this->createQueryBuilder('t')
-                      ->select(array('t'))
-                      ->where('t.board = :board')->setParameter('board', $board)
-                      ->addOrderBy('t.isPinned', 'DESC')
-                      ->addOrderBy('t.lastMessageDate', 'DESC')
-                      ->getQuery()
-                      ->setFirstResult($offset)
-                      ->setMaxResults($limit);
+        $queryBuilder = $this->createQueryBuilder('t')
+                             ->select(array('t'))
+                             ->where('t.board = :board')->setParameter('board', $board)
+                             ->addOrderBy('t.isPinned', 'DESC')
+                             ->addOrderBy('t.lastMessageDate', 'DESC');
+
+        if ($isDeleted !== null) {
+            $queryBuilder->andWhere('t.isDeleted = :isDeleted')
+                         ->setParameter('isDeleted', $isDeleted);
+        }
+
+        $query = $queryBuilder->getQuery()
+                              ->setFirstResult($offset)
+                              ->setMaxResults($limit);
 
         $paginator = new Paginator($query, false);
         return $paginator->setUseOutputWalkers(false);

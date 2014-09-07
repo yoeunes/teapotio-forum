@@ -17,6 +17,8 @@ use Teapotio\ForumBundle\Entity\Topic;
 use Teapotio\ForumBundle\Entity\Message;
 use Teapotio\ForumBundle\Form\CreateTopicType;
 
+use Teapotio\Base\ForumBundle\Exception\DuplicateTopicException;
+
 use Symfony\Component\Form\FormError;
 
 class TopicController extends BaseController
@@ -37,6 +39,9 @@ class TopicController extends BaseController
 
         $request = $this->get('request');
 
+        // List of existing topics with the same slug or title
+        $existingTopics = array();
+
         $topic = new Topic();
         $form = $this->createForm(new CreateTopicType(), $topic);
 
@@ -53,20 +58,25 @@ class TopicController extends BaseController
             }
 
             if ($form->isValid() === true) {
-                $user = $this->get('security.context')->getToken()->getUser();
+                try {
+                    $user = $this->get('security.context')->getToken()->getUser();
 
-                $topic->setBoard($board);
+                    $topic->setBoard($board);
 
-                $this->get('teapotio.forum.topic')->save($topic);
+                    $this->get('teapotio.forum.topic')->save($topic);
 
-                $message = new Message();
-                $message->setBody($form['body']->getData());
-                $message->setTopic($topic);
-                $message->setIsTopicBody(true);
+                    $message = new Message();
+                    $message->setBody($form['body']->getData());
+                    $message->setTopic($topic);
+                    $message->setIsTopicBody(true);
 
-                $this->get('teapotio.forum.message')->save($message);
+                    $this->get('teapotio.forum.message')->save($message);
 
-                return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListMessagesByTopic', $topic));
+                    return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListMessagesByTopic', $topic));
+                } catch (DuplicateTopicException $e) {
+                    $form->addError(new FormError($this->get('translator')->trans('Topic.title.is.already.in.use')));
+                    $existingTopics = $e->topics;
+                }
             }
         }
 
@@ -79,10 +89,11 @@ class TopicController extends BaseController
         }
 
         $params = array(
-            'form'          => $form->createView(),
-            'current_board' => $board,
-            'page_title'    => $title,
-            'info_notices'  => $infoNotices,
+            'form'            => $form->createView(),
+            'current_board'   => $board,
+            'page_title'      => $title,
+            'info_notices'    => $infoNotices,
+            'existing_topics' => $existingTopics,
         );
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
@@ -116,18 +127,24 @@ class TopicController extends BaseController
         $form = $this->createForm(new CreateTopicType(), $topic);
         $form['body']->setData($message->getBody());
 
-        if ($request->getMethod() === 'POST') {
+        // List of existing topics with the same slug or title
+        $existingTopics = array();
 
+        if ($request->getMethod() === 'POST') {
             $form->bind($request);
 
             if ($form->isValid() === true) {
+                try {
+                    $message->setBody($form['body']->getData());
 
-                $message->setBody($form['body']->getData());
+                    $this->get('teapotio.forum.topic')->save($topic);
+                    $this->get('teapotio.forum.message')->save($message);
 
-                $this->get('teapotio.forum.topic')->save($topic);
-                $this->get('teapotio.forum.message')->save($message);
-
-                return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListMessagesByTopic', $topic));
+                    return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListMessagesByTopic', $topic));
+                } catch (DuplicateTopicException $e) {
+                    $form->addError(new FormError($this->get('translator')->trans('Topic.title.is.already.in.use')));
+                    $existingTopics = $e->topics;
+                }
             }
 
         }
@@ -136,12 +153,13 @@ class TopicController extends BaseController
         $title = $this->generateTitle('Edit.topic.%title%', array('%title%' => $topic->getTitle()));
 
         $params = array(
-            'form'          => $form->createView(),
-            'message'       => $message,
-            'topic'         => $topic,
-            'current_board' => $board,
-            'page_title'    => $title,
-            'info_notices'  => $infoNotices,
+            'form'            => $form->createView(),
+            'message'         => $message,
+            'topic'           => $topic,
+            'existing_topics' => $existingTopics,
+            'current_board'   => $board,
+            'page_title'      => $title,
+            'info_notices'    => $infoNotices,
         );
 
         if ($this->get('request')->isXmlHttpRequest() === true) {

@@ -16,6 +16,10 @@ namespace Teapotio\ForumBundle\Controller;
 use Teapotio\ForumBundle\Entity\Board;
 use Teapotio\Base\ForumBundle\Form\CreateBoardType;
 
+use Teapotio\Base\ForumBundle\Exception\DuplicateBoardException;
+
+use Symfony\Component\Form\FormError;
+
 class BoardController extends BaseController
 {
     public function newAction($boardSlug = null)
@@ -73,6 +77,8 @@ class BoardController extends BaseController
 
             try {
                 $this->get('teapotio.forum.path')->onBoardCreate($board);
+            } catch (DuplicateBoardException $e) {
+                $form->addError(new FormError('Board.title.is.already.in.use'));
             } catch (\Exception $e) {
                 $form->addError(new FormError('This.board.name.may.already.be.used'));
             }

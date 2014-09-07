@@ -12,7 +12,15 @@
 {% block Topic_prefix %}
   {{ form_errors(form) }}
 
+  {% if existing_topics is not empty %}
+    {% include "TeapotioForumBundle:entity:topic/form/prompt/duplicate.html.twig" with {
+      title: "Either.you.can.change.the.title.of.your.topic.or.post.in.one.of.the.following.topics."|trans,
+      topics: existing_topics
+    } %}
+  {% endif %}
+
   <form action="{% block Topic_form_path %}{% endblock %}" method="post" class="{% block Topic_form_class %}EntityTopic-form{% endblock %}" {{ form_enctype(form) }}>
+
 {% endblock %}
 
 {% block Topic_suffix %}
