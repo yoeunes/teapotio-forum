@@ -42,6 +42,10 @@
   right: 0;
 }
 
+.EntityMessage .EntityMessage-footer > * {
+  display: inline-block;
+}
+
 .EntityMessage .EntityMessage-footer a {
   margin-left: 15px;
 }

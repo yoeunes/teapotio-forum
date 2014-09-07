@@ -9,13 +9,7 @@
     - message
 #}
 
-{% block Topic_form_path %}
-  {% if board is null %}
-    {{ forum_path("ForumNewTopicWithoutBoard") }}
-  {% else %}
-    {{ forum_path("ForumNewTopic", board) }}
-  {% endif %}
-{% endblock %}
+{% block Topic_form_path %}{{ forum_path("ForumTopicEdit", topic) }}{% endblock %}
 
 
 {% block Topic_form_class %}{{ parent() }} EntityTopic-form--edit{% endblock %}

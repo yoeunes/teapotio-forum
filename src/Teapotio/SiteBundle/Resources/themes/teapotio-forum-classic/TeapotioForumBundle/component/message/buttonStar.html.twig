@@ -8,19 +8,25 @@
 
 {% if is_message_starred(message) %}
     {% set path = forum_path('ForumMessageUnstar', message)  %}
-    {% set icon_class_active = 'icon-heart' %}
-    {% set icon_class_unactive = 'icon-heart-empty' %}
+    {% set label_active = 'Untar'|trans %}
+    {% set label_unactive = 'Star'|trans %}
+    {% set icon_class_active = 'fa fa-heart' %}
+    {% set icon_class_unactive = 'fa fa-heart-o' %}
 {% else %}
     {% set path = forum_path('ForumMessageStar', message)  %}
-    {% set icon_class_active = 'icon-heart-empty' %}
-    {% set icon_class_unactive = 'icon-heart' %}
+    {% set label_active = 'Star'|trans %}
+    {% set label_unactive = 'Unstar'|trans %}
+    {% set icon_class_active = 'fa fa-heart-o' %}
+    {% set icon_class_unactive = 'fa fa-heart' %}
 {% endif %}
 
 {% spaceless %}
-  <div class="message-heart">
-    <a href="{{ path }}" class="btn-like btn-toggle" data-toggle-label="">
+  <div class="MessageButtonStar">
+    <a href="{{ path }}" class="MessageButtonStar-button btn-toggle"
+       data-toggle="true" data-toggle-label=" {#{ label_unactive }#}">
       <i class="{{ icon_class_active }}" data-toggle-class="{{ icon_class_unactive }}"></i>
+      {#{ label_active }#}
     </a>
-    {% if count is defined and count != 0 %}{{ count }}{% endif %}
+    <span class="MessageButtonStar-count">{% if count is defined and count != 0 %}{{ count }}{% endif %}
   </div>
 {% endspaceless %}

@@ -4,6 +4,7 @@
   var EntityMessageForm = flight.component(function () {
     this.attributes({
       wysiwygSelector: '.wysiwyg',
+      isEdit: false,
     });
 
     this.doSubmit = function (event) {
@@ -11,6 +12,7 @@
       var reset = this.$node.find('.EntityMessage-form-editableBody').attr('data-reset');
 
       if (reset === 'false' || content === '') {
+        event.preventDefault();
         return;
       }
 
@@ -27,7 +29,7 @@
       $newElement = $('<div></div>')
         .addClass('EntityMessage-form-editableBody')
         .attr('contenteditable', 'true')
-        .attr('data-reset', 'false')
+        .attr('data-reset', this.attr.isEdit)
         .html(val);
 
       $newElement.on('focus', function (event) {
@@ -36,8 +38,9 @@
         }
       });
 
-      this.$node.prepend($newElement);
-      this.select('wysiwygSelector').css('display', 'none');
+      this.select('wysiwygSelector')
+        .before($newElement)
+        .css('display', 'none');
     };
 
     this.after('initialize', function () {

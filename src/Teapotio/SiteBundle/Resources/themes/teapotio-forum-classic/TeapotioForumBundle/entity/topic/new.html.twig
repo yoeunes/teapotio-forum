@@ -8,21 +8,17 @@
     - form
 #}
 
-{% block Topic_form_path %}
-{% spaceless %}
-  {% if board is null %}
-    {{ forum_path("ForumNewTopicWithoutBoard") }}
-  {% else %}
-    {{ forum_path("ForumNewTopic", board) }}
-  {% endif %}
-{% endspaceless %}
-{% endblock %}
+{% if board is null %}
+  {% set form_path = forum_path("ForumNewTopicWithoutBoard") %}
+{% else %}
+  {% set form_path = forum_path("ForumNewTopic", board) %}
+{% endif %}
 
+{% block Topic_form_path %}{{ form_path }}{% endblock %}
 
 {% block Topic_form_class %}{{ parent() }}
   EntityTopic-form--new
 {% endblock %}
-
 
 {% block Topic_body_content %}
   {% if board is null %}

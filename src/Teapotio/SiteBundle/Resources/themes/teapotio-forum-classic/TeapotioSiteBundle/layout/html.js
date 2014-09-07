@@ -68,12 +68,17 @@
      */
     registerPageLoadEvent = function () {
       self.registerEvent(function () {
-        EntityMessageForm.attachTo('.EntityMessage-form');
+        EntityMessageForm.attachTo('.EntityTopic-form--new, .EntityMessage-form--new');
+        EntityMessageForm.attachTo(
+          '.EntityTopic-form--edit, .EntityMessage-form--edit',
+          { isEdit: true }
+        );
       });
 
       // Register dynamic page load event
       self.registerEvent(function ($container) {
-        $container.find('a').click(function (event) {
+        // console.log($container.find('a').not('data-toggle-label'));
+        $container.find("a[data-toggle!='true']").click(function (event) {
           var data;
 
           event.preventDefault();

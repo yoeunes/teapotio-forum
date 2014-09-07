@@ -170,7 +170,7 @@ class MessageController extends BaseController
                     $this->get('teapotio.forum.flag')->flag($message, $this->get('security.context')->getToken()->getUser());
                 }
                 break;
-            case 'star':die;
+            case 'star':
                     $this->get('teapotio.forum.message_star')->star($message, $this->get('security.context')->getToken()->getUser());
                 break;
             case 'unstar':

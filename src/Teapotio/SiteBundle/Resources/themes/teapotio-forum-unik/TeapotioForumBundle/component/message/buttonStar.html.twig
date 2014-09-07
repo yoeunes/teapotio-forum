@@ -18,7 +18,7 @@
 
 {% spaceless %}
   <div class="message-heart">
-    <a href="{{ path }}" class="btn-like btn-toggle" data-toggle-label="">
+    <a href="{{ path }}" class="btn-like btn-toggle" data-toggle="true" data-toggle-label="">
       <i class="{{ icon_class_active }}" data-toggle-class="{{ icon_class_unactive }}"></i>
     </a>
     {% if count is defined and count != 0 %}{{ count }}{% endif %}

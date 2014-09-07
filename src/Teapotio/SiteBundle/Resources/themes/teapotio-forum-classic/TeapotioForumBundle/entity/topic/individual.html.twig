@@ -6,16 +6,16 @@
   {% if app.user|is_moderator %}
     <div class="EntityTopic-actions">
       {% spaceless %}
-        <a href="{{ forum_path("ForumTopicPin", topic) }}"
+        <a href="{{ forum_path("ForumTopicPin", topic) }}" data-toggle="true"
            data-toggle-label=" {% if topic.isPinned == true %}{% trans %}Pin{% endtrans %}{% else %}{% trans %}Pinned{% endtrans %}{% endif %}">
           {% if topic.isPinned == true %}{% trans %}Pinned{% endtrans %}{% else %}{% trans %}Pin{% endtrans %}{% endif %}
         </a>
-        <a href="{{ forum_path("ForumTopicLock", topic) }}"
+        <a href="{{ forum_path("ForumTopicLock", topic) }}" data-toggle="true"
            data-toggle-label=" {% if topic.isLocked == true %}{% trans %}Lock{% endtrans %}{% else %}{% trans %}Locked{% endtrans %}{% endif %}">
           {% if topic.isLocked == true %}{% trans %}Locked{% endtrans %}{% else %}{% trans %}Lock{% endtrans %}{% endif %}
         </a>
         {% if app.user|can_delete(topic) == true %}
-          <a href="{{ forum_path("ForumTopicDelete", topic) }}"
+          <a href="{{ forum_path("ForumTopicDelete", topic) }}" data-toggle="true"
              data-toggle-label=" {% if topic.isDeleted == true %}{% trans %}Delete{% endtrans %}{% else %}{% trans %}Deleted{% endtrans %}{% endif %}">
             {% if topic.isDeleted == true %}{% trans %}Deleted{% endtrans %}{% else %}{% trans %}Delete{% endtrans %}{% endif %}
           </a>

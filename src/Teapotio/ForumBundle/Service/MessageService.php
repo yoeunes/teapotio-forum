@@ -55,8 +55,9 @@ class MessageService extends BaseMessageService
     public function parseInputBody(MessageInterface $message)
     {
         $body = $message->getBody();
+        $body = preg_replace('/<br[^<>]*>/', "\n", $body);
         $body = preg_replace('/<[^\/<>]+>/', "\n", $body);
-        $body = preg_replace('/<?:\/.*>/', "", $body);
+        $body = preg_replace('/<\/.*>/', "", $body);
         $body = strip_tags($body);
         $message->setBody($body);
 
