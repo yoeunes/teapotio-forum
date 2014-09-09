@@ -78,7 +78,7 @@
       // Register dynamic page load event
       self.registerEvent(function ($container) {
         // console.log($container.find('a').not('data-toggle-label'));
-        $container.find("a[data-toggle!='true']").click(function (event) {
+        $container.find("a[data-toggle!='true'][data-external!='true']").click(function (event) {
           var data;
 
           event.preventDefault();

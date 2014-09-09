@@ -23,6 +23,10 @@ use Teapotio\UserBundle\Form\UserSignupType;
 
 use Teapotio\Base\UserBundle\Service\UserService as BaseService;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+
 class UserService extends BaseService {
 
     public function createUser()
@@ -42,7 +46,7 @@ class UserService extends BaseService {
      *
      * @return User
      */
-    public function save(User $user)
+    public function save(UserInterface $user)
     {
         if ($user->getSettings() === null) {
             $settings = new UserSettings();
@@ -79,7 +83,7 @@ class UserService extends BaseService {
      *
      * @return User
      */
-    public function setDefaultAvatarFromAvatars(User $user, $imageId)
+    public function setDefaultAvatarFromAvatars(UserInterface $user, $imageId)
     {
         foreach ($user->getAvatars() as $avatar) {
             if ($avatar->getId() == $imageId) {
@@ -153,5 +157,31 @@ class UserService extends BaseService {
         $params = array_merge($defaultParams, $params);
 
         return $this->container->get('templating')->render($template, $params);
+    }
+
+    /**
+     * When the user signed up successfully
+     *
+     * @param  UserInterface  $user
+     *
+     * @return UserInterface
+     */
+    public function postSignup(UserInterface $user)
+    {
+        // Set the user session
+        $token = new UsernamePasswordToken($user, null, "main", $user->getRoles());
+        $this->container
+             ->get("security.context")
+             ->setToken($token);
+
+        // Dispatch the login event
+        $request = $this->container
+                        ->get("request");
+        $event = new InteractiveLoginEvent($request, $token);
+        $this->container
+             ->get("event_dispatcher")
+             ->dispatch("security.interactive_login", $event);
+
+        return $user;
     }
 }

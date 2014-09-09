@@ -9,7 +9,10 @@
 
   {% if app.user is null %}
     {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
-      'message': 'Login.or.signup.if.you.would.like.to.post'|trans,
+      'message': '%login%.or.%signup%.if.you.would.like.to.post'|trans({
+        '%login%': '<a href="' ~ path('TeapotioBaseUserBundle_login') ~ '">' ~ 'Log in'|trans ~ '</a>',
+        '%signup%': '<a href="' ~ path('TeapotioBaseUserBundle_signup') ~ '">' ~ 'Sign up'|trans ~ '</a>'
+      }),
       'actions': [{
         'path': path('TeapotioBaseUserBundle_login'),
         'label': 'Log in'|trans

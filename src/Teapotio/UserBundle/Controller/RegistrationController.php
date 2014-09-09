@@ -48,7 +48,9 @@ class RegistrationController extends Controller
                     array($image)
                 );
 
-                $this->redirect("/");
+                $this->get('teapotio.user')->postSignup($user);
+
+                return $this->redirect("/");
             }
         }
 
