@@ -46,18 +46,26 @@
   {% endif %}
 {% endblock %}
 
+{% block Message_sidebar_content %}
+  {{ parent() }}
+
+  {% if show_action_buttons == true %}
+    {% if stars is defined %}
+      {% include "TeapotioForumBundle:component:message/buttonStar.html.twig" with {message: message, count: stars[message.id]|length} %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block Message_extra_content %}
+  {% include "TeapotioForumBundle:component:message/date.html.twig" with {message: message} %}
+{% endblock %}
+
 {% block Message_body %}
   <p>{{ message.body|raw }}</p>
 {% endblock %}
 
 {% block Message_footer_content %}
-  {% include "TeapotioForumBundle:component:message/date.html.twig" with {message: message} %}
-
   {% if show_action_buttons == true %}
-
-    {% if stars is defined %}
-      {% include "TeapotioForumBundle:component:message/buttonStar.html.twig" with {message: message, count: stars[message.id]|length} %}
-    {% endif %}
 
     {#% if app.user|can_create_message(message.topic.board) == true %}
       <a href="{{ forum_path("ForumMessageReply", message) }}" class="message-reply">

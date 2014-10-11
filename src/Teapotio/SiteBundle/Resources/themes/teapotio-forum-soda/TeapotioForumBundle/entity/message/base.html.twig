@@ -11,18 +11,6 @@
 
   {% block Message_prefix %}{% endblock %}
 
-  <div class="EntityMessage-sidebar">
-    {% block Message_sidebar_content %}
-      {% include "TeapotioUserBundle:component:avatar.html.twig" with {class: "", user: user, size: 100} %}
-    {% endblock %}
-
-    <div class="EntityMessage-sidebar-author">
-      {% block Message_author_content %}
-          <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}" class="to-main">{{ user.username }}</a>
-      {% endblock %}
-    </div>
-  </div>
-
   <div class="EntityMessage-body">
     {% block Message_body %}
       {# The body of the message #}
@@ -31,6 +19,23 @@
 
   <div class="EntityMessage-footer">
     {% block Message_footer_content %}{% endblock %}
+  </div>
+
+  <div class="EntityMessage-sidebar">
+    {% block Message_sidebar_content %}
+      {% include "TeapotioUserBundle:component:avatar.html.twig" with {class: "", user: user, size: 100} %}
+    {% endblock %}
+
+    <div class="EntityMessage-sidebar-author">
+      {% block Message_author_content %}
+        <a href="{{ path('TeapotioBaseUserBundle_profile', {userSlug: user.slug, userId: user.id }) }}" class="to-main">{{ user.username }}</a>
+      {% endblock %}
+    </div>
+
+    <div class="EntityMessage-sidebar-extra">
+      {% block Message_extra_content %}
+      {% endblock %}
+    </div>
   </div>
 
   {% block Message_suffix %}{% endblock %}

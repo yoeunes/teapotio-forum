@@ -1,7 +1,3 @@
-.EntityMessage.EntityMessage--individual {
-  margin-bottom: 20px;
-}
-
 .EntityMessage.EntityMessage--individual .Prompt {
   margin-bottom: 15px;
   position: relative;
@@ -22,9 +18,13 @@
   border-top-color: #cd313c;
 }
 
+.EntityMessage.EntityMessage--individual .MessageButtonStar {
+  float: right;
+  line-height: 56px;
+}
+
 .EntityMessage.EntityMessage--individual .EntityMessage-body {
   line-height: 20px;
-  margin-bottom: 15px;
 }
 
 .EntityMessage.EntityMessage--individual img {

@@ -34,7 +34,13 @@ body .Sidebar .Sidebar-boards > .BoardMenu {
 
 body .Wrapper .Breadcrumb,
 body .Sidebar .Sidebar-boards > .BoardMenu {
-  opacity: 0.8;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+body .Wrapper .Breadcrumb:hover,
+body .Sidebar .Sidebar-boards:hover > .BoardMenu {
+  opacity: 0.9;
 }
 
 body .Wrapper .Breadcrumb {
