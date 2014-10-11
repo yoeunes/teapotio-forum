@@ -1,0 +1,32 @@
+.Partial.Partial--userProfile .Partial-header {
+  float: left;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.Partial.Partial--userProfile .Partial-header .Avatar {
+  width: 150px;
+}
+
+.Partial.Partial--userProfile .Partial-header .Partial-header-stats {
+  font-size: 12px;
+}
+
+.Partial.Partial--userProfile .Partial-header .Partial-header-stats span {
+  display: inline-block;
+  padding: 0 4px;
+  text-transform: lowercase;
+}
+
+.Partial.Partial--userProfile h3 {
+  margin: 35px 0 0;
+}
+
+.Partial.Partial--userProfile .List.List--Topic {
+  width: auto;
+}
+
+.Partial.Partial--userProfile .List.List--Topic .TopicRow-statsTotalViews,
+.Partial.Partial--userProfile .List.List--Topic .TopicRow-author {
+  display: none;
+}

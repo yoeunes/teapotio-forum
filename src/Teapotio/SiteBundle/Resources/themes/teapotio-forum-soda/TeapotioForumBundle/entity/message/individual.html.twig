@@ -1,0 +1,99 @@
+{#
+  Required variables:
+    - user (from parent template)
+    - message
+    - topic
+#}
+
+{% extends "TeapotioForumBundle:entity:message/base.html.twig" %}
+
+{# Set a default value #}
+{% if show_action_buttons is not defined %}
+  {% set show_action_buttons = true %}
+{% endif %}
+
+
+{% block Message_class %}{{ parent() }}
+  EntityMessage--individual
+  {% if flag is defined and flag is not null %} EntityMessage--flagged{% endif %}
+{% endblock %}
+
+
+{% block Message_id %}message-{{ message.position }}{% endblock %}
+
+{# Used for prompting user when the message has been flagged or moderated #}
+{% block Message_prefix %}
+  {% if app.user|is_moderator and flag is defined and flag is not null %}
+    {% if flag.moderation is not null and flag.moderation.actionId == 30 %}
+      {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
+        'message': 'The.message.below.was.flagged.%total%.times.and.has.been.deleted.by.%username%'|trans({
+          '%total%': flag.users.count,
+          '%username%': flag.moderation.user.username
+        })
+      } %}
+    {% else %}
+      {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
+        'message': 'The.message.below.was.flagged.%total%.times'|trans({'%total%': flag.users.count}),
+        'actions': [{
+          'path': path('ForumFlagIgnore', {flagId: flag.id}),
+          'label': 'Ignore'|trans
+        }, {
+          'path': path('ForumFlagDelete', {flagId: flag.id}),
+          'label': 'Delete'|trans
+        }]
+      } %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block Message_body %}
+  <p>{{ message.body|raw }}</p>
+{% endblock %}
+
+{% block Message_footer_content %}
+  {% include "TeapotioForumBundle:component:message/date.html.twig" with {message: message} %}
+
+  {% if show_action_buttons == true %}
+
+    {% if stars is defined %}
+      {% include "TeapotioForumBundle:component:message/buttonStar.html.twig" with {message: message, count: stars[message.id]|length} %}
+    {% endif %}
+
+    {#% if app.user|can_create_message(message.topic.board) == true %}
+      <a href="{{ forum_path("ForumMessageReply", message) }}" class="message-reply">
+        <i class="icon-reply"></i>
+        {% trans %}Reply{% endtrans %}
+      </a>
+      <a href="{{ forum_path("ForumMessageQuote", message) }}" class="message-quote">
+        <i class="icon-quote-left"></i>
+        {% trans %}Quote{% endtrans %}
+      </a>
+    {% endif %#}
+
+    {% if app.user|can_flag(message) == true %}
+      <a href="{{ forum_path("ForumMessageFlag", message) }}" data-toggle="true"
+         data-toggle-label=" {% trans %}Flagged{% endtrans %}">
+        {% trans %}Flag{% endtrans %}
+      </a>
+    {% endif %}
+
+    {% if app.user|can_edit(message) == true %}
+      {% if message.isTopicBody == true %}
+        {% set edit_path = forum_path("ForumTopicEdit", topic) %}
+      {% else %}
+        {% set edit_path = forum_path("ForumMessageEdit", message) %}
+      {% endif %}
+
+      <a href="{{ edit_path }}">
+        {% trans %}Edit{% endtrans %}
+      </a>
+    {% endif %}
+
+    {% if app.user|can_delete(message) == true %}
+      <a href="{{ forum_path("ForumMessageDelete", message) }}" data-toggle="true"
+         data-toggle-label=" {% if message.isDeleted == true %}{% trans %}Delete{% endtrans %}{% else %}{% trans %}Undelete{% endtrans %}{% endif %}">
+        {% if message.isDeleted == true %}{% trans %}Undelete{% endtrans %}{% else %}{% trans %}Delete{% endtrans %}{% endif %}
+      </a>
+    {% endif %}
+  {% endif %}
+{% endblock %}

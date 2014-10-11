@@ -1,0 +1,19 @@
+{% extends "TeapotioSiteBundle:component:footer/base.html.twig" %}
+
+{% block Footer_class %}{{ parent() }} Footer--global{% endblock %}
+
+{% block Footer_content %}
+  {#
+    Consider keeping this here to show your support for Teapotio Forum
+  #}
+  <a href="http://teapot.io" class="Footer-poweredBy" data-external="true">
+  </a>
+  <ul class="Footer-accounts">
+    <li class="Footer-accounts-account Footer-accounts-account--twitter">
+      <a href="https://twitter.com/teapotio" title="Teapotio on Twitter" data-external="true"></a>
+    </li>
+    <li class="Footer-accounts-account Footer-accounts-account--github">
+      <a href="https://github.com/teapotio" title="Teapotio on Github" data-external="true"></a>
+    </li>
+  </ul>
+{% endblock %}

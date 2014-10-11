@@ -1,0 +1,7 @@
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--userSignup{% endblock %}
+
+{% block Partial_content %}
+  {% include "TeapotioUserBundle:component:form/signup.html.twig" with {form: form} %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "TeapotioSiteBundle:component:navigation/base.html.twig" %}
+
+{% block Navigation_class %}{{ parent() }} Navigation--global{% endblock %}
+
+{% block Navigation_content %}
+  <div class="Navigation-button">
+    {% block Navigation_button_content %}
+    {% endblock %}
+  </div>
+  <ul class="Navigation-list">
+    {% block Navigation_list_content %}
+    {% endblock %}
+  </ul>
+{% endblock %}

@@ -8,7 +8,7 @@
     <link href="/css/themeteapotio_forum_base.css" rel="stylesheet" media="screen" />
     <link href="/css/themeteapotio_forum_security.css" rel="stylesheet" media="screen" />
     <link href="/css/themeteapotio_forum_profile.css" rel="stylesheet" media="screen" />
-    <link href="/css/themeteapotio_forum_classic.css" rel="stylesheet" media="screen" />
+    <link href="/css/themeteapotio_forum_soda.css" rel="stylesheet" media="screen" />
 
     <link rel="shortcut icon" href="/bundles/teapotiosite/images/favicon.ico" />
 
@@ -30,11 +30,13 @@
 
     {% include "TeapotioSiteBundle:component:header/global.html.twig" with {board: current_board, user: app.user} %}
 
+    {% include "TeapotioSiteBundle:component:sidebar/base.html.twig" %}
+
     <div class="Container">
       {% block container %}
       {% endblock %}
     </div>
 
-    <script type="text/javascript" src="/js/themeteapotio_forum_classic.js"></script>
+    <script type="text/javascript" src="/js/themeteapotio_forum_soda.js"></script>
   </body>
 </html>

@@ -1,4 +1,8 @@
 teapotio_base_theme:
   directories:
     - @TeapotioSiteBundle/Resources/themes
-  themes: ["teapotio-forum-classic"]
+  themes:
+    - teapotio-forum-soda
+    - teapotio-forum-security
+    - teapotio-forum-profile
+    - teapotio-forum-base

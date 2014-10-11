@@ -1,0 +1,71 @@
+.TopicRow .TopicRow-info > * {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-stats {
+  color: #777;
+  display: none;
+  font-size: 14px;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-stats--hearts,
+.TopicRow:hover .TopicRow-info .TopicRow-info-stats {
+  display: inline-block;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-stats--hearts .fa {
+  color: #ec8480;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-stats--posts .fa {
+  color: #89b4ea;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-stats--views .fa {
+  color: #76c176;
+}
+
+.TopicRow .TopicRow-info .fa {
+  font-size: 16px;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-author .Avatar {
+  width: 30px;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-title {
+  font-size: 20px;
+}
+
+.TopicRow .TopicRow-info .TopicRow-info-date {
+  font-size: 14px;
+}
+
+.TopicRow .TopicRow-info .TopicStars.TopicStars--none {
+  display: none;
+}
+
+.TopicRow .TopicRow-states {
+  font-size: 22px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+
+.TopicRow .TopicRow-states-pinned:before,
+.TopicRow .TopicRow-states-locked:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.TopicRow .TopicRow-states-pinned:before {
+  content: '\f08d';
+}
+
+.TopicRow .TopicRow-states-locked:before {
+  content: '\f023';
+}

@@ -1,0 +1,102 @@
+.EntityMessage {
+  overflow: auto;
+  position: relative;
+}
+
+.EntityMessage .EntityMessage-sidebar {
+  float: left;
+  font-size: 13px;
+}
+
+.EntityMessage .EntityMessage-sidebar .Avatar {
+  border: 1px solid #ddd;
+  padding: 2px;
+  margin-bottom: 5px;
+  -webkit-transition: border 500ms ease;
+     -moz-transition: border 500ms ease;
+       -o-transition: border 500ms ease;
+          transition: border 500ms ease;
+}
+
+.EntityMessage .EntityMessage-sidebar .Avatar:hover {
+  border-color: #fe6c5f;
+}
+
+.EntityMessage .EntityMessage-sidebar .EntityMessage-sidebar-author {
+  text-align: center;
+}
+
+.EntityMessage .EntityMessage-body {
+  margin-left: 120px;
+  overflow: auto;
+}
+
+.EntityMessage .EntityMessage-body button {
+  margin-top: 10px;
+}
+
+.EntityMessage .EntityMessage-footer {
+  bottom: 0;
+  font-size: 13px;
+  position: absolute;
+  right: 0;
+}
+
+.EntityMessage .EntityMessage-footer > * {
+  display: inline-block;
+}
+
+.EntityMessage .EntityMessage-footer a {
+  margin-left: 15px;
+}
+
+.EntityMessage .EntityMessage-footer a:hover {
+  text-decoration: none;
+}
+
+.EntityMessage .Prompt {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 700px) {
+  .EntityMessage .EntityMessage-sidebar .Avatar {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+  .EntityMessage .EntityMessage-sidebar {
+    font-size: 11px;
+  }
+
+  .EntityMessage .EntityMessage-body {
+    margin-left: 85px;
+  }
+}
+
+@media (max-width: 500px) {
+  .EntityMessage .EntityMessage-sidebar {
+    float: none;
+    overflow: auto;
+    text-align: left;
+  }
+
+  .EntityMessage .EntityMessage-sidebar .Avatar {
+    float: left;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    width: 30px;
+  }
+
+  .EntityMessage .EntityMessage-sidebar .EntityMessage-sidebar-author {
+    font-size: 14px;
+    line-height: 36px;
+    text-align: left;
+  }
+
+  .EntityMessage .EntityMessage-body {
+    margin-left: inherit;
+  }
+}
