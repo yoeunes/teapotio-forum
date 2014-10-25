@@ -1,0 +1,90 @@
+.Navigation.Navigation--global {
+  position: relative;
+}
+
+.Navigation.Navigation--global .Navigation-button {
+  line-height: 40px;
+  position: relative;
+}
+
+.Navigation.Navigation--global .Navigation-list {
+  background-color: #fff;
+  border-top: 6px solid #000;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.25);
+  display: none;
+  left: 8px;
+  position: absolute;
+  top: 40px;
+}
+
+.Navigation.Navigation--global:hover .Navigation-list {
+  display: block;
+}
+
+.Navigation.Navigation--global.is-rightAligned .Navigation-list {
+  left: auto;
+  right: 8px;
+}
+
+.Navigation.Navigation--global li a {
+  font-size: 18px;
+  line-height: 34px;
+  margin: 0;
+  overflow: auto;
+  padding: 0 60px 12px 20px;
+  white-space: nowrap;
+}
+
+.Navigation.Navigation--global li:first-child a {
+  padding-top: 12px;
+}
+
+.Navigation.Navigation--global li a .Navigation--actions-button-icon,
+.Navigation.Navigation--global li a .Navigation--actions-button-name {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: top;
+}
+
+.Navigation.Navigation--global .Navigation-icon,
+.Navigation.Navigation--global li a:hover .Navigation--actions-button-icon:before {
+  color: #fe6c5f;
+}
+
+.Navigation.Navigation--global .Navigation-button:before,
+.Navigation.Navigation--global .Navigation-icon,
+.Navigation.Navigation--global li a .Navigation--actions-button-icon:before {
+  background-color: #312e2e;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  font-size: 24px;
+  height: 40px;
+  margin: 0;
+  text-align: center;
+  width: 40px;
+}
+
+.Navigation.Navigation--global .Navigation-button:before,
+.Navigation.Navigation--global li a .Navigation--actions-button-icon:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Navigation.Navigation--global .Navigation-button .Navigation-icon,
+.Navigation.Navigation--global .Navigation-button:before {
+  margin: 8px;
+}
+
+.Navigation.Navigation--global:hover .Navigation-button .Navigation-icon,
+.Navigation.Navigation--global:hover .Navigation-button:before {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.Navigation.Navigation--global li a span {
+  display: none;
+  font-size: 11px;
+}

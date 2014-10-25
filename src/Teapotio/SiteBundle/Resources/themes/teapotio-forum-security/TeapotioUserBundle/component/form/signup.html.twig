@@ -1,0 +1,9 @@
+<form class="FormSignup" action="{{ path("TeapotioBaseUserBundle_signup") }}" method="post" {{ form_enctype(form) }}>
+  <h2>{% trans %}Sign.up.message{% endtrans %}</h2>
+
+  {{ form_errors(form) }}
+
+  {{ form_widget(form) }}
+
+  <button class="btn btn-success">{% trans %}user.signup{% endtrans %}</button>
+</form>

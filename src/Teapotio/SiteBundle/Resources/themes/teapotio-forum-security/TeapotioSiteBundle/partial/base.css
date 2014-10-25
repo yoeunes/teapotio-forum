@@ -1,0 +1,15 @@
+.Partial .FormSignup,
+.Partial .FormLogin,
+.Partial .Partial--forgotPassword-form,
+.Partial .Partial--resetPassword-form,
+.Partial .Partial--resetPasswordSuccessful {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 400px;
+  padding: 30px;
+}
+
+.Partial .Partial--forgotPassword-form .Prompt {
+  margin: 10px 0;
+}

@@ -1,0 +1,7 @@
+.Navigation.Navigation--global.Navigation--user a:hover {
+  color: #5AE844;
+}
+
+.Navigation.Navigation--global.Navigation--user .Navigation-list {
+  border-top-color: #5AE844;
+}

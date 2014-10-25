@@ -1,0 +1,13 @@
+.Prompt.Prompt--info.Prompt--topicFormDuplicate {
+  margin-bottom: 10px;
+}
+
+.Prompt.Prompt--info.Prompt--topicFormDuplicate .Prompt-topics {
+  list-style: initial;
+  margin: 0 0 10px;
+  padding-left: 20px;
+}
+
+.Prompt.Prompt--info.Prompt--topicFormDuplicate .Prompt-topics li {
+  margin-bottom: 5px;
+}
