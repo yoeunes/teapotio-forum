@@ -1,0 +1,10 @@
+.EntityMessage .EntityMessage-form .EntityMessage-form-editableBody {
+  border: none;
+  margin: 0;
+  padding: 15px 0;
+}
+
+.EntityMessage .EntityMessage-form .EntityMessage-form-submit {
+  position: absolute;
+  right: 0;
+}
