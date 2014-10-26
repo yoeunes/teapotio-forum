@@ -47,6 +47,7 @@ div[contenteditable='true'] {
 }
 
 div[contenteditable='true'] {
+  min-height:20px;
   width: auto;
 }
 
