@@ -23,7 +23,7 @@
 
 .Wrapper .Breadcrumb li a {
   line-height: 40px;
-  padding: 8px 20px 8px 2px;
+  padding: 4px 20px 3px 2px;
   position: relative;
 }
 
@@ -37,7 +37,7 @@
   font-size: 36px;
   position: absolute;
   right: 0;
-  top: 7px;
+  top: 4px;
 }
 
 .Wrapper .Breadcrumb li:last-child a:after {

@@ -3,7 +3,6 @@ body {
   color: #242424;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
-  line-height: 1.65;
   margin: 0;
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
@@ -122,30 +121,129 @@ button:hover {
   font-size: 16px;
 }
 
+/* From https://github.com/http-teapot/typography */
+/*
+ * BODY
+ */
+body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/*
+ * LINK
+ */
+a {
+  color: #366fd1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*
+ * TITLE
+ */
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 30px 0 10px;
+}
+
+
+h1 + h1, h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h1, h2 + h2, h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+h3 + h1, h3 + h2, h3 + h3, h3 + h4, h3 + h5, h3 + h6,
+h4 + h1, h4 + h2, h4 + h3, h4 + h4, h4 + h5, h4 + h6,
+h5 + h1, h5 + h2, h5 + h3, h5 + h4, h5 + h5, h5 + h6,
+h6 + h1, h6 + h2, h6 + h3, h6 + h4, h6 + h5, h6 + h6 {
+  margin: 10px 0;
 }
 
 h1 {
-  font-size: 26px
+  font-size: 2.4em;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 2em;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 1.6em;
 }
 
 h4 {
-  font-size: 14px;
+  font-size: 1.4em;
 }
 
 h5 {
-  font-size: 12px;
+  font-size: 1.2em;
 }
 
 h6 {
-  font-size: 11px;
+  font-size: 1.1em;
+}
+
+/*
+ * PARAGRAPH, BLOCKQUOTE, PRE, LIST
+ */
+blockquote,
+blockquote cite,
+ol,
+p,
+pre,
+ul {
+  margin: 10px 0;
+}
+
+/*
+ * BLOCKQUOTE
+ */
+blockquote {
+  border-left: 4px solid #bbb;
+  padding: 1px 14px;
+}
+
+blockquote cite {
+  display: block;
+}
+
+blockquote cite:before {
+  content: '— ';
+}
+
+/*
+ * LIST
+ */
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin: 0;
+}
+
+ul {
+  list-style: disc;
+  padding: 0 0 0 26px;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol ul,
+ul ul {
+  padding: 0 0 0 18px;
+}
+
+ul ol,
+ol ol {
+  padding: 0 0 0 34px;
+}
+
+ul li,
+ol li {
+  margin: 5px 0;
 }

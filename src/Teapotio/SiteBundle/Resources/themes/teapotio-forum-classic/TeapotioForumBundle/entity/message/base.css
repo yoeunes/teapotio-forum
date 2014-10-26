@@ -35,6 +35,15 @@
   margin-top: 10px;
 }
 
+.EntityMessage .EntityMessage-body h1:first-child,
+.EntityMessage .EntityMessage-body h2:first-child,
+.EntityMessage .EntityMessage-body h3:first-child,
+.EntityMessage .EntityMessage-body h4:first-child,
+.EntityMessage .EntityMessage-body h5:first-child,
+.EntityMessage .EntityMessage-body h6:first-child {
+  margin-top: 0;
+}
+
 .EntityMessage .EntityMessage-footer {
   bottom: 0;
   font-size: 13px;
