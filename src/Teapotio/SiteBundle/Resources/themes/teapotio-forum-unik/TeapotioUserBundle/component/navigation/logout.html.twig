@@ -1,0 +1,19 @@
+{% extends "TeapotioSiteBundle:component:navigation/global.html.twig" %}
+
+{% block Navigation_class %}{{ parent() }} Navigation--logout{% endblock %}
+
+{% block Navigation_content %}
+  <li>
+    <a href="{{ path('TeapotioBaseUserBundle_login') }}"
+       class="Navigation--user-button Navigation--user-button--login">
+      <div class="Navigation--actions-button-name">{% trans %}Log in{% endtrans %}</div>
+    </a>
+  </li>
+
+  <li>
+    <a href="{{ path('TeapotioBaseUserBundle_signup') }}"
+       class="Navigation--user-button Navigation--user-button--signup">
+      <div class="Navigation--actions-button-name">{% trans %}Sign up{% endtrans %}</div>
+    </a>
+  </li>
+{% endblock %}

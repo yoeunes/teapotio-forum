@@ -1,0 +1,23 @@
+{#
+  Represents a flagged topic
+  Required variables:
+    - moderation
+    - message
+#}
+{% extends "TeapotioForumBundle:entity:moderation/base.html.twig" %}
+
+{% block Moderation_class %}{{ parent() }} EntityModeration--message{% endblock %}
+
+{% block Moderation_content %}
+  <div class="EntityModeration-message">
+    <div class="EntityModeration-message-body">
+      {{ moderation.message.body|striptags|slice(0,128) }}...
+    </div>
+    <div class="EntityModeration-message-topic">
+      {% trans %}in{% endtrans %}
+      <a href="{{ forum_path('ForumListMessagesByTopic', moderation.message.topic) }}">
+        {{ moderation.message.topic.title }}
+      </a>
+    </div>
+  </div>
+{% endblock %}

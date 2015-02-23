@@ -1,3 +1,7 @@
+.TopicRow {
+  margin-bottom: 4px;
+}
+
 .TopicRow .TopicRow-info > * {
   display: inline-block;
   margin-right: 8px;
@@ -7,7 +11,7 @@
 .TopicRow .TopicRow-info .TopicRow-info-stats {
   color: #777;
   display: none;
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 
 .TopicRow .TopicRow-info .TopicRow-info-stats--hearts,
@@ -28,7 +32,7 @@
 }
 
 .TopicRow .TopicRow-info .fa {
-  font-size: 16px;
+  /*font-size: 16px;*/
 }
 
 .TopicRow .TopicRow-info .TopicRow-info-author .Avatar {
@@ -36,11 +40,11 @@
 }
 
 .TopicRow .TopicRow-info .TopicRow-info-title {
-  font-size: 20px;
+  /*font-size: 20px;*/
 }
 
 .TopicRow .TopicRow-info .TopicRow-info-date {
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 
 .TopicRow .TopicRow-info .TopicStars.TopicStars--none {
@@ -48,7 +52,7 @@
 }
 
 .TopicRow .TopicRow-states {
-  font-size: 22px;
+  /*font-size: 22px;*/
   padding-right: 10px;
   text-align: right;
 }

@@ -1,0 +1,5 @@
+<ul>
+  {% for board in boards %}
+    {% include "TeapotioForumBundle:list:board/listItem.html.twig" with {board: board} %}
+  {% endfor %}
+</ul>

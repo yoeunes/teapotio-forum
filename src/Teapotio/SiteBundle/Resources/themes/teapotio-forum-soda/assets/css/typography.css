@@ -1,0 +1,151 @@
+/*
+ * BODY
+ */
+body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/*
+ * LINK
+ */
+a {
+  color: #366fd1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*
+ * TITLE
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 1em 0 0.2em;
+}
+
+h1 {
+  font-size: 2.4em;
+  margin: 1em 0 0.25em;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 1.1em 0 0.3em;
+}
+
+h3 {
+  font-size: 1.6em;
+  margin: 1.25em 0 0.38em;
+}
+
+h4 {
+  font-size: 1.4em;
+  margin: 1.3em 0 0.43em;
+}
+
+h5 {
+  font-size: 1.2em;
+  margin: 1.35em 0 0.5em;
+}
+
+h6 {
+  font-size: 1.1em;
+  margin: 1.4em 0 0.55em;
+}
+
+h1 + h1, h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h1, h2 + h2, h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+h3 + h1, h3 + h2, h3 + h3, h3 + h4, h3 + h5, h3 + h6,
+h4 + h1, h4 + h2, h4 + h3, h4 + h4, h4 + h5, h4 + h6,
+h5 + h1, h5 + h2, h5 + h3, h5 + h4, h5 + h5, h5 + h6,
+h6 + h1, h6 + h2, h6 + h3, h6 + h4, h6 + h5, h6 + h6 {
+  margin-top: 0;
+}
+
+/*
+ * PARAGRAPH, BLOCKQUOTE, PRE, LIST
+ */
+blockquote,
+blockquote cite,
+ol,
+p,
+pre,
+ul {
+  margin: 0.6em 0;
+}
+
+/*
+ * BLOCKQUOTE
+ */
+blockquote {
+  border-left: 4px solid #bbb;
+  padding: 1px 14px;
+}
+
+blockquote cite {
+  display: block;
+}
+
+blockquote cite:before {
+  content: '— ';
+}
+
+/*
+ * LIST
+ */
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin: 0;
+}
+
+ul {
+  list-style: disc;
+  padding: 0 0 0 26px;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol ul,
+ul ul {
+  padding: 0 0 0 18px;
+}
+
+ul ol,
+ol ol {
+  padding: 0 0 0 34px;
+}
+
+ul li,
+ol li {
+  margin: 5px 0;
+}
+
+/**
+ * FIRA
+ */
+body {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+strong, b {
+  font-weight: 400;
+}
+
+tt, code, kbd, samp {
+  font-family: 'Fira Mono', monospace;
+}

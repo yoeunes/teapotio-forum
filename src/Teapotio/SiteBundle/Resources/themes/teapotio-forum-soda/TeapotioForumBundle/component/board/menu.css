@@ -1,4 +1,6 @@
 .BoardMenu {
+  font-size: 2.4em;
+  line-height: 1.2;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -10,7 +12,7 @@
 }
 
 .BoardMenu .BoardMenu {
-  font-size: 0.7em;
+  font-size: 0.65em;
 }
 
 

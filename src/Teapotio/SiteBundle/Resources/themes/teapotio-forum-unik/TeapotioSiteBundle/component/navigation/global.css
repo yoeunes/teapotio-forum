@@ -1,0 +1,49 @@
+.Navigation.Navigation--global li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Navigation.Navigation--global li a {
+  font-size: 18px;
+  line-height: 40px;
+  margin: 2px 6px;
+  overflow: auto;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.Navigation.Navigation--global li a:hover .Navigation-icon
+.Navigation.Navigation--global li a:hover .Navigation--actions-button-icon:before {
+  color: #fe6c5f;
+  margin-right: 17px;
+}
+
+.Navigation.Navigation--global li a .Navigation-icon,
+.Navigation.Navigation--global li a .Navigation--actions-button-icon:before {
+  background-color: #312e2e;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  font-size: 24px;
+  height: 40px;
+  line-height: 46px;
+  margin: 0;
+  text-align: center;
+  width: 40px;
+}
+
+.Navigation.Navigation--global li a .Navigation--actions-button-icon:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Navigation.Navigation--global li a .Navigation--actions-button-name {
+  display: none;
+}
+
+.Navigation.Navigation--global li a span {
+  display: none;
+  font-size: 11px;
+}

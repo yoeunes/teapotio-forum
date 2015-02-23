@@ -1,0 +1,4 @@
+.Topic-form--new .EntityMessage .EntityMessage-body,
+.Topic-form--new .EntityMessage .EntityMessage-sidebar {
+  margin-top: 10px;
+}

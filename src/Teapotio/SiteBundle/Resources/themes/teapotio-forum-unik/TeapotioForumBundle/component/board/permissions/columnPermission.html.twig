@@ -1,0 +1,51 @@
+<td>
+  <input type="hidden" name="{{ name }}[{{ board.id }}][decoy]" checked="checked" />
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][view]"{% if board.canGroupViewMessages(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][topic][create]"{% if board.canGroupCreateTopics(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][topic][edit]"{% if board.canGroupEditTopics(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][topic][delete]"{% if board.canGroupDeleteTopics(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][message][create]"{% if board.canGroupCreateMessages(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][message][edit]"{% if board.canGroupEditMessages(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][message][delete]"{% if board.canGroupDeleteMessages(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][board][create]"{% if board.canGroupCreateBoards(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][board][edit]"{% if board.canGroupEditBoards(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>
+<td>
+  <label>
+    <input type="checkbox" name="{{ name }}[{{ board.id }}][board][delete]"{% if board.canGroupDeleteBoards(group) == true %} checked="checked"{% endif %} />
+  </label>
+</td>

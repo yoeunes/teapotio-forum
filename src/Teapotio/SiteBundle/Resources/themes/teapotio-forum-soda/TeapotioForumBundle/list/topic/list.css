@@ -17,7 +17,7 @@
 
 @media (max-width: 800px) {
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
-    font-size: 14px;
+    /*font-size: 14px;*/
   }
 
   .List.List--Topic .Avatar,
@@ -27,12 +27,12 @@
   }
 
   .List.List--Topic .TopicRow.TopicRow--header {
-    font-size: 12px;
+    /*font-size: 12px;*/
   }
 
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-statsTotalPosts,
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-statsTotalViews {
-    font-size: 18px;
+    /*font-size: 18px;*/
   }
 }
 
@@ -57,6 +57,6 @@
   }
 
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-info {
-    font-size: 10px;
+    /*font-size: 10px;*/
   }
 }

@@ -1,0 +1,14 @@
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--topicNew{% endblock %}
+
+{% block Partial_content %}
+  {% include "TeapotioForumBundle:entity:topic/new.html.twig"
+    with {
+      user:    app.user,
+      form:    form,
+      board:   current_board,
+      message: null
+    }
+  %}
+{% endblock %}

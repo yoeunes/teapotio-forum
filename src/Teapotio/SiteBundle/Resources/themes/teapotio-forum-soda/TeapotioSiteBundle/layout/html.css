@@ -1,9 +1,5 @@
 body {
-  padding: 20px 5%;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
+  padding: 20px 10%;
 }
 
 body .Wrapper {
@@ -28,8 +24,8 @@ body .Container {
 body .Title,
 body .Wrapper .Breadcrumb,
 body .Sidebar .Sidebar-boards > .BoardMenu {
-  font-size: 32px;
-  line-height: 1.5;
+  /*font-size: 32px;*/
+  /*line-height: 1.5;*/
 }
 
 body .Wrapper .Breadcrumb,
@@ -44,7 +40,7 @@ body .Sidebar .Sidebar-boards:hover > .BoardMenu {
 }
 
 body .Wrapper .Breadcrumb {
-  font-size: 20px;
+  /*font-size: 20px;*/
 }
 
 body .Title {

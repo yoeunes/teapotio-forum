@@ -18,11 +18,6 @@
   border-top-color: #cd313c;
 }
 
-.EntityMessage.EntityMessage--individual .MessageButtonStar {
-  float: right;
-  line-height: 56px;
-}
-
 .EntityMessage.EntityMessage--individual .EntityMessage-body {
   line-height: 20px;
 }

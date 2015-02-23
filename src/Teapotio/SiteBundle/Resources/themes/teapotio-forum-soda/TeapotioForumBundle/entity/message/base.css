@@ -1,13 +1,12 @@
 .EntityMessage {
-  font-size: 0.9em;
   overflow: auto;
+  padding: 12px 0;
   position: relative;
 }
 
 .EntityMessage .EntityMessage-sidebar {
-  font-size: 18px;
-  height: 56px;
-  padding: 12px 0;
+  float: left;
+  text-align: center;
 }
 
 .EntityMessage .EntityMessage-sidebar .Avatar {
@@ -27,29 +26,16 @@
 }
 
 .EntityMessage .EntityMessage-sidebar .EntityMessage-sidebar-extra {
-  font-size: 12px;
+  /*font-size: 12px;*/
+}
+
+.EntityMessage .EntityMessage-body,
+.EntityMessage .EntityMessage-footer {
+  margin-left: 68px;
 }
 
 .EntityMessage .EntityMessage-body {
-  border: 1px solid #eee;
-  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
-  padding: 0 14px;
   position: relative;
-}
-
-.EntityMessage .EntityMessage-body:after,
-.EntityMessage .EntityMessage-body:before {
-  border: 10px solid #eee;
-  border-color: #eee transparent transparent transparent;
-  content: ' ';
-  left: 18px;
-  position: absolute;
-  bottom: -20px;
-}
-
-.EntityMessage .EntityMessage-body:after {
-  border-color: #FBFBFB transparent transparent transparent;
-  bottom: -19px;
 }
 
 .EntityMessage .EntityMessage-body button {
@@ -57,10 +43,8 @@
 }
 
 .EntityMessage .EntityMessage-footer {
-  bottom: 0;
-  font-size: 13px;
-  position: absolute;
-  right: 0;
+  opacity: 0.6;
+  text-align: right;
 }
 
 .EntityMessage .EntityMessage-footer > * {
