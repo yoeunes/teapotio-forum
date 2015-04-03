@@ -1,7 +1,9 @@
-{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
+{% extends "TeapotioUserBundle:partial:security/accessRestricted.html.twig" %}
 
 {% block Partial_class %}{{ parent() }} Partial--topicNonAuthorized{% endblock %}
 
-{% block Partial_content %}
-  {% include "TeapotioForumBundle:component:topic/accessRestricted.html.twig" %}
+{% block Partial_content_message %}
+  {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
+    message: 'The.content.is.restricted.to.guests.please.log.in.or.register.a.new.account'|trans
+  } %}
 {% endblock %}

@@ -3,6 +3,14 @@
 {% block Partial_class %}{{ parent() }} Partial--securityLogin{% endblock %}
 
 {% block Partial_content %}
+  {% if last_username is not defined %}
+    {% set last_username = null %}
+  {% endif %}
+
+  {% if login_error is not defined %}
+    {% set login_error = null %}
+  {% endif %}
+
   {% include "TeapotioUserBundle:component:form/login.html.twig" with {
     last_username: last_username,
     login_error: login_error

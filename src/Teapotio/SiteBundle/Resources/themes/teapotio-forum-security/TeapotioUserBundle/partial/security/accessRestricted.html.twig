@@ -1,0 +1,10 @@
+{% extends "TeapotioUserBundle:partial:security/login.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--accessRestricted{% endblock %}
+
+{% block Partial_content %}
+  {% block Partial_content_message %}{% endblock %}
+  {% if not app.user %}
+    {{ parent() }}
+  {% endif %}
+{% endblock %}

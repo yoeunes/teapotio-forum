@@ -1,7 +1,0 @@
-{% extends "TeapotioUserBundle:partial:security/accessRestricted.html.twig" %}
-
-{% block message %}
-  {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
-    message: 'The.content.is.restricted.to.guests.please.log.in.or.register.a.new.account'|trans
-  } %}
-{% endblock %}
