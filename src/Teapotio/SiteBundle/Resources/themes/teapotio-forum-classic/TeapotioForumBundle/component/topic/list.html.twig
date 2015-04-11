@@ -1,0 +1,9 @@
+<ul class="ForumComponentTopicList">
+  {% for topic in topics %}
+    <li>
+      <a href="{{ forum_path("ForumListMessagesByTopic", topic) }}">
+        {{ topic.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

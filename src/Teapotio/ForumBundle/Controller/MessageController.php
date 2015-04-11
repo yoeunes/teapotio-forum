@@ -257,6 +257,13 @@ class MessageController extends BaseController
         $stars = $this->get('teapotio.forum.message_star')->getStarsByMessages($messages);
         $userStars = $this->get('teapotio.forum.message_star')->getUserStarsByMessages($messages);
 
+        // Load user models - it reduces the number of queries
+        $userIds = array();
+        foreach ($messages as $message) {
+          $userIds[] = $message->getUser()->getId();
+        }
+        $users = $this->get('teapotio.user')->getByIds($userIds);
+
         $flags = new ArrayCollection();
         $flagTopic = null;
         if ($isUserModerator === true) {

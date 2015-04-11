@@ -7,7 +7,6 @@ nav.Breadcrumb ul li a {
 
 nav.Breadcrumb ul {
   list-style: none;
-  overflow: auto;
 }
 
 nav.Breadcrumb ul li {

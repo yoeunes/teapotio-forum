@@ -13,37 +13,6 @@
   padding: 0;
 }
 
-.Wrapper .Breadcrumb {
-  font-size: 20px;
-  left: 64px;
-  position: fixed;
-  top: 0;
-  z-index: 100001;
-}
-
-.Wrapper .Breadcrumb li a {
-  line-height: 40px;
-  padding: 4px 20px 3px 2px;
-  position: relative;
-}
-
-.Wrapper .Breadcrumb li:first-child a {
-  padding-left: 8px;
-}
-
-.Wrapper .Breadcrumb li a:after {
-  color: #ccc;
-  content: '/';
-  font-size: 36px;
-  position: absolute;
-  right: 0;
-  top: 4px;
-}
-
-.Wrapper .Breadcrumb li:last-child a:after {
-  content: '';
-}
-
 .Wrapper .Pagination {
   font-size: 1.5em;
   margin-top: 20px;

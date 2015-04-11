@@ -5,26 +5,82 @@
 {% block Breadcrumb_content %}
   {% spaceless %}
     {% if showRoot is defined and showRoot == true %}
-      <li>
-        <a href="{{ forum_path("ForumListLatestTopics") }}">{% trans %}Forum{% endtrans %}</a>
+      {% set parent_boards = get_boards() %}
+      <li class="Breadcrumb--board-item">
+        <a class="Breadcrumb--board-item-link" href="{{ forum_path("ForumListLatestTopics") }}">
+          {% trans %}Forum{% endtrans %}
+          {% if parent_boards.count %}
+            <i class="fa fa-chevron-down"></i>
+          {% endif %}
+        </a>
+
+        {% if parent_boards.count %}
+          <ul class="Breadcrumb--board-item-dropdown">
+            {% for board in parent_boards %}
+              <li class="Breadcrumb--board-item-dropdown-item">
+                <a class="Breadcrumb--board-item-dropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
+                  {{ board.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       </li>
     {% endif %}
     {% if board is not null %}
       {% set parents = board.parents %}
 
       {% for parent in parents %}
-        <li>
-          <a href="{{ forum_path("ForumListTopicsByBoard", parent) }}" class="to-main">{{ parent.title }}</a>
+        <li class="Breadcrumb--board-item">
+          <a class="Breadcrumb--board-item-link" href="{{ forum_path("ForumListTopicsByBoard", parent) }}">
+            {{ parent.title }}
+            {% if parent.children.count %}
+              <i class="fa fa-chevron-down"></i>
+            {% endif %}
+          </a>
+
+          {% if parent.children.count %}
+            <ul class="Breadcrumb--board-item-dropdown">
+              {% spaceless %}
+                {% for board in parent.children %}
+                  <li class="Breadcrumb--board-item-dropdown-item">
+                    <a class="Breadcrumb--board-item-dropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
+                      {{ board.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              {% endspaceless %}
+            </ul>
+          {% endif %}
         </li>
       {% endfor %}
 
-      <li>
-        <a href="{{ forum_path("ForumListTopicsByBoard", board) }}" class="to-main">{{ board.title }}</a>
+      <li class="Breadcrumb--board-item">
+        <a class="Breadcrumb--board-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
+          {{ board.title }}
+          {% if board.children.count %}
+            <i class="fa fa-chevron-down"></i>
+          {% endif %}
+        </a>
+
+        {% if board.children.count %}
+          <ul class="Breadcrumb--board-item-dropdown">
+            {% spaceless %}
+              {% for board in board.children %}
+                <li class="Breadcrumb--board-item-dropdown-item">
+                  <a class="Breadcrumb--board-item-dropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
+                    {{ board.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            {% endspaceless %}
+          </ul>
+        {% endif %}
       </li>
 
       {% if topic is defined and topic is not null %}
         <li>
-          <a href="{{ forum_path("ForumListMessagesByTopic", topic) }}" class="to-main">{{ topic.title }}</a>
+          <a href="{{ forum_path("ForumListMessagesByTopic", topic) }}">{{ topic.title }}</a>
         </li>
       {% endif %}
     {% endif %}

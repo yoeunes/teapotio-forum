@@ -1,0 +1,16 @@
+.Partial.Partial--messageList {}
+
+.Partial.Partial--messageList .Partial--messageList-main,
+.Partial.Partial--messageList .Partial--messageList-sidebar {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Partial.Partial--messageList .Partial--messageList-main {
+  width: 65%;
+}
+
+.Partial.Partial--messageList .Partial--messageList-sidebar {
+  margin-left: 5%;
+  width: 30%;
+}

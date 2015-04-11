@@ -10,7 +10,7 @@
     this.doSubmit = function (event) {
       var content = this.$node.find('.EntityMessage-form-editableBody').html();
       var reset = this.$node.find('.EntityMessage-form-editableBody').attr('data-reset');
-      
+
       if (reset === 'false' || content === '') {
         event.preventDefault();
         return;

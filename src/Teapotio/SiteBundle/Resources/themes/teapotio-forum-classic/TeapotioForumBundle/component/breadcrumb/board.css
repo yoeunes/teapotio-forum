@@ -1,0 +1,75 @@
+.Breadcrumb.Breadcrumb--board {
+
+}
+
+
+.Breadcrumb.Breadcrumb--board {
+  font-size: 20px;
+  left: 64px;
+  position: fixed;
+  top: 0;
+  z-index: 100001;
+}
+
+/*.Breadcrumb.Breadcrumb--board li a {
+}
+
+.Breadcrumb.Breadcrumb--board li:first-child a {
+  padding-left: 18px;
+}*/
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item {
+  margin: 0;
+  position: relative;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-link {
+  line-height: 40px;
+  padding: 9px 25px 7px 10px;
+  position: relative;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-link .fa {
+  font-size: 12px;
+  line-height: 40px;
+  vertical-align: top;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-link:after {
+  color: #ccc;
+  content: '/';
+  font-size: 36px;
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item:last-child .Breadcrumb--board-item-link:after {
+  content: '';
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-dropdown {
+  background-color: #fefefe;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+  display: none;
+  font-size: 16px;
+  margin-left: -10px;
+  padding: 8px 6px;
+  position: absolute;
+  top: 100%;
+  width: 500px;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item:hover .Breadcrumb--board-item-dropdown {
+  display: block;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-dropdown .Breadcrumb--board-item-dropdown-item {
+  display: inline-block;
+  margin: 0;
+  width: 50%;
+}
+
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-dropdown .Breadcrumb--board-item-dropdown-item-link {
+  padding: 6px 15px;
+}
