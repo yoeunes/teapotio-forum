@@ -18,8 +18,10 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-use Sensio\Bundle\GeneratorBundle\Command\Helper\DialogHelper;
+use Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper;
 
 /**
  * Install the basic roles etc
@@ -42,10 +44,11 @@ class SetupCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dialog = $this->getDialogHelper();
+        $questionHelper = $this->getQuestionHelper();
 
         if ($input->isInteractive()) {
-            if (!$dialog->askConfirmation($output, $dialog->getQuestion('Do you confirm setup', 'yes', '?'), true)) {
+            $question = new ConfirmationQuestion($questionHelper->getQuestion('Do you confirm setup', 'yes', '?'));
+            if (!$questionHelper->ask($input, $output, $question, true)) {
                 $output->writeln('<error>Command aborted</error>');
 
                 return 1;
@@ -84,15 +87,15 @@ class SetupCommand extends ContainerAwareCommand
 
     protected function interact(InputInterface $input, OutputInterface $output)
     {
-        $dialog = $this->getDialogHelper();
-        $dialog->writeSection($output, 'Installing Teapotio Forum');
+        $questionHelper = $this->getQuestionHelper();
+        $questionHelper->writeSection($output, 'Installing Teapotio Forum');
 
         // username
         $username = null;
         try {
             $username = $input->getOption('username');
         } catch (\Exception $error) {
-            $output->writeln($dialog->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            $output->writeln($questionHelper->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
         }
 
         if (null === $username) {
@@ -101,7 +104,8 @@ class SetupCommand extends ContainerAwareCommand
                 'You can use this admin account as yours.',
             ));
 
-            $username = $dialog->ask($output, $dialog->getQuestion("Admin's username", $input->getOption('username')));
+            $question = new Question($questionHelper->getQuestion("Admin's username", $input->getOption('username')));
+            $username = $questionHelper->ask($input, $output, $question);
             $input->setOption('username', $username);
         }
 
@@ -110,7 +114,7 @@ class SetupCommand extends ContainerAwareCommand
         try {
             $email = $input->getOption('email');
         } catch (\Exception $error) {
-            $output->writeln($dialog->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            $output->writeln($questionHelper->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
         }
 
         if (null === $email) {
@@ -119,7 +123,8 @@ class SetupCommand extends ContainerAwareCommand
                 'Please specify a valid email address.',
             ));
 
-            $email = $dialog->ask($output, $dialog->getQuestion("Admin's email", $input->getOption('email')));
+            $question = new Question($questionHelper->getQuestion("Admin's email", $input->getOption('email')));
+            $email = $questionHelper->ask($input, $output, $question);
             $input->setOption('email', $email);
         }
 
@@ -128,7 +133,7 @@ class SetupCommand extends ContainerAwareCommand
         try {
             $password = strlen($input->getOption('password')) > 8 ? $input->getOption('password') : null;
         } catch (\Exception $error) {
-            $output->writeln($dialog->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            $output->writeln($questionHelper->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
         }
 
         if (null === $password) {
@@ -137,12 +142,14 @@ class SetupCommand extends ContainerAwareCommand
                 'We recommend a password of length above 20 characters.',
             ));
 
-            $password = $dialog->ask($output, $dialog->getQuestion("Admin's password", $input->getOption('password')));
+            $question = new Question($questionHelper->getQuestion("Admin's password", $input->getOption('password')));
+            $password = $questionHelper->ask($input, $output, $question);
             $input->setOption('password', $password);
         }
 
         $defaultTopicBoard = $input->getOption('default-topic-board');
-        if (!$defaultTopicBoard && $dialog->askConfirmation($output, $dialog->getQuestion('Do you want to generate a default board and a default topic', 'yes', '?'), true)) {
+        $question = new ConfirmationQuestion($questionHelper->getQuestion('Do you want to generate a default board and a default topic', 'yes', '?'));
+        if (!$defaultTopicBoard && $questionHelper->ask($input, $output, $question, true)) {
             $defaultTopicBoard = true;
         } else {
             $defaultTopicBoard = false;
@@ -151,13 +158,13 @@ class SetupCommand extends ContainerAwareCommand
         $input->setOption('default-topic-board', $defaultTopicBoard);
     }
 
-    protected function getDialogHelper()
+    protected function getQuestionHelper()
     {
-        $dialog = $this->getHelperSet()->get('dialog');
-        if (!$dialog || get_class($dialog) !== 'Sensio\Bundle\GeneratorBundle\Command\Helper\DialogHelper') {
-            $this->getHelperSet()->set($dialog = new DialogHelper());
+        $question = $this->getHelperSet()->get('question');
+        if (!$question || get_class($question) !== 'Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper') {
+            $this->getHelperSet()->set($question = new QuestionHelper());
         }
 
-        return $dialog;
+        return $question;
     }
 }
