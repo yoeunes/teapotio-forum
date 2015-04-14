@@ -1,0 +1,9 @@
+{{ "Hey.%username%!"|trans({"%username%": username}) }}<br><br>
+
+{% trans %}We.recently.received.a.password.reset.request,.if.you.didn't.request.it.please.discard.this.email.{% endtrans %}<br><br>
+
+{% trans %}Click.on.the.following.link.if.you'd.like.to.reset.your.password.{% endtrans %}<br>
+
+{{ url }}<br><br>
+
+{{ "The.administrators.from.%site%"|trans({"%site%": site_name}) }}

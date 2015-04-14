@@ -274,10 +274,6 @@ class MessageController extends BaseController
             $flags = $this->get('teapotio.forum.flag')->getByMessages($messages, $board);
         }
 
-        foreach ($messages as $message) {
-            $this->get('teapotio.forum.message')->parseBody($message);
-        }
-
         $this->get('teapotio.forum.message')->parseOutputBodies($messages);
 
         $title = $this->generateTitle('%title%', array('%title%' => $topic->getTitle()));

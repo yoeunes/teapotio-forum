@@ -109,6 +109,30 @@ class AccountController extends Controller
                     $em->persist($userToken);
                     $em->flush();
 
+                    $forum_title = $this->container->getParameter('forum_title');
+                    $url = $this->generateUrl('TeapotioBaseUserBundle_resetPassword', array('token' => $userToken->getToken()), true);
+                    $mailer_from = $this->container->getParameter('mailer_from');
+
+                    $mailer = $this->get('mailer');
+                    $message = $mailer->createMessage()
+                        ->setSubject(
+                            $this->get('translator')->trans('Reset.your.password')
+                        )
+                        ->setFrom(array($mailer_from => $forum_title))
+                        ->setTo($user->getEmail())
+                        ->setBody(
+                            $this->renderView(
+                                'TeapotioUserBundle:email:reset.html.twig',
+                                array(
+                                    'username'  => $user->getUsername(),
+                                    'url'       => $url,
+                                    'site_name' => $forum_title
+                                )
+                            ),
+                            'text/html'
+                        );
+                    $mailer->send($message);
+
                     $isTokenGenerated = true;
                 }
             }
