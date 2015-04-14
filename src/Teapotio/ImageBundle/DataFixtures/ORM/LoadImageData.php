@@ -46,7 +46,7 @@ class LoadImageData extends AbstractFixture implements OrderedFixtureInterface, 
         $image = new Image();
 
         $image->setName('Default avatar');
-        $image->setPath('default_avatar.png')
+        $image->setPath('default_avatar.png');
 
         $manager->persist($image);
         $manager->flush();
