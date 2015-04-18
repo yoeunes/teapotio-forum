@@ -1,7 +1,7 @@
 .Breadcrumb--boardDropdown {
   background-color: #fefefe;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
-  font-size: 16px;
+  font-size: 18px;
   padding: 8px 0;
 }
 
@@ -12,9 +12,27 @@
   width: 50%;
 }
 
-.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-footer,
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-footer {
+  padding: 6px 18px;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-info,
 .Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-link {
   padding: 6px 18px;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-link {
+  padding-bottom: 0;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-info {
+  font-size: 11px;
+  padding-top: 0;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-info-item {
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-footer {

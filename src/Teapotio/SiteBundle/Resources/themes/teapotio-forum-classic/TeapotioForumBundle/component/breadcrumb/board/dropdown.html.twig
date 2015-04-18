@@ -5,6 +5,19 @@
         <a class="Breadcrumb--boardDropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
           {{ board.title }}
         </a>
+        <div class="Breadcrumb--boardDropdown-item-info">
+          {% if app.user|can_create_topic(board) %}
+            <a class="Breadcrumb--boardDropdown-item-info-item" href="{{ forum_path("ForumNewTopic", board)}}">
+              {% trans %}Create.topic{% endtrans %}
+            </a>
+          {% endif %}
+          <div class="Breadcrumb--boardDropdown-item-info-item">
+            {{ "%total% topics"|trans({"%total%": board.totalTopics}) }}
+          </div>
+          <div class="Breadcrumb--boardDropdown-item-info-item">
+            {{ "%total% messages"|trans({"%total%": board.totalPosts}) }}
+          </div>
+        </div>
       </div>
     {% endfor %}
     {% if parent %}
