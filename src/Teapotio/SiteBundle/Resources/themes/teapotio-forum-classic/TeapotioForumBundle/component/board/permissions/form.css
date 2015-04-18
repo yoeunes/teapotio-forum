@@ -1,0 +1,27 @@
+.ComponentBoardPermissionsForm {
+  width: 100%;
+}
+
+.ComponentBoardPermissionsForm-table {
+  width: 100%;
+}
+
+.ComponentBoardPermissionsForm-table tr:hover td {
+  background-color: #f6f6f6;
+}
+
+.ComponentBoardPermissionsForm-table th {
+  padding-top: 12px;
+}
+
+.ComponentBoardPermissionsForm-table td {
+  text-align: center;
+}
+
+.ComponentBoardPermissionsForm-table td:first-child {
+  text-align: left;
+}
+
+.ComponentBoardPermissionsForm-table td label {
+  margin: 0;
+}

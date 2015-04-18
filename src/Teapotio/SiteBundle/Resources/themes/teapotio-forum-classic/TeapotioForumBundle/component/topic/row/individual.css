@@ -20,6 +20,10 @@
   color: #fff;
 }
 
+.TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title a:visited {
+  color: #bbb;
+}
+
 .TopicRow.TopicRow--individual .TopicRow-statsTotalStars .TopicStars.TopicStars--none {
   display: none;
 }

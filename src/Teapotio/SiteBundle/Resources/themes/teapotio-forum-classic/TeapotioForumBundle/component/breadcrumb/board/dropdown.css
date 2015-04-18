@@ -8,6 +8,7 @@
 .Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item {
   display: inline-block;
   margin: 0;
+  vertical-align: top;
   width: 50%;
 }
 

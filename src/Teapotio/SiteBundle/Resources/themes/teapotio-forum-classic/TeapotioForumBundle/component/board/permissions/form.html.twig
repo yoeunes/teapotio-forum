@@ -1,5 +1,5 @@
-<form method="post" action="" name="{{ name }}" class="{{ name }}{% if class is defined %} {{ class }}{% endif %}">
-  <table>
+<form method="post" action="" name="{{ name }}" class="ComponentBoardPermissionsForm {{ name }}{% if class is defined %} {{ class }}{% endif %}">
+  <table class="ComponentBoardPermissionsForm-table">
     {% for board in boards %}
       {% set level = 0 %}
       <tr>

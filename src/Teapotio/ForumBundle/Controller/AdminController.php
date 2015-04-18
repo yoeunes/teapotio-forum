@@ -20,13 +20,22 @@ class AdminController extends BaseController
 
     public function permissionsAction($groupId = null)
     {
+        if ($this->get('teapotio.user')->isAdmin($this->getUser()) === false) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+
         $formName = 'board_permissions';
 
         $groups = $this->get('teapotio.user.group')->getAllGroups();
+        $groups->add(new \Teapotio\Base\ForumBundle\Entity\AnonymousUserGroup());
 
         $group = null;
         if ($groupId !== null) {
-            $group = $this->get('teapotio.user.group')->getById($groupId);
+            if ($groupId == 0) {
+                $group = new \Teapotio\Base\ForumBundle\Entity\AnonymousUserGroup();
+            } else {
+                $group = $this->get('teapotio.user.group')->getById($groupId);
+            }
 
             if ($group === null) {
                 return $this->redirect($this->generateUrl('ForumAdminPermissions'));
@@ -35,9 +44,16 @@ class AdminController extends BaseController
 
         if ($this->get('request')->isMethod('POST') === true) {
             $postData = $this->get('request')->request;
+
+            $boardIds = array();
+
+            foreach ($postData->get('board_permissions') as $id => $value) {
+              $boardIds[] = $id;
+            }
+
             $this->container
                  ->get('teapotio.forum.access_permission')
-                 ->setPermissionsOnBoardsFromPostData($groupId, $postData->get('board_permissions'));
+                 ->setPermissionsOnBoardsFromPostData($groupId, $postData->get('board_permissions'), $boardIds);
         }
 
         $title = $this->generateTitle('Manage.group.permissions');
@@ -48,6 +64,13 @@ class AdminController extends BaseController
             'form_name'  => $formName,
             'page_title' => $title,
         );
+
+        if ($this->get('request')->isXmlHttpRequest() === true) {
+            return $this->renderJson(array(
+                'html'   => $this->renderView('TeapotioForumBundle:page:admin/permissions.html.twig', $params),
+                'title'  => $title
+            ));
+        }
 
         return $this->render('TeapotioForumBundle:page:admin/permissions.html.twig', $params);
     }
