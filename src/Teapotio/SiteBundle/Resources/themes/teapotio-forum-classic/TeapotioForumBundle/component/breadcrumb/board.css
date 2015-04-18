@@ -48,28 +48,14 @@
   content: '';
 }
 
-.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-dropdown {
-  background-color: #fefefe;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--boardDropdown {
   display: none;
-  font-size: 16px;
   margin-left: -10px;
-  padding: 8px 6px;
   position: absolute;
   top: 100%;
   width: 500px;
 }
 
-.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item:hover .Breadcrumb--board-item-dropdown {
+.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item:hover .Breadcrumb--boardDropdown {
   display: block;
-}
-
-.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-dropdown .Breadcrumb--board-item-dropdown-item {
-  display: inline-block;
-  margin: 0;
-  width: 50%;
-}
-
-.Breadcrumb.Breadcrumb--board .Breadcrumb--board-item .Breadcrumb--board-item-dropdown .Breadcrumb--board-item-dropdown-item-link {
-  padding: 6px 15px;
 }

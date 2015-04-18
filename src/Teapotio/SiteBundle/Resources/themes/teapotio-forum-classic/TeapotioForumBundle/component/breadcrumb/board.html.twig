@@ -15,15 +15,7 @@
         </a>
 
         {% if parent_boards.count %}
-          <ul class="Breadcrumb--board-item-dropdown">
-            {% for board in parent_boards %}
-              <li class="Breadcrumb--board-item-dropdown-item">
-                <a class="Breadcrumb--board-item-dropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
-                  {{ board.title }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
+          {% include "TeapotioForumBundle:component:breadcrumb/board/dropdown.html.twig" with {boards: parent_boards, parent: null} %}
         {% endif %}
       </li>
     {% endif %}
@@ -40,17 +32,7 @@
           </a>
 
           {% if parent.children.count %}
-            <ul class="Breadcrumb--board-item-dropdown">
-              {% spaceless %}
-                {% for board in parent.children %}
-                  <li class="Breadcrumb--board-item-dropdown-item">
-                    <a class="Breadcrumb--board-item-dropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
-                      {{ board.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              {% endspaceless %}
-            </ul>
+            {% include "TeapotioForumBundle:component:breadcrumb/board/dropdown.html.twig" with {boards: parent.children, parent: parent} %}
           {% endif %}
         </li>
       {% endfor %}
@@ -64,17 +46,7 @@
         </a>
 
         {% if board.children.count %}
-          <ul class="Breadcrumb--board-item-dropdown">
-            {% spaceless %}
-              {% for board in board.children %}
-                <li class="Breadcrumb--board-item-dropdown-item">
-                  <a class="Breadcrumb--board-item-dropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
-                    {{ board.title }}
-                  </a>
-                </li>
-              {% endfor %}
-            {% endspaceless %}
-          </ul>
+          {% include "TeapotioForumBundle:component:breadcrumb/board/dropdown.html.twig" with {boards: board.children, parent: board} %}
         {% endif %}
       </li>
 

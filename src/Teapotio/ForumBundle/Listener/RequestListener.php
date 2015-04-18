@@ -38,10 +38,10 @@ class RequestListener
 
         $controller = $event->getController()[0];
 
-        $useId = $this->container->getParameter('teapotio.forum.url.use_id');
-
         // We know we'll build the board list eventually so we get all of them
         $this->container->get('teapotio.forum.board')->getBoards();
+
+        $board = null;
 
         if ($event->getRequest()->attributes->get('boardSlug') !== null
             && method_exists($controller, 'setBoard') === true) {
@@ -57,19 +57,20 @@ class RequestListener
         }
 
         if ($event->getRequest()->attributes->get('topicSlug') !== null
-            && method_exists($controller, 'setTopic') === true) {
+            && method_exists($controller, 'setTopic') === true
+            && $board !== null) {
             // the topic slug in the URL
             $topicSlug = $event->getRequest()->attributes->get('topicSlug');
 
+            $useTopicId = $this->container->getParameter('teapotio.forum.url.use_topic_id');
             // if the URL uses IDs
-            if ($useId === true) {
-                $tmpParts = explode('-', $topicSlug);
-                $topicId = array_pop($tmpParts);
+            if ($useTopicId === true) {
+                $topicId = $event->getRequest()->attributes->get('topicId');
 
                 $topic = $this->container->get('teapotio.forum.topic')->getById($topicId);
             }
             else {
-                $topic = $this->container->get('teapotio.forum.topic')->getBySlug($topicSlug);
+                $topic = $this->container->get('teapotio.forum.topic')->getBySlugAndByBoard($topicSlug, $board);
             }
 
             if ($topic === null) {

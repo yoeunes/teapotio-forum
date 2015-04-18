@@ -1,0 +1,21 @@
+<div class="Breadcrumb--boardDropdown">
+  {% spaceless %}
+    {% for board in boards %}
+      <div class="Breadcrumb--boardDropdown-item">
+        <a class="Breadcrumb--boardDropdown-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
+          {{ board.title }}
+        </a>
+      </div>
+    {% endfor %}
+    {% if parent %}
+      <div class="Breadcrumb--boardDropdown-footer">
+        <div class="Breadcrumb--boardDropdown-footer-stat">
+          {{ "%total% topics"|trans({"%total%": parent.totalTopics}) }}
+        </div>
+        <div class="Breadcrumb--boardDropdown-footer-stat">
+          {{ "%total% messages"|trans({"%total%": parent.totalPosts}) }}
+        </div>
+      </div>
+    {% endif %}
+  {% endspaceless %}
+</div>

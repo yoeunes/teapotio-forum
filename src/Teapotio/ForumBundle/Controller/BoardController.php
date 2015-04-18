@@ -197,10 +197,24 @@ class BoardController extends BaseController
         if ($board === null || $moveToBoard === null) {
             $this->get('session')
                  ->getFlashBag()
-                 ->add('delete_error', $this->get('translator')->trans('Board.selected.not.valid'));
-
-            return $this->redirect($this->get('teapotio.forum')->forumPath('ForumEditBoard', $board));
+                 ->add('move_error', $this->get('translator')->trans('Board.selected.not.valid'));
         }
+
+        try {
+          $this->get('teapotio.forum.board')->moveBoard($board, $moveToBoard);
+
+          return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListTopicsByBoard', $board));
+        } catch (\Teapotio\Base\ForumBundle\Exception\InvalidBoardException $e) {
+            $this->get('session')
+                 ->getFlashBag()
+                 ->add('move_error', $this->get('translator')->trans('Cannot.move.content.to.children'));
+        } catch (\Teapotio\Base\ForumBundle\Exception\BoardExistsException $e) {
+            $this->get('session')
+                 ->getFlashBag()
+                 ->add('move_error', $this->get('translator')->trans('There.are.conflicting.board.names.'));
+        }
+
+        return $this->redirect($this->get('teapotio.forum')->forumPath('ForumEditBoard', $board));
     }
 
     public function editPermissionsAction($boardSlug)
@@ -259,16 +273,18 @@ class BoardController extends BaseController
 
             $this->get('teapotio.forum.board')->delete($board);
 
-            return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListLatestTopics'));
-        } catch (\Teapotio\BaseForumBundle\Exception\InvalidBoardException $e) {
+            return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListTopicsByBoard', $moveToBoard));
+        } catch (\Teapotio\Base\ForumBundle\Exception\InvalidBoardException $e) {
             $this->get('session')
                  ->getFlashBag()
                  ->add('delete_error', $this->get('translator')->trans('Cannot.move.content.to.children'));
-
-            return $this->redirect($this->get('teapotio.forum')->forumPath('ForumEditBoard', $board));
+        } catch (\Teapotio\Base\ForumBundle\Exception\BoardExistsException $e) {
+            $this->get('session')
+                 ->getFlashBag()
+                 ->add('delete_error', $this->get('translator')->trans('There.are.conflicting.board.names.'));
         }
 
-
+        return $this->redirect($this->get('teapotio.forum')->forumPath('ForumEditBoard', $board));
     }
 
     public function listAction()

@@ -1,0 +1,31 @@
+.Breadcrumb--boardDropdown {
+  background-color: #fefefe;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  padding: 8px 0;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item {
+  display: inline-block;
+  margin: 0;
+  width: 50%;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-footer,
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-link {
+  padding: 6px 18px;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-footer {
+  border-top: 1px solid #efefef;
+  font-size: 12px;
+  margin-top: 8px;
+  padding-bottom: 0;
+  padding-top: 8px;
+  text-align: right;
+}
+
+.Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-footer-stat {
+  display: inline-block;
+  margin-left: 12px;
+}

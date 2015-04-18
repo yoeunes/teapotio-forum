@@ -50,102 +50,115 @@ ForumEditBoardPermissions:
         boardSlug: .+?
 
 ForumTopicPin:
-    pattern: /{boardSlug}/{topicSlug}/pin/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/pin/
     defaults: { _controller: TeapotioForumBundle:Topic:pin }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
 
 ForumTopicLock:
-    pattern: /{boardSlug}/{topicSlug}/lock/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/lock/
     defaults: { _controller: TeapotioForumBundle:Topic:lock }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
 
 ForumTopicDelete:
-    pattern: /{boardSlug}/{topicSlug}/delete/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/delete/
     defaults: { _controller: TeapotioForumBundle:Topic:delete }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
 
 ForumTopicEdit:
-    pattern: /{boardSlug}/{topicSlug}/t/edit/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/edit/
     defaults: { _controller: TeapotioForumBundle:Topic:edit }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
 
 # Message Controller
 ForumListMessagesByTopic:
-    pattern: /{boardSlug}/{topicSlug}/t/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/
     defaults: { _controller: TeapotioForumBundle:Message:list }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
 
 ForumNewMessage:
-    pattern: /{boardSlug}/{topicSlug}/new-message/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/new-message/
     defaults: { _controller: TeapotioForumBundle:Message:new }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
 
 ForumMessageEdit:
-    pattern: /{boardSlug}/{topicSlug}/edit/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/edit/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:edit }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 ForumMessageFlag:
-    pattern: /{boardSlug}/{topicSlug}/flag/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/flag/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:flag }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 ForumMessageDelete:
-    pattern: /{boardSlug}/{topicSlug}/delete/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/delete/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:delete }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 ForumMessageStar:
-    pattern: /{boardSlug}/{topicSlug}/star/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/star/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:star }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 ForumMessageUnstar:
-    pattern: /{boardSlug}/{topicSlug}/unstar/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/unstar/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:unstar }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 ForumMessageReply:
-    pattern: /{boardSlug}/{topicSlug}/reply/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/reply/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:reply }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 ForumMessageQuote:
-    pattern: /{boardSlug}/{topicSlug}/quote/{messageId}/
+    pattern: /{boardSlug}/{topicSlug}-{topicId}/quote/{messageId}/
     defaults: { _controller: TeapotioForumBundle:Message:quote }
     requirements:
         boardSlug: .+?
         topicSlug: "[^\/]+"
+        topicId:   \d+
         messageId: \d+
 
 # Topic Controller

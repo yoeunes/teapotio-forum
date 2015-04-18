@@ -28,9 +28,9 @@
 
       {% if app.session.flashbag.has('delete_error') == true %}
         <div>
-          {% for message in app.session.flashbag.get('delete_error') %}
-            {{ message }}
-          {% endfor %}
+          {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
+            message: app.session.flashbag.get('delete_error')
+          } %}
         </div>
       {% endif %}
 
@@ -46,10 +46,10 @@
   <div class="Partial-moveBoard">
     <h3>{% trans %}Move.board{% endtrans %}</h3>
 
-    <form action="" method="post">
+    <form action="{{ forum_path('ForumMoveBoard', current_board) }}" method="post">
       {% if app.session.flashbag.has('move_error') == true %}
         {% include "TeapotioSiteBundle:component:prompt/error.html.twig" with {
-          message: app.session.flashbag.get('delete_error')
+          message: app.session.flashbag.get('move_error')
         } %}
       {% endif %}
 
