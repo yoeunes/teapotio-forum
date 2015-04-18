@@ -10,14 +10,14 @@
 
         var values = [];
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 11; i++) {
           values[i] = inputs[i].checked;
         }
 
         $('.'+ target).each(function(index, element) {
           var chk = $(element).find('input');
 
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < 11; i++) {
             if (values[i] === true) {
               $(chk[i]).attr('checked', 'checked');
             }
