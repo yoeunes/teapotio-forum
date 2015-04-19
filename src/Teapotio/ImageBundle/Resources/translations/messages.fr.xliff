@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Pick.image</source>
+                <target>Pick an image</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Add.image.to.avatar</source>
+                <target>Add an image to your avatar</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

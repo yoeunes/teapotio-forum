@@ -25,9 +25,14 @@
 
 {% set totalPerPage = collection.query.maxResults %}
 {% set total = collection.count %}
-{% set totalPages = total // totalPerPage + 1 %}
 {% set route = app.request.get('_route') %}
 {% set routeParams = app.request.get('_route_params') %}
+
+{% if total % totalPerPage != 0 %}
+  {% set totalPages = total // totalPerPage + 1 %}
+{% else %}
+  {% set totalPages = total / totalPerPage %}
+{% endif %}
 
 <nav class="{% block Pagination_class %}Pagination{% endblock %}">
   <ul>
