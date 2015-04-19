@@ -19,6 +19,11 @@
   text-align: center;
 }
 
+@media (max-width: 900px) {
+  .Wrapper .Navigation.Navigation--global.Navigation--actions {
+    right: 47px;
+  }
+}
 
 @media (max-width: 700px) {
   .Wrapper .Wrapper-navigation {

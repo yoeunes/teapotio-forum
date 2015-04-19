@@ -2,6 +2,44 @@ body {
   padding-top: 56px;
 }
 
+body .Container:before {
+  transition: background-color .3s;
+}
+
+body .Container.is-loading {
+  position: relative;
+}
+
+body .Container.is-loading:before {
+  background-color: rgba(255, 255, 255, 0.8);
+  bottom: 0;
+  content: ' ';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+body .Container.is-loading:after {
+  color: #343434;
+  content: '\f1ce';
+  font: normal normal normal 100px/1 FontAwesome;
+  left: 0;
+  margin-top: -50px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  z-index: 2;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+  -webkit-animation: fa-spin 1s infinite linear;
+  animation: fa-spin 1s infinite linear;
+}
+
 body .Wrapper {
   background-color: #fbfbfb;
 }
@@ -40,8 +78,11 @@ body .Wrapper .Navigation.Navigation--global.Navigation--actions {
     width: 98%;
   }
 
-  body .Wrapper .Breadcrumb,
-  body .Wrapper .Navigation.Navigation--global.Navigation--actions {
+  body .Wrapper .Breadcrumb {
     margin: 0;
+  }
+
+  body .Wrapper .Navigation.Navigation--global.Navigation--actions {
+    margin: 0 1%;
   }
 }

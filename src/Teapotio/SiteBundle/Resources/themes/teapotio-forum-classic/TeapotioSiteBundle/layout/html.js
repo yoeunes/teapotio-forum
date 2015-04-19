@@ -3,9 +3,11 @@
     var self = this,
       initialize,
       registerPageLoadEvent,
+      togglePageLoadAnimation,
       pushStateNumber = 0,
       events = [],
-      selector = 'body > .Container';
+      selector = 'body > .Container',
+      $container = $(selector);
 
     /**
      * Register an event so we can reload them everytime we ajax some content
@@ -77,11 +79,12 @@
 
       // Register dynamic page load event
       self.registerEvent(function ($container) {
-        // console.log($container.find('a').not('data-toggle-label'));
         $container.find("a[data-dynamic!='false'][data-toggle!='true'][data-external!='true']").click(function (event) {
           var data;
 
           event.preventDefault();
+
+          togglePageLoadAnimation(true);
 
           $.get($(this).attr('href'), function (data, status, xhr) {
             if (!data.html) {
@@ -91,6 +94,8 @@
             self.inject(data, $container);
 
             self.updateToolbar(xhr.getResponseHeader('X-Debug-Token'));
+
+            togglePageLoadAnimation(false);
 
             return;
           });
@@ -104,12 +109,24 @@
 
         window.onpopstate = function (event) {
           if ($container.length !== 0 && event.state !== null && event.state.t === 'main-view') {
+            togglePageLoadAnimation(true);
+
             $.get(event.state.p, function (data) {
               self.inject(data, $container);
+
+              togglePageLoadAnimation(false);
             });
           }
         };
       });
+    };
+
+    togglePageLoadAnimation = function (bool) {
+      if (bool == true && !$container.hasClass('is-loading')) {
+        $container.addClass('is-loading');
+      } else if (bool == false && $container.hasClass('is-loading')) {
+        $container.removeClass('is-loading');
+      }
     };
 
     // Initialize object

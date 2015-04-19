@@ -15,9 +15,13 @@
   width: 5%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
     font-size: 14px;
+  }
+
+  .List.List--Topic .TopicRow td {
+    padding: 6px;
   }
 
   .List.List--Topic .Avatar,
@@ -27,25 +31,31 @@
   }
 
   .List.List--Topic .TopicRow.TopicRow--header {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-statsTotalPosts,
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-statsTotalViews {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 600px) {
-  .List.List--Topic .TopicRow .TopicRow-actions,
-  .List.List--Topic .TopicRow .TopicRow-statsTotalPosts,
+@media (max-width: 750px) {
+  .List.List--Topic .TopicRow .TopicRow-author,
   .List.List--Topic .TopicRow .TopicRow-statsTotalViews {
     display: none;
   }
 }
 
+@media (max-width: 600px) {
+  .List.List--Topic .TopicRow .TopicRow-actions,
+  .List.List--Topic .TopicRow .TopicRow-statsTotalPosts {
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
-  .List.List--Topic .TopicRow .TopicRow-author,
+  .List.List--Topic .TopicRow .TopicRow-statsTotalStars,
   .List.List--Topic .TopicRow .TopicRow-responder {
     display: none;
   }
