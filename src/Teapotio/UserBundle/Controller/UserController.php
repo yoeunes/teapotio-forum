@@ -34,6 +34,16 @@ class UserController extends Controller
 
         $request = $this->get('request');
 
+        $user = $this->get('teapotio.user')
+                     ->find($request->attributes->get('userId'));
+
+        $isCurrentUserAdmin = $this->get('teapotio.forum.access_permission')->isAdmin($this->getUser());
+        $areUsersDifferent = $this->getUser()->getId() !== $user->getId();
+
+        if ($isCurrentUserAdmin === false && $areUsersDifferent === true) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+
         $image = new Image();
         $form = $this->createForm(new ImageType(), $image);
 
@@ -83,7 +93,15 @@ class UserController extends Controller
 
         $request = $this->get('request');
 
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('teapotio.user')
+                     ->find($request->attributes->get('userId'));
+
+        $isCurrentUserAdmin = $this->get('teapotio.forum.access_permission')->isAdmin($this->getUser());
+        $areUsersDifferent = $this->getUser()->getId() !== $user->getId();
+
+        if ($isCurrentUserAdmin === false && $areUsersDifferent === true) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
 
         $this->get('teapotio.user')->setDefaultAvatarFromAvatars($user, (int)$imageId);
 
@@ -104,7 +122,15 @@ class UserController extends Controller
 
         $request = $this->get('request');
 
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('teapotio.user')
+                     ->find($request->attributes->get('userId'));
+
+        $isCurrentUserAdmin = $this->get('teapotio.forum.access_permission')->isAdmin($this->getUser());
+        $areUsersDifferent = $this->getUser()->getId() !== $user->getId();
+
+        if ($isCurrentUserAdmin === false && $areUsersDifferent === true) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
 
         $form = $this->createForm(new UserDescriptionType(), $user);
 
@@ -141,7 +167,15 @@ class UserController extends Controller
 
         $request = $this->get('request');
 
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('teapotio.user')
+                     ->find($request->attributes->get('userId'));
+
+        $isCurrentUserAdmin = $this->get('teapotio.forum.access_permission')->isAdmin($this->getUser());
+        $areUsersDifferent = $this->getUser()->getId() !== $user->getId();
+
+        if ($isCurrentUserAdmin === false && $areUsersDifferent === true) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
 
         if ($user->getSettings() === null) {
             $user->setSettings(new UserSettings());
@@ -180,21 +214,23 @@ class UserController extends Controller
             $request->headers->get('referer')
         );
     }
+
     public function setGroupsAction()
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
+        if ($this->get('teapotio.forum.access_permission')->isAdmin($this->getUser()) === false) {
             throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
         }
 
         $request = $this->get('request');
-        $user = $this->get('security.context')->getToken()->getUser();
 
-        $form = $this->createForm(new UserGroupType(), $user->getGroups());
+        $user = $this->get('teapotio.user')
+                     ->find($request->attributes->get('userId'));
+
+        $form = $this->createForm(new UserGroupType(), $user);
 
         if ($request->getMethod() === 'POST') {
             $form->bind($request);
             if ($form->isValid() === true) {
-
                 $this->get('teapotio.user')->save($user);
 
                 if ($request->isXmlHttpRequest() === true) {

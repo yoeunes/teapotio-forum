@@ -20,6 +20,7 @@ TeapotioBaseUserBundle_settings:
     requirements:
         userSlug: "[^\/]+"
         userId: \d+
+
 TeapotioBaseUserBundle_profile:
     pattern:   /u/{userSlug}-{userId}/
     defaults: { _controller: TeapotioUserBundle:Profile:index }
@@ -28,29 +29,41 @@ TeapotioBaseUserBundle_profile:
         userId: \d+
 
 TeapotioBaseUserBundle_setDefaultImage:
-    pattern: /u/set-image/{imageId}/
+    pattern: /u/{userSlug}-{userId}/set-image/{imageId}/
     defaults: { _controller: TeapotioUserBundle:User:setDefaultImage }
+    requirements:
+        _method: POST
+        userSlug: "[^\/]+"
+        userId: \d+
 
 TeapotioBaseUserBundle_addImage:
-    pattern: /u/add-image/
+    pattern: /u/{userSlug}-{userId}/add-image/
     defaults: { _controller: TeapotioUserBundle:User:addImage }
     requirements:
         _method: POST
+        userSlug: "[^\/]+"
+        userId: \d+
 
 TeapotioBaseUserBundle_setDescription:
-    pattern: /u/set-description/
+    pattern: /u/{userSlug}-{userId}/set-description/
     defaults: { _controller: TeapotioUserBundle:User:setDescription }
     requirements:
         _method: POST
+        userSlug: "[^\/]+"
+        userId: \d+
 
 TeapotioBaseUserBundle_setSettings:
-    pattern: /u/set-settings/
+    pattern: /u/{userSlug}-{userId}/set-settings/
     defaults: { _controller: TeapotioUserBundle:User:setSettings }
     requirements:
         _method: POST
+        userSlug: "[^\/]+"
+        userId: \d+
 
 TeapotioBaseUserBundle_setGroups:
-    pattern: /u/set-groups/
+    pattern: /u/{userSlug}-{userId}/set-groups/
     defaults: { _controller: TeapotioUserBundle:User:setGroups }
     requirements:
         _method: POST
+        userSlug: "[^\/]+"
+        userId: \d+

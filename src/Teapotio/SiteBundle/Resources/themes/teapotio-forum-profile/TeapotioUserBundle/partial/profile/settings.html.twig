@@ -6,7 +6,7 @@
   <div class="Partial-image">
     <h3>{% trans %}Add.image.to.avatar{% endtrans %}</h3>
 
-    <form action="{{ path('TeapotioBaseUserBundle_addImage') }}" method="post" {{ form_enctype(formImage) }}>
+    <form action="{{ path('TeapotioBaseUserBundle_addImage', {userSlug: user.slug, userId: user.id}) }}" method="post" {{ form_enctype(formImage) }}>
       {{ form_widget(formImage) }}
       <button>{% trans %}Submit{% endtrans %}</button>
     </form>
@@ -15,7 +15,7 @@
       <h4>{% trans %}Current.avatars{% endtrans %}</h4>
 
       {% for image in user.avatars %}
-        <a href="{{ path('TeapotioBaseUserBundle_setDefaultImage', {imageId: image.id}) }}"><img src="{{ image(image.webPath).forceResize(50, null).crop(0,0,50,50) }}" class="{% if image.id == user.defaultAvatar.id %}default-avatar{% endif %}" /></a>
+        <a href="{{ path('TeapotioBaseUserBundle_setDefaultImage', {userSlug: user.slug, userId: user.id, imageId: image.id}) }}"><img src="{{ image(image.webPath).forceResize(50, null).crop(0,0,50,50) }}" class="{% if image.id == user.defaultAvatar.id %}default-avatar{% endif %}" /></a>
       {% endfor %}
     {% endif %}
   </div>
@@ -23,7 +23,7 @@
   <div class="Partial-description">
     <h3>{% trans %}Add.a.description{% endtrans %}</h3>
 
-    <form action="{{ path('TeapotioBaseUserBundle_setDescription') }}" method="post" {{ form_enctype(formDescription) }}>
+    <form action="{{ path('TeapotioBaseUserBundle_setDescription', {userSlug: user.slug, userId: user.id}) }}" method="post" {{ form_enctype(formDescription) }}>
       {{ form_widget(formDescription) }}
       <button>{% trans %}Submit{% endtrans %}</button> <div class="feedback"></div>
     </form>
@@ -38,7 +38,7 @@
       } %}
     {% endif %}
 
-    <form action="{{ path('TeapotioBaseUserBundle_setSettings') }}" method="post" class="" {{ form_enctype(formSettings) }}>
+    <form action="{{ path('TeapotioBaseUserBundle_setSettings', {userSlug: user.slug, userId: user.id}) }}" method="post" class="" {{ form_enctype(formSettings) }}>
       {{ form_row(formSettings.backgroundColor) }}
       {{ form_row(formSettings.backgroundImage) }}
       {{ form_row(formSettings.backgroundTiled) }}
@@ -59,7 +59,7 @@
       } %}
     {% endif %}
 
-    <form action="{{ path('TeapotioBaseUserBundle_setGroups') }}" method="post" class="" {{ form_enctype(formGroups) }}>
+    <form action="{{ path('TeapotioBaseUserBundle_setGroups', {userSlug: user.slug, userId: user.id}) }}" method="post" class="" {{ form_enctype(formGroups) }}>
       {{ form_widget(formGroups) }}
       <button>{% trans %}Submit{% endtrans %}</button>
     </form>
