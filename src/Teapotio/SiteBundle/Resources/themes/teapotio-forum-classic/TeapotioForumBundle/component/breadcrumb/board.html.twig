@@ -6,9 +6,14 @@
   {% spaceless %}
     {% if showRoot is defined and showRoot == true %}
       {% set parent_boards = get_boards() %}
-      <li class="Breadcrumb--board-item">
+      <li class="Breadcrumb--board-item Breadcrumb--board-item--home">
         <a class="Breadcrumb--board-item-link" href="{{ forum_path("ForumListLatestTopics") }}">
-          {% trans %}Forum{% endtrans %}
+          <div class="Breadcrumb--board-item-link-long">
+            {% trans %}Forum{% endtrans %}
+          </div>
+          <div class="Breadcrumb--board-item-link-short">
+            <i class="fa fa-home"></i>
+          </div>
           {% if parent_boards.count %}
             <i class="fa fa-chevron-down"></i>
           {% endif %}
@@ -25,7 +30,12 @@
       {% for parent in parents %}
         <li class="Breadcrumb--board-item">
           <a class="Breadcrumb--board-item-link" href="{{ forum_path("ForumListTopicsByBoard", parent) }}">
-            {{ parent.title }}
+            <div class="Breadcrumb--board-item-link-long">
+              {{ parent.title }}
+            </div>
+            <div class="Breadcrumb--board-item-link-short">
+              {{ parent.shortTitle }}
+            </div>
             {% if parent.children.count %}
               <i class="fa fa-chevron-down"></i>
             {% endif %}
@@ -39,7 +49,12 @@
 
       <li class="Breadcrumb--board-item">
         <a class="Breadcrumb--board-item-link" href="{{ forum_path("ForumListTopicsByBoard", board) }}">
-          {{ board.title }}
+          <div class="Breadcrumb--board-item-link-long">
+            {{ board.title }}
+          </div>
+          <div class="Breadcrumb--board-item-link-short">
+            {{ board.shortTitle }}
+          </div>
           {% if board.children.count %}
             <i class="fa fa-chevron-down"></i>
           {% endif %}

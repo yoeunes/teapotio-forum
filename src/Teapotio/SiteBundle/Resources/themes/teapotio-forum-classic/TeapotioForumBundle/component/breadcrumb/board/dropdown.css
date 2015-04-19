@@ -1,7 +1,6 @@
 .Breadcrumb--boardDropdown {
   background-color: #fefefe;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
-  font-size: 18px;
   padding: 8px 0;
 }
 
@@ -26,6 +25,7 @@
 }
 
 .Breadcrumb--boardDropdown .Breadcrumb--boardDropdown-item-info {
+  color: #999;
   font-size: 11px;
   padding-top: 0;
 }

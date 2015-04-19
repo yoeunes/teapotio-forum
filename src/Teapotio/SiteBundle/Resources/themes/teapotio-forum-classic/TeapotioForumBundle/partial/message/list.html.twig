@@ -8,23 +8,20 @@
     {% include "TeapotioForumBundle:entity:topic/individual.html.twig" with {user: message.user, topic: topic, message: message, flag: flag_topic} %}
 
     {% include "TeapotioForumBundle:list:message/list.html.twig" with {messages: messages|slice(1), flags: flags} %}
+
+    {% include "TeapotioSiteBundle:component:pagination/base.html.twig" with {collection: messages, typeName: 'messages'|trans } %}
   </div><!--
 
   --><div class="Partial--messageList-sidebar">
-    <h3>{% trans %}Latest.topics.in.board{% endtrans %}</h3>
-    {% set topics = get_latest_topics(6) %}
-    {% include "TeapotioForumBundle:component:topic/list.html.twig" with {topics: topics} %}
-
-    <h3>{% trans %}Latest.topics{% endtrans %}</h3>
-    {% set topics = get_latest_topics(6, current_board) %}
-    {% include "TeapotioForumBundle:component:topic/list.html.twig" with {topics: topics} %}
+    <div class="Partial--messageList-sidebar-element">
+      <h3>{% trans %}Latest.topics.in.board{% endtrans %}</h3>
+      {% set topics = get_latest_topics(6) %}
+      {% include "TeapotioForumBundle:component:topic/list.html.twig" with {topics: topics} %}
+    </div><!--
+    --><div class="Partial--messageList-sidebar-element">
+      <h3>{% trans %}Latest.topics{% endtrans %}</h3>
+      {% set topics = get_latest_topics(6, current_board) %}
+      {% include "TeapotioForumBundle:component:topic/list.html.twig" with {topics: topics} %}
+    </div>
   </div>
-{% endblock %}
-
-{% block pagination_top %}
-  {% include "TeapotioSiteBundle:component:pagination/base.html.twig" with {collection: messages, typeName: 'messages'|trans } %}
-{% endblock %}
-
-{% block pagination_bottom %}
-  {% include "TeapotioSiteBundle:component:pagination/base.html.twig" with {collection: messages, typeName: 'messages'|trans } %}
 {% endblock %}

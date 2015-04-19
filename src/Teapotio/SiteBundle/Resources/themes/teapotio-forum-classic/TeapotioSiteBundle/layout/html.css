@@ -31,14 +31,20 @@ body .Wrapper .Navigation.Navigation--global.Navigation--actions {
 }
 
 @media (max-width: 900px) {
-  body .Wrapper,
-  body .Header.Header--global {
+  body .Wrapper {
     padding: 0 2%;
     width: 96%;
   }
+  body .Header.Header--global {
+    padding: 0 1%;
+    width: 98%;
+  }
 
-  body .Wrapper .Breadcrumb,
+  body .Wrapper .Breadcrumb {
+    margin: 0;
+  }
+
   body .Wrapper .Navigation.Navigation--global.Navigation--actions {
-    margin: 0 2%;
+    margin: 0 1%;
   }
 }
