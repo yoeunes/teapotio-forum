@@ -88,3 +88,18 @@
   display: none;
   font-size: 11px;
 }
+
+@media (max-width: 900px) {
+  .Navigation.Navigation--global .Navigation-button .Navigation-icon,
+  .Navigation.Navigation--global .Navigation-button:before {
+    margin: 8px 0;
+  }
+
+  .Navigation.Navigation--global .Navigation-list {
+    left: 0;
+  }
+
+  .Navigation.Navigation--global.is-rightAligned .Navigation-list {
+    right: 0;
+  }
+}

@@ -40,11 +40,8 @@ body .Wrapper .Navigation.Navigation--global.Navigation--actions {
     width: 98%;
   }
 
-  body .Wrapper .Breadcrumb {
-    margin: 0;
-  }
-
+  body .Wrapper .Breadcrumb,
   body .Wrapper .Navigation.Navigation--global.Navigation--actions {
-    margin: 0 1%;
+    margin: 0;
   }
 }

@@ -63,3 +63,9 @@
 .Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--moderator {
   margin-right: 56px;
 }
+
+@media (max-width: 900px) {
+  .Header.Header--global .Header-navigation .Navigation.Navigation--global.Navigation--moderator {
+    margin-right: 54px;
+  }
+}
