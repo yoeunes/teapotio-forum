@@ -3,8 +3,16 @@
     {% include "TeapotioForumBundle:component:topic/row/header.html.twig" %}
   </thead>
 
+  {% if pinned_topics is defined %}
+    {% for topic in pinned_topics %}
+      {% include "TeapotioForumBundle:component:topic/row/individual.html.twig" with {topic: topic, messages_per_page: messages_per_page} %}
+    {% endfor %}
+  {% endif %}
+
   {% for topic in topics %}
-    {% include "TeapotioForumBundle:component:topic/row/individual.html.twig" with {topic: topic, messages_per_page: messages_per_page} %}
+    {% if pinned_topic_ids is not defined or topic.id not in pinned_topic_ids %}
+      {% include "TeapotioForumBundle:component:topic/row/individual.html.twig" with {topic: topic, messages_per_page: messages_per_page} %}
+    {% endif %}
   {% endfor %}
 
   <tfoot>

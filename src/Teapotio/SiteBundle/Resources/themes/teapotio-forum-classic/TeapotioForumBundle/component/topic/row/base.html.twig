@@ -10,11 +10,13 @@
         {% endblock %}
       </div>
 
-      <div class="TopicRow-content-board">
-        <a href="{{ forum_path("ForumListTopicsByBoard", topic.board) }}">
-          {{ topic.board.shortTitle }}
-        </a>
-      </div>
+      {% if current_board is null or current_board.id != topic.board.id %}
+        <div class="TopicRow-content-board">
+          <a href="{{ forum_path("ForumListTopicsByBoard", topic.board) }}">
+            {{ topic.board.shortTitle }}
+          </a>
+        </div>
+      {% endif %}
 
       <div class="TopicRow-content-title">
         {% if topic.isPinned == true %}

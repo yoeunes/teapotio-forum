@@ -253,10 +253,16 @@ class TopicController extends BaseController
         $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
         $offset = ($page - 1) * $topicsPerPage;
 
+        $pinnedTopics = $pinnedTopicIds = array();
         if (count($boardIds) === 1) {
             $topics = $this->get('teapotio.forum.topic')->getLatestTopicsByBoard($board, $offset, $topicsPerPage);
         }
         else {
+            $pinnedTopics = $this->get('teapotio.forum.topic')->getLatestPinnedTopicsByBoard($board);
+            $pinnedTopicIds = $pinnedTopics->map(function ($topic) {
+              return $topic->getId();
+            });
+
             $topics = $this->get('teapotio.forum.topic')->getLatestTopicsByBoardIds($boardIds, $offset, $topicsPerPage);
         }
 
@@ -265,6 +271,8 @@ class TopicController extends BaseController
         $params = array(
             'topics_per_page'   => $topicsPerPage,
             'messages_per_page' => $messagesPerPage,
+            'pinned_topics'     => $pinnedTopics,
+            'pinned_topic_ids'  => $pinnedTopicIds,
             'topics'            => $topics,
             'current_board'     => $board,
             'showBoard'         => true,
