@@ -80,6 +80,12 @@
     {% endblock %}
   </td>
 
+  <td class="TopicRow-timeSince">
+    {% block TopicRow_timeSince_content %}
+      {{ topic.lastMessageDate|timeSince(2, true, 31556926) }}
+    {% endblock %}
+  </td>
+
   {% if app.user|is_admin or app.user|is_moderator %}
     <td class="TopicRow-actions">
       {% block TopicRow_actions_content %}

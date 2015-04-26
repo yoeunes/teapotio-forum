@@ -2,12 +2,6 @@
   background-color: #f4f4f4;
 }
 
-.TopicRow .TopicRow-statsTotalStars,
-.TopicRow .TopicRow-statsTotalPosts,
-.TopicRow .TopicRow-statsTotalViews {
-  text-align: center;
-}
-
 .TopicRow td {
   padding: 6px 10px;
 }
@@ -18,9 +12,17 @@
 
 .TopicRow .TopicRow-author,
 .TopicRow .TopicRow-actions,
+.TopicRow .TopicRow-statsTotalStars,
+.TopicRow .TopicRow-statsTotalPosts,
 .TopicRow .TopicRow-statsTotalViews,
 .TopicRow .TopicRow-responder {
+  padding-left: 2px;
+  padding-right: 2px;
   text-align: center;
+}
+
+.TopicRow .TopicRow-timeSince {
+  text-align: right;
 }
 
 .TopicRow .TopicRow-author {

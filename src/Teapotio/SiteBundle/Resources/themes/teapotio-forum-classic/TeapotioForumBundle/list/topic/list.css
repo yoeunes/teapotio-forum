@@ -15,6 +15,10 @@
   width: 5%;
 }
 
+.List.List--Topic .TopicRow .TopicRow-timeSince {
+  width: 50px;
+}
+
 @media (max-width: 900px) {
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
     font-size: 14px;
