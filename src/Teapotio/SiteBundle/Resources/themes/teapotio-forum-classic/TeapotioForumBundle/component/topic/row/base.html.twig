@@ -1,9 +1,13 @@
-<tr class="{% block TopicRow_class %}TopicRow{% if current_board is defined and current_board is not null and current_board.children.count == 0 %} TopicRow--boardChildless{% endif %}{% endblock %}">
+<tr class="{% block TopicRow_class %}
+  TopicRow
+  {% if current_board is defined and current_board is not null and current_board.children.count == 0 %} TopicRow--boardChildless{% endif %}
+  {% if is_pinned is defined and is_pinned == true %} is-pinned{% endif %}
+{% endblock %}">
   <td class="TopicRow-content">
     {% block TopicRow_content %}
       <div class="TopicRow-content-lastPage">
         {% block TopicRow_content_lastPage_content %}
-          {% if messages_per_age is defined %}
+          {% if messages_per_page is defined %}
             {% set last_page = get_last_page(topic.totalPosts, messages_per_page) %}
             <a href="{{ forum_path("ForumListMessagesByTopic", topic) }}{% if last_page > 1 %}?page={{ last_page }}{% endif %}{% if topic.totalPosts != 0 %}#message-{{ topic.totalPosts }}{% endif %}" class="topic-last-page to-main"><i class="icon-chevron-right"></i></a>
           {% endif %}
@@ -31,6 +35,12 @@
           </a>
         {% endblock %}
       </div>
+
+      {% if topic.body %}
+        <div class="TopicRow-content-body">
+          {{ topic.body.body|slice(0, 255) }} {% if topic.body.body|length > 255 %}...{% endif %}
+        </div>
+      {% endif %}
     {% endblock %}
   </td>
 

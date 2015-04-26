@@ -5,7 +5,7 @@
 
   {% if pinned_topics is defined %}
     {% for topic in pinned_topics %}
-      {% include "TeapotioForumBundle:component:topic/row/individual.html.twig" with {topic: topic, messages_per_page: messages_per_page} %}
+      {% include "TeapotioForumBundle:component:topic/row/individual.html.twig" with {topic: topic, messages_per_page: messages_per_page, is_pinned: true} %}
     {% endfor %}
   {% endif %}
 

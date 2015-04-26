@@ -19,6 +19,7 @@ use Teapotio\ForumBundle\Form\CreateTopicType;
 
 use Teapotio\Base\ForumBundle\Exception\DuplicateTopicException;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\FormError;
 
 class TopicController extends BaseController
@@ -253,9 +254,18 @@ class TopicController extends BaseController
         $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
         $offset = ($page - 1) * $topicsPerPage;
 
-        $pinnedTopics = $pinnedTopicIds = array();
+        $pinnedTopics = new ArrayCollection();
+        $pinnedTopicIds = new ArrayCollection();
         if (count($boardIds) === 1) {
             $topics = $this->get('teapotio.forum.topic')->getLatestTopicsByBoard($board, $offset, $topicsPerPage);
+            foreach ($topics as $topic) {
+              if ($topic->isPinned() === false) {
+                break;
+              }
+
+              $pinnedTopics->add($topic);
+              $pinnedTopicIds->add($topic->getId());
+            }
         }
         else {
             $pinnedTopics = $this->get('teapotio.forum.topic')->getLatestPinnedTopicsByBoard($board);
@@ -264,6 +274,16 @@ class TopicController extends BaseController
             });
 
             $topics = $this->get('teapotio.forum.topic')->getLatestTopicsByBoardIds($boardIds, $offset, $topicsPerPage);
+        }
+
+        if ($pinnedTopicIds->count()) {
+          $bodies = $this->get('teapotio.forum.message')->getTopicBodiesByTopicIds($pinnedTopicIds->toArray());
+
+          foreach ($pinnedTopics as $topic) {
+            if (isset($bodies[$topic->getId()])) {
+              $topic->setBody($bodies[$topic->getId()]);
+            }
+          }
         }
 
         $title = $this->generateTitle('All.topics.in.%title%', array('%title%' => $board->getTitle()));
