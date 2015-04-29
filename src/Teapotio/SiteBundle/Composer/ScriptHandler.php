@@ -24,20 +24,20 @@ class ScriptHandler extends \Sensio\Bundle\DistributionBundle\Composer\ScriptHan
         $env = getenv('SYMFONY_ENV') ?: 'dev';
 
         if ($env !== 'dev') {
-          $event->getIO()->write('[info] Operations on database are only executed on dev. If cache clearing fails, your database is ready.');
+          $event->getIO()->write('Operations on database are only executed on dev. If cache clearing fails and throws a database exception, verify the integrity of your database.');
           return;
         }
 
         try {
           static::executeCommand($event, $consoleDir, 'doctrine:database:create -q', $options['process-timeout']);
         } catch (\RuntimeException $e) {
-          $event->getIO()->write('[info] The database was not created.');
+          $event->getIO()->write('The database was not created.');
         }
 
         try {
           static::executeCommand($event, $consoleDir, 'doctrine:schema:create -q', $options['process-timeout']);
         } catch (\RuntimeException $e) {
-          $event->getIO()->write('[info] The schema was not created.');
+          $event->getIO()->write('The schema was not created.');
         }
     }
 }
