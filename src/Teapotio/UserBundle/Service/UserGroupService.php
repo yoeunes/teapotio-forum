@@ -26,6 +26,12 @@ class UserGroupService extends BaseService {
 
     public function setup()
     {
+        $superAdminGroup = $this->createUserGroup();
+        $superAdminGroup->setName('Super admin');
+        $superAdminGroup->setRole('ROLE_SUPER_ADMIN');
+
+        $this->save($superAdminGroup);
+
         $adminGroup = $this->createUserGroup();
         $adminGroup->setName('Admin');
         $adminGroup->setRole('ROLE_ADMIN');
@@ -38,7 +44,7 @@ class UserGroupService extends BaseService {
 
         $this->save($userGroup);
 
-        return array($adminGroup, $userGroup);
+        return array($adminGroup, $userGroup, $superAdminGroup);
     }
 
 }
