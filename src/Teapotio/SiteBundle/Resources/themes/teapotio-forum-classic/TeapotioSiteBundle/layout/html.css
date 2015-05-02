@@ -49,7 +49,8 @@ body .Wrapper {
 }
 
 body .Wrapper,
-body .Header.Header--global {
+body .Header.Header--global,
+body .Footer {
   padding: 0 15%;
   width: 70%;
 }
@@ -61,7 +62,8 @@ body .Wrapper .Navigation.Navigation--global.Navigation--actions {
 
 @media (max-width: 1200px) {
   body .Wrapper,
-  body .Header.Header--global {
+  body .Header.Header--global,
+  body .Footer {
     padding: 0 7%;
     width: 86%;
   }
@@ -73,7 +75,8 @@ body .Wrapper .Navigation.Navigation--global.Navigation--actions {
 }
 
 @media (max-width: 900px) {
-  body .Wrapper {
+  body .Wrapper,
+  body .Footer {
     padding: 0 2%;
     width: 96%;
   }
