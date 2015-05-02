@@ -34,6 +34,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.Footer.Footer--global .Footer-poweredBy:hover {
+  text-decoration: none;
+}
+
 .Footer.Footer--global .Footer-poweredBy:after {
   background: url(/bundles/teapotiosite/images/teapotio_logo.png) no-repeat;
   background-size: contain;
