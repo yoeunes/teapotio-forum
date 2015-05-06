@@ -67,7 +67,7 @@ class AdminController extends BaseController
 
         if ($this->get('request')->isXmlHttpRequest() === true) {
             return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:page:admin/permissions.html.twig', $params),
+                'html'   => $this->renderView('TeapotioForumBundle:partial:admin/permissions.html.twig', $params),
                 'title'  => $title
             ));
         }
