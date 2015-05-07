@@ -54,9 +54,10 @@ class UserRepository extends BaseUserRepository
     {
         $q = $this
             ->createQueryBuilder('u')
-            ->select(array('u', 'us', 'ufs'))
+            ->select(array('u', 'us', 'ug', 'ufs'))
             ->where('u.username = :username OR u.email = :email')
             ->leftJoin('u.settings', 'us')
+            ->leftJoin('u.groups', 'ug')
             ->leftJoin('u.forumStat', 'ufs')
             ->setParameter('username', $username)
             ->setParameter('email', $username)
