@@ -23,6 +23,12 @@
     } %}
   {% endif %}
 
+  {% if app.user|is_allowed('create', 'Message')[0] == false %}
+    {% include "TeapotioSiteBundle:component:prompt/info.html.twig" with {
+      message: app.user|is_allowed('create', 'Message')[1]
+    } %}
+  {% endif %}
+
   {% if form is not null %}
     <div class="List-form">
       {% include "TeapotioForumBundle:entity:message/new.html.twig" with {

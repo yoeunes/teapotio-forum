@@ -46,7 +46,7 @@ class RequestListener
         if ($event->getRequest()->attributes->get('boardSlug') !== null
             && method_exists($controller, 'setBoard') === true) {
 
-            $board = $this->container->get('teapotio.forum.path')->lookupBoard();
+            $board = $this->container->get('teapotio.forum.path')->getCurrentBoard();
 
             if ($board === null) {
                 throw $controller->createNotFoundException();
@@ -59,19 +59,8 @@ class RequestListener
         if ($event->getRequest()->attributes->get('topicSlug') !== null
             && method_exists($controller, 'setTopic') === true
             && $board !== null) {
-            // the topic slug in the URL
-            $topicSlug = $event->getRequest()->attributes->get('topicSlug');
 
-            $useTopicId = $this->container->getParameter('teapotio.forum.url.use_topic_id');
-            // if the URL uses IDs
-            if ($useTopicId === true) {
-                $topicId = $event->getRequest()->attributes->get('topicId');
-
-                $topic = $this->container->get('teapotio.forum.topic')->getById($topicId);
-            }
-            else {
-                $topic = $this->container->get('teapotio.forum.topic')->getBySlugAndByBoard($topicSlug, $board);
-            }
+            $topic = $this->container->get('teapotio.forum.path')->getCurrentTopic();
 
             if ($topic === null) {
                 throw $controller->createNotFoundException();
@@ -83,9 +72,8 @@ class RequestListener
 
         if ($event->getRequest()->attributes->get('messageId') !== null
             && method_exists($controller, 'setMessage') === true) {
-            $messageId = $event->getRequest()->attributes->get('messageId');
 
-            $message = $this->container->get('teapotio.forum.message')->find($messageId, null);
+            $message = $this->container->get('teapotio.forum.path')->getCurrentMessage();
 
             if ($message === null) {
                 throw $controller->createNotFoundException();
