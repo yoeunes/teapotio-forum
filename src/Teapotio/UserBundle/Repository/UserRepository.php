@@ -33,7 +33,8 @@ class UserRepository extends BaseUserRepository
     public function getByIds($ids)
     {
         $queryBuilder = $this->createQueryBuilder('u')
-                             ->select(array('u', 'g', 's', 'fs'))
+                             ->select(array('u', 'i', 'g', 's', 'fs'))
+                             ->leftJoin('u.defaultAvatar', 'i')
                              ->leftJoin('u.groups', 'g')
                              ->leftJoin('u.settings', 's')
                              ->leftJoin('u.forumStat', 'fs');
