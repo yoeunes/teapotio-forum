@@ -1,0 +1,24 @@
+.Partial.Partial--error404 {
+  overflow: auto;
+}
+
+.Partial.Partial--error404 .Partial-leftColumn {
+  float: left;
+  margin-right: 36px;
+  width: 540px;
+}
+
+.Partial.Partial--error404 .Partial-leftColumn-topics .TopicRow .TopicRow-statsTotalViews,
+.Partial.Partial--error404 .Partial-leftColumn-topics .TopicRow .TopicRow-statsTotalStars,
+.Partial.Partial--error404 .Partial-leftColumn-topics .TopicRow .TopicRow-author,
+.Partial.Partial--error404 .Partial-leftColumn-topics .TopicRow .TopicRow-content .TopicRow-content-board {
+  display: none;
+}
+
+.Partial.Partial--error404 .Partial-rightColumn-boards .List.List--board {
+  font-size: 1.1em;
+}
+
+.Partial.Partial--error404 .Partial-rightColumn-boards .ListItem.ListItem--board .ListItem-details-newTopic {
+  display: none;
+}

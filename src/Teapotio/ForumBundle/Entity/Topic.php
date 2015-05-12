@@ -26,7 +26,8 @@ use Teapotio\Base\ForumBundle\Entity\TopicInterface;
  *
  * @ORM\Table(name="forum_topic", indexes={
  *     @ORM\Index(name="slug_idx", columns={"slug"}),
- *     @ORM\Index(name="last_message_date_idx", columns={"last_message_date"})
+ *     @ORM\Index(name="last_message_date_idx", columns={"last_message_date"}),
+ *     @ORM\Index(name="total_messages_idx", columns={"total_posts"})
  * })
  * @ORM\Entity(repositoryClass="Teapotio\ForumBundle\Repository\TopicRepository")
  */

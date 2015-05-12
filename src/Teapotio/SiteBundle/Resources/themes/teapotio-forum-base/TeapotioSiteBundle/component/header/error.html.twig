@@ -1,0 +1,13 @@
+{% extends "TeapotioSiteBundle:component:header/base.html.twig" %}
+
+{% block Header_class %}{{ parent() }} Header--error{% endblock %}
+
+{% block Header_content %}
+  {#% include "TeapotioSiteBundle:component:logo/base.html.twig" with {
+    size: 'large'
+  } %#}
+  <h2 class="Header-subtitle">{% trans %}404{% endtrans %}</h2>
+  <h1 class="Header-title">¯\_(ツ)_/¯</h1>
+  <h2 class="Header-subtitle">{% trans %}Not found{% endtrans %}</h2>
+  <p>{% trans %}Worry not, we have plenty of content for you.{% endtrans %}</p>
+{% endblock %}

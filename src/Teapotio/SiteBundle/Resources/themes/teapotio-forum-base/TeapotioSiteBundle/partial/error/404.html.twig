@@ -1,0 +1,52 @@
+{% extends "TeapotioSiteBundle:partial:base.html.twig" %}
+
+{% block Partial_class %}{{ parent() }} Partial--error404{% endblock %}
+
+{% block Partial_content %}
+  {% include "TeapotioSiteBundle:component:header/error.html.twig" %}
+  <div class="Partial-leftColumn">
+    {% set popular_topics = get_most_popular_topics(8) %}
+    <div class="Partial-leftColumn-topics Partial-leftColumn-latestTopics">
+      <h2>{% trans %}Popular topics{% endtrans %}</h2>
+      {% include "TeapotioForumBundle:list:topic/list.html.twig"
+        with {
+          topics: popular_topics,
+          messages_per_page: 8,
+          current_board: null
+        }
+      %}
+    </div>
+
+    {% set latest_topics = get_latest_topics(22) %}
+    <div class="Partial-leftColumn-topics Partial-leftColumn-latestTopics">
+      <h2>{% trans %}Latest.topics{% endtrans %}</h2>
+      {% include "TeapotioForumBundle:list:topic/list.html.twig"
+        with {
+          topics: latest_topics,
+          messages_per_page: 22,
+          current_board: null
+        }
+      %}
+    </div>
+  </div><!--
+
+--><div class="Partial-rightColumn">
+    {% set boards = get_boards() %}
+    <div class="Partial-rightColumn-boards">
+      <h2>{% trans %}List.of.boards{% endtrans %}</h2>
+      {% include "TeapotioForumBundle:list:board/list.html.twig" with {
+        boards: boards,
+        max_nesting: 0
+      } %}
+    </div>
+
+    {% set total = 20 %}
+    {% set user_stats = get_top_forum_users(total) %}
+    {% if user_stats.count %}
+      <div class="Partial-rightColumn-users">
+        <h2>{% trans %}Top.users{% endtrans %}</h2>
+        {% include "TeapotioForumBundle:component:topUsers.html.twig" with {user_stats: user_stats} %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

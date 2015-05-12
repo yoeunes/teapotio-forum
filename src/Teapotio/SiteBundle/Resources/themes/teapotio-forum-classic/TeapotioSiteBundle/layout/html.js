@@ -43,14 +43,14 @@
      *
      * @param  string  xdebugToken
      */
-    this.updateToolbar = function (xdebugToken) {
-      var currentElement;
-
-      if (typeof Sfjs !== "undefined") {
-          currentElement = $('.sf-toolbar')[0];
-          Sfjs.load(currentElement.id, '/_wdt/'+ xdebugToken);
-      }
-    };
+    // this.updateToolbar = function (xdebugToken) {
+    //   var currentElement;
+    //
+    //   if (typeof Sfjs !== "undefined") {
+    //       currentElement = $('.sf-toolbar')[0];
+    //       Sfjs.load(currentElement.id, '/_wdt/'+ xdebugToken);
+    //   }
+    // };
 
     initialize = function () {
       registerPageLoadEvent();
@@ -93,7 +93,7 @@
 
             self.inject(data, $container);
 
-            self.updateToolbar(xhr.getResponseHeader('X-Debug-Token'));
+            // self.updateToolbar(xhr.getResponseHeader('X-Debug-Token'));
 
             togglePageLoadAnimation(false);
 

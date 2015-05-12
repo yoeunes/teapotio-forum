@@ -1,0 +1,19 @@
+.ListItem.ListItem--board .ListItem-details {
+  margin-bottom: 8px;
+}
+
+.ListItem.ListItem--board .ListItem-details-title {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.ListItem.ListItem--board .ListItem-details-newTopic,
+.ListItem.ListItem--board .ListItem-details-stats {
+  display: inline-block;
+  font-size: 0.6em;
+  opacity: 0.6;
+}
+
+.ListItem.ListItem--board .ListItem-children {
+  list-style: none;
+}

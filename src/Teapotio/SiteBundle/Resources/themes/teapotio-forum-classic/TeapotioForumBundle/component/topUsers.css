@@ -1,0 +1,28 @@
+.TopUsers .TopUsers-user .Avatar,
+.TopUsers .TopUsers-user .TopUsers-user-name,
+.TopUsers .TopUsers-user .TopUsers-user-stats {
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.TopUsers .TopUsers-user .Avatar {
+  height: 25px;
+  width: 25px;
+}
+
+.TopUsers .TopUsers-user {
+  margin-bottom: 4px;
+}
+
+.TopUsers .TopUsers-user .TopUsers-user-stats {
+  float: right;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+.TopUsers .TopUsers-user .TopUsers-user-stats .StatLabels-topics,
+.TopUsers .TopUsers-user .TopUsers-user-stats .StatLabels-messages {
+  min-width: 50px;
+  text-align: right;
+}

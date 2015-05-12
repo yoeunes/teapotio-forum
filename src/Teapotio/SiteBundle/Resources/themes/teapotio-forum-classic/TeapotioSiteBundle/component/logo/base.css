@@ -1,0 +1,25 @@
+.Logo {
+  margin: 0;
+  overflow: auto;
+  padding: 6px 0;
+}
+
+.Logo:before {
+  background: url(/bundles/teapotiosite/images/teapotio_logo.png) no-repeat;
+  background-size: contain;
+  content: ' ';
+  display: block;
+  height: 44px;
+  margin: 0 10px;
+  width: 44px;
+}
+
+.Logo.is-medium:before {
+  height: 66px;
+  width: 66px;
+}
+
+.Logo.is-large:before {
+  height: 88px;
+  width: 88px;
+}

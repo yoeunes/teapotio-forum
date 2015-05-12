@@ -1,33 +1,53 @@
-<li class="{% if board.children.count == 0 %}{% if loop.index0 % 2 %}even{% else %}uneven{% endif %}{% endif %}{% if current_board is defined and current_board is not null and current_board.id == board.id %} selected{% endif %}{% if board.children.count != 0 %} parent-board-wrapper{% else %} childless-board-wrapper{% endif %}">
-  <div class="{% if board.children.count != 0 %} parent-board{% if parentClass is defined %} {{ parentClass }}{% endif %}{% else %} childless-board{% if childlessClass is defined %} {{ childlessClass }}{% endif %}{% endif %}">
+{% set class = '' %}
+{#
+  Params:
+    - max_nesting: limit the number of nesting level
+#}
 
-    {% if board.children.count != 0 %}
-      <a href="#" class="expand"><i class="icon-plus" data-toggle-class="icon-minus"></i></a>
+{% if max_nesting is not defined %}
+  {% set max_nesting = null %}
+{% endif %}
+
+{% if current_nesting is not defined %}
+  {% set current_nesting = 0 %}
+{% endif %}
+
+{% if board.children.count == 0 %}
+  {% if loop.index0 % 2 %}
+    {% set class = class ~ ' is-even' %}
+  {% else %}
+    {% set class = class ~ ' is-uneven' %}
+  {% endif %}
+{% endif %}
+
+{% if current_board is defined and current_board is not null and current_board.id == board.id %}
+  {% set class = class ~ ' is-selected' %}
+{% endif %}
+
+{% if board.children.count != 0 %}
+  {% set class = class ~ ' is-parent' %}
+{% else %}
+  {% set class = class ~ ' is-childless' %}
+{% endif %}
+
+<li class="ListItem ListItem--board {{ class }}">
+  <div class="ListItem-details">
+    <a href="{{ forum_path("ForumListTopicsByBoard", board) }}" class="ListItem-details-title">{{ board.title }}</a>
+
+    {% if app.user|can_create_topic(board) %}
+      <a href="{{ forum_path('ForumNewTopic', board) }}" class="ListItem-details-newTopic">
+        <i class="fa fa-pencil"></i> {% trans %}New.topic{% endtrans %}
+      </a>
     {% endif %}
 
-    <div class="info">
-      {% if app.user|can_create_topic(board) %}
-        <a href="{{ forum_path('ForumNewTopic', board) }}" class="new-topic to-main">
-          <i class="icon-pencil"></i>
-          {% trans %}topic{% endtrans %}
-        </a>
-      {% endif %}
-
-      {#% if app.user|can_create_board(board) %}
-        <a href="{{ forum_path('ForumNewBoardInBoard', board) }}" class="new-board to-main"><i class="icon-plus-sign"></i></a>
-      {% endif %#}
-
+    <div class="ListItem-details-stats">
       {% include "TeapotioForumBundle:component:statLabels.html.twig" with {total_topics: board.shortTotalTopics, total_messages: board.shortTotalPosts, nowrap: true} %}
     </div>
-
-    <a href="{{ forum_path
-      ("ForumListTopicsByBoard", board) }}" class="to-main{% if board.children.count != 0 %} parent-board-link {% if parentLinkClass is defined %} {{ parentLinkClass }}{% endif %}{% else %} childless-board-link {% if childlessLinkClass is defined %} {{ childlessLinkClass }}{% endif %}{% endif %}">{{ board.title }}</a>
-
   </div>
-  {% if board.children.count != 0 %}
-    <ul>
+  {% if board.children.count != 0 and (max_nesting is null or max_nesting != current_nesting) %}
+    <ul class="ListItem-children">
       {% for b in board.children %}
-        {% include "TeapotioForumBundle:list:board/listItem.html.twig" with {board: b} %}
+        {% include "TeapotioForumBundle:list:board/listItem.html.twig" with {board: b, current_nesting: current_nesting + 1} %}
       {% endfor %}
     </ul>
   {% endif %}

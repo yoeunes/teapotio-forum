@@ -3,35 +3,9 @@
   width: 100%;
 }
 
-.List.List--Topic .Avatar,
-.List.List--Topic .TopicRow .TopicRow-author,
-.List.List--Topic .TopicRow .TopicRow-responder {
-  width: 26px;
-}
-
-.List.List--Topic .TopicRow .TopicRow-statsTotalStars,
-.List.List--Topic .TopicRow .TopicRow-statsTotalPosts,
-.List.List--Topic .TopicRow .TopicRow-statsTotalViews {
-  width: 5%;
-}
-
-.List.List--Topic .TopicRow .TopicRow-timeSince {
-  width: 62px;
-}
-
 @media (max-width: 900px) {
   .List.List--Topic .TopicRow.TopicRow--individual .TopicRow-content .TopicRow-content-title {
     font-size: 14px;
-  }
-
-  .List.List--Topic .TopicRow td {
-    padding: 6px;
-  }
-
-  .List.List--Topic .Avatar,
-  .List.List--Topic .TopicRow .TopicRow-author,
-  .List.List--Topic .TopicRow .TopicRow-responder {
-    width: 30px;
   }
 
   .List.List--Topic .TopicRow.TopicRow--header {

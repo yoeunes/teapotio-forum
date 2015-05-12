@@ -1,0 +1,9 @@
+.StatLabels,
+.StatLabels-messages,
+.StatLabels-topics {
+  display: inline-block;
+}
+
+.StatLabels-topics {
+  margin-right: 2px;
+}

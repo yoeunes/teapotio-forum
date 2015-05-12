@@ -1,0 +1,30 @@
+.Header.Header--error {
+  font-size: 2em;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.Header.Header--error .Logo {
+  display: inline-block;
+}
+
+.Header.Header--error .Header-title,
+.Header.Header--error .Header-subtitle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Header.Header--error .Header-title {
+  font-size: 3em;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.Header.Header--error .Header-subtitle {
+  font-size: 1.5em;
+  margin: 0 20px;
+}
+
+.Header.Header--error p {
+  opacity: 0.5;
+}

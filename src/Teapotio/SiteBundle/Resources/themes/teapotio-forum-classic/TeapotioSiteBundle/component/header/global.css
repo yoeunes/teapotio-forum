@@ -8,24 +8,8 @@
   z-index: 100000;
 }
 
-.Header.Header--global > h1:before {
-  background: url(/bundles/teapotiosite/images/teapotio_logo.png) no-repeat;
-  background-size: contain;
-  content: ' ';
-  display: block;
+.Header.Header--global .Logo {
   float: left;
-  height: 44px;
-  margin: 0 10px;
-  width: 44px;
-}
-
-.Header.Header--global > h1 {
-  float: left;
-  line-height: 44px;
-  margin: 0;
-  overflow: auto;
-  padding: 6px 0;
-  white-space: nowrap;
 }
 
 .Header.Header--global > h1 > span {
