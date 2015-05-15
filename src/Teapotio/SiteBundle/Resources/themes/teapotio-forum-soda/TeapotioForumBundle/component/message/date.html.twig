@@ -1,9 +1,0 @@
-<a href="{{ forum_path('ForumListMessagesByTopic', message.topic) }}#message-{{ message.position }}"
-   data-toggle="true" class="Date">
-  <span class="Date-created">
-    {{ message.dateCreated|date }}
-  </span>
-  <span class="Date-createdTimeSince">
-    {{ message.dateCreated|timeSince(1) }}
-  </span>
-</a>

@@ -1,7 +1,0 @@
-.Navigation.Navigation--user .Navigation--user-button--logout .Navigation--actions-button-icon:before {
-  content: '\f011';
-}
-
-.Navigation.Navigation--user .Navigation--user-button--settings .Navigation--actions-button-icon:before {
-  content: '\f0ad';
-}

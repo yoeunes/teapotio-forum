@@ -1,5 +1,0 @@
-theme:
-    assets:
-        scripts:
-            - assets/js/jquery.js
-            - assets/js/flight.min.js
