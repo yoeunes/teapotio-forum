@@ -27,7 +27,7 @@ class Controller extends BaseController {
      *
      * @return Response  A Response instance
      */
-    public function renderJson(array $data = array())
+    protected function renderJson(array $data = array())
     {
         $response = new JsonResponse();
         $response->setData($data);
@@ -42,7 +42,7 @@ class Controller extends BaseController {
      *
      * @return Response A Response instance
      */
-    public function renderHtml($html)
+    protected function renderHtml($html)
     {
         $response = new Response();
         $response->setContent($html);
@@ -59,7 +59,7 @@ class Controller extends BaseController {
      *
      * @return string
      */
-    public function generateTitle($key, $params = array())
+    protected function generateTitle($key, $params = array())
     {
         return $this->get('teapotio.site')->generateTitle($key, $params);
     }

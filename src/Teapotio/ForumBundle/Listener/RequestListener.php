@@ -21,17 +21,21 @@ use Symfony\Component\HttpKernel\HttpKernel;
 
 class RequestListener
 {
-    protected $container;
+    protected $securityContext;
+    protected $boardService;
+    protected $pathService;
 
-    public function __construct (ContainerInterface $container)
+    public function __construct($securityContext, $boardService, $pathService)
     {
-        $this->container = $container;
+        $this->securityContext = $securityContext;
+        $this->boardService = $boardService;
+        $this->pathService = $pathService;
     }
 
     public function onKernelRequest(FilterControllerEvent $event)
     {
         if (HttpKernel::MASTER_REQUEST != $event->getRequestType()
-            || $this->container->get('security.context')->getToken() === null) {
+            || $this->securityContext->getToken() === null) {
             // don't do anything if it's not the master request
             return;
         }
@@ -39,20 +43,17 @@ class RequestListener
         $controller = $event->getController()[0];
 
         // We know we'll build the board list eventually so we get all of them
-        $this->container->get('teapotio.forum.board')->getBoards();
+        $this->boardService->getBoards();
 
         $board = null;
 
         if ($event->getRequest()->attributes->get('boardSlug') !== null
             && method_exists($controller, 'setBoard') === true) {
 
-            $board = $this->container->get('teapotio.forum.path')->getCurrentBoard();
+            $board = $this->pathService->getCurrentBoard();
 
             if ($board === null) {
                 throw $controller->createNotFoundException();
-            }
-            else {
-                $controller->setBoard($board);
             }
         }
 
@@ -60,26 +61,20 @@ class RequestListener
             && method_exists($controller, 'setTopic') === true
             && $board !== null) {
 
-            $topic = $this->container->get('teapotio.forum.path')->getCurrentTopic();
+            $topic = $this->pathService->getCurrentTopic();
 
             if ($topic === null) {
                 throw $controller->createNotFoundException();
-            }
-            else {
-                $controller->setTopic($topic);
             }
         }
 
         if ($event->getRequest()->attributes->get('messageId') !== null
             && method_exists($controller, 'setMessage') === true) {
 
-            $message = $this->container->get('teapotio.forum.path')->getCurrentMessage();
+            $message = $this->pathService->getCurrentMessage();
 
             if ($message === null) {
                 throw $controller->createNotFoundException();
-            }
-            else {
-                $controller->setMessage($message);
             }
         }
 

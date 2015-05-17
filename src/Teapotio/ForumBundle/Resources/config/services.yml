@@ -20,6 +20,6 @@ services:
             - { name: form.type, alias: wysiwyg_textarea }
     teapotio.forum.listener.request:
         class: %teapotio.forum.listener.request.class%
-        arguments: [@service_container]
+        arguments: [@security.context, @teapotio.forum.board, @teapotio.forum.path]
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelRequest }

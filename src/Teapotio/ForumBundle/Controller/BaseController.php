@@ -24,52 +24,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class BaseController extends Controller
 {
     /**
-     * @var Board
-     */
-    protected $board = null;
-
-    /**
-     * @var Topic
-     */
-    protected $topic = null;
-
-    /**
-     * @var Message
-     */
-    protected $message = null;
-
-    /**
-     * Attach a board to a controller
-     *
-     * @param  Board  $board
-     */
-    public function setBoard(Board $board)
-    {
-        $this->board = $board;
-
-        return $this;
-    }
-
-    /**
      * Get an attached board from the controller
      *
      * @return Board
      */
     public function getBoard()
     {
-        return $this->board;
-    }
-
-    /**
-     * Attach a topic to a controller
-     *
-     * @param  Topic  $topic
-     */
-    public function setTopic(Topic $topic)
-    {
-        $this->topic = $topic;
-
-        return $this;
+        return $this->get('teapotio.forum.path')->getCurrentBoard();
     }
 
     /**
@@ -79,19 +40,7 @@ class BaseController extends Controller
      */
     public function getTopic()
     {
-        return $this->topic;
-    }
-
-    /**
-     * Attach a message to a controller
-     *
-     * @param  Message  $message
-     */
-    public function setMessage(Message $message)
-    {
-        $this->message = $message;
-
-        return $this;
+        return $this->get('teapotio.forum.path')->getCurrentTopic();
     }
 
     /**
@@ -101,7 +50,7 @@ class BaseController extends Controller
      */
     public function getMessage()
     {
-        return $this->message;
+        return $this->get('teapotio.forum.path')->getCurrentMessage();
     }
 
     /**

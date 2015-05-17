@@ -13,10 +13,10 @@
 
 namespace Teapotio\ForumBundle\Service;
 
-use Teapotio\ForumBundle\Entity\Board;
-use Teapotio\ForumBundle\Entity\BoardStat;
-use Teapotio\ForumBundle\Entity\Topic;
-use Teapotio\ForumBundle\Entity\Message;
+use Teapotio\Base\ForumBundle\Entity\BoardInterface;
+use Teapotio\Base\ForumBundle\Entity\BoardStatInterface;
+use Teapotio\Base\ForumBundle\Entity\TopicInterface;
+use Teapotio\Base\ForumBundle\Entity\MessageInterface;
 
 use Teapotio\Base\ForumBundle\Service\MainService as BaseMainService;
 

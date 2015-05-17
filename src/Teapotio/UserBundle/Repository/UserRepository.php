@@ -17,8 +17,11 @@ use Teapotio\Base\UserBundle\Repository\UserRepository as BaseUserRepository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\ORM\NoResultException;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 class UserRepository extends BaseUserRepository
 {
