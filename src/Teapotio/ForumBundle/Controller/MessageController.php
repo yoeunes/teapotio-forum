@@ -285,6 +285,6 @@ class MessageController extends BaseController
             'page_title'          => $title
         );
 
-        return $this->render('TeapotioForumBundle:page:message/list.html.twig', $params);
+        return $this->superRender('TeapotioForumBundle:page:message/list.html.twig', $params);
     }
 }

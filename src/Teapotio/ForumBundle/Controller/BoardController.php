@@ -88,7 +88,7 @@ class BoardController extends BaseController
             'info_notices'  => $infoNotices,
         );
 
-        return $this->render('TeapotioForumBundle:page:board/new.html.twig', $params);
+        return $this->superRender('TeapotioForumBundle:page:board/new.html.twig', $params);
     }
 
     public function editAction($boardSlug)

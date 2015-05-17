@@ -85,7 +85,7 @@ class TopicController extends BaseController
             'existing_topics' => $existingTopics,
         );
 
-        return $this->render('TeapotioForumBundle:page:topic/new.html.twig', $params);
+        return $this->superRender('TeapotioForumBundle:page:topic/new.html.twig', $params);
     }
 
     public function editAction()
@@ -227,9 +227,6 @@ class TopicController extends BaseController
         $topicsPerPage = $this->get('teapotio.forum')->getTotalTopicsPerPage();
         $messagesPerPage = $this->get('teapotio.forum')->getTotalMessagesPerPage();
 
-        $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
-        $offset = ($page - 1) * $topicsPerPage;
-
         list($pinnedTopics, $topics) = $this->get('teapotio.forum.topic')->getProcessedListTopicsByBoardIds($boardIds);
 
         $pinnedTopicIds = $pinnedTopics->map(function (TopicInterface $topic) {
@@ -249,7 +246,7 @@ class TopicController extends BaseController
             'page_title'        => $title,
         );
 
-        return $this->render('TeapotioForumBundle:page:topic/list.html.twig', $params);
+        return $this->superRender('TeapotioForumBundle:page:topic/list.html.twig', $params);
     }
 
     public function pinAction($boardSlug, $topicSlug)

@@ -149,6 +149,6 @@ class ProfileController extends Controller
             'info_notices'      =>  $infoNotices,
         );
 
-        return $this->render('TeapotioUserBundle:page:profile/settings.html.twig', $params);
+        return $this->superRender('TeapotioUserBundle:page:profile/settings.html.twig', $params);
     }
 }

@@ -20,9 +20,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 class Controller extends BaseController
 {
     /**
-     * {@inherit}
+     * Super render a view - if request is ajax then it will render a JSON response 
+     *
+     * @param  string   $view
+     * @param  array    $parameters = array()
+     * @param  Response $response = null
+     *
+     * @return Response
      */
-    public function render($view, array $parameters = array(), Response $response = null)
+    protected function superRender($view, array $parameters = array(), Response $response = null)
     {
         if ($this->get('request')->isXmlHttpRequest() === true) {
             $view = str_replace(':page:', ':partial:', $view);
@@ -33,7 +39,7 @@ class Controller extends BaseController
             ));
         }
 
-        return parent::render($view, $parameters, $response);
+        return $this->render($view, $parameters, $response);
     }
 
     /**

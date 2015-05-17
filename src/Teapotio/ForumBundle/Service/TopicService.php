@@ -71,7 +71,6 @@ class TopicService extends BaseTopicService
     public function getProcessedListTopicsByBoardIds($boardIds)
     {
         $topicsPerPage = $this->container->get('teapotio.forum')->getTotalTopicsPerPage();
-        $messagesPerPage = $this->container->get('teapotio.forum')->getTotalMessagesPerPage();
 
         $page = ($this->container->get('request')->get('page') === null) ? 1 : $this->container->get('request')->get('page');
         $offset = ($page - 1) * $topicsPerPage;
