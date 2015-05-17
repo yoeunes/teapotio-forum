@@ -11,7 +11,7 @@
  * @author     Thomas Potaire
  */
 
-namespace Teapotio\ImageBundle\Form;
+namespace Teapotio\ImageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

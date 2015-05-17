@@ -20,11 +20,13 @@ class ImageService
 {
     protected $em;
     protected $imageRepositoryClass;
+    protected $rootDir;
 
-    public function __construct (EntityManager $em, $imageRepositoryClass)
+    public function __construct (EntityManager $em, $imageRepositoryClass, $rootDir)
     {
         $this->em = $em;
         $this->imageRepositoryClass = $imageRepositoryClass;
+        $this->rootDir = $rootDir;
     }
 
     /**
@@ -46,6 +48,9 @@ class ImageService
      */
     public function save(Image $image)
     {
+        // Very important
+        $image->setRootPath($this->rootDir);
+
         $this->em->persist($image);
         $this->em->flush();
 

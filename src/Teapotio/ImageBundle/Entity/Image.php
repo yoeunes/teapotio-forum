@@ -150,6 +150,28 @@ class Image
         return $this->user;
     }
 
+    /**
+     * Set the root path directory (web folder)
+     *
+     * @param  string  $rootPath
+     *
+     * @return ImageService
+     */
+    public function setRootPath($rootPath)
+    {
+        $this->rootPath = $rootPath;
+        return $this;
+    }
+
+    /**
+     * Get the root path direct
+     *
+     * @return string
+     */
+    public function getRootPath()
+    {
+        return $this->rootPath;
+    }
 
     public function getAbsolutePath()
     {
@@ -163,15 +185,7 @@ class Image
 
     protected function getUploadRootDir()
     {
-        /**
-         * @note it does not work properly with symlinks
-         */
-        // the absolute directory path where uploaded documents should be saved
-        if (is_dir(__DIR__.'/../../../../../../../web')) {
-          return __DIR__.'/../../../../../../../web/'.$this->getUploadDir();
-        } else if (is_dir(__DIR__.'/../../../../web')) {
-          return __DIR__.'/../../../../web/'.$this->getUploadDir();
-        }
+        return $this->getRootPath() . '/../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir()

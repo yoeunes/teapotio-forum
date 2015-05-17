@@ -48,8 +48,7 @@ class LoadImageData extends AbstractFixture implements OrderedFixtureInterface, 
         $image->setName('Default avatar');
         $image->setPath('default_avatar.png');
 
-        $manager->persist($image);
-        $manager->flush();
+        $this->get('teapotio.image')->save($image);
 
         $this->addReference('image-default-avatar', $image);
     }

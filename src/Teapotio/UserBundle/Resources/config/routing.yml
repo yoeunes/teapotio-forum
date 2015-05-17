@@ -32,7 +32,6 @@ TeapotioBaseUserBundle_setDefaultImage:
     pattern: /u/{userSlug}-{userId}/set-image/{imageId}/
     defaults: { _controller: TeapotioUserBundle:User:setDefaultImage }
     requirements:
-        _method: POST
         userSlug: "[^\/]+"
         userId: \d+
 

@@ -56,8 +56,7 @@ class UserController extends Controller
                     $this->get('security.context')->getToken()->getUser()
                 );
 
-                $em->persist($image);
-                $em->flush();
+                $this->get('teapotio.image')->save($image);
 
                 $this->get('security.context')
                      ->getToken()

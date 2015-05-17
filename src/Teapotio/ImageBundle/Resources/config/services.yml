@@ -5,4 +5,4 @@ parameters:
 services:
    teapotio.image:
        class: %teapotio_image.image_service.class%
-       arguments: [@doctrine.orm.entity_manager, %teapotio_image.image_repository.class%]
+       arguments: [@doctrine.orm.entity_manager, %teapotio_image.image_repository.class%, %kernel.root_dir%]

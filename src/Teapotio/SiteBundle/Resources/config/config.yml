@@ -4,11 +4,6 @@ exercise_html_purifier:
 
 gregwar_captcha: ~
 
-symfony.controller.action_method_too_long:
-    enabled: true
-    max_length: 40
-    threshold: 10
-
 parameters:
     teapotio_user.user_service.class: Teapotio\UserBundle\Service\UserService
     teapotio_user.user_group_service.class: Teapotio\UserBundle\Service\UserGroupService

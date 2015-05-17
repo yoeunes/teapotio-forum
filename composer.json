@@ -20,9 +20,9 @@
         "teapotio/base-forum-bundle": "dev-master",
         "teapotio/base-user-bundle": "dev-master",
         "teapotio/base-theme-bundle": "dev-master",
-        "gregwar/image-bundle": "dev-master",
-        "gregwar/captcha-bundle": "dev-master",
-        "exercise/htmlpurifier-bundle": "dev-master",
+        "gregwar/image-bundle": ">=2.0.0",
+        "gregwar/captcha-bundle": ">=1.1",
+        "exercise/htmlpurifier-bundle": ">=0.1.0",
 
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
