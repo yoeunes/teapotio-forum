@@ -13,7 +13,7 @@
 
 namespace Teapotio\UserBundle\Controller;
 
-use Teapotio\Base\UserBundle\Form\ResetPasswordType;
+use Teapotio\Base\UserBundle\Form\Type\ResetPasswordType;
 
 use Teapotio\Base\UserBundle\Entity\User;
 use Teapotio\Base\UserBundle\Entity\UserToken;

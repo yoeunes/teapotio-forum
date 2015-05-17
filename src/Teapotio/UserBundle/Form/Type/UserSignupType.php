@@ -13,7 +13,7 @@
 
 namespace Teapotio\UserBundle\Form\Type;
 
-use Teapotio\Base\UserBundle\Form\UserSignupType as BaseUserSignupType;
+use Teapotio\Base\UserBundle\Form\Type\UserSignupType as BaseUserSignupType;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
