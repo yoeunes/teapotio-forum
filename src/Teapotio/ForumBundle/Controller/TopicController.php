@@ -57,7 +57,7 @@ class TopicController extends BaseController
                     $message = new Message();
                     $message->setBody($form['body']->getData());
                     $message->setTopic($topic);
-                    $message->setIsTopicBody(true);
+                    $message->setTopicBody(true);
 
                     $this->get('teapotio.forum.message')->save($message);
 

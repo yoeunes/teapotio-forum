@@ -16,12 +16,13 @@ namespace Teapotio\ForumBundle\Service;
 use Teapotio\ForumBundle\Entity\Board;
 
 use Teapotio\Base\ForumBundle\Entity\BoardInterface;
+use Teapotio\Base\ForumBundle\Service\BoardServiceInterface;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use Teapotio\Base\ForumBundle\Service\BoardService as BaseBoardService;
 
-class BoardService extends BaseBoardService
+class BoardService extends BaseBoardService implements BoardServiceInterface
 {
     public function createBoard()
     {

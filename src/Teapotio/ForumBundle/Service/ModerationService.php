@@ -14,9 +14,10 @@
 namespace Teapotio\ForumBundle\Service;
 
 use Teapotio\ForumBundle\Entity\Moderation;
+use Teapotio\Base\ForumBundle\Service\ModerationServiceInterface;
 use Teapotio\Base\ForumBundle\Service\ModerationService as BaseModerationService;
 
-class ModerationService extends BaseModerationService
+class ModerationService extends BaseModerationService implements ModerationServiceInterface
 {
     public function createModeration()
     {

@@ -13,9 +13,10 @@
 
 namespace Teapotio\ForumBundle\Service;
 
+use Teapotio\Base\ForumBundle\Service\PathServiceInterface;
 use Teapotio\Base\ForumBundle\Service\PathService as BasePathService;
 
-class PathService extends BasePathService
+class PathService extends BasePathService implements PathServiceInterface
 {
 
 }

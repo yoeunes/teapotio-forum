@@ -16,11 +16,12 @@ namespace Teapotio\ForumBundle\Service;
 use Teapotio\ForumBundle\Entity\Message;
 
 use Teapotio\Base\ForumBundle\Entity\MessageInterface;
+use Teapotio\Base\ForumBundle\Service\MessageServiceInterface;
 use Teapotio\Base\ForumBundle\Service\MessageService as BaseMessageService;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class MessageService extends BaseMessageService
+class MessageService extends BaseMessageService implements MessageServiceInterface
 {
     protected $regexBodyReplyInput =
         '/(<a class="wysiwyg-reply wysiwyg-reply-([0-9]+)"( href=".*")>)([\@\-\_\w]*)(<\/a>)/s';

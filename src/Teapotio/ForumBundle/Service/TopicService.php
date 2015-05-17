@@ -14,6 +14,7 @@
 namespace Teapotio\ForumBundle\Service;
 
 use Teapotio\ForumBundle\Entity\Topic;
+use Teapotio\Base\ForumBundle\Service\TopicServiceInterface;
 use Teapotio\Base\ForumBundle\Service\TopicService as BaseTopicService;
 use Teapotio\Base\ForumBundle\Entity\BoardInterface;
 use Teapotio\Base\ForumBundle\Entity\TopicInterface;
@@ -21,7 +22,7 @@ use Teapotio\Base\ForumBundle\Entity\TopicInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class TopicService extends BaseTopicService
+class TopicService extends BaseTopicService implements TopicServiceInterface
 {
     public function createTopic()
     {
@@ -49,7 +50,7 @@ class TopicService extends BaseTopicService
 
         $message = $this->container->get('teapotio.forum.message')->createMessage();
         $message->setBody("<p>We would like to welcome you and we hope you will enjoy Teapotio forum as much as we do.");
-        $message->setIsTopicBody(true);
+        $message->setTopicBody(true);
         $message->setPosition(1);
         $message->setUser($user);
         $message->setTopic($topic);

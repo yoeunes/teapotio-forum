@@ -13,9 +13,10 @@
 
 namespace Teapotio\ForumBundle\Service;
 
+use Teapotio\Base\ForumBundle\Service\MainServiceInterface;
 use Teapotio\Base\ForumBundle\Service\MainService as BaseMainService;
 
-class MainService extends BaseMainService
+class MainService extends BaseMainService implements MainServiceInterface
 {
 
 }

@@ -14,9 +14,10 @@
 namespace Teapotio\ForumBundle\Service;
 
 use Teapotio\ForumBundle\Entity\MessageStar;
+use Teapotio\Base\ForumBundle\Service\MessageStarServiceInterface;
 use Teapotio\Base\ForumBundle\Service\MessageStarService as BaseMessageStarService;
 
-class MessageStarService extends BaseMessageStarService
+class MessageStarService extends BaseMessageStarService implements MessageStarServiceInterface
 {
     public function createMessageStar()
     {

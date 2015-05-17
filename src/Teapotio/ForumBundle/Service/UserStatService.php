@@ -14,9 +14,10 @@
 namespace Teapotio\ForumBundle\Service;
 
 use Teapotio\ForumBundle\Entity\UserStat;
+use Teapotio\Base\ForumBundle\Service\UserStatServiceInterface;
 use Teapotio\Base\ForumBundle\Service\UserStatService as BaseUserStatService;
 
-class UserStatService extends BaseUserStatService
+class UserStatService extends BaseUserStatService implements UserStatServiceInterface
 {
     public function createUserStat()
     {

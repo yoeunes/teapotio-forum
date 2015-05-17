@@ -1,5 +1,4 @@
 parameters:
-    teapotio_forum.throttle_service.class: Teapotio\Base\ForumBundle\Service\ThrottleService
     teapotio.form.type.wysiwyg_textarea.class: Teapotio\ForumBundle\Form\Type\WysiwygTextareaType
     teapotio.form.transformer.html_purifier.class: Exercise\HTMLPurifierBundle\Form\HTMLPurifierTransformer
     teapotio.forum.url.use_board_id: false
@@ -7,9 +6,6 @@ parameters:
     teapotio.forum.listener.request.class: Teapotio\ForumBundle\Listener\RequestListener
 
 services:
-    teapotio.forum.throttle:
-        class: %teapotio_forum.throttle_service.class%
-        arguments: [@service_container]
     teapotio.form.transformer.html_purifier:
         class: %teapotio.form.transformer.html_purifier.class%
         arguments: [@exercise_html_purifier.default]

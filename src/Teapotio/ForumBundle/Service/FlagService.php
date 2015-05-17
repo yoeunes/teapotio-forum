@@ -14,9 +14,10 @@
 namespace Teapotio\ForumBundle\Service;
 
 use Teapotio\ForumBundle\Entity\Flag;
+use Teapotio\Base\ForumBundle\Service\FlagServiceInterface;
 use Teapotio\Base\ForumBundle\Service\FlagService as BaseFlagService;
 
-class FlagService extends BaseFlagService
+class FlagService extends BaseFlagService implements FlagServiceInterface
 {
     public function createFlag()
     {
