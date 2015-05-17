@@ -80,7 +80,7 @@ class SetupCommand extends ContainerAwareCommand
 
             $boards = $this->getContainer()->get('teapotio.forum.board')->setup($users[0]);
 
-            $topic = $this->getContainer()->get('teapotio.forum.topic')->setup($users[0], $boards[0]);
+            $this->getContainer()->get('teapotio.forum.topic')->setup($users[0], $boards[0]);
         }
     }
 

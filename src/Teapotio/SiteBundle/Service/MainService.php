@@ -15,8 +15,6 @@ namespace Teapotio\SiteBundle\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 class MainService
 {
     protected $translatorService;

@@ -14,15 +14,16 @@
 namespace Teapotio\ImageBundle\Service;
 
 use Teapotio\ImageBundle\Entity\Image;
+use Doctrine\ORM\EntityManager;
 
 class ImageService
 {
     protected $em;
     protected $imageRepositoryClass;
 
-    public function __construct ($doctrine, $imageRepositoryClass)
+    public function __construct (EntityManager $em, $imageRepositoryClass)
     {
-        $this->em = $doctrine->getManager();
+        $this->em = $em;
         $this->imageRepositoryClass = $imageRepositoryClass;
     }
 

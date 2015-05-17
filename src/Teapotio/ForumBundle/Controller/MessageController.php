@@ -277,16 +277,19 @@ class MessageController extends BaseController
         $title = $this->generateTitle('%title%', array('%title%' => $topic->getTitle()));
 
         $params = array(
-            'messages_per_page' => $messagesPerPage,
-            'messages'          => $messages,
-            'flags'             => $flags,
-            'flag_topic'        => $flagTopic,
-            'stars'             => $stars,
-            'current_board'     => $board,
-            'topic'             => $topic,
-            'message'           => $message,
-            'form'              => $form,
-            'page_title'        => $title
+            'messages_per_page'   => $messagesPerPage,
+            'messages'            => $messages,
+            'messages_stars'      => $stars,
+            'messages_user_stars' => $userStars,
+            'messages_users'      => $users,
+            'flags'               => $flags,
+            'flag_topic'          => $flagTopic,
+            'stars'               => $stars,
+            'current_board'       => $board,
+            'topic'               => $topic,
+            'message'             => $message,
+            'form'                => $form,
+            'page_title'          => $title
         );
 
         if ($this->get('request')->isXmlHttpRequest() === true) {

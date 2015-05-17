@@ -13,8 +13,12 @@
 
 namespace Teapotio\ForumBundle\Listener;
 
+use Teapotio\ForumBundle\Service\BoardService;
+use Teapotio\ForumBundle\Service\PathService;
+
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernel;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class RequestListener
 {
@@ -22,7 +26,7 @@ class RequestListener
     protected $boardService;
     protected $pathService;
 
-    public function __construct($securityContext, $boardService, $pathService)
+    public function __construct(SecurityContextInterface $securityContext, BoardService $boardService, PathService $pathService)
     {
         $this->securityContext = $securityContext;
         $this->boardService = $boardService;
