@@ -11,7 +11,7 @@
  * @author     Thomas Potaire
  */
 
-namespace Teapotio\UserBundle\Form;
+namespace Teapotio\UserBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 

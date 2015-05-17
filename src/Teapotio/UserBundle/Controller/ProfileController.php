@@ -14,12 +14,12 @@
 namespace Teapotio\UserBundle\Controller;
 
 use Teapotio\ImageBundle\Entity\Image;
-use Teapotio\ImageBundle\Form\ImageType;
+use Teapotio\ImageBundle\Form\Type\ImageType;
 
 use Teapotio\UserBundle\Entity\UserSettings;
-use Teapotio\UserBundle\Form\UserDescriptionType;
-use Teapotio\UserBundle\Form\UserGroupType;
-use Teapotio\UserBundle\Form\UserSettingsType;
+use Teapotio\UserBundle\Form\Type\UserDescriptionType;
+use Teapotio\UserBundle\Form\Type\UserGroupType;
+use Teapotio\UserBundle\Form\Type\UserSettingsType;
 
 use Teapotio\Components\Controller;
 

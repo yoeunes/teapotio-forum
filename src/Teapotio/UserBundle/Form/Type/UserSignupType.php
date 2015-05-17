@@ -7,43 +7,43 @@
  * file that was distributed with this source code.
  *
  * @category   Teapotio
- * @package    UserBundle
+ * @package    BaseUserBundle
  * @author     Thomas Potaire
  */
 
-namespace Teapotio\UserBundle\Form;
+namespace Teapotio\UserBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use Teapotio\Base\UserBundle\Form\UserSignupType as BaseUserSignupType;
+
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserProfileType extends AbstractType
+class UserSignupType extends BaseUserSignupType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('username')
             ->add('email', 'email')
-            ->add('old_password', 'password', array(
-                'label' => 'old.password'
-            ))
             ->add('password', 'repeated', array(
                 'type'            => 'password',
                 'first_options'   => array('label' => 'password'),
                 'second_options'  => array('label' => 'confirm.password'),
                 'invalid_message' => 'password.not.match'
             ))
+            ->add('captcha', 'captcha');
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Teapotio\Base\UserBundle\Entity\User'
+            'data_class' => 'Teapotio\UserBundle\Entity\User'
         ));
     }
 
     public function getName()
     {
-        return 'teapotio_userprofile';
+        return 'teapotio_usersignup';
     }
 }

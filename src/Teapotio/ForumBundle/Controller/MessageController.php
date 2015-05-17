@@ -14,7 +14,7 @@
 namespace Teapotio\ForumBundle\Controller;
 
 use Teapotio\ForumBundle\Entity\Message;
-use Teapotio\ForumBundle\Form\CreateMessageType;
+use Teapotio\ForumBundle\Form\Type\CreateMessageType;
 
 use Doctrine\Common\Collections\ArrayCollection;
 

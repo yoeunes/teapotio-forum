@@ -11,9 +11,9 @@
  * @author     Thomas Potaire
  */
 
-namespace Teapotio\UserBundle\Form;
+namespace Teapotio\UserBundle\Form\Type;
 
-use Teapotio\ImageBundle\Form\ImageNoNameType;
+use Teapotio\ImageBundle\Form\Type\ImageNoNameType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

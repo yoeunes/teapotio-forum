@@ -223,10 +223,7 @@ class BoardController extends BaseController
             throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
         }
 
-        $request = $this->get('request');
-
         $board = $this->getBoard();
-        $user = $this->getUser();
 
         $formName = 'permissions';
 

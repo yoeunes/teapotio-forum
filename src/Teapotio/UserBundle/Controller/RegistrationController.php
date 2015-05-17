@@ -13,7 +13,7 @@
 
 namespace Teapotio\UserBundle\Controller;
 
-use Teapotio\UserBundle\Form\UserSignupType;
+use Teapotio\UserBundle\Form\Type\UserSignupType;
 use Teapotio\UserBundle\Entity\User;
 
 use Teapotio\Components\Controller;

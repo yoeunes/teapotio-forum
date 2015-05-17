@@ -1,6 +1,6 @@
 parameters:
     teapotio_forum.throttle_service.class: Teapotio\Base\ForumBundle\Service\ThrottleService
-    teapotio.form.type.wysiwyg_textarea.class: Teapotio\ForumBundle\Form\WysiwygTextareaType
+    teapotio.form.type.wysiwyg_textarea.class: Teapotio\ForumBundle\Form\Type\WysiwygTextareaType
     teapotio.form.transformer.html_purifier.class: Exercise\HTMLPurifierBundle\Form\HTMLPurifierTransformer
     teapotio.forum.url.use_board_id: false
     teapotio.forum.url.use_topic_id: true

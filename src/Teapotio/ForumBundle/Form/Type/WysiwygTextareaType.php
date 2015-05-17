@@ -1,6 +1,6 @@
 <?php
 
-namespace Teapotio\ForumBundle\Form;
+namespace Teapotio\ForumBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;

@@ -13,14 +13,7 @@
 
 namespace Teapotio\ForumBundle\Service;
 
-use Teapotio\Base\ForumBundle\Entity\BoardInterface;
-use Teapotio\Base\ForumBundle\Entity\BoardStatInterface;
-use Teapotio\Base\ForumBundle\Entity\TopicInterface;
-use Teapotio\Base\ForumBundle\Entity\MessageInterface;
-
 use Teapotio\Base\ForumBundle\Service\MainService as BaseMainService;
-
-use Doctrine\Common\Collections\ArrayCollection;
 
 class MainService extends BaseMainService
 {

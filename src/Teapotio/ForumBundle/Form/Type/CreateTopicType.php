@@ -11,22 +11,25 @@
  * @author     Thomas Potaire
  */
 
-namespace Teapotio\Base\UserBundle\Form;
+namespace Teapotio\ForumBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ForgotPasswordType extends AbstractType
+use Teapotio\Base\ForumBundle\Form\CreateTopicType as BaseCreateTopicType;
+
+class CreateTopicType extends BaseCreateTopicType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $wysiwygClass = 'wysiwyg';
+
         $builder
-            ->add('username', 'text', array(
-                'label' => 'Username'
-            ))
-            ->add('email', 'text', array(
-                'label' => 'Email'
+            ->add('title')
+            ->add('body', 'wysiwyg_textarea', array(
+                'label'  => false,
+                'mapped' => false,
+                'attr'   => array('class' => $wysiwygClass)
             ))
         ;
     }
@@ -34,12 +37,12 @@ class ForgotPasswordType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Teapotio\UserBundle\Entity\UserGroup'
+            'data_class' => 'Teapotio\Base\ForumBundle\Entity\Topic'
         ));
     }
 
     public function getName()
     {
-        return 'teapotio_forum_permissions';
+        return 'teapotio_createtopic';
     }
 }

@@ -7,34 +7,40 @@
  * file that was distributed with this source code.
  *
  * @category   Teapotio
- * @package    UserBundle
+ * @package    ForumBundle
  * @author     Thomas Potaire
  */
 
-namespace Teapotio\UserBundle\Form;
+namespace Teapotio\ForumBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserDescriptionType extends AbstractType
+use Teapotio\Base\ForumBundle\Form\CreateMessageType as BaseCreateMessageType;
+
+class CreateMessageType extends BaseCreateMessageType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $wysiwygClass = 'wysiwyg';
+
+        if ($options['new_entry'] === true) {
+            $wysiwygClass .= ' wysiwyg-initial';
+        }
+
         $builder
-            ->add('description', 'wysiwyg_textarea')
+            ->add('body', 'wysiwyg_textarea', array(
+                'label' => false,
+                'attr' => array('class' => $wysiwygClass)
+            ))
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Teapotio\Base\UserBundle\Entity\User'
+            'data_class' => 'Teapotio\ForumBundle\Entity\Message',
+            'new_entry'  => false,
         ));
-    }
-
-    public function getName()
-    {
-        return 'teapotio_userdescription';
     }
 }

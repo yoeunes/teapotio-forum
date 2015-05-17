@@ -15,7 +15,7 @@ namespace Teapotio\ForumBundle\Controller;
 
 use Teapotio\ForumBundle\Entity\Topic;
 use Teapotio\ForumBundle\Entity\Message;
-use Teapotio\ForumBundle\Form\CreateTopicType;
+use Teapotio\ForumBundle\Form\Type\CreateTopicType;
 
 use Teapotio\Base\ForumBundle\Entity\TopicInterface;
 use Teapotio\Base\ForumBundle\Exception\DuplicateTopicException;
@@ -322,9 +322,6 @@ class TopicController extends BaseController
 
     public function deleteAction($boardSlug, $topicSlug)
     {
-        $topic = $this->getTopic();
-        $user = $this->getUser();
-
         return $this->manipulateTopic('delete', $boardSlug, $topicSlug);
     }
 

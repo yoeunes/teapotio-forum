@@ -15,8 +15,6 @@ namespace Teapotio\ImageBundle\Service;
 
 use Teapotio\ImageBundle\Entity\Image;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 class ImageService
 {
     protected $em;
