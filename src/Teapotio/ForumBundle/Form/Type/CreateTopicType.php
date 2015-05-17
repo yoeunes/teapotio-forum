@@ -16,7 +16,7 @@ namespace Teapotio\ForumBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Teapotio\Base\ForumBundle\Form\CreateTopicType as BaseCreateTopicType;
+use Teapotio\Base\ForumBundle\Form\Type\CreateTopicType as BaseCreateTopicType;
 
 class CreateTopicType extends BaseCreateTopicType
 {

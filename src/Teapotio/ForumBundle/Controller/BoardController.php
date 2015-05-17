@@ -14,7 +14,7 @@
 namespace Teapotio\ForumBundle\Controller;
 
 use Teapotio\ForumBundle\Entity\Board;
-use Teapotio\Base\ForumBundle\Form\CreateBoardType;
+use Teapotio\Base\ForumBundle\Form\Type\CreateBoardType;
 
 use Teapotio\Base\ForumBundle\Exception\DuplicateBoardException;
 

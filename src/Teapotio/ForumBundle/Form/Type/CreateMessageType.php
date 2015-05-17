@@ -16,7 +16,7 @@ namespace Teapotio\ForumBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Teapotio\Base\ForumBundle\Form\CreateMessageType as BaseCreateMessageType;
+use Teapotio\Base\ForumBundle\Form\Type\CreateMessageType as BaseCreateMessageType;
 
 class CreateMessageType extends BaseCreateMessageType
 {
