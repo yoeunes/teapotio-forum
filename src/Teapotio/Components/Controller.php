@@ -87,4 +87,24 @@ class Controller extends BaseController {
             throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
         }
     }
+
+    /**
+     * Throws an exception if user does not have the given permission.
+     * It will pass the rest of the argument to the method.
+     *
+     * @param  string  $permission
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
+    protected function throwAccessDeniedIfPermission($permission)
+    {
+        $args = func_get_args();
+        array_shift($args);
+
+        $service = $this->get('teapotio.forum.access_permission');
+
+        if (call_user_func_array(array($service, $permission), $args) === false) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+    }
 }

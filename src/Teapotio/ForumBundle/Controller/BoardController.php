@@ -24,16 +24,8 @@ class BoardController extends BaseController
 {
     public function newAction($boardSlug = null)
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
-
-        $user = $this->getUser();
-        $board = $this->getBoard();
-
-        if ($this->get('teapotio.forum.access_permission')->canCreateBoard($user, $board) === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
+        $this->throwAccessDeniedIfPermission('canCreateBoard', $this->getUser(), $this->getBoard());
 
         $parentBoard = null;
         if ($boardSlug !== null) {

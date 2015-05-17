@@ -13,8 +13,6 @@
 
 namespace Teapotio\SiteBundle\Service;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 class MainService
 {
     protected $translatorService;
