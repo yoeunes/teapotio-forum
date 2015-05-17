@@ -147,7 +147,7 @@ class ProfileController extends Controller
             'formGroups'        =>  $formGroups,
             'page_title'        =>  $title,
             'info_notices'      =>  $infoNotices,
-        )
+        );
 
         return $this->render('TeapotioUserBundle:page:profile/settings.html.twig', $params);
     }
