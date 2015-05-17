@@ -17,6 +17,7 @@ use Teapotio\ForumBundle\Entity\Topic;
 use Teapotio\ForumBundle\Entity\Message;
 use Teapotio\ForumBundle\Form\CreateTopicType;
 
+use Teapotio\Base\ForumBundle\Entity\TopicInterface;
 use Teapotio\Base\ForumBundle\Exception\DuplicateTopicException;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -269,7 +270,7 @@ class TopicController extends BaseController
         }
         else {
             $pinnedTopics = $this->get('teapotio.forum.topic')->getLatestPinnedTopicsByBoard($board);
-            $pinnedTopicIds = $pinnedTopics->map(function ($topic) {
+            $pinnedTopicIds = $pinnedTopics->map(function (TopicInterface $topic) {
               return $topic->getId();
             });
 

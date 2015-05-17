@@ -13,8 +13,6 @@
 
 namespace Teapotio\ForumBundle\Repository;
 
-use Teapotio\ForumBundle\Entity\Moderation;
-
 use Teapotio\Base\ForumBundle\Repository\ModerationRepository as EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 

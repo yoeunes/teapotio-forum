@@ -13,11 +13,7 @@
 
 namespace Teapotio\ImageBundle\Repository;
 
-use Teapotio\ImageBundle\Entity\Image;
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class ImageRepository extends EntityRepository
 {

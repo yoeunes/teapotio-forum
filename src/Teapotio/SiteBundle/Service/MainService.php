@@ -19,11 +19,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class MainService
 {
-    protected $container;
+    protected $translatorService;
+    protected $forumTitle;
 
-    public function __construct (ContainerInterface $container)
+    public function __construct ($translatorService, $forumTitle)
     {
-        $this->container = $container;
+        $this->translatorService = $translatorService;
+        $this->forumTitle = $forumTitle;
     }
 
 
@@ -37,9 +39,7 @@ class MainService
      */
     public function generateTitle($key, $params = array())
     {
-        return $this->container
-                    ->get('translator')
-                    ->trans($key, $params) .' - '. $this->container->getParameter('forum_title');
+        return $this->translatorService->trans($key, $params) .' - '. $this->forumTitle;
     }
 
 

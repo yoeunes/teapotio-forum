@@ -13,15 +13,6 @@
 
 namespace Teapotio\UserBundle\Controller;
 
-use Teapotio\ImageBundle\Entity\Image;
-use Teapotio\ImageBundle\Form\ImageType;
-
-use Teapotio\UserBundle\Entity\User;
-use Teapotio\UserBundle\Entity\UserGroup;
-use Teapotio\UserBundle\Entity\UserSettings;
-use Teapotio\UserBundle\Form\UserDescriptionType;
-use Teapotio\UserBundle\Form\UserSettingsType;
-
 use Symfony\Component\Security\Core\SecurityContext;
 
 use Teapotio\Components\Controller;

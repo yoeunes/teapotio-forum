@@ -64,4 +64,27 @@ class Controller extends BaseController {
         return $this->get('teapotio.site')->generateTitle($key, $params);
     }
 
+    /**
+     * Throws an exception if user is not logged-in
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
+    protected function throwAccessDeniedIfLoggedOut()
+    {
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+    }
+
+    /**
+     * Throws an exception if user is not admin
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
+    protected function throwAccessDeniedIfNotAdmin()
+    {
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
+            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
+        }
+    }
 }

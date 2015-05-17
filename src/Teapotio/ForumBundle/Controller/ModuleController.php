@@ -13,9 +13,6 @@
 
 namespace Teapotio\ForumBundle\Controller;
 
-use Teapotio\ForumBundle\Entity\Board;
-use Teapotio\Base\ForumBundle\Form\CreateBoardType;
-
 class ModuleController extends BaseController
 {
 

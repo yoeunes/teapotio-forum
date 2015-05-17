@@ -13,9 +13,6 @@
 
 namespace Teapotio\ForumBundle\Controller;
 
-use Teapotio\ForumBundle\Entity\Board;
-use Teapotio\BaseForumBundle\Form\CreateBoardType;
-
 class FlagController extends BaseController
 {
 

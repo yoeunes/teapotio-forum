@@ -5,4 +5,4 @@ parameters:
 services:
    teapotio.image:
        class: %teapotio_image.image_service.class%
-       arguments: [@service_container]
+       arguments: [@doctrine, %teapotio_image.image_repository.class%]

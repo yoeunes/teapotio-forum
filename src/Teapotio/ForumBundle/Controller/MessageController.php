@@ -13,8 +13,6 @@
 
 namespace Teapotio\ForumBundle\Controller;
 
-use Teapotio\ForumBundle\Entity\Board;
-use Teapotio\ForumBundle\Entity\Topic;
 use Teapotio\ForumBundle\Entity\Message;
 use Teapotio\ForumBundle\Form\CreateMessageType;
 

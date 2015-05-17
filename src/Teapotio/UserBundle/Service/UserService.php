@@ -88,12 +88,12 @@ class UserService extends BaseService {
         foreach ($user->getAvatars() as $avatar) {
             if ($avatar->getId() == $imageId) {
                 $user->setDefaultAvatar($avatar);
-
-                $this->em->persist($user);
-                $this->em->flush();
                 break;
             }
         }
+
+        $this->em->persist($user);
+        $this->em->flush();
 
         return $user;
     }

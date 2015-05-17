@@ -14,9 +14,6 @@
 namespace Teapotio\ForumBundle\Listener;
 
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use Symfony\Component\HttpKernel\HttpKernel;
 
 class RequestListener

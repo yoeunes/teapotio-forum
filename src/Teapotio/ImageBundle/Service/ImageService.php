@@ -17,19 +17,15 @@ use Teapotio\ImageBundle\Entity\Image;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ImageService {
-
-    protected $container;
+class ImageService
+{
     protected $em;
-
     protected $imageRepositoryClass;
 
-    public function __construct (ContainerInterface $container)
+    public function __construct ($doctrine, $imageRepositoryClass)
     {
-        $this->container = $container;
-        $this->em = $container->get('doctrine')->getManager();
-
-        $this->imageRepositoryClass = $this->container->getParameter('teapotio_image.image_repository.class');
+        $this->em = $doctrine->getManager();
+        $this->imageRepositoryClass = $imageRepositoryClass;
     }
 
     /**

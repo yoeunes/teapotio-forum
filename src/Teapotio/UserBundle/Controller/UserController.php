@@ -28,9 +28,7 @@ class UserController extends Controller
 
     public function addImageAction()
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
 
         $request = $this->get('request');
 
@@ -87,9 +85,7 @@ class UserController extends Controller
 
     public function setDefaultImageAction($imageId)
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
 
         $request = $this->get('request');
 
@@ -116,9 +112,7 @@ class UserController extends Controller
 
     public function setDescriptionAction()
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
 
         $request = $this->get('request');
 
@@ -161,9 +155,7 @@ class UserController extends Controller
 
     public function setSettingsAction()
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
 
         $request = $this->get('request');
 
@@ -217,9 +209,7 @@ class UserController extends Controller
 
     public function setGroupsAction()
     {
-        if ($this->get('teapotio.forum.access_permission')->isAdmin($this->getUser()) === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfNotAdmin();
 
         $request = $this->get('request');
 
@@ -247,5 +237,4 @@ class UserController extends Controller
             $request->headers->get('referer')
         );
     }
-
 }

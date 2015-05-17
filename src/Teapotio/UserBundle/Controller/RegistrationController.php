@@ -15,7 +15,6 @@ namespace Teapotio\UserBundle\Controller;
 
 use Teapotio\UserBundle\Form\UserSignupType;
 use Teapotio\UserBundle\Entity\User;
-use Teapotio\UserBundle\Entity\UserGroup;
 
 use Teapotio\Components\Controller;
 

@@ -13,10 +13,7 @@
 
 namespace Teapotio\ForumBundle\Repository;
 
-use Teapotio\ForumBundle\Entity\UserStat;
-
 use Teapotio\Base\ForumBundle\Repository\UserStatRepository as EntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 use Doctrine\Common\Collections\ArrayCollection;
 

@@ -15,11 +15,6 @@ namespace Teapotio\UserBundle\Repository;
 
 use Teapotio\Base\UserBundle\Repository\UserRepository as BaseUserGroupRepository;
 
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
-
-use Doctrine\Common\Collections\ArrayCollection;
-
 class UserGroupRepository extends BaseUserGroupRepository
 {
 

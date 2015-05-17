@@ -13,14 +13,10 @@
 
 namespace Teapotio\ForumBundle\Repository;
 
-use Teapotio\ForumBundle\Entity\Message;
-
 use Teapotio\Base\ForumBundle\Entity\BoardInterface;
 
 use Teapotio\Base\ForumBundle\Repository\TopicRepository as EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-
-use Doctrine\Common\Collections\ArrayCollection;
 
 class TopicRepository extends EntityRepository
 {

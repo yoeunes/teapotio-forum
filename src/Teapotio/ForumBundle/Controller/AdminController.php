@@ -13,8 +13,6 @@
 
 namespace Teapotio\ForumBundle\Controller;
 
-use Teapotio\ForumBundle\Entity\Board;
-
 class AdminController extends BaseController
 {
 

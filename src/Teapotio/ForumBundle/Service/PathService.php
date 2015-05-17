@@ -13,13 +13,6 @@
 
 namespace Teapotio\ForumBundle\Service;
 
-use Teapotio\Base\ForumBundle\Entity\BoardInterface;
-use Teapotio\Base\ForumBundle\Entity\TopicInterface;
-
-use Symfony\Component\Security\Core\User\UserInterface;
-
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Teapotio\Base\ForumBundle\Service\PathService as BasePathService;
 
 class PathService extends BasePathService

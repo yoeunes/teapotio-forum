@@ -14,7 +14,6 @@
 namespace Teapotio\ForumBundle\Service;
 
 use Teapotio\ForumBundle\Entity\Topic;
-use Teapotio\ForumBundle\Entity\TopicStat;
 use Teapotio\Base\ForumBundle\Service\TopicService as BaseTopicService;
 use Teapotio\Base\ForumBundle\Entity\BoardInterface;
 

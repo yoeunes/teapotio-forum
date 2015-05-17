@@ -19,8 +19,6 @@ use Teapotio\ForumBundle\Entity\Message;
 
 use Teapotio\Components\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-
 class BaseController extends Controller
 {
     /**
@@ -28,7 +26,7 @@ class BaseController extends Controller
      *
      * @return Board
      */
-    public function getBoard()
+    protected function getBoard()
     {
         return $this->get('teapotio.forum.path')->getCurrentBoard();
     }
@@ -38,7 +36,7 @@ class BaseController extends Controller
      *
      * @return Topic
      */
-    public function getTopic()
+    protected function getTopic()
     {
         return $this->get('teapotio.forum.path')->getCurrentTopic();
     }
@@ -48,7 +46,7 @@ class BaseController extends Controller
      *
      * @return Message
      */
-    public function getMessage()
+    protected function getMessage()
     {
         return $this->get('teapotio.forum.path')->getCurrentMessage();
     }
