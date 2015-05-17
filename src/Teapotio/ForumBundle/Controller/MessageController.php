@@ -215,9 +215,7 @@ class MessageController extends BaseController
             return $response;
         }
 
-        if ($this->get('teapotio.forum.access_permission')->canView($user, $topic) === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfPermission('canView', $user, $topic);
 
         if ($isUserModerator === false && $topic->isDeleted() === true) {
             throw $this->createNotFoundException();
@@ -226,8 +224,7 @@ class MessageController extends BaseController
         $this->get('teapotio.forum.topic')->view($topic);
 
         // Build the form if the user is allowed
-        $form = null;
-        $message = null;
+        $form = $message = null;
         if ($this->get('teapotio.forum.access_permission')->canCreateMessage($user, $board) === true) {
             $message = new Message();
             $message->setUser($user);
@@ -244,11 +241,7 @@ class MessageController extends BaseController
         $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
         $offset = ($page - 1) * $messagesPerPage;
 
-        if ($isUserModerator === true) {
-            $isDeleted = null;
-        } else {
-            $isDeleted = false;
-        }
+        $isDeleted = $isUserModerator === true ? null : false;
 
         $messages = $this->get('teapotio.forum.message')->getMessagesByTopic($topic, $offset, $messagesPerPage, $isDeleted);
 
@@ -291,13 +284,6 @@ class MessageController extends BaseController
             'form'                => $form,
             'page_title'          => $title
         );
-
-        if ($this->get('request')->isXmlHttpRequest() === true) {
-            return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:partial:message/list.html.twig', $params),
-                'title'  => $title
-            ));
-        }
 
         return $this->render('TeapotioForumBundle:page:message/list.html.twig', $params);
     }

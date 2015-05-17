@@ -17,8 +17,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
-class Controller extends BaseController {
+class Controller extends BaseController
+{
+    /**
+     * {@inherit}
+     */
+    public function render($view, array $parameters = array(), Response $response = null)
+    {
+        if ($this->get('request')->isXmlHttpRequest() === true) {
+            $view = str_replace(':page:', ':partial:', $view);
 
+            return $this->renderJson(array(
+                'html'   => $this->renderView($view, $parameters),
+                'title'  => (isset($parameters['page_title'])) ? $parameters['page_title'] : ''
+            ));
+        }
+
+        return parent::render($view, $parameters, $response);
+    }
 
     /**
      * Renders json response.

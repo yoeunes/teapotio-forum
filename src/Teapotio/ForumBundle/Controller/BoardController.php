@@ -27,25 +27,14 @@ class BoardController extends BaseController
         $this->throwAccessDeniedIfLoggedOut();
         $this->throwAccessDeniedIfPermission('canCreateBoard', $this->getUser(), $this->getBoard());
 
-        $parentBoard = null;
-        if ($boardSlug !== null) {
-            $parentBoard = $this->getBoard();
-        }
+        $parentBoard = $this->getBoard();
 
-        /**
-         * Making sure it's the right URL
-         */
+        // Making sure it's the right URL/
         if ($parentBoard !== null) {
             $realBoardSlug = $this->container->get('teapotio.forum.board')->buildSlug($parentBoard);
             if ($realBoardSlug !== $boardSlug) {
                 return $this->redirect(
-                    $this->generateUrl(
-                        'ForumNewBoardInBoard',
-                        array(
-                            'boardSlug' => $realBoardSlug,
-                            'boardId'   => $parentBoard->getId()
-                        )
-                    )
+                    $this->generateUrl('ForumNewBoardInBoard', array('boardSlug' => $realBoardSlug, 'boardId' => $parentBoard->getId()))
                 );
             }
         }
@@ -53,7 +42,6 @@ class BoardController extends BaseController
         $request = $this->get('request');
 
         $board = new Board();
-
         $form = $this->createForm(new CreateBoardType(), $board);
 
         if ($request->getMethod() === 'POST') {
@@ -99,13 +87,6 @@ class BoardController extends BaseController
             'page_title'    => $title,
             'info_notices'  => $infoNotices,
         );
-
-        if ($this->get('request')->isXmlHttpRequest() === true) {
-            return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:partial:board/new.html.twig', $params),
-                'title'  => $title
-            ));
-        }
 
         return $this->render('TeapotioForumBundle:page:board/new.html.twig', $params);
     }

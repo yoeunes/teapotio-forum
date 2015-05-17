@@ -19,25 +19,17 @@ use Teapotio\ForumBundle\Form\Type\CreateTopicType;
 
 use Teapotio\Base\ForumBundle\Entity\TopicInterface;
 use Teapotio\Base\ForumBundle\Exception\DuplicateTopicException;
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\FormError;
 
 class TopicController extends BaseController
 {
     public function newAction($boardSlug = null)
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
-
         $board = $this->getBoard();
-
         $user = $this->getUser();
 
-        if ($this->get('teapotio.forum.access_permission')->canCreateTopic($user, $board) === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
+        $this->throwAccessDeniedIfPermission('canCreateTopic', $user, $board);
 
         $request = $this->get('request');
 
@@ -48,11 +40,9 @@ class TopicController extends BaseController
         $form = $this->createForm(new CreateTopicType(), $topic);
 
         if ($request->getMethod() === 'POST') {
-
             $form->bind($request);
 
             $boardId = $request->request->get('board_id');
-
             if ($board === null && $boardId === '') {
                 $form->addError(new FormError($this->get('translator')->trans('Board.selected.not.valid')));
             } else if ($boardId !== null) {
@@ -61,10 +51,7 @@ class TopicController extends BaseController
 
             if ($form->isValid() === true) {
                 try {
-                    $user = $this->get('security.context')->getToken()->getUser();
-
                     $topic->setBoard($board);
-
                     $this->get('teapotio.forum.topic')->save($topic);
 
                     $message = new Message();
@@ -97,13 +84,6 @@ class TopicController extends BaseController
             'info_notices'    => $infoNotices,
             'existing_topics' => $existingTopics,
         );
-
-        if ($this->get('request')->isXmlHttpRequest() === true) {
-            return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:partial:topic/new.html.twig', $params),
-                'title'  => $title
-            ));
-        }
 
         return $this->render('TeapotioForumBundle:page:topic/new.html.twig', $params);
     }
@@ -232,19 +212,14 @@ class TopicController extends BaseController
             throw $this->createNotFoundException();
         }
 
-        /**
-         * Making sure it's the right URL
-         */
+        // Making sure it's the right URL
         $realBoardSlug = $this->container->get('teapotio.forum.board')->buildSlug($board);
         if ($realBoardSlug !== $boardSlug) {
             return $this->redirect($this->get('teapotio.forum')->forumPath('ForumListTopicsByBoard', $board));
         }
 
         $user = $this->getUser();
-
-        if ($this->get('teapotio.forum.access_permission')->canView($user, $board) === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfPermission('canView', $user, $board);
 
         $boardIds = $this->get('teapotio.forum.board')->getChildrenIdsFromBoard($board, $user);
         $boardIds[] = $board->getId();
@@ -255,37 +230,11 @@ class TopicController extends BaseController
         $page = ($this->get('request')->get('page') === null) ? 1 : $this->get('request')->get('page');
         $offset = ($page - 1) * $topicsPerPage;
 
-        $pinnedTopics = new ArrayCollection();
-        $pinnedTopicIds = new ArrayCollection();
-        if (count($boardIds) === 1) {
-            $topics = $this->get('teapotio.forum.topic')->getLatestTopicsByBoard($board, $offset, $topicsPerPage);
-            foreach ($topics as $topic) {
-              if ($topic->isPinned() === false) {
-                break;
-              }
+        list($pinnedTopics, $topics) = $this->get('teapotio.forum.topic')->getProcessedListTopicsByBoardIds($boardIds);
 
-              $pinnedTopics->add($topic);
-              $pinnedTopicIds->add($topic->getId());
-            }
-        }
-        else {
-            $pinnedTopics = $this->get('teapotio.forum.topic')->getLatestPinnedTopicsByBoard($board);
-            $pinnedTopicIds = $pinnedTopics->map(function (TopicInterface $topic) {
-              return $topic->getId();
-            });
-
-            $topics = $this->get('teapotio.forum.topic')->getLatestTopicsByBoardIds($boardIds, $offset, $topicsPerPage);
-        }
-
-        if ($pinnedTopicIds->count()) {
-          $bodies = $this->get('teapotio.forum.message')->getTopicBodiesByTopicIds($pinnedTopicIds->toArray());
-
-          foreach ($pinnedTopics as $topic) {
-            if (isset($bodies[$topic->getId()])) {
-              $topic->setBody($bodies[$topic->getId()]);
-            }
-          }
-        }
+        $pinnedTopicIds = $pinnedTopics->map(function (TopicInterface $topic) {
+          return $topic->getId();
+        });
 
         $title = $this->generateTitle('All.topics.in.%title%', array('%title%' => $board->getTitle()));
 
@@ -299,13 +248,6 @@ class TopicController extends BaseController
             'showBoard'         => true,
             'page_title'        => $title,
         );
-
-        if ($this->get('request')->isXmlHttpRequest() === true) {
-            return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioForumBundle:partial:topic/list.html.twig', $params),
-                'title'  => $title
-            ));
-        }
 
         return $this->render('TeapotioForumBundle:page:topic/list.html.twig', $params);
     }

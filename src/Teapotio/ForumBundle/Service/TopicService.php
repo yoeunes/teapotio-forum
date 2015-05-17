@@ -16,8 +16,10 @@ namespace Teapotio\ForumBundle\Service;
 use Teapotio\ForumBundle\Entity\Topic;
 use Teapotio\Base\ForumBundle\Service\TopicService as BaseTopicService;
 use Teapotio\Base\ForumBundle\Entity\BoardInterface;
+use Teapotio\Base\ForumBundle\Entity\TopicInterface;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class TopicService extends BaseTopicService
 {
@@ -55,5 +57,64 @@ class TopicService extends BaseTopicService
         $this->container->get('teapotio.forum.message')->save($message);
 
         return array($topic);
+    }
+
+    /**
+     * Returns an array of two lists
+     *  - a list of pinned topics with their body loaded
+     *  - a list of topics without their body
+     *
+     * @param  array $boardIds
+     *
+     * @return array(ArrayCollection, Paginator)
+     */
+    public function getProcessedListTopicsByBoardIds($boardIds)
+    {
+        $topicsPerPage = $this->container->get('teapotio.forum')->getTotalTopicsPerPage();
+        $messagesPerPage = $this->container->get('teapotio.forum')->getTotalMessagesPerPage();
+
+        $page = ($this->container->get('request')->get('page') === null) ? 1 : $this->container->get('request')->get('page');
+        $offset = ($page - 1) * $topicsPerPage;
+
+        $board = $this->container->get('teapotio.forum.path')->getCurrentBoard();
+
+        $pinnedTopics = new ArrayCollection();
+        $pinnedTopicIds = new ArrayCollection();
+        if (count($boardIds) === 1) {
+            $topics = $this->container->get('teapotio.forum.topic')->getLatestTopicsByBoard($board, $offset, $topicsPerPage);
+            // Only load on first page
+            if ($page === 1) {
+                foreach ($topics as $topic) {
+                  if ($topic->isPinned() === false) {
+                    break;
+                  }
+
+                  $pinnedTopics->add($topic);
+                  $pinnedTopicIds->add($topic->getId());
+                }
+            }
+        }
+        else {
+            $topics = $this->container->get('teapotio.forum.topic')->getLatestTopicsByBoardIds($boardIds, $offset, $topicsPerPage);
+            // Only load on first page
+            if ($page === 1) {
+                $pinnedTopics = $this->container->get('teapotio.forum.topic')->getLatestPinnedTopicsByBoard($board);
+                $pinnedTopicIds = $pinnedTopics->map(function (TopicInterface $topic) {
+                  return $topic->getId();
+                });
+            }
+        }
+
+        if ($pinnedTopicIds->count()) {
+          $bodies = $this->container->get('teapotio.forum.message')->getTopicBodiesByTopicIds($pinnedTopicIds->toArray());
+
+          foreach ($pinnedTopics as $topic) {
+            if (isset($bodies[$topic->getId()])) {
+              $topic->setBody($bodies[$topic->getId()]);
+            }
+          }
+        }
+
+        return array($pinnedTopics, $topics);
     }
 }

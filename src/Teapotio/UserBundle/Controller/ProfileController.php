@@ -94,9 +94,7 @@ class ProfileController extends Controller
 
     public function settingsAction($userSlug, $userId)
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
-            throw new \Symfony\Component\Security\Core\Exception\AccessDeniedException();
-        }
+        $this->throwAccessDeniedIfLoggedOut();
 
         $user = $this->get('teapotio.user')
                      ->find($userId);
@@ -114,12 +112,7 @@ class ProfileController extends Controller
         }
 
         if ($userSlug !== $user->getSlug()) {
-            return $this->redirect(
-                $this->generateUrl('TeapotioBaseUserBundle_profile', array(
-                    'userSlug' => $user->getSlug(),
-                    'userId'   => $user->getId(),
-                ))
-            );
+            return $this->redirect($this->generateUrl('TeapotioBaseUserBundle_profile', array('userSlug' => $user->getSlug(), 'userId' => $user->getId())));
         }
 
         $settings = $user->getSettings();
@@ -142,33 +135,19 @@ class ProfileController extends Controller
             }
         }
 
-        $formImage = $this->createForm(new ImageType(), new Image());
-        $formDescription = $this->createForm(new UserDescriptionType(), $user);
-        $formSettings = $this->createForm(new UserSettingsType(), $settings);
-
-        $formGroups = false;
-        if ($isCurrentUserAdmin === true) {
-          $formGroups = $this->createForm(new UserGroupType(), $user)->createView();
-        }
+        $formGroups = $isCurrentUserAdmin === true ? $this->createForm(new UserGroupType(), $user)->createView() : false;
 
         $title = $this->generateTitle("%username%'s settings", array('%username%' => $user->getUsername()));
 
         $params = array(
             'user'              =>  $user,
-            'formImage'         =>  $formImage->createView(),
-            'formDescription'   =>  $formDescription->createView(),
-            'formSettings'      =>  $formSettings->createView(),
+            'formImage'         =>  $this->createForm(new ImageType(), new Image())->createView(),
+            'formDescription'   =>  $this->createForm(new UserDescriptionType(), $user)->createView(),
+            'formSettings'      =>  $this->createForm(new UserSettingsType(), $settings)->createView(),
             'formGroups'        =>  $formGroups,
             'page_title'        =>  $title,
             'info_notices'      =>  $infoNotices,
-        );
-
-        if ($this->get('request')->isXmlHttpRequest() === true) {
-            return $this->renderJson(array(
-                'html'   => $this->renderView('TeapotioUserBundle:partial:profile/settings.html.twig', $params),
-                'title'  => $title
-            ));
-        }
+        )
 
         return $this->render('TeapotioUserBundle:page:profile/settings.html.twig', $params);
     }
