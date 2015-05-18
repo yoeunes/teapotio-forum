@@ -1,5 +1,7 @@
 # Teapotio forum
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3d23ef3d-82c9-4418-a9ee-2122ff894b9e/big.png)](https://insight.sensiolabs.com/projects/3d23ef3d-82c9-4418-a9ee-2122ff894b9e)
+
 ## Introduction
 
 Teapotio forum provides a full feature forum solution for small to large communities.
