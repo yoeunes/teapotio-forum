@@ -85,8 +85,7 @@
           event.preventDefault();
 
           togglePageLoadAnimation(true);
-
-          $.get($(this).attr('href'), function (data, status, xhr) {
+          $.get($(this).attr('href'), {json: 1}, function (data, status, xhr) {
             if (!data.html) {
               return;
             }
@@ -111,11 +110,13 @@
           if ($container.length !== 0 && event.state !== null && event.state.t === 'main-view') {
             togglePageLoadAnimation(true);
 
-            $.get(event.state.p, function (data) {
+            $.get(event.state.p, {json: 1}, function (data) {
               self.inject(data, $container);
 
               togglePageLoadAnimation(false);
             });
+          } else {
+            window.location = window.location.href;
           }
         };
       });
